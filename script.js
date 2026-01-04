@@ -200,13 +200,30 @@ contactForm.addEventListener('submit', (e) => {
     }, 1500);
 });
 
-// Parallax effect for hero section
-window.addEventListener('scroll', () => {
-    const scrolled = window.pageYOffset;
-    const hero = document.querySelector('.hero');
-    if (hero) {
-        hero.style.transform = `translateY(${scrolled * 0.5}px)`;
+// Hero Carousel Auto-Scroll
+document.addEventListener('DOMContentLoaded', function() {
+    const slides = document.querySelectorAll('.hero-slide');
+    if (slides.length === 0) return;
+    
+    let currentSlide = 0;
+    const totalSlides = slides.length;
+    
+    function nextSlide() {
+        // Remove active class from current slide
+        slides[currentSlide].classList.remove('active');
+        
+        // Move to next slide
+        currentSlide = (currentSlide + 1) % totalSlides;
+        
+        // Add active class to new slide
+        slides[currentSlide].classList.add('active');
     }
+    
+    // Auto-scroll every 5 seconds
+    setInterval(nextSlide, 5000);
+    
+    // Initialize - make sure first slide is active
+    slides[0].classList.add('active');
 });
 
 // Track button clicks with pixel events
