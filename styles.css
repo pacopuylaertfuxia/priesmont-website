@@ -586,7 +586,6 @@ section {
     text-align: left;
     display: flex;
     flex-direction: column;
-    height: 100%;
 }
 
 .about-text h3 {
@@ -609,7 +608,7 @@ section {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 1.25rem;
-    margin-top: 3rem;
+    margin-top: 2.5rem;
 }
 
 .stat-item {
