@@ -591,7 +591,7 @@ section {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 4rem;
-    align-items: start;
+    align-items: stretch;
     margin-bottom: 4rem;
 }
 
@@ -604,6 +604,7 @@ section {
     text-align: left;
     display: flex;
     flex-direction: column;
+    height: 100%;
 }
 
 .about-text h3 {
@@ -620,6 +621,11 @@ section {
     font-size: 1.0625rem;
     line-height: 1.75;
     letter-spacing: -0.01em;
+}
+
+.about-text p:last-of-type {
+    margin-bottom: 0;
+    flex: 1;
 }
 
 .stats-section {
@@ -757,7 +763,7 @@ section {
     position: relative;
     display: flex;
     flex-direction: column;
-    gap: 0;
+    gap: 1.5rem;
     height: 100%;
 }
 
@@ -768,11 +774,21 @@ section {
     border-radius: 18px;
     box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.12);
     transition: var(--transition);
+    flex: 0 0 auto;
 }
 
 .about-img:hover {
     transform: scale(1.01);
     box-shadow: 0 16px 64px 0 rgba(0, 0, 0, 0.15);
+}
+
+.about-location-map {
+    width: 100%;
+    flex: 1;
+    min-height: 300px;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.12);
 }
 
 /* Region Section */
@@ -2632,6 +2648,14 @@ body:has(.lightbox.active) .navbar {
     .contact-content {
         grid-template-columns: 1fr;
         gap: 2.5rem;
+    }
+    
+    .about-image {
+        gap: 1rem;
+    }
+    
+    .about-location-map {
+        min-height: 250px;
     }
     
     .contact-form-wrapper {
