@@ -118,15 +118,18 @@ const statsObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
             const statNumber = entry.target.querySelector('.stat-number');
-            const target = parseInt(statNumber.getAttribute('data-target'));
-            
-            if (!statNumber.classList.contains('animated')) {
-                statNumber.classList.add('animated');
-                animateCounter(statNumber, target);
+            if (statNumber) {
+                const target = parseInt(statNumber.getAttribute('data-target'));
+                
+                if (!statNumber.classList.contains('animated') && target) {
+                    statNumber.classList.add('animated');
+                    statNumber.textContent = '0';
+                    animateCounter(statNumber, target);
+                }
             }
         }
     });
-}, { threshold: 0.5 });
+}, { threshold: 0.3 });
 
 document.querySelectorAll('.stat-item').forEach(stat => {
     statsObserver.observe(stat);
