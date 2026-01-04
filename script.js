@@ -291,13 +291,21 @@ if (lightboxTotal) {
 }
 
 // Handle "See All" button
+const gallerySeeLessBtn = document.getElementById('gallerySeeLessBtn');
+const gallerySeeLessWrapper = document.getElementById('gallerySeeLessWrapper');
+const galleryPreview = document.querySelector('.gallery-preview');
+
 if (gallerySeeAllBtn && galleryRemaining) {
     gallerySeeAllBtn.addEventListener('click', () => {
         // Show remaining gallery
         galleryRemaining.style.display = 'grid';
         
-        // Hide the preview section and button
-        const galleryPreview = gallerySeeAllBtn.closest('.gallery-preview');
+        // Show "See Less" button
+        if (gallerySeeLessWrapper) {
+            gallerySeeLessWrapper.style.display = 'block';
+        }
+        
+        // Hide the preview section and "See All" button
         if (galleryPreview) {
             galleryPreview.style.display = 'none';
         }
@@ -308,6 +316,30 @@ if (gallerySeeAllBtn && galleryRemaining) {
         // Smooth scroll to remaining gallery
         setTimeout(() => {
             galleryRemaining.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 100);
+    });
+}
+
+// Handle "See Less" button
+if (gallerySeeLessBtn && galleryRemaining && galleryPreview) {
+    gallerySeeLessBtn.addEventListener('click', () => {
+        // Hide remaining gallery
+        galleryRemaining.style.display = 'none';
+        
+        // Hide "See Less" button
+        if (gallerySeeLessWrapper) {
+            gallerySeeLessWrapper.style.display = 'none';
+        }
+        
+        // Show the preview section and "See All" button
+        galleryPreview.style.display = 'block';
+        
+        // Re-initialize gallery handlers for preview only
+        initializeGalleryHandlers();
+        
+        // Smooth scroll to gallery preview
+        setTimeout(() => {
+            galleryPreview.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }, 100);
     });
 }

@@ -1342,6 +1342,32 @@ body:has(.lightbox.active) .navbar {
     transform: translateY(0);
 }
 
+.gallery-see-less-btn {
+    display: block;
+    margin: 2rem auto 0;
+    padding: 1rem 2.5rem;
+    background: rgba(29, 29, 31, 0.95);
+    color: var(--bg-white);
+    border: none;
+    border-radius: 12px;
+    font-size: 1rem;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    cursor: pointer;
+    transition: var(--transition);
+    box-shadow: 0 4px 16px 0 rgba(0, 0, 0, 0.1);
+}
+
+.gallery-see-less-btn:hover {
+    background: rgba(29, 29, 31, 1);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 24px 0 rgba(0, 0, 0, 0.15);
+}
+
+.gallery-see-less-btn:active {
+    transform: translateY(0);
+}
+
 .gallery-remaining {
     margin-top: 3rem;
     animation: fadeIn 0.4s ease-in-out;
@@ -1608,7 +1634,8 @@ body:has(.lightbox.active) .navbar {
         border-radius: 8px;
     }
     
-    .gallery-see-all-btn {
+    .gallery-see-all-btn,
+    .gallery-see-less-btn {
         padding: 0.875rem 2rem;
         font-size: 0.9375rem;
         width: 100%;
