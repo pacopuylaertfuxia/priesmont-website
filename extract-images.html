@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Extract Images from Priesmont.com</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 1200px;
+            margin: 50px auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+        }
+        .instructions {
+            background: #e3f2fd;
+            padding: 20px;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+        .code-block {
+            background: #f5f5f5;
+            padding: 15px;
+            border-radius: 5px;
+            font-family: monospace;
+            overflow-x: auto;
+            margin: 10px 0;
+        }
+        button {
+            background: #2563eb;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 10px 5px;
+        }
+        button:hover {
+            background: #1e40af;
+        }
+        #results {
+            margin-top: 20px;
+            padding: 20px;
+            background: #f9f9f9;
+            border-radius: 5px;
+        }
+        .image-item {
+            margin: 15px 0;
+            padding: 15px;
+            background: white;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+        .image-item img {
+            max-width: 300px;
+            height: auto;
+            border-radius: 5px;
+            margin: 10px 0;
+        }
+        .image-url {
+            word-break: break-all;
+            color: #2563eb;
+            font-family: monospace;
+            background: #f0f0f0;
+            padding: 5px;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Extract Images from Priesmont.com</h1>
+        
+        <div class="instructions">
+            <h2>Instructions:</h2>
+            <ol>
+                <li>Open <a href="https://priesmont.com" target="_blank">priesmont.com</a> in a new tab</li>
+                <li>Open the browser's Developer Console (F12 or Right-click → Inspect → Console)</li>
+                <li>Copy and paste the JavaScript code below into the console</li>
+                <li>Press Enter to run it</li>
+                <li>Copy the image URLs that are displayed</li>
+                <li>Come back here and paste them below, or use them to update index.html</li>
+            </ol>
+        </div>
+
+        <h3>JavaScript Code to Run on priesmont.com:</h3>
+        <div class="code-block" id="jsCode">
+// Extract all images from priesmont.com
+(function() {
+    const images = [];
+    const imgElements = document.querySelectorAll('img');
+    const bgImages = [];
+    
+    // Get all img tags
+    imgElements.forEach(img => {
+        if (img.src && !img.src.includes('data:')) {
+            images.push({
+                src: img.src,
+                alt: img.alt || 'No alt text',
+                width: img.naturalWidth || img.width,
+                height: img.naturalHeight || img.height
+            });
+        }
+    });
+    
+    // Get background images from inline styles
+    document.querySelectorAll('[style*="background-image"]').forEach(el => {
+        const style = el.getAttribute('style');
+        const match = style.match(/url\(['"]?([^'"]+)['"]?\)/);
+        if (match && match[1] && !match[1].includes('data:')) {
+            bgImages.push(match[1]);
+        }
+    });
+    
+    // Get background images from computed styles
+    const allElements = document.querySelectorAll('*');
+    allElements.forEach(el => {
+        const bgImage = window.getComputedStyle(el).backgroundImage;
+        if (bgImage && bgImage !== 'none') {
+            const match = bgImage.match(/url\(['"]?([^'"]+)['"]?\)/);
+            if (match && match[1] && !match[1].includes('data:') && !bgImages.includes(match[1])) {
+                bgImages.push(match[1]);
+            }
+        }
+    });
+    
+    // Combine and filter
+    const allImages = [
+        ...images.map(img => img.src),
+        ...bgImages
+    ].filter((url, index, self) => 
+        url && 
+        url.startsWith('http') && 
+        self.indexOf(url) === index &&
+        !url.includes('logo') &&
+        !url.includes('icon')
+    );
+    
+    // Display results
+    console.log('=== FOUND IMAGES ===');
+    allImages.forEach((url, index) => {
+        console.log(`${index + 1}. ${url}`);
+    });
+    
+    // Create a visual display
+    const resultsDiv = document.createElement('div');
+    resultsDiv.id = 'extracted-images';
+    resultsDiv.style.cssText = 'position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.9);z-index:99999;overflow-y:auto;padding:20px;';
+    resultsDiv.innerHTML = `
+        <div style="max-width:1200px;margin:0 auto;background:white;padding:30px;border-radius:10px;">
+            <h2 style="margin-top:0;">Found ${allImages.length} Images</h2>
+            <button onclick="this.parentElement.parentElement.remove()" style="background:#dc2626;color:white;border:none;padding:10px 20px;border-radius:5px;cursor:pointer;margin-bottom:20px;">Close</button>
+            ${allImages.map((url, index) => `
+                <div style="margin:20px 0;padding:15px;border:1px solid #ddd;border-radius:5px;">
+                    <h3>Image ${index + 1}</h3>
+                    <img src="${url}" style="max-width:100%;height:auto;border-radius:5px;margin:10px 0;" onerror="this.style.display='none'">
+                    <div style="word-break:break-all;background:#f0f0f0;padding:10px;border-radius:3px;margin-top:10px;font-family:monospace;font-size:12px;">${url}</div>
+                    <button onclick="navigator.clipboard.writeText('${url}')" style="background:#2563eb;color:white;border:none;padding:5px 15px;border-radius:3px;cursor:pointer;margin-top:5px;">Copy URL</button>
+                </div>
+            `).join('')}
+        </div>
+    `;
+    document.body.appendChild(resultsDiv);
+    
+    return allImages;
+})();
+        </div>
+        
+        <button onclick="copyCode()">Copy Code to Clipboard</button>
+        
+        <div id="results" style="display:none;">
+            <h2>Extracted Image URLs:</h2>
+            <div id="imageList"></div>
+        </div>
+        
+        <div style="margin-top: 30px; padding: 20px; background: #fff3cd; border-radius: 5px;">
+            <h3>Alternative: Manual Method</h3>
+            <p>If the script doesn't work, you can manually find images:</p>
+            <ol>
+                <li>Right-click on any image on priesmont.com</li>
+                <li>Select "Copy image address" or "Copy image URL"</li>
+                <li>Paste the URL into the appropriate place in index.html</li>
+            </ol>
+        </div>
+    </div>
+
+    <script>
+        function copyCode() {
+            const code = document.getElementById('jsCode').textContent;
+            navigator.clipboard.writeText(code).then(() => {
+                alert('Code copied to clipboard! Now paste it in the console on priesmont.com');
+            });
+        }
+    </script>
+</body>
+</html>
+
+
+

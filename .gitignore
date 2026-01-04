@@ -1,0 +1,28 @@
+# Lodgify Configuration (contains API keys)
+# Note: Keep lodgify-config.js in repo but with placeholder values
+# Update locally with real values, don't commit real API keys
+
+# Meta Pixel Configuration (contains Pixel ID)
+# Note: Keep meta-pixel-config.js in repo but with placeholder values
+# Update locally with real values, don't commit real Pixel ID
+
+# Environment variables
+.env
+.env.local
+
+# Logs
+*.log
+npm-debug.log*
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+
