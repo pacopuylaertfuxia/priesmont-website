@@ -14,8 +14,9 @@ const translations = {
         hero: {
             welcome: "Welcome to",
             title: "Priesmont",
-            subtitle: "A historic manor in the heart of the Ardennes",
+            subtitle: "A historic manor in the heart of the Ardennes<br>Your perfect escape into nature and luxury",
             description: "Experience luxury, nature, and tranquility in our 18-room estate",
+            discover: "Discover the Manor",
             cta: "Book Your Stay"
         },
         about: {
@@ -69,6 +70,33 @@ const translations = {
             phone: "Phone",
             message: "Message",
             send: "Request Booking"
+        },
+        gallery: {
+            title: "Gallery",
+            subtitle: "A glimpse into the beauty of Priesmont"
+        },
+        region: {
+            title: "The Region",
+            subtitle: "Discover the enchanting Ardennes and its treasures",
+            regionTitle: "The Ardennes",
+            description1: "Nestled in the heart of the Belgian Ardennes, Priesmont offers you the perfect gateway to explore one of Belgium's most beautiful and unspoiled regions. The Ardennes is renowned for its rolling hills, dense forests, pristine rivers, and charming villages that seem untouched by time.",
+            description2: "The region's rich history, dating back centuries, is evident in its architecture, traditions, and the warm hospitality of its people. Whether you're interested in outdoor adventures, cultural exploration, or simply relaxing in nature, the Ardennes provides an ideal backdrop for your stay at Priesmont."
+        },
+        surroundings: {
+            title: "Surroundings & Attractions",
+            subtitle: "Explore the beauty and activities near Priesmont"
+        },
+        useCases: {
+            title: "Perfect For Every Occasion",
+            subtitle: "Whether celebrating life's milestones or building stronger teams, Priesmont adapts to your vision"
+        },
+        testimonials: {
+            title: "What Our Guests Say",
+            subtitle: "Real experiences from those who've stayed at Priesmont"
+        },
+        about: {
+            sectionTitle: "About Priesmont",
+            sectionSubtitle: "A historic manor nestled in the enchanting Ardennes"
         }
     },
     nl: {
@@ -85,8 +113,9 @@ const translations = {
         hero: {
             welcome: "Welkom bij",
             title: "Priesmont",
-            subtitle: "Een historisch landhuis in het hart van de Ardennen",
+            subtitle: "Een historisch landhuis in het hart van de Ardennen<br>Uw perfecte ontsnapping naar natuur en luxe",
             description: "Ervaar luxe, natuur en rust in ons landgoed met 18 kamers",
+            discover: "Ontdek het Landhuis",
             cta: "Boek Uw Verblijf"
         },
         about: {
@@ -140,6 +169,33 @@ const translations = {
             phone: "Telefoon",
             message: "Bericht",
             send: "Boekingsverzoek"
+        },
+        gallery: {
+            title: "Galerij",
+            subtitle: "Een glimp van de schoonheid van Priesmont"
+        },
+        region: {
+            title: "De Regio",
+            subtitle: "Ontdek de betoverende Ardennen en haar schatten",
+            regionTitle: "De Ardennen",
+            description1: "Genesteld in het hart van de Belgische Ardennen biedt Priesmont u de perfecte toegangspoort om een van België's mooiste en ongerepte regio's te verkennen. De Ardennen staan bekend om hun glooiende heuvels, dichte bossen, ongerepte rivieren en charmante dorpen die onaangeroerd lijken door de tijd.",
+            description2: "De rijke geschiedenis van de regio, die eeuwen teruggaat, is zichtbaar in de architectuur, tradities en de warme gastvrijheid van de mensen. Of u nu geïnteresseerd bent in buitenavonturen, culturele verkenning of gewoon ontspannen in de natuur, de Ardennen bieden een ideale achtergrond voor uw verblijf bij Priesmont."
+        },
+        surroundings: {
+            title: "Omgeving & Attracties",
+            subtitle: "Verken de schoonheid en activiteiten nabij Priesmont"
+        },
+        useCases: {
+            title: "Perfect Voor Elke Gelegenheid",
+            subtitle: "Of u nu levensmijlpalen viert of sterkere teams bouwt, Priesmont past zich aan uw visie aan"
+        },
+        testimonials: {
+            title: "Wat Onze Gasten Zeggen",
+            subtitle: "Echte ervaringen van degenen die bij Priesmont hebben verbleven"
+        },
+        about: {
+            sectionTitle: "Over Priesmont",
+            sectionSubtitle: "Een historisch landhuis genesteld in de betoverende Ardennen"
         }
     },
     fr: {
@@ -156,8 +212,9 @@ const translations = {
         hero: {
             welcome: "Bienvenue à",
             title: "Priesmont",
-            subtitle: "Un manoir historique au cœur des Ardennes",
+            subtitle: "Un manoir historique au cœur des Ardennes<br>Votre évasion parfaite vers la nature et le luxe",
             description: "Découvrez le luxe, la nature et la tranquillité dans notre domaine de 18 chambres",
+            discover: "Découvrir le Manoir",
             cta: "Réservez Votre Séjour"
         },
         about: {
@@ -211,6 +268,33 @@ const translations = {
             phone: "Téléphone",
             message: "Message",
             send: "Demande de Réservation"
+        },
+        gallery: {
+            title: "Galerie",
+            subtitle: "Un aperçu de la beauté de Priesmont"
+        },
+        region: {
+            title: "La Région",
+            subtitle: "Découvrez les Ardennes enchanteresses et leurs trésors",
+            regionTitle: "Les Ardennes",
+            description1: "Niché au cœur des Ardennes belges, Priesmont vous offre la porte d'entrée parfaite pour explorer l'une des régions les plus belles et préservées de Belgique. Les Ardennes sont réputées pour leurs collines ondulantes, leurs forêts denses, leurs rivières immaculées et leurs villages charmants qui semblent intacts par le temps.",
+            description2: "La riche histoire de la région, qui remonte à des siècles, est évidente dans son architecture, ses traditions et l'hospitalité chaleureuse de ses habitants. Que vous soyez intéressé par les aventures en plein air, l'exploration culturelle ou simplement vous détendre dans la nature, les Ardennes offrent un cadre idéal pour votre séjour à Priesmont."
+        },
+        surroundings: {
+            title: "Environnement & Attractions",
+            subtitle: "Explorez la beauté et les activités près de Priesmont"
+        },
+        useCases: {
+            title: "Parfait Pour Toutes Les Occasions",
+            subtitle: "Que vous célébriez les étapes importantes de la vie ou construisiez des équipes plus fortes, Priesmont s'adapte à votre vision"
+        },
+        testimonials: {
+            title: "Ce Que Disent Nos Invités",
+            subtitle: "Expériences réelles de ceux qui ont séjourné à Priesmont"
+        },
+        about: {
+            sectionTitle: "À Propos de Priesmont",
+            sectionSubtitle: "Un manoir historique niché dans les Ardennes enchanteresses"
         }
     }
 };
@@ -237,19 +321,16 @@ function setLanguage(lang) {
     document.querySelectorAll('[data-translate="nav.contact"]').forEach(el => el.textContent = t.nav.contact);
     
     // Update hero section
-    const welcomeEl = document.querySelector('[data-translate="hero.welcome"]');
-    if (welcomeEl) welcomeEl.textContent = t.hero.welcome;
-    
-    const subtitleEl = document.querySelector('[data-translate="hero.subtitle"]');
-    if (subtitleEl) subtitleEl.textContent = t.hero.subtitle;
-    
-    const descriptionEl = document.querySelector('[data-translate="hero.description"]');
-    if (descriptionEl) descriptionEl.textContent = t.hero.description;
-    
-    const ctaEl = document.querySelector('[data-translate="hero.cta"]');
-    if (ctaEl) ctaEl.textContent = t.hero.cta;
+    document.querySelectorAll('[data-translate="hero.welcome"]').forEach(el => el.textContent = t.hero.welcome);
+    document.querySelectorAll('[data-translate="hero.subtitle"]').forEach(el => {
+        el.innerHTML = t.hero.subtitle; // Use innerHTML to preserve <br> tags
+    });
+    document.querySelectorAll('[data-translate="hero.discover"]').forEach(el => el.textContent = t.hero.discover);
+    document.querySelectorAll('[data-translate="hero.cta"]').forEach(el => el.textContent = t.hero.cta);
     
     // Update about section
+    document.querySelectorAll('[data-translate="about.sectionTitle"]').forEach(el => el.textContent = t.about.sectionTitle);
+    document.querySelectorAll('[data-translate="about.sectionSubtitle"]').forEach(el => el.textContent = t.about.sectionSubtitle);
     const aboutTitleEl = document.querySelector('[data-translate="about.title"]');
     if (aboutTitleEl) aboutTitleEl.textContent = t.about.title;
     
@@ -281,18 +362,35 @@ function setLanguage(lang) {
     document.querySelectorAll('[data-translate="about.authenticExperience"]').forEach(el => el.textContent = t.about.authenticExperience);
     
     // Update features section
-    const featuresTitleEl = document.querySelector('[data-translate="features.title"]');
-    if (featuresTitleEl) featuresTitleEl.textContent = t.features.title;
+    document.querySelectorAll('[data-translate="features.title"]').forEach(el => el.textContent = t.features.title);
+    document.querySelectorAll('[data-translate="features.subtitle"]').forEach(el => el.textContent = t.features.subtitle);
     
-    const featuresSubtitleEl = document.querySelector('[data-translate="features.subtitle"]');
-    if (featuresSubtitleEl) featuresSubtitleEl.textContent = t.features.subtitle;
+    // Update gallery section
+    document.querySelectorAll('[data-translate="gallery.title"]').forEach(el => el.textContent = t.gallery.title);
+    document.querySelectorAll('[data-translate="gallery.subtitle"]').forEach(el => el.textContent = t.gallery.subtitle);
+    
+    // Update region section
+    document.querySelectorAll('[data-translate="region.title"]').forEach(el => el.textContent = t.region.title);
+    document.querySelectorAll('[data-translate="region.subtitle"]').forEach(el => el.textContent = t.region.subtitle);
+    document.querySelectorAll('[data-translate="region.regionTitle"]').forEach(el => el.textContent = t.region.regionTitle);
+    document.querySelectorAll('[data-translate="region.description1"]').forEach(el => el.textContent = t.region.description1);
+    document.querySelectorAll('[data-translate="region.description2"]').forEach(el => el.textContent = t.region.description2);
+    
+    // Update surroundings section
+    document.querySelectorAll('[data-translate="surroundings.title"]').forEach(el => el.textContent = t.surroundings.title);
+    document.querySelectorAll('[data-translate="surroundings.subtitle"]').forEach(el => el.textContent = t.surroundings.subtitle);
+    
+    // Update use cases section
+    document.querySelectorAll('[data-translate="useCases.title"]').forEach(el => el.textContent = t.useCases.title);
+    document.querySelectorAll('[data-translate="useCases.subtitle"]').forEach(el => el.textContent = t.useCases.subtitle);
+    
+    // Update testimonials section
+    document.querySelectorAll('[data-translate="testimonials.title"]').forEach(el => el.textContent = t.testimonials.title);
+    document.querySelectorAll('[data-translate="testimonials.subtitle"]').forEach(el => el.textContent = t.testimonials.subtitle);
     
     // Update booking section
-    const bookingTitleEl = document.querySelector('[data-translate="booking.title"]');
-    if (bookingTitleEl) bookingTitleEl.textContent = t.booking.title;
-    
-    const bookingSubtitleEl = document.querySelector('[data-translate="booking.subtitle"]');
-    if (bookingSubtitleEl) bookingSubtitleEl.textContent = t.booking.subtitle;
+    document.querySelectorAll('[data-translate="booking.title"]').forEach(el => el.textContent = t.booking.title);
+    document.querySelectorAll('[data-translate="booking.subtitle"]').forEach(el => el.textContent = t.booking.subtitle);
     
     const bookingDetailsEl = document.querySelector('[data-translate="booking.reservationDetails"]');
     if (bookingDetailsEl) bookingDetailsEl.textContent = t.booking.reservationDetails;
@@ -327,11 +425,8 @@ function setLanguage(lang) {
     document.querySelectorAll('[data-translate="booking.secureBadge"]').forEach(el => el.textContent = t.booking.secureBadge);
     
     // Update contact section
-    const contactTitleEl = document.querySelector('[data-translate="contact.title"]');
-    if (contactTitleEl) contactTitleEl.textContent = t.contact.title;
-    
-    const contactSubtitleEl = document.querySelector('[data-translate="contact.subtitle"]');
-    if (contactSubtitleEl) contactSubtitleEl.textContent = t.contact.subtitle;
+    document.querySelectorAll('[data-translate="contact.title"]').forEach(el => el.textContent = t.contact.title);
+    document.querySelectorAll('[data-translate="contact.subtitle"]').forEach(el => el.textContent = t.contact.subtitle);
     
     // Update form labels
     document.querySelectorAll('[data-translate="contact.name"]').forEach(el => {
