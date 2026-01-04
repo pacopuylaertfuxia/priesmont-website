@@ -2,7 +2,7 @@
 // Replace with your actual Meta Pixel ID from Facebook Events Manager
 // Get your Pixel ID from: https://business.facebook.com/events_manager2
 
-const META_PIXEL_ID = 'YOUR_PIXEL_ID_HERE';
+const META_PIXEL_ID = '2799036220300123';
 
 // Make pixel ID available globally
 if (typeof window !== 'undefined') {
