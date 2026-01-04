@@ -832,6 +832,7 @@ section {
     border-radius: 12px;
     overflow: hidden;
     background: var(--bg-light);
+    position: relative;
 }
 
 .surrounding-image img {
@@ -839,6 +840,29 @@ section {
     height: 100%;
     object-fit: cover;
     transition: transform 0.3s ease;
+}
+
+.surrounding-image.image-placeholder-bg::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(139, 69, 19, 0.1) 0%, rgba(34, 139, 34, 0.1) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.surrounding-image.image-placeholder-bg::after {
+    content: '📷';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 3rem;
+    opacity: 0.3;
 }
 
 .surrounding-card:hover .surrounding-image img {
