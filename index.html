@@ -23,9 +23,9 @@
                 </div>
                 <ul class="nav-menu" id="navMenu">
                     <li><a href="#about" class="nav-link" data-translate="nav.about">About</a></li>
-                    <li><a href="#surroundings" class="nav-link">Surroundings</a></li>
-                    <li><a href="#gallery" class="nav-link" data-translate="nav.gallery">Gallery</a></li>
                     <li><a href="#features" class="nav-link" data-translate="nav.features">Features</a></li>
+                    <li><a href="#gallery" class="nav-link" data-translate="nav.gallery">Gallery</a></li>
+                    <li><a href="#surroundings" class="nav-link" data-translate="nav.surroundings">Surroundings</a></li>
                     <li><a href="#booking" class="nav-link" data-translate="nav.bookNow">Book Now</a></li>
                     <li><a href="#contact" class="nav-link" data-translate="nav.contact">Contact</a></li>
                 </ul>
@@ -75,232 +75,138 @@
     </section>
 
     <!-- About Section -->
-    <section id="about" class="about">
+    <section id="about" style="padding: 5rem 0;">
         <div class="container">
-            <div class="section-header">
-                <h2 class="section-title" data-translate="about.sectionTitle">About Priesmont</h2>
-                <p class="section-subtitle" data-translate="about.sectionSubtitle">A historic manor nestled in the enchanting Ardennes</p>
+            <div class="about-two-column">
+                <!-- Left Column: Castle Image -->
+                <div class="about-image-column" style="width: 100%;">
+                    <img src="https://l.icdbcdn.com/oh/81af3118-e189-4e18-9816-ee10219e9d59.jpg?w=1920" alt="Priesmont Manor exterior view" class="about-castle-image" style="width: 100%; height: auto; border-radius: 18px; box-shadow: 0 4px 16px 0 rgba(0, 0, 0, 0.08);">
+                    <div class="about-features-tiles">
+                        <div class="about-feature-tile">
+                            <div class="about-feature-icon">🚿</div>
+                            <p>Ensuite bathrooms</p>
             </div>
-            <div class="about-content">
-                <div class="about-text">
-                    <h3 data-translate="about.title">The Manor</h3>
-                    <p data-translate="about.description1">Welcome to Priesmont, a historic 'manoir de chasse' (hunting manor) built in 1919 by the Verhaeghe-De Naeyer family. Perched on a picturesque hill near the charming town of Vielsalm in the Belgian Ardennes, this architectural gem has stood as a testament to Belgian heritage for over a century. Locals affectionately refer to it as 'le château'—perhaps due to its romantic little tower that greets visitors upon arrival.</p>
-                    <p data-translate="about.description2">This exquisite country house offers 18 elegantly appointed rooms, each with its own bathroom, comfortably accommodating up to 40 guests. Surrounded by nature, powered by solar panels, and home to various animals on the grounds, Priesmont is the perfect blend of historic elegance and modern comfort.</p>
-                    <p data-translate="about.description3">Whether you're seeking a peaceful retreat, a family gathering, or a corporate event, our manor provides the ideal setting for unforgettable moments in the heart of the Ardennes. The undisturbed charm of the region, combined with the manor's rich history, creates an atmosphere of timeless elegance and tranquility.</p>
-                    
-                    <h3 data-translate="region.regionTitle" style="margin-top: 2rem; margin-bottom: 1rem;">The Ardennes</h3>
-                    <p data-translate="region.description1">Nestled in the heart of the Belgian Ardennes, Priesmont offers you the perfect gateway to explore one of Belgium's most beautiful and unspoiled regions. The Ardennes is renowned for its rolling hills, dense forests, pristine rivers, and charming villages that seem untouched by time.</p>
-                    <p data-translate="region.description2">The region's rich history, dating back centuries, is evident in its architecture, traditions, and the warm hospitality of its people. Whether you're interested in outdoor adventures, cultural exploration, or simply relaxing in nature, the Ardennes provides an ideal backdrop for your stay at Priesmont.</p>
+                        <div class="about-feature-tile">
+                            <div class="about-feature-icon">🛏️</div>
+                            <p>18 rooms</p>
                 </div>
-                <div class="about-image">
-                    <img src="https://l.icdbcdn.com/oh/81af3118-e189-4e18-9816-ee10219e9d59.jpg?w=1920" alt="Priesmont Manor exterior view" class="about-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-                    <div class="image-placeholder" style="display:none;">
-                        <svg viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <rect width="400" height="400" fill="#f0f0f0"/>
-                            <path d="M200 150L250 200L200 250L150 200L200 150Z" stroke="#333" stroke-width="2" fill="none"/>
-                            <circle cx="200" cy="200" r="50" stroke="#333" stroke-width="2" fill="none"/>
-                        </svg>
+                        <div class="about-feature-tile">
+                            <div class="about-feature-icon">👥</div>
+                            <p>40 sleeping spots</p>
                     </div>
-                    <div class="about-location-map">
-                        <iframe 
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2560.5!2d5.915!3d50.285!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c0b8b8b8b8b8b9%3A0x8b8b8b8b8b8b8b8b!2sRue%20Freddy%20Wampach%2C%206690%20Vielsalm%2C%20Belgium!5e0!3m2!1sen!2sbe!4v1699999999999!5m2!1sen!2sbe" 
-                            allowfullscreen="" 
-                            loading="lazy" 
-                            referrerpolicy="no-referrer-when-downgrade"
-                            title="Priesmont Location Map">
-                        </iframe>
                     </div>
                 </div>
+                <!-- Right Column: Text Content -->
+                <div class="about-text-column">
+                    <!-- English -->
+                    <div class="lang-content lang-en">
+                        <h3 style="font-size: 2rem; margin-bottom: 1.5rem; color: #1D1D1F; font-weight: 600;">The Manor</h3>
+                        <div class="about-text-content about-text-truncated">
+                            <p style="color: #86868B; margin-bottom: 1.25rem; font-size: 1.0625rem; line-height: 1.75;">Welcome to Priesmont, a historic 'manoir de chasse' (hunting manor) built in 1919 by the Verhaeghe-De Naeyer family. Perched on a picturesque hill near the charming town of Vielsalm in the Belgian Ardennes, this architectural gem has stood as a testament to Belgian heritage for over a century. Locals affectionately refer to it as 'le château'—perhaps due to its romantic little tower that greets visitors upon arrival.</p>
+                            <p style="color: #86868B; margin-bottom: 1.25rem; font-size: 1.0625rem; line-height: 1.75;">This exquisite country house offers 18 elegantly appointed rooms, each with its own bathroom, comfortably accommodating up to 40 guests. Surrounded by nature, powered by solar panels, and home to various animals on the grounds, Priesmont is the perfect blend of historic elegance and modern comfort.</p>
+                            <p style="color: #86868B; margin-bottom: 0; font-size: 1.0625rem; line-height: 1.75;">Whether you're seeking a peaceful retreat, a family gathering, or a corporate event, our manor provides the ideal setting for unforgettable moments in the heart of the Ardennes. The undisturbed charm of the region, combined with the manor's rich history, creates an atmosphere of timeless elegance and tranquility.</p>
             </div>
-            
-            <!-- Stats Section -->
-            <div class="stats-section">
-                <div class="container">
-                    <div class="stats">
-                        <div class="stat-item">
-                            <div class="stat-number" data-target="18">18</div>
-                            <div class="stat-label" data-translate="about.rooms">Rooms</div>
+                        <button class="about-read-more-btn" data-lang="en">
+                            <span class="read-more-text">Read more</span>
+                            <span class="read-less-text" style="display: none;">Read less</span>
+                        </button>
                         </div>
-                        <div class="stat-item">
-                            <div class="stat-number" data-target="40">40</div>
-                            <div class="stat-label" data-translate="about.guests">Guests</div>
+                    <!-- Dutch -->
+                    <div class="lang-content lang-nl" style="display: none;">
+                        <h3 style="font-size: 2rem; margin-bottom: 1.5rem; color: #1D1D1F; font-weight: 600;">Het Landhuis</h3>
+                        <div class="about-text-content about-text-truncated">
+                            <p style="color: #86868B; margin-bottom: 1.25rem; font-size: 1.0625rem; line-height: 1.75;">Welkom bij Priesmont, een historisch 'manoir de chasse' (jachthuis) gebouwd in 1919 door de familie Verhaeghe-De Naeyer. Gelegen op een schilderachtige heuvel nabij het charmante stadje Vielsalm in de Belgische Ardennen, heeft dit architecturale juweel meer dan een eeuw lang als een getuigenis van het Belgische erfgoed gestaan. De plaatselijke bevolking noemt het liefdevol 'le château'—misschien vanwege de romantische kleine toren die bezoekers bij aankomst begroet.</p>
+                            <p style="color: #86868B; margin-bottom: 1.25rem; font-size: 1.0625rem; line-height: 1.75;">Dit prachtige landhuis biedt 18 elegant ingerichte kamers, elk met eigen badkamer, comfortabel geschikt voor maximaal 40 gasten. Omringd door de natuur, aangedreven door zonnepanelen en thuisbasis van verschillende dieren op het terrein, is Priesmont de perfecte combinatie van historische elegantie en modern comfort.</p>
+                            <p style="color: #86868B; margin-bottom: 0; font-size: 1.0625rem; line-height: 1.75;">Of u nu op zoek bent naar een rustige retraite, een familiereünie of een bedrijfsevenement, ons landhuis biedt de ideale setting voor onvergetelijke momenten in het hart van de Ardennen. De ongerepte charme van de regio, gecombineerd met de rijke geschiedenis van het landhuis, creëert een sfeer van tijdloze elegantie en rust.</p>
                         </div>
-                        <div class="stat-item">
-                            <div class="stat-number" data-target="100">100</div>
-                            <div class="stat-label" data-translate="about.bookings">+ Bookings</div>
+                        <button class="about-read-more-btn" data-lang="nl">
+                            <span class="read-more-text">Lees meer</span>
+                            <span class="read-less-text" style="display: none;">Lees minder</span>
+                        </button>
                         </div>
-                        <div class="stat-item">
-                            <div class="stat-icon">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
-                                    <line x1="16" y1="2" x2="16" y2="6"/>
-                                    <line x1="8" y1="2" x2="8" y2="6"/>
-                                    <line x1="3" y1="10" x2="21" y2="10"/>
-                                </svg>
+                    <!-- French -->
+                    <div class="lang-content lang-fr" style="display: none;">
+                        <h3 style="font-size: 2rem; margin-bottom: 1.5rem; color: #1D1D1F; font-weight: 600;">Le Manoir</h3>
+                        <div class="about-text-content about-text-truncated">
+                            <p style="color: #86868B; margin-bottom: 1.25rem; font-size: 1.0625rem; line-height: 1.75;">Bienvenue à Priesmont, un 'manoir de chasse' historique construit en 1919 par la famille Verhaeghe-De Naeyer. Perché sur une colline pittoresque près de la charmante ville de Vielsalm dans les Ardennes belges, ce joyau architectural se dresse depuis plus d'un siècle comme un témoignage du patrimoine belge. Les habitants l'appellent affectueusement 'le château'—peut-être à cause de sa petite tour romantique qui accueille les visiteurs à leur arrivée.</p>
+                            <p style="color: #86868B; margin-bottom: 1.25rem; font-size: 1.0625rem; line-height: 1.75;">Cette magnifique maison de campagne offre 18 chambres élégamment meublées, chacune avec sa propre salle de bain, pouvant accueillir confortablement jusqu'à 40 invités. Entouré par la nature, alimenté par des panneaux solaires et abritant divers animaux sur le domaine, Priesmont est le mélange parfait entre élégance historique et confort moderne.</p>
+                            <p style="color: #86868B; margin-bottom: 0; font-size: 1.0625rem; line-height: 1.75;">Que vous cherchiez une retraite paisible, une réunion de famille ou un événement d'entreprise, notre manoir offre le cadre idéal pour des moments inoubliables au cœur des Ardennes. Le charme préservé de la région, combiné à la riche histoire du manoir, crée une atmosphère d'élégance intemporelle et de tranquillité.</p>
                             </div>
-                            <div class="stat-label" data-translate="about.movieLocation">Movie Location</div>
+                        <button class="about-read-more-btn" data-lang="fr">
+                            <span class="read-more-text">Lire plus</span>
+                            <span class="read-less-text" style="display: none;">Lire moins</span>
+                        </button>
                         </div>
-                        <div class="stat-item">
-                            <div class="stat-icon">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
-                                    <circle cx="9" cy="7" r="4"/>
-                                    <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
-                                    <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
-                                </svg>
                             </div>
-                            <div class="stat-label" data-translate="about.allAges">All Ages</div>
-                        </div>
-                        <div class="stat-item">
-                            <div class="stat-icon">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <path d="M3 9L12 2L21 9V20C21 20.5304 20.7893 21.0391 20.4142 21.4142C20.0391 21.7893 19.5304 22 19 22H5C4.46957 22 3.96086 21.7893 3.58579 21.4142C3.21071 21.0391 3 20.5304 3 20V9Z"/>
-                                    <path d="M9 22V12H15V22"/>
-                                </svg>
-                            </div>
-                            <div class="stat-label" data-translate="about.familyGatherings">Family Gatherings</div>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </section>
 
-    <!-- Surroundings Section -->
-    <section id="surroundings" class="surroundings">
-        <div class="container">
+    <!-- Features Section -->
+    <section id="features" class="services">
+                <div class="container">
             <div class="section-header">
-                <h2 class="section-title" data-translate="surroundings.title">Surroundings & Attractions</h2>
-                <p class="section-subtitle" data-translate="surroundings.subtitle">Explore the beauty and activities near Priesmont</p>
-            </div>
-            <div class="surroundings-grid">
-                <div class="surrounding-card">
-                    <div class="surrounding-image">
-                        <img src="https://www.ardenneresidences.com/media/0n5jaoxw/balade-au-bord-du-lac-des-doyards-ardenne-re-sidences.jpg" alt="Lac des Doyards">
+                <h2 class="section-title" data-translate="features.title">Features & Amenities</h2>
+                <p class="section-subtitle" data-translate="features.subtitle">Everything you need for an unforgettable stay</p>
+                        </div>
+            <div class="services-carousel">
+                <div class="services-carousel-track">
+                <div class="service-card">
+                    <div class="service-icon">
+                        🛏️
+                        </div>
+                    <h3>18 Elegant Rooms</h3>
+                    <p>Spacious and beautifully appointed rooms that comfortably accommodate up to 40 guests, perfect for large groups, family gatherings, or corporate retreats.</p>
+                        </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        🏊
+                            </div>
+                    <h3>Indoor & Outdoor Pools</h3>
+                    <p>Enjoy a refreshing swim in our heated indoor pool or bask in the sun by the outdoor pool. Both pools are designed for relaxation and leisure throughout your stay.</p>
+                        </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        ♨️
+                            </div>
+                    <h3>Private Sauna</h3>
+                    <p>Unwind and relax in our private dry sauna, offering a serene retreat after a day of hiking or exploring the beautiful Ardennes countryside.</p>
+                        </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        🎹
+                            </div>
+                    <h3>Classic Piano</h3>
+                    <p>For music enthusiasts, a beautiful classic piano awaits in the manor, ready to fill the halls with melody and create memorable musical moments.</p>
+                        </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        🌳
                     </div>
-                    <div class="surrounding-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M21 10C21 17 12 23 12 23S3 17 3 10A9 9 0 0 1 12 1A9 9 0 0 1 21 10Z"/>
-                            <circle cx="12" cy="10" r="3"/>
-                        </svg>
-                    </div>
-                    <h3>Lac des Doyards</h3>
-                    <p>A beautiful lake perfect for swimming, fishing, and water activities. Just a short drive from Priesmont, it's an ideal spot for a day trip with family or friends.</p>
+                    <h3>Expansive Grounds</h3>
+                    <p>The estate boasts ample space with beautiful grounds, perfect for leisurely strolls, outdoor activities, and enjoying the natural beauty of the Ardennes.</p>
                 </div>
-                <div class="surrounding-card">
-                    <div class="surrounding-image">
-                        <img src="https://focusonbelgium.be/sites/default/files/styles/big_article_image/public/shutterstock_1027347460_0.jpg?itok=mODe8Pet" alt="Signal de Botrange">
+                <div class="service-card">
+                    <div class="service-icon">
+                        🥾
                     </div>
-                    <div class="surrounding-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M12 2L2 7L12 12L22 7L12 2Z"/>
-                            <path d="M2 17L12 22L22 17"/>
-                            <path d="M2 12L12 17L22 12"/>
-                        </svg>
-                    </div>
-                    <h3>Signal de Botrange</h3>
-                    <p>The highest point in Belgium at 694 meters, offering breathtaking panoramic views of the Ardennes. Perfect for hiking enthusiasts and nature lovers seeking spectacular vistas.</p>
+                    <h3>Nature & Hiking</h3>
+                    <p>Situated close to scenic hiking trails and the natural beauty of the Ardennes, it's an ideal spot for nature lovers and outdoor enthusiasts.</p>
                 </div>
-                <div class="surrounding-card">
-                    <div class="surrounding-image">
-                        <img src="https://abbayedestavelot.be/wp-content/uploads/2021/10/543e83748234f7cbab21aa0ade66565f-1594654817.jpg" alt="Abbey of Stavelot">
+                <div class="service-card">
+                    <div class="service-icon">
+                        ☀️
                     </div>
-                    <div class="surrounding-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M3 9L12 2L21 9V20C21 20.5304 20.7893 21.0391 20.4142 21.4142C20.0391 21.7893 19.5304 22 19 22H5C4.46957 22 3.96086 21.7893 3.58579 21.4142C3.21071 21.0391 3 20.5304 3 20V9Z"/>
-                            <path d="M9 22V12H15V22"/>
-                        </svg>
+                    <h3>Eco-Friendly</h3>
+                    <p>The manor is powered by solar panels, reflecting our commitment to sustainable and eco-friendly practices while maintaining modern comfort.</p>
                     </div>
-                    <h3>Abbey of Stavelot</h3>
-                    <p>A historic Benedictine abbey founded in the 7th century, now home to fascinating museums and cultural exhibitions. Discover the rich history of the region through its art, architecture, and artifacts.</p>
+                <div class="service-card">
+                    <div class="service-icon">
+                        🐾
                 </div>
-                <div class="surrounding-card">
-                    <div class="surrounding-image">
-                        <img src="https://cdn.wbtourisme.be/sites/default/files/Sentier-didactique.jpg" alt="Hiking Trails">
+                    <h3>Resident Animals</h3>
+                    <p>The terrain is home to various friendly animals, adding to the estate's charm and providing delightful encounters for guests of all ages.</p>
                     </div>
-                    <div class="surrounding-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
-                        </svg>
-                    </div>
-                    <h3>Hiking Trails</h3>
-                    <p>The Ardennes is crisscrossed with well-marked hiking trails suitable for all levels. From gentle walks through forests to challenging mountain paths, there's something for every outdoor enthusiast.</p>
-                </div>
-                <div class="surrounding-card">
-                    <div class="surrounding-image">
-                        <img src="https://www.malmedy-tourisme.be/wp-content/uploads/2018/03/601.jpg" alt="Local Villages">
-                    </div>
-                    <div class="surrounding-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M3 9L12 2L21 9V20C21 20.5304 20.7893 21.0391 20.4142 21.4142C20.0391 21.7893 19.5304 22 19 22H5C4.46957 22 3.96086 21.7893 3.58579 21.4142C3.21071 21.0391 3 20.5304 3 20V9Z"/>
-                            <path d="M9 22V12H15V22"/>
-                        </svg>
-                    </div>
-                    <h3>Local Villages</h3>
-                    <p>Explore charming villages like Vielsalm, Malmedy, and Spa, each offering unique shops, restaurants, and local markets. Experience authentic Belgian culture and cuisine.</p>
-                </div>
-                <div class="surrounding-card">
-                    <div class="surrounding-image">
-                        <img src="https://l.icdbcdn.com/oh/7b5240a0-d81d-473b-9a1f-6932b5b13b79.jpg?w=800" alt="Cycling Routes">
-                    </div>
-                    <div class="surrounding-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <circle cx="5.5" cy="17.5" r="3.5"/>
-                            <circle cx="18.5" cy="17.5" r="3.5"/>
-                            <path d="M15 6a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
-                            <path d="M12 17.5V14l-3-3 4-3 2 3h3"/>
-                        </svg>
-                    </div>
-                    <h3>Cycling Routes</h3>
-                    <p>The region offers excellent cycling opportunities, from leisurely rides through the countryside to challenging mountain bike trails. Rent bikes locally or bring your own.</p>
-                </div>
-                <div class="surrounding-card">
-                    <div class="surrounding-image">
-                        <img src="https://lh3.googleusercontent.com/p/AF1QipNv_0YHQDalPXMyHk0wp7QNxA9iECIQYnag5aPs=s1360-w1360-h1020-rw" alt="Aqua Mundo du Center Parcs Les Ardennes">
-                    </div>
-                    <div class="surrounding-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M2 12C2 17.5228 6.47715 22 12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12Z"/>
-                            <path d="M8 12C8 9.79086 9.79086 8 12 8C14.2091 8 16 9.79086 16 12C16 14.2091 14.2091 16 12 16C9.79086 16 8 14.2091 8 12Z"/>
-                            <path d="M12 2V6M12 18V22M2 12H6M18 12H22"/>
-                        </svg>
-                    </div>
-                    <h3>Aqua Mundo du Center Parcs Les Ardennes</h3>
-                    <p>Experience a tropical water paradise at this spectacular indoor water park. With slides, lazy rivers, and pools for all ages, it's the perfect family destination for a fun-filled day, especially during cooler months.</p>
-                </div>
-                <div class="surrounding-card">
-                    <div class="surrounding-image">
-                        <img src="https://cdn.wbtourisme.be/sites/default/files/Accrobranche---copyright-Avenature.jpg" alt="Avenature">
-                    </div>
-                    <div class="surrounding-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M12 2L2 7L12 12L22 7L12 2Z"/>
-                            <path d="M2 17L12 22L22 17"/>
-                            <path d="M2 12L12 17L22 12"/>
-                            <circle cx="12" cy="7" r="1.5"/>
-                            <circle cx="12" cy="12" r="1.5"/>
-                            <circle cx="12" cy="17" r="1.5"/>
-                        </svg>
-                    </div>
-                    <h3>Avenature</h3>
-                    <p>Challenge yourself at this thrilling high ropes course set in the heart of the Ardennes forest. Navigate suspended obstacles, wooden platforms, and rope bridges high among the trees. Perfect for adventure seekers and families looking for an exciting outdoor activity.</p>
-                </div>
-                <div class="surrounding-card">
-                    <div class="surrounding-image">
-                        <img src="https://www.actioncenter.be/wp-content/uploads/41-Karting-scaled.jpg" alt="ActionCenter Gokarting">
-                    </div>
-                    <div class="surrounding-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <circle cx="5.5" cy="17.5" r="3.5"/>
-                            <circle cx="18.5" cy="17.5" r="3.5"/>
-                            <path d="M15 6a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
-                            <path d="M12 17.5V14l-3-3 4-3 2 3h3"/>
-                            <path d="M5.5 17.5L12 12L18.5 17.5"/>
-                        </svg>
-                    </div>
-                    <h3>ActionCenter Gokarting</h3>
-                    <p>Experience the thrill of go-karting at ActionCenter. Race around professional tracks with friends and family. Perfect for adrenaline enthusiasts and competitive spirits looking for an exciting activity near Priesmont.</p>
-                </div>
             </div>
         </div>
     </section>
@@ -320,7 +226,7 @@
                 <div class="gallery-item" data-image="https://l.icdbcdn.com/oh/1c682eab-abad-4963-af74-e31f0073c0cb.jpg?w=1920"><img src="https://l.icdbcdn.com/oh/1c682eab-abad-4963-af74-e31f0073c0cb.jpg?w=1920" alt="Priesmont Manor"></div>
                 <div class="gallery-item" data-image="https://l.icdbcdn.com/oh/14afe095-0d97-42c2-bbe6-d26ae49fc2bd.jpg?w=1920"><img src="https://l.icdbcdn.com/oh/14afe095-0d97-42c2-bbe6-d26ae49fc2bd.jpg?w=1920" alt="Priesmont Manor"></div>
                 <div class="gallery-item" data-image="https://l.icdbcdn.com/oh/28871b92-3602-4b0a-9b7c-e64580a35b3e.jpg?w=1920"><img src="https://l.icdbcdn.com/oh/28871b92-3602-4b0a-9b7c-e64580a35b3e.jpg?w=1920" alt="Priesmont Manor"></div>
-            </div>
+                    </div>
 
             <!-- Preview Thumbnails Section -->
             <div class="gallery-preview">
@@ -344,9 +250,9 @@
                     <div class="gallery-item gallery-thumbnail" data-image="https://l.icdbcdn.com/oh/6469d2a2-3f56-443a-b790-be0a8042d3f5.jpg?w=1920"><img src="https://l.icdbcdn.com/oh/6469d2a2-3f56-443a-b790-be0a8042d3f5.jpg?w=1920" alt="Priesmont Manor"></div>
                     <div class="gallery-item gallery-thumbnail" data-image="https://l.icdbcdn.com/oh/192eeff8-d15d-4668-8bba-9de0d739d960.jpg?w=1920"><img src="https://l.icdbcdn.com/oh/192eeff8-d15d-4668-8bba-9de0d739d960.jpg?w=1920" alt="Priesmont Manor"></div>
                     <div class="gallery-item gallery-thumbnail" data-image="https://l.icdbcdn.com/oh/3543c882-116c-438c-89df-b3ceab317fbe.jpg?w=1920"><img src="https://l.icdbcdn.com/oh/3543c882-116c-438c-89df-b3ceab317fbe.jpg?w=1920" alt="Priesmont Manor"></div>
-                </div>
+                    </div>
                 <button class="gallery-see-all-btn" id="gallerySeeAllBtn">See All Photos</button>
-            </div>
+                </div>
 
             <!-- Hidden Gallery - Remaining Images -->
             <div class="gallery-grid gallery-remaining" id="galleryRemaining" style="display: none;">
@@ -375,7 +281,7 @@
                 <div class="gallery-item" data-image="https://l.icdbcdn.com/oh/e985e221-5f88-420a-b883-03167293ff2c.jpg?w=1920"><img src="https://l.icdbcdn.com/oh/e985e221-5f88-420a-b883-03167293ff2c.jpg?w=1920" alt="Priesmont Manor"></div>
                 <div class="gallery-item" data-image="https://l.icdbcdn.com/oh/f612eaca-0106-402a-8341-87bec218aa71.jpg?w=1920"><img src="https://l.icdbcdn.com/oh/f612eaca-0106-402a-8341-87bec218aa71.jpg?w=1920" alt="Priesmont Manor"></div>
                 <div class="gallery-item" data-image="https://l.icdbcdn.com/oh/60beaae5-0b9e-4bd1-8f03-803677d9f878.jpg?w=1920"><img src="https://l.icdbcdn.com/oh/60beaae5-0b9e-4bd1-8f03-803677d9f878.jpg?w=1920" alt="Priesmont Manor"></div>
-            </div>
+                    </div>
             <div class="gallery-see-less-wrapper" id="gallerySeeLessWrapper" style="display: none; text-align: center; margin-top: 2rem;">
                 <button class="gallery-see-less-btn" id="gallerySeeLessBtn">See Less</button>
             </div>
@@ -385,15 +291,15 @@
         <div class="lightbox-overlay"></div>
         <div class="lightbox-content">
             <button class="lightbox-close" aria-label="Close lightbox">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <line x1="18" y1="6" x2="6" y2="18"></line>
                     <line x1="6" y1="6" x2="18" y2="18"></line>
-                </svg>
+                        </svg>
             </button>
             <button class="lightbox-prev" aria-label="Previous image">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <polyline points="15 18 9 12 15 6"></polyline>
-                </svg>
+                        </svg>
             </button>
             <button class="lightbox-next" aria-label="Next image">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -403,108 +309,84 @@
             <img id="lightbox-image" src="" alt="Gallery Image">
             <div class="lightbox-counter">
                 <span id="lightbox-current">1</span> / <span id="lightbox-total">50</span>
-            </div>
-        </div>
-    </div>
-        </div>
+                    </div>
+                </div>
+                    </div>
+                    </div>
     </section>
 
-    <!-- Features Section -->
-    <section id="features" class="services">
+    <!-- Surroundings Section -->
+    <section id="surroundings" class="surroundings">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title" data-translate="features.title">Features & Amenities</h2>
-                <p class="section-subtitle" data-translate="features.subtitle">Everything you need for an unforgettable stay</p>
+                <h2 class="section-title" data-translate="surroundings.title">Surroundings & Attractions</h2>
+                <p class="section-subtitle" data-translate="surroundings.subtitle">Explore the beauty and activities near Priesmont</p>
             </div>
-            <div class="services-carousel">
-                <div class="services-carousel-track">
-                <div class="service-card">
-                    <div class="service-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M3 9V21H21V9M3 9L12 3L21 9M3 9H21"/>
-                            <path d="M9 21V12H15V21"/>
-                        </svg>
+            <div class="surroundings-grid">
+                <a href="https://www.ardenneresidences.com/nl/belevingen/recreatie-en-ontdekkingen/meren-en-stranden/meer-van-doyards/" target="_blank" rel="noopener noreferrer" class="surrounding-card">
+                    <div class="surrounding-image">
+                        <img src="https://www.ardenneresidences.com/media/0n5jaoxw/balade-au-bord-du-lac-des-doyards-ardenne-re-sidences.jpg" alt="Lac des Doyards">
                     </div>
-                    <h3>18 Elegant Rooms</h3>
-                    <p>Spacious and beautifully appointed rooms that comfortably accommodate up to 40 guests, perfect for large groups, family gatherings, or corporate retreats.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M2 12C2 17.5228 6.47715 22 12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12Z"/>
-                            <path d="M8 12C8 9.79086 9.79086 8 12 8C14.2091 8 16 9.79086 16 12C16 14.2091 14.2091 16 12 16C9.79086 16 8 14.2091 8 12Z"/>
-                            <path d="M12 2V6M12 18V22M2 12H6M18 12H22"/>
-                        </svg>
+                    <h3>Lac des Doyards</h3>
+                    <p>A beautiful lake perfect for swimming, fishing, and water activities. Just a short drive from Priesmont, it's an ideal spot for a day trip with family or friends.</p>
+                </a>
+                <a href="https://en.wikipedia.org/wiki/Signal_de_Botrange" target="_blank" rel="noopener noreferrer" class="surrounding-card">
+                    <div class="surrounding-image">
+                        <img src="https://focusonbelgium.be/sites/default/files/styles/big_article_image/public/shutterstock_1027347460_0.jpg?itok=mODe8Pet" alt="Signal de Botrange">
                     </div>
-                    <h3>Indoor & Outdoor Pools</h3>
-                    <p>Enjoy a refreshing swim in our heated indoor pool or bask in the sun by the outdoor pool. Both pools are designed for relaxation and leisure throughout your stay.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2Z"/>
-                            <path d="M12 6V12L16 14"/>
-                            <circle cx="12" cy="12" r="10"/>
-                        </svg>
+                    <h3>Signal de Botrange</h3>
+                    <p>The highest point in Belgium at 694 meters, offering breathtaking panoramic views of the Ardennes. Perfect for hiking enthusiasts and nature lovers seeking spectacular vistas.</p>
+                </a>
+                <a href="https://abbayedestavelot.be" target="_blank" rel="noopener noreferrer" class="surrounding-card">
+                    <div class="surrounding-image">
+                        <img src="https://abbayedestavelot.be/wp-content/uploads/2021/10/543e83748234f7cbab21aa0ade66565f-1594654817.jpg" alt="Abbey of Stavelot">
                     </div>
-                    <h3>Private Sauna</h3>
-                    <p>Unwind and relax in our private dry sauna, offering a serene retreat after a day of hiking or exploring the beautiful Ardennes countryside.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M9 19V5L21 3V17L9 19Z"/>
-                            <path d="M9 19C9 20.1046 8.10457 21 7 21C5.89543 21 5 20.1046 5 19C5 17.8954 5.89543 17 7 17C8.10457 17 9 17.8954 9 19Z"/>
-                            <path d="M21 17C21 18.1046 20.1046 19 19 19C17.8954 19 17 18.1046 17 17C17 15.8954 17.8954 15 19 15C20.1046 15 21 15.8954 21 17Z"/>
-                        </svg>
+                    <h3>Abbey of Stavelot</h3>
+                    <p>A historic Benedictine abbey founded in the 7th century, now home to fascinating museums and cultural exhibitions. Discover the rich history of the region through its art, architecture, and artifacts.</p>
+                </a>
+                <a href="https://www.vielsalm-tourisme.be" target="_blank" rel="noopener noreferrer" class="surrounding-card">
+                    <div class="surrounding-image">
+                        <img src="https://cdn.wbtourisme.be/sites/default/files/Sentier-didactique.jpg" alt="Hiking Trails">
                     </div>
-                    <h3>Classic Piano</h3>
-                    <p>For music enthusiasts, a beautiful classic piano awaits in the manor, ready to fill the halls with melody and create memorable musical moments.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M12 2C8.13 2 5 5.13 5 9C5 14.25 12 22 12 22C12 22 19 14.25 19 9C19 5.13 15.87 2 12 2Z"/>
-                            <circle cx="12" cy="9" r="2.5"/>
-                        </svg>
+                    <h3>Hiking Trails</h3>
+                    <p>The Ardennes is crisscrossed with well-marked hiking trails suitable for all levels. From gentle walks through forests to challenging mountain paths, there's something for every outdoor enthusiast.</p>
+                </a>
+                <a href="https://www.vielsalm-tourisme.be" target="_blank" rel="noopener noreferrer" class="surrounding-card">
+                    <div class="surrounding-image">
+                        <img src="https://www.malmedy-tourisme.be/wp-content/uploads/2018/03/601.jpg" alt="Local Villages">
                     </div>
-                    <h3>Expansive Grounds</h3>
-                    <p>The estate boasts ample space with beautiful grounds, perfect for leisurely strolls, outdoor activities, and enjoying the natural beauty of the Ardennes.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M21 10C21 17 12 23 12 23S3 17 3 10A9 9 0 0 1 12 1A9 9 0 0 1 21 10Z"/>
-                            <circle cx="12" cy="10" r="3"/>
-                        </svg>
+                    <h3>Local Villages</h3>
+                    <p>Explore charming villages like Vielsalm, Malmedy, and Spa, each offering unique shops, restaurants, and local markets. Experience authentic Belgian culture and cuisine.</p>
+                </a>
+                <a href="https://en.wikipedia.org/wiki/Ardennes" target="_blank" rel="noopener noreferrer" class="surrounding-card">
+                    <div class="surrounding-image">
+                        <img src="https://l.icdbcdn.com/oh/7b5240a0-d81d-473b-9a1f-6932b5b13b79.jpg?w=800" alt="Cycling Routes">
                     </div>
-                    <h3>Nature & Hiking</h3>
-                    <p>Situated close to scenic hiking trails and the natural beauty of the Ardennes, it's an ideal spot for nature lovers and outdoor enthusiasts.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M12 2L2 7L12 12L22 7L12 2Z"/>
-                            <path d="M2 17L12 22L22 17"/>
-                            <path d="M2 12L12 17L22 12"/>
-                            <path d="M12 2V12"/>
-                        </svg>
+                    <h3>Cycling Routes</h3>
+                    <p>The region offers excellent cycling opportunities, from leisurely rides through the countryside to challenging mountain bike trails. Rent bikes locally or bring your own.</p>
+                </a>
+                <a href="https://www.centerparcs.fr/fr-fr/belgique/fp_AR_vacances-les-ardennes/aqua-mundo" target="_blank" rel="noopener noreferrer" class="surrounding-card">
+                    <div class="surrounding-image">
+                        <img src="https://lh3.googleusercontent.com/p/AF1QipNv_0YHQDalPXMyHk0wp7QNxA9iECIQYnag5aPs=s1360-w1360-h1020-rw" alt="Aqua Mundo du Center Parcs Les Ardennes">
                     </div>
-                    <h3>Eco-Friendly</h3>
-                    <p>The manor is powered by solar panels, reflecting our commitment to sustainable and eco-friendly practices while maintaining modern comfort.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M12 2C8.13 2 5 5.13 5 9C5 14.25 12 22 12 22C12 22 19 14.25 19 9C19 5.13 15.87 2 12 2Z"/>
-                            <path d="M9 9C9 10.1046 9.89543 11 11 11C12.1046 11 13 10.1046 13 9C13 7.89543 12.1046 7 11 7C9.89543 7 9 7.89543 9 9Z"/>
-                            <path d="M8 15C8 16.1046 8.89543 17 10 17H12C13.1046 17 14 16.1046 14 15"/>
-                        </svg>
+                    <h3>Aqua Mundo du Center Parcs Les Ardennes</h3>
+                    <p>Experience a tropical water paradise at this spectacular indoor water park. With slides, lazy rivers, and pools for all ages, it's the perfect family destination for a fun-filled day, especially during cooler months.</p>
+                </a>
+                <a href="https://www.avenature.be" target="_blank" rel="noopener noreferrer" class="surrounding-card">
+                    <div class="surrounding-image">
+                        <img src="https://cdn.wbtourisme.be/sites/default/files/Accrobranche---copyright-Avenature.jpg" alt="Avenature">
                     </div>
-                    <h3>Resident Animals</h3>
-                    <p>The terrain is home to various friendly animals, adding to the estate's charm and providing delightful encounters for guests of all ages.</p>
-                </div>
-            </div>
+                    <h3>Avenature</h3>
+                    <p>Challenge yourself at this thrilling high ropes course set in the heart of the Ardennes forest. Navigate suspended obstacles, wooden platforms, and rope bridges high among the trees. Perfect for adventure seekers and families looking for an exciting outdoor activity.</p>
+                </a>
+                <a href="https://www.actioncenter.be" target="_blank" rel="noopener noreferrer" class="surrounding-card">
+                    <div class="surrounding-image">
+                        <img src="https://www.actioncenter.be/wp-content/uploads/41-Karting-scaled.jpg" alt="ActionCenter Gokarting">
+                    </div>
+                    <h3>ActionCenter Gokarting</h3>
+                    <p>Experience the thrill of go-karting at ActionCenter. Race around professional tracks with friends and family. Perfect for adrenaline enthusiasts and competitive spirits looking for an exciting activity near Priesmont.</p>
+                </a>
+    </div>
         </div>
     </section>
 
@@ -520,14 +402,7 @@
                 <!-- Family & Celebrations -->
                 <div class="use-case-card">
                     <div class="use-case-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-                            <circle cx="9" cy="7" r="4"></circle>
-                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
-                            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
-                            <path d="M12 11V21"/>
-                            <path d="M8 16L12 12L16 16"/>
-                        </svg>
+                        👨‍👩‍👧‍👦
                     </div>
                     <h3>Family Gatherings & Celebrations</h3>
                     <p class="use-case-description">Create lasting memories in a space designed for togetherness. Priesmont's 18 rooms and expansive grounds provide the perfect backdrop for reunions, milestone birthdays, intimate weddings, and multi-generational celebrations.</p>
@@ -565,12 +440,7 @@
                 <!-- Business & Corporate -->
                 <div class="use-case-card">
                     <div class="use-case-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <rect x="3" y="7" width="18" height="14" rx="2" ry="2"/>
-                            <path d="M8 7V5C8 3.89543 8.89543 3 10 3H14C15.1046 3 16 3.89543 16 5V7"/>
-                            <path d="M12 11V17"/>
-                            <path d="M9 14L12 11L15 14"/>
-                        </svg>
+                        💼
                     </div>
                     <h3>Business Retreats & Team Events</h3>
                     <p class="use-case-description">Elevate your team's performance in an inspiring environment that fosters creativity and collaboration. Priesmont offers the perfect balance of professional amenities and natural tranquility for productive off-sites, strategic planning sessions, and meaningful team building.</p>
@@ -616,8 +486,9 @@
                 <p class="section-subtitle" data-translate="testimonials.subtitle">Real experiences from those who've stayed at Priesmont</p>
             </div>
             
-            <div class="testimonials-grid">
-                <div class="testimonial-card">
+            <div class="testimonials-carousel">
+                <div class="testimonials-track">
+                <div class="testimonial-card" data-review-original-lang="nl">
                     <div class="testimonial-rating">
                         <span class="star">★</span>
                         <span class="star">★</span>
@@ -625,17 +496,84 @@
                         <span class="star">★</span>
                         <span class="star">★</span>
                     </div>
-                    <p class="testimonial-text">"Exceptional stay! We booked Priesmont for a family celebration and were blown away. The property is stunning - historic yet modern. All 18 rooms were beautifully maintained. The indoor pool was a hit with everyone, especially the kids. The location is perfect for exploring the Ardennes. Communication with the host was excellent. Highly recommend for large groups!"</p>
+                    <span class="translated-badge" data-translate="testimonials.translated" style="display: none;">Translated</span>
+                    <p class="testimonial-text" data-translate="testimonials.review1Text">"Heerlijk vakantiehuis! Wij hebben een heerlijk lang weekend doorgebracht met het personeel bij Domaine du Priesmont. Het is een fantastisch huis met alle gemakken. Groot, ruim, schoon, uniek en in een prachtige, rustige omgeving. Wij hebben genoten en bedankt!"</p>
                     <div class="testimonial-author">
-                        <div class="author-avatar">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-                                <circle cx="12" cy="7" r="4"></circle>
-                            </svg>
-                        </div>
                         <div class="author-info">
-                            <div class="author-name">Sarah M.</div>
-                            <div class="author-location">Verified Guest • August 2024</div>
+                            <div class="author-name" data-translate="testimonials.review1Author">4Building</div>
+                            <div class="author-location" data-translate="testimonials.review1Location">Group • June 2024</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card" data-review-original-lang="nl">
+                    <div class="testimonial-rating">
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                    </div>
+                    <span class="translated-badge" data-translate="testimonials.translated" style="display: none;">Translated</span>
+                    <p class="testimonial-text" data-translate="testimonials.review2Text">"Familie-weekend. We hebben voor het derde jaar op rij een fantastisch familie-weekend gehouden. Unieke locatie met oude grandeur, gezellige woonkamer, fantastische eetkamer met open haard, handige keuken, goede bedden en comfortabele badkamers. Wij zijn fan !!!"</p>
+                    <div class="testimonial-author">
+                        <div class="author-info">
+                            <div class="author-name" data-translate="testimonials.review2Author">Patrick Dierickx</div>
+                            <div class="author-location" data-translate="testimonials.review2Location">Group • November 2023</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card" data-review-original-lang="en">
+                    <div class="testimonial-rating">
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                    </div>
+                    <span class="translated-badge" data-translate="testimonials.translated" style="display: none;">Translated</span>
+                    <p class="testimonial-text" data-translate="testimonials.review3Text">"Great location! Beautiful location, well-equipped kitchen, dining room and living room with a massive fireplace which is awesome. Spacious and great beds. Stayed with 21 people using only the main house. There is a sauna, a pool and a cafe, but these are relatively small. Highly recommend this place."</p>
+                    <div class="testimonial-author">
+                        <div class="author-info">
+                            <div class="author-name" data-translate="testimonials.review3Author">Ruben Spruijt</div>
+                            <div class="author-location" data-translate="testimonials.review3Location">Family • October 2023</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card" data-review-original-lang="nl">
+                    <div class="testimonial-rating">
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                    </div>
+                    <span class="translated-badge" data-translate="testimonials.translated" style="display: none;">Translated</span>
+                    <p class="testimonial-text" data-translate="testimonials.review4Text">"Dit weekend met kantoor 2 nachten op deze mooie plek doorgebracht. Fijn ruim huis in een prachtige omgeving. Mooi uitzicht, ruime kamers en schoon. Mocht je met een grote groep (of kleine groep) gaan is Bram Boutsen Catering een extra aanrader. Aardige mensen en fantastisch eten en uitgebreid ontbijt. Ook in het dorp is Au Gre de Saisons by Manuel Fievet een echte aanrader. Domaine de Priesmont is een hele goede plek voor een bedrijfsuitje."</p>
+                    <div class="testimonial-author">
+                        <div class="author-info">
+                            <div class="author-name" data-translate="testimonials.review4Author">Anoniem (Nederland)</div>
+                            <div class="author-location" data-translate="testimonials.review4Location">Group • June 2023</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card" data-review-original-lang="nl">
+                    <div class="testimonial-rating">
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                    </div>
+                    <span class="translated-badge" data-translate="testimonials.translated" style="display: none;">Translated</span>
+                    <p class="testimonial-text" data-translate="testimonials.review5Text">"Sportsocieteit. Luxueus verblijf met ruim 20 personen. Fijn weer gehad, groot terras, 4-gangenmenu, schone kamers. Kleine minpunten: geen parasols en gedateerd tuinmeubilair, maar dat doet niets af aan de ervaring. Zeer aan te raden voor grotere groepen!"</p>
+                    <div class="testimonial-author">
+                        <div class="author-info">
+                            <div class="author-name" data-translate="testimonials.review5Author">Mathieu W.M. Fluit</div>
+                            <div class="author-location" data-translate="testimonials.review5Location">Group • June 2025</div>
                         </div>
                     </div>
                 </div>
@@ -648,109 +586,12 @@
                         <span class="star">★</span>
                         <span class="star">★</span>
                     </div>
-                    <p class="testimonial-text">"Outstanding corporate retreat venue. We hosted 30 team members for a 3-day offsite. The facilities are perfect - spacious common areas for meetings, excellent WiFi, and the sauna/pool combo was ideal for unwinding. The eco-friendly approach (solar panels) impressed our sustainability-focused team. The grounds are beautiful for morning walks. Will book again!"</p>
+                    <p class="testimonial-text" data-translate="testimonials.review6Text">"Company Get-Away. Amazing time at Priesmond for a company get-away with 23 people. Large kitchen, grounds and views. Unlucky with the weather, but would suggest adding activity equipment on site (we brought our own volleyball and badminton set). Overall still 5/5 stars, though!"</p>
                     <div class="testimonial-author">
-                        <div class="author-avatar">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-                                <circle cx="12" cy="7" r="4"></circle>
-                            </svg>
-                        </div>
                         <div class="author-info">
-                            <div class="author-name">Thomas D.</div>
-                            <div class="author-location">Verified Guest • September 2024</div>
+                            <div class="author-name" data-translate="testimonials.review6Author">T. Harms</div>
+                            <div class="author-location" data-translate="testimonials.review6Location">Other • August 2024</div>
                         </div>
-                    </div>
-                </div>
-
-                <div class="testimonial-card">
-                    <div class="testimonial-rating">
-                        <span class="star">★</span>
-                        <span class="star">★</span>
-                        <span class="star">★</span>
-                        <span class="star">★</span>
-                        <span class="star">★</span>
-                    </div>
-                    <p class="testimonial-text">"Dream wedding venue! We had 40 guests for our intimate celebration. The manor's historic character provided the perfect backdrop. All rooms were clean and comfortable. The outdoor spaces were ideal for our ceremony and reception. The host was responsive and helpful throughout. The nearby train station made it easy for international guests. Worth every euro!"</p>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-                                <circle cx="12" cy="7" r="4"></circle>
-                            </svg>
-                        </div>
-                        <div class="author-info">
-                            <div class="author-name">Emma & James</div>
-                            <div class="author-location">Verified Guest • July 2024</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="testimonial-card">
-                    <div class="testimonial-rating">
-                        <span class="star">★</span>
-                        <span class="star">★</span>
-                        <span class="star">★</span>
-                        <span class="star">★</span>
-                        <span class="star">★</span>
-                    </div>
-                    <p class="testimonial-text">"Perfect week-long getaway! The property is even more beautiful in person. We loved the mix of historic architecture and modern amenities. The hiking trails around Signal de Botrange were excellent. The kitchen is well-equipped for group cooking. The resident animals added charm. Clean, spacious, and peaceful. Great value for a large group. 5 stars!"</p>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-                                <circle cx="12" cy="7" r="4"></circle>
-                            </svg>
-                        </div>
-                        <div class="author-info">
-                            <div class="author-name">Maria R.</div>
-                            <div class="author-location">Verified Guest • June 2024</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="testimonial-card">
-                    <div class="testimonial-rating">
-                        <span class="star">★</span>
-                        <span class="star">★</span>
-                        <span class="star">★</span>
-                        <span class="star">★</span>
-                        <span class="star">★</span>
-                    </div>
-                    <p class="testimonial-text">"Excellent for large family gatherings! We had 35 people for a reunion weekend. The 18 bedrooms accommodated everyone comfortably. The kids loved the pools and exploring the grounds. The common areas are spacious - perfect for group meals and activities. The piano was a nice touch. Easy access from Vielsalm train station. Highly organized and well-maintained property."</p>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-                                <circle cx="12" cy="7" r="4"></circle>
-                            </svg>
-                        </div>
-                        <div class="author-info">
-                            <div class="author-name">Pierre M.</div>
-                            <div class="author-location">Verified Guest • May 2024</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="testimonial-card">
-                    <div class="testimonial-rating">
-                        <span class="star">★</span>
-                        <span class="star">★</span>
-                        <span class="star">★</span>
-                        <span class="star">★</span>
-                        <span class="star">★</span>
-                    </div>
-                    <p class="testimonial-text">"Best corporate retreat I've organized! The property offers the perfect mix of professional and recreational spaces. WiFi was reliable for video calls. The sauna and pools were perfect for team bonding after work sessions. The kitchen facilities allowed us to cater our own meals. Beautiful location, excellent facilities, responsive host. Already planning our return!"</p>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-                                <circle cx="12" cy="7" r="4"></circle>
-                            </svg>
-                        </div>
-                        <div class="author-info">
-                            <div class="author-name">Sophie L.</div>
-                            <div class="author-location">Verified Guest • October 2024</div>
                         </div>
                     </div>
                 </div>
@@ -1169,6 +1010,15 @@
                             </div>
                         </div>
                     </div>
+                    <div class="contact-map">
+                        <iframe 
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2560.5!2d5.915!3d50.285!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c0b8b8b8b8b8b9%3A0x8b8b8b8b8b8b8b8b!2sRue%20Freddy%20Wampach%2C%206690%20Vielsalm%2C%20Belgium!5e0!3m2!1sen!2sbe!4v1699999999999!5m2!1sen!2sbe" 
+                            allowfullscreen="" 
+                            loading="lazy" 
+                            referrerpolicy="no-referrer-when-downgrade"
+                            title="Priesmont Location Map">
+                        </iframe>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1187,9 +1037,9 @@
                     <ul>
                         <li><a href="#home">Home</a></li>
                         <li><a href="#about">About</a></li>
-                        <li><a href="#gallery">Gallery</a></li>
                         <li><a href="#features">Features</a></li>
-                        <li><a href="#location">Location</a></li>
+                        <li><a href="#gallery">Gallery</a></li>
+                        <li><a href="#surroundings">Surroundings</a></li>
                         <li><a href="#booking">Book Now</a></li>
                         <li><a href="#contact">Contact</a></li>
                     </ul>

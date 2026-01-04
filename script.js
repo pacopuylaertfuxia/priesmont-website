@@ -520,3 +520,137 @@ document.querySelectorAll('section').forEach(section => {
     sectionObserver.observe(section);
 });
 
+// Show/hide language-specific content for About section
+function updateAboutSectionLanguage(lang) {
+    const langContents = document.querySelectorAll('#about .lang-content');
+    langContents.forEach(content => {
+        content.style.display = 'none';
+    });
+    const activeContent = document.querySelector(`#about .lang-${lang}`);
+    if (activeContent) {
+        activeContent.style.display = 'block';
+        // Reset text to truncated state when language changes
+        const textContent = activeContent.querySelector('.about-text-content');
+        if (textContent) {
+            textContent.classList.remove('about-text-expanded');
+            textContent.classList.add('about-text-truncated');
+            const readMoreBtn = activeContent.querySelector('.about-read-more-btn');
+            if (readMoreBtn) {
+                readMoreBtn.querySelector('.read-more-text').style.display = 'inline';
+                readMoreBtn.querySelector('.read-less-text').style.display = 'none';
+            }
+        }
+    }
+}
+
+// Set truncated height based on left column height (image + tiles)
+function setTextTruncatedHeight() {
+    const imageColumn = document.querySelector('.about-image-column');
+    if (!imageColumn) return;
+    
+    // Find active language content (not hidden)
+    const allLangContents = document.querySelectorAll('#about .lang-content');
+    let activeLangContent = null;
+    for (let content of allLangContents) {
+        const display = window.getComputedStyle(content).display;
+        if (display !== 'none') {
+            activeLangContent = content;
+            break;
+        }
+    }
+    
+    if (activeLangContent) {
+        // Get the total height of the left column (image + tiles + gap)
+        const leftColumnHeight = imageColumn.offsetHeight;
+        
+        const h3Element = activeLangContent.querySelector('h3');
+        const buttonElement = activeLangContent.querySelector('.about-read-more-btn');
+        const textContent = activeLangContent.querySelector('.about-text-content');
+        
+        if (textContent && textContent.classList.contains('about-text-truncated')) {
+            // Calculate the height needed for h3 and button (including margins)
+            let otherElementsHeight = 0;
+            if (h3Element) {
+                const h3Styles = window.getComputedStyle(h3Element);
+                otherElementsHeight += h3Element.offsetHeight + 
+                    (parseFloat(h3Styles.marginBottom) || 0);
+            }
+            if (buttonElement) {
+                const btnStyles = window.getComputedStyle(buttonElement);
+                otherElementsHeight += buttonElement.offsetHeight + 
+                    (parseFloat(btnStyles.marginTop) || 0);
+            }
+            
+            // Set text content max-height to match left column height (with padding for gradient fade)
+            const textMaxHeight = leftColumnHeight - otherElementsHeight - 40; // 40px for gradient fade area
+            textContent.style.maxHeight = `${Math.max(textMaxHeight, 200)}px`; // Minimum 200px
+        }
+    }
+}
+
+// Listen for language changes
+document.addEventListener('DOMContentLoaded', () => {
+    // Get initial language
+    const initialLang = localStorage.getItem('preferredLanguage') || 'en';
+    updateAboutSectionLanguage(initialLang);
+    
+    // Set truncated height after images load
+    window.addEventListener('load', () => {
+        setTimeout(setTextTruncatedHeight, 100);
+    });
+    
+    // Also set height when window resizes
+    let resizeTimeout;
+    window.addEventListener('resize', () => {
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(() => {
+            setTextTruncatedHeight();
+        }, 250);
+    });
+    
+    // Listen for language button clicks
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            const lang = btn.dataset.lang;
+            if (lang) {
+                updateAboutSectionLanguage(lang);
+                setTimeout(setTextTruncatedHeight, 50);
+            }
+        });
+    });
+    
+    // Also update when language changes via the translation system
+    const langObserver = new MutationObserver(() => {
+        const activeLangBtn = document.querySelector('.lang-btn.active');
+        if (activeLangBtn) {
+            const lang = activeLangBtn.dataset.lang;
+            updateAboutSectionLanguage(lang);
+            setTimeout(setTextTruncatedHeight, 50);
+        }
+    });
+    
+    const langSwitcher = document.querySelector('.language-switcher');
+    if (langSwitcher) {
+        langObserver.observe(langSwitcher, { attributes: true, subtree: true, attributeFilter: ['class'] });
+    }
+    
+    // Handle read more/less button clicks
+    document.querySelectorAll('.about-read-more-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+            const langContent = this.closest('.lang-content');
+            const textContent = langContent.querySelector('.about-text-content');
+            if (textContent) {
+                if (textContent.classList.contains('about-text-truncated')) {
+                    textContent.classList.remove('about-text-truncated');
+                    textContent.classList.add('about-text-expanded');
+                    textContent.style.maxHeight = 'none';
+                } else {
+                    textContent.classList.remove('about-text-expanded');
+                    textContent.classList.add('about-text-truncated');
+                    setTextTruncatedHeight();
+                }
+            }
+        });
+    });
+});
+
