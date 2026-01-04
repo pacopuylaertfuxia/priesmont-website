@@ -30,24 +30,29 @@ window.addEventListener('scroll', () => {
     if (!ticking) {
         window.requestAnimationFrame(() => {
             const currentScroll = window.pageYOffset;
+            const isMobile = window.innerWidth <= 968;
             
             // Add scrolled class for styling
             if (currentScroll > 100) {
                 navbar.classList.add('scrolled');
             } else {
                 navbar.classList.remove('scrolled');
-                navbar.classList.remove('nav-collapsed');
+                if (!isMobile) {
+                    navbar.classList.remove('nav-collapsed');
+                }
             }
             
-            // Collapse/expand navbar based on scroll direction
-            if (currentScroll > lastScroll && currentScroll > 150) {
-                // Scrolling down - collapse to logo + hamburger
-                navbar.classList.add('nav-collapsed');
-                navMenu.classList.remove('active'); // Close mobile menu if open
-                mobileMenuToggle.classList.remove('active');
-            } else if (currentScroll < lastScroll || currentScroll <= 100) {
-                // Scrolling up or at top - expand navbar
-                navbar.classList.remove('nav-collapsed');
+            // Collapse/expand navbar based on scroll direction (disabled on mobile)
+            if (!isMobile) {
+                if (currentScroll > lastScroll && currentScroll > 150) {
+                    // Scrolling down - collapse to logo + hamburger
+                    navbar.classList.add('nav-collapsed');
+                    navMenu.classList.remove('active'); // Close mobile menu if open
+                    mobileMenuToggle.classList.remove('active');
+                } else if (currentScroll < lastScroll || currentScroll <= 100) {
+                    // Scrolling up or at top - expand navbar
+                    navbar.classList.remove('nav-collapsed');
+                }
             }
             
             lastScroll = currentScroll;

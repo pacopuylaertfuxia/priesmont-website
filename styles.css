@@ -285,8 +285,25 @@ body {
 @media (max-width: 968px) {
     .language-switcher {
         margin-left: 0;
-        margin-top: 0.5rem;
+        margin-top: 0;
         justify-content: center;
+        width: 100%;
+        order: 3;
+    }
+    
+    .nav-wrapper {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    .nav-wrapper .logo {
+        order: 1;
+        flex: 0 0 auto;
+    }
+    
+    .nav-wrapper .nav-menu {
+        order: 2;
+        width: 100%;
     }
 }
 
@@ -2489,6 +2506,7 @@ body:has(.lightbox.active) .navbar {
         width: auto;
         transform: none;
         max-width: none;
+        transition: none;
     }
     
     .navbar.scrolled {
@@ -2503,6 +2521,12 @@ body:has(.lightbox.active) .navbar {
     
     .navbar:not(.nav-collapsed) .nav-wrapper {
         padding: 0.5rem 1rem;
+        justify-content: space-between;
+    }
+    
+    .navbar.nav-collapsed .nav-wrapper {
+        justify-content: space-between;
+        padding: 0.5rem 1rem;
     }
     
     .navbar.nav-collapsed .logo-container {
@@ -2511,6 +2535,34 @@ body:has(.lightbox.active) .navbar {
     
     .navbar.nav-collapsed .burger-container {
         padding: 0.5rem;
+    }
+    
+    .nav-container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        gap: 0.5rem;
+    }
+    
+    .nav-wrapper {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        min-width: 0;
+    }
+    
+    .language-switcher {
+        order: 0;
+        margin-left: 0;
+        margin-top: 0;
+        width: auto;
+        flex-shrink: 0;
+    }
+    
+    .burger-container {
+        flex-shrink: 0;
     }
 
     .mobile-menu-toggle {
