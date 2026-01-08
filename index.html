@@ -28,6 +28,13 @@
                     <li><a href="#surroundings" class="nav-link" data-translate="nav.surroundings">Surroundings</a></li>
                     <li><a href="#booking" class="nav-link" data-translate="nav.bookNow">Book Now</a></li>
                     <li><a href="#contact" class="nav-link" data-translate="nav.contact">Contact</a></li>
+                    <li class="mobile-lang-switcher-wrapper">
+                        <div class="language-switcher mobile-language-switcher">
+                            <button class="lang-btn active" data-lang="en" aria-label="English">EN</button>
+                            <button class="lang-btn" data-lang="nl" aria-label="Nederlands">NL</button>
+                            <button class="lang-btn" data-lang="fr" aria-label="Français">FR</button>
+                        </div>
+                    </li>
                 </ul>
                 <div class="language-switcher">
                     <button class="lang-btn active" data-lang="en" aria-label="English">EN</button>
@@ -64,8 +71,8 @@
                 </h1>
                 <p class="hero-subtitle" data-translate="hero.subtitle">A historic manor in the heart of the Ardennes<br>Your perfect escape into nature and luxury</p>
                 <div class="hero-buttons">
-                    <a href="#features" class="btn btn-primary" data-pixel-event="ViewContent" data-translate="hero.discover">Discover the Manor</a>
-                    <a href="#booking" class="btn btn-secondary" data-pixel-event="InitiateCheckout" data-translate="hero.cta">Book Your Stay</a>
+                    <a href="#about" class="btn btn-secondary" data-translate="hero.discover">Discover the Manor</a>
+                    <a href="#booking" class="btn btn-primary" data-translate="hero.cta">Book Your Stay</a>
                 </div>
             </div>
         </div>
@@ -75,7 +82,7 @@
     </section>
 
     <!-- About Section -->
-    <section id="about" style="padding: 5rem 0;">
+    <section id="about">
         <div class="container">
             <div class="about-two-column">
                 <!-- Left Column: Castle Image -->
@@ -689,235 +696,141 @@
                     
                     <div class="booking-widget-wrapper">
                         <div id="lodgify-booking-widget" class="lodgify-widget-container">
-                    <!-- Lodgify Book Now Box Widget -->
-                    <style>
-                      /* Lodgify Widget Customization - Apple Inspired Design */
-                      :root {
-                        /* Background & Container */
-                        --ldg-bnb-background: #ffffff;
-                        --ldg-bnb-border-radius: 18px;
-                        --ldg-bnb-box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.08);
-                        --ldg-bnb-padding: 24px;
-                        --ldg-bnb-input-background: #fbfbfd;
-                        --ldg-bnb-button-border-radius: 50px;
-                        
-                        /* Colors - Apple Inspired */
-                        --ldg-bnb-color-primary: #1d1d1f;
-                        --ldg-bnb-color-primary-lighter: #86868b;
-                        --ldg-bnb-color-primary-darker: #000000;
-                        --ldg-bnb-color-primary-contrast: #ffffff;
-                        
-                        /* Calendar Styling */
-                        --ldg-component-calendar-cell-selection-bg-color: #1d1d1f;
-                        --ldg-component-calendar-cell-selection-color: #ffffff;
-                        --ldg-component-calendar-cell-selected-bg-color: #86868b;
-                        --ldg-component-calendar-cell-selected-color: #ffffff;
-                        --ldg-component-calendar-cell-hover-bg-color: #f5f5f7;
-                        --ldg-component-calendar-cell-today-border-color: #1d1d1f;
-                        
-                        /* Typography */
-                        --ldg-bnb-font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-                        --ldg-bnb-font-size: 1rem;
-                        --ldg-bnb-font-weight: 400;
-                        --ldg-bnb-line-height: 1.47059;
-                        --ldg-bnb-letter-spacing: -0.022em;
-                        
-                        /* Input Fields */
-                        --ldg-bnb-input-border-color: #e5e5e5;
-                        --ldg-bnb-input-border-radius: 12px;
-                        --ldg-bnb-input-padding: 12px 16px;
-                        --ldg-bnb-input-font-size: 1rem;
-                        
-                        /* Buttons */
-                        --ldg-bnb-button-padding: 14px 28px;
-                        --ldg-bnb-button-font-weight: 500;
-                        --ldg-bnb-button-font-size: 1rem;
-                        --ldg-bnb-button-letter-spacing: -0.022em;
-                        
-                        /* Spacing */
-                        --ldg-bnb-gap: 16px;
-                        --ldg-bnb-margin: 0;
-                      }
-                      
-                      /* Widget Container */
-                      #lodgify-book-now-box {
-                        width: 100% !important;
-                        max-width: 100% !important;
-                        font-family: var(--ldg-bnb-font-family);
-                        padding: 2rem;
-                        box-sizing: border-box;
-                      }
-                      
-                      /* Custom styling for Lodgify widget elements */
-                      #lodgify-book-now-box * {
-                        font-family: var(--ldg-bnb-font-family) !important;
-                        letter-spacing: -0.022em !important;
-                      }
-                      
-                      /* Input fields */
-                      #lodgify-book-now-box input,
-                      #lodgify-book-now-box select {
-                        border-radius: var(--ldg-bnb-input-border-radius) !important;
-                        border: 0.5px solid var(--ldg-bnb-input-border-color) !important;
-                        background: var(--ldg-bnb-input-background) !important;
-                        padding: var(--ldg-bnb-input-padding) !important;
-                        font-size: var(--ldg-bnb-input-font-size) !important;
-                        transition: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
-                      }
-                      
-                      #lodgify-book-now-box input:focus,
-                      #lodgify-book-now-box select:focus {
-                        outline: none !important;
-                        border-color: var(--ldg-bnb-color-primary) !important;
-                        box-shadow: 0 0 0 3px rgba(29, 29, 31, 0.1) !important;
-                      }
-                      
-                      /* Buttons */
-                      #lodgify-book-now-box button {
-                        border-radius: var(--ldg-bnb-button-border-radius) !important;
-                        padding: var(--ldg-bnb-button-padding) !important;
-                        font-weight: var(--ldg-bnb-button-font-weight) !important;
-                        font-size: var(--ldg-bnb-button-font-size) !important;
-                        letter-spacing: var(--ldg-bnb-button-letter-spacing) !important;
-                        transition: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
-                      }
-                      
-                      #lodgify-book-now-box button:hover {
-                        transform: translateY(-1px) !important;
-                        box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.15) !important;
-                      }
-                      
-                      #lodgify-book-now-box button:active {
-                        transform: translateY(0) !important;
-                      }
-                      
-                      /* Calendar */
-                      #lodgify-book-now-box .calendar {
-                        border-radius: var(--ldg-bnb-border-radius) !important;
-                      }
-                      
-                      /* Booked/Unavailable Dates - Make them VERY clear with strong visual indicators */
-                      #lodgify-book-now-box [class*="unavailable"],
-                      #lodgify-book-now-box [class*="booked"],
-                      #lodgify-book-now-box [class*="disabled"],
-                      #lodgify-book-now-box [aria-disabled="true"],
-                      #lodgify-book-now-box button[disabled],
-                      #lodgify-book-now-box .calendar-day[disabled],
-                      #lodgify-book-now-box .calendar-day.unavailable,
-                      #lodgify-book-now-box .calendar-day.booked,
-                      #lodgify-book-now-box td[aria-disabled="true"],
-                      #lodgify-book-now-box td[class*="unavailable"],
-                      #lodgify-book-now-box td[class*="booked"],
-                      #lodgify-book-now-box .day[aria-disabled="true"],
-                      #lodgify-book-now-box .day.unavailable,
-                      #lodgify-book-now-box .day.booked {
-                        background: #ffebee !important;
-                        background-image: repeating-linear-gradient(
-                          45deg,
-                          transparent,
-                          transparent 2px,
-                          rgba(211, 47, 47, 0.1) 2px,
-                          rgba(211, 47, 47, 0.1) 4px
-                        ) !important;
-                        color: #c62828 !important;
-                        cursor: not-allowed !important;
-                        opacity: 1 !important;
-                        position: relative !important;
-                        text-decoration: line-through !important;
-                        font-weight: 500 !important;
-                        border: 2px solid #ef5350 !important;
-                        border-radius: 8px !important;
-                      }
-                      
-                      /* Add prominent visual indicator for booked dates */
-                      #lodgify-book-now-box [class*="unavailable"]::before,
-                      #lodgify-book-now-box [class*="booked"]::before,
-                      #lodgify-book-now-box [aria-disabled="true"]::before,
-                      #lodgify-book-now-box td[aria-disabled="true"]::before,
-                      #lodgify-book-now-box .day[aria-disabled="true"]::before {
-                        content: '✕' !important;
-                        position: absolute !important;
-                        top: 50% !important;
-                        left: 50% !important;
-                        transform: translate(-50%, -50%) !important;
-                        font-size: 1.5em !important;
-                        color: #d32f2f !important;
-                        font-weight: 900 !important;
-                        pointer-events: none !important;
-                        z-index: 10 !important;
-                        text-shadow: 0 0 2px rgba(255, 255, 255, 0.8) !important;
-                      }
-                      
-                      /* Add "BOOKED" text overlay for extra clarity */
-                      #lodgify-book-now-box [class*="unavailable"]::after,
-                      #lodgify-book-now-box [class*="booked"]::after,
-                      #lodgify-book-now-box [aria-disabled="true"]::after {
-                        content: '' !important;
-                      }
-                      
-                      /* Make available dates stand out clearly */
-                      #lodgify-book-now-box .calendar-day:not([disabled]):not([class*="unavailable"]):not([class*="booked"]):not([aria-disabled="true"]),
-                      #lodgify-book-now-box td:not([aria-disabled="true"]):not([class*="unavailable"]):not([class*="booked"]),
-                      #lodgify-book-now-box .day:not([aria-disabled="true"]):not(.unavailable):not(.booked) {
-                        background: #ffffff !important;
-                        color: var(--ldg-bnb-color-primary) !important;
-                        border: 1.5px solid #e5e5e5 !important;
-                        border-radius: 8px !important;
-                        font-weight: 500 !important;
-                      }
-                      
-                      #lodgify-book-now-box .calendar-day:not([disabled]):not([class*="unavailable"]):not([class*="booked"]):hover,
-                      #lodgify-book-now-box td:not([aria-disabled="true"]):not([class*="unavailable"]):not([class*="booked"]):hover,
-                      #lodgify-book-now-box .day:not([aria-disabled="true"]):not(.unavailable):not(.booked):hover {
-                        background: #f0f7ff !important;
-                        border-color: var(--ldg-bnb-color-primary) !important;
-                        border-width: 2px !important;
-                        transform: scale(1.05) !important;
-                        box-shadow: 0 2px 8px rgba(29, 29, 31, 0.15) !important;
-                      }
-                      
-                      /* Price display */
-                      #lodgify-book-now-box .price {
-                        font-weight: 600 !important;
-                        letter-spacing: -0.04em !important;
-                      }
-                    </style>
-                    <div
-                      id="lodgify-book-now-box"
-                      data-rental-id="279598"
-                      data-website-id="280045"
-                      data-slug="carl-puylaert"
-                      data-language-code="en"
-                      data-new-tab="true"
-                      data-version="stable"
-                      data-has-guests-breakdown
-                      data-check-in-label="Check-in"
-                      data-check-out-label="Check-out"
-                      data-guests-label="Guests"
-                      data-guests-singular-label="{{NumberOfGuests}} guest"
-                      data-guests-plural-label="{{NumberOfGuests}} guests"
-                      data-location-input-label="Location"
-                      data-total-price-label="Total price:"
-                      data-select-dates-to-see-price-label="Select dates to see total price"
-                      data-minimum-price-per-night-first-label="From"
-                      data-minimum-price-per-night-second-label="per night"
-                      data-book-button-label="Book Now"
-                      data-guests-breakdown-label="Guests"
-                      data-adults-label='{"one":"adult","other":"adults"}'
-                      data-adults-description="Ages {minAge} or above"
-                      data-children-label='{"one":"child","other":"children"}'
-                      data-children-description="Ages {minAge}-{maxAge}"
-                      data-children-not-allowed-label="Not suitable for children"
-                      data-infants-label='{"one":"infant","other":"infants"}'
-                      data-infants-description="Under {maxAge}"
-                      data-infants-not-allowed-label="Not suitable for infants"
-                      data-pets-label='{"one":"pet","other":"pets"}'
-                      data-pets-not-allowed-label="Not allowed"
-                      data-done-label="Done"
-                    ></div>
-            <script src="https://app.lodgify.com/book-now-box/stable/renderBookNowBox.js" defer></script>
+                            <!-- Lodgify Book Now Box Widget (Date/Guest Selection) -->
+                            <style>
+                              /* Lodgify Widget Customization - Apple Inspired Design */
+                              :root {
+                                --ldg-bnb-background: #ffffff;
+                                --ldg-bnb-border-radius: 18px;
+                                --ldg-bnb-box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.08);
+                                --ldg-bnb-padding: 24px;
+                                --ldg-bnb-input-background: #fbfbfd;
+                                --ldg-bnb-button-border-radius: 50px;
+                                --ldg-bnb-color-primary: #1d1d1f;
+                                --ldg-bnb-color-primary-lighter: #86868b;
+                                --ldg-bnb-color-primary-darker: #000000;
+                                --ldg-bnb-color-primary-contrast: #ffffff;
+                                --ldg-component-calendar-cell-selection-bg-color: #1d1d1f;
+                                --ldg-component-calendar-cell-selection-color: #ffffff;
+                                --ldg-component-calendar-cell-selected-bg-color: #86868b;
+                                --ldg-component-calendar-cell-selected-color: #ffffff;
+                                --ldg-component-calendar-cell-hover-bg-color: #f5f5f7;
+                                --ldg-component-calendar-cell-today-border-color: #1d1d1f;
+                                --ldg-bnb-font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+                                --ldg-bnb-font-size: 1rem;
+                                --ldg-bnb-font-weight: 400;
+                                --ldg-bnb-line-height: 1.47059;
+                                --ldg-bnb-letter-spacing: -0.022em;
+                                --ldg-bnb-input-border-color: #e5e5e5;
+                                --ldg-bnb-input-border-radius: 12px;
+                                --ldg-bnb-input-padding: 12px 16px;
+                                --ldg-bnb-input-font-size: 1rem;
+                                --ldg-bnb-button-padding: 14px 28px;
+                                --ldg-bnb-button-font-weight: 500;
+                                --ldg-bnb-button-font-size: 1rem;
+                                --ldg-bnb-button-letter-spacing: -0.022em;
+                                --ldg-bnb-gap: 16px;
+                                --ldg-bnb-margin: 0;
+                              }
+                              
+                              #lodgify-book-now-box {
+                                width: 100% !important;
+                                max-width: 100% !important;
+                                font-family: var(--ldg-bnb-font-family);
+                                padding: 2rem;
+                                box-sizing: border-box;
+                              }
+                              
+                              #lodgify-book-now-box * {
+                                font-family: var(--ldg-bnb-font-family) !important;
+                                letter-spacing: -0.022em !important;
+                              }
+                              
+                              #lodgify-book-now-box input,
+                              #lodgify-book-now-box select {
+                                border-radius: var(--ldg-bnb-input-border-radius) !important;
+                                border: 0.5px solid var(--ldg-bnb-input-border-color) !important;
+                                background: var(--ldg-bnb-input-background) !important;
+                                padding: var(--ldg-bnb-input-padding) !important;
+                                font-size: var(--ldg-bnb-input-font-size) !important;
+                                transition: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+                              }
+                              
+                              #lodgify-book-now-box input:focus,
+                              #lodgify-book-now-box select:focus {
+                                outline: none !important;
+                                border-color: var(--ldg-bnb-color-primary) !important;
+                                box-shadow: 0 0 0 3px rgba(29, 29, 31, 0.1) !important;
+                              }
+                              
+                              #lodgify-book-now-box button {
+                                border-radius: var(--ldg-bnb-button-border-radius) !important;
+                                padding: var(--ldg-bnb-button-padding) !important;
+                                font-weight: var(--ldg-bnb-button-font-weight) !important;
+                                font-size: var(--ldg-bnb-button-font-size) !important;
+                                letter-spacing: var(--ldg-bnb-button-letter-spacing) !important;
+                                transition: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+                              }
+                              
+                              #lodgify-book-now-box button:hover {
+                                transform: translateY(-1px) !important;
+                                box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.15) !important;
+                              }
+                              
+                              #lodgify-book-now-box [class*="unavailable"],
+                              #lodgify-book-now-box [class*="booked"],
+                              #lodgify-book-now-box [aria-disabled="true"] {
+                                background: #ffebee !important;
+                                background-image: repeating-linear-gradient(
+                                  45deg,
+                                  transparent,
+                                  transparent 2px,
+                                  rgba(211, 47, 47, 0.1) 2px,
+                                  rgba(211, 47, 47, 0.1) 4px
+                                ) !important;
+                                color: #c62828 !important;
+                                cursor: not-allowed !important;
+                                border: 2px solid #ef5350 !important;
+                                border-radius: 8px !important;
+                              }
+                            </style>
+                            <div
+                              id="lodgify-book-now-box"
+                              data-rental-id="279598"
+                              data-website-id="280045"
+                              data-slug="carl-puylaert"
+                              data-language-code="en"
+                              data-new-tab="false"
+                              data-version="stable"
+                              data-has-guests-breakdown
+                              data-check-in-label="Check-in"
+                              data-check-out-label="Check-out"
+                              data-guests-label="Guests"
+                              data-guests-singular-label="{{NumberOfGuests}} guest"
+                              data-guests-plural-label="{{NumberOfGuests}} guests"
+                              data-location-input-label="Location"
+                              data-total-price-label="Total price:"
+                              data-select-dates-to-see-price-label="Select dates to see total price"
+                              data-minimum-price-per-night-first-label="From"
+                              data-minimum-price-per-night-second-label="per night"
+                              data-book-button-label="Book Now"
+                              data-guests-breakdown-label="Guests"
+                              data-adults-label='{"one":"adult","other":"adults"}'
+                              data-adults-description="Ages {minAge} or above"
+                              data-children-label='{"one":"child","other":"children"}'
+                              data-children-description="Ages {minAge}-{maxAge}"
+                              data-children-not-allowed-label="Not suitable for children"
+                              data-infants-label='{"one":"infant","other":"infants"}'
+                              data-infants-description="Under {maxAge}"
+                              data-infants-not-allowed-label="Not suitable for infants"
+                              data-pets-label='{"one":"pet","other":"pets"}'
+                              data-pets-not-allowed-label="Not allowed"
+                              data-done-label="Done"
+                            ></div>
+                            <script src="https://app.lodgify.com/book-now-box/stable/renderBookNowBox.js" defer></script>
                         </div>
                     </div>
+                    
                 </div>
             </div>
         </div>
@@ -1087,22 +1000,20 @@
     <script src="lodgify-integration.js"></script>
     <script src="script.js"></script>
     
-    <!-- Track Lodgify Booking Widget Load -->
+    <!-- Track Lodgify Widget -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Track when Lodgify widget loads
+            // Track when widget loads
             const checkWidgetLoaded = setInterval(function() {
                 const widget = document.getElementById('lodgify-book-now-box');
+                
                 if (widget && widget.children.length > 0) {
-                    // Widget has loaded
-                    clearInterval(checkWidgetLoaded);
                     if (window.metaPixelTracker) {
                         window.metaPixelTracker.trackViewContent('Lodgify Booking Widget', 'Booking');
                     }
                 }
             }, 500);
             
-            // Stop checking after 10 seconds
             setTimeout(function() {
                 clearInterval(checkWidgetLoaded);
             }, 10000);

@@ -520,6 +520,23 @@ document.querySelectorAll('section').forEach(section => {
     sectionObserver.observe(section);
 });
 
+// Simple Lodgify Widget Integration - No modal, just widgets
+document.addEventListener('DOMContentLoaded', function() {
+    // Track when widgets load
+    const heroWidget = document.getElementById('lodgify-hero-book-now-box');
+    const bookingWidget = document.getElementById('lodgify-book-now-box');
+    
+    // Track widget views
+    setTimeout(() => {
+        if (heroWidget && heroWidget.children.length > 0 && window.metaPixelTracker) {
+            window.metaPixelTracker.trackViewContent('Lodgify Hero Widget', 'Booking');
+        }
+        if (bookingWidget && bookingWidget.children.length > 0 && window.metaPixelTracker) {
+            window.metaPixelTracker.trackViewContent('Lodgify Booking Widget', 'Booking');
+        }
+    }, 2000);
+});
+
 // Show/hide language-specific content for About section
 function updateAboutSectionLanguage(lang) {
     const langContents = document.querySelectorAll('#about .lang-content');
@@ -653,4 +670,48 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 });
-
+// Sync language switcher between desktop and mobile
+document.addEventListener('DOMContentLoaded', () => {
+    const desktopLangSwitcher = document.querySelector('.nav-wrapper .language-switcher');
+    const mobileLangSwitcher = document.querySelector('.nav-menu .mobile-language-switcher');
+    
+    function syncLanguageButtons() {
+        if (desktopLangSwitcher && mobileLangSwitcher) {
+            const activeDesktopBtn = desktopLangSwitcher.querySelector('.lang-btn.active');
+            if (activeDesktopBtn) {
+                const lang = activeDesktopBtn.dataset.lang;
+                mobileLangSwitcher.querySelectorAll('.lang-btn').forEach(btn => {
+                    btn.classList.remove('active');
+                    if (btn.dataset.lang === lang) {
+                        btn.classList.add('active');
+                    }
+                });
+            }
+        }
+    }
+    
+    // Sync when menu opens
+    if (mobileMenuToggle) {
+        const originalClickHandler = mobileMenuToggle.onclick;
+        mobileMenuToggle.addEventListener('click', () => {
+            setTimeout(syncLanguageButtons, 50);
+        });
+    }
+    
+    // Sync when language button is clicked on mobile
+    if (mobileLangSwitcher) {
+        mobileLangSwitcher.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                const lang = btn.dataset.lang;
+                const desktopBtn = desktopLangSwitcher?.querySelector(`[data-lang="${lang}"]`);
+                if (desktopBtn) {
+                    desktopBtn.click();
+                }
+                syncLanguageButtons();
+            });
+        });
+    }
+    
+    // Initial sync
+    syncLanguageButtons();
+});
