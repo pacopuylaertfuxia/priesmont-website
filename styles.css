@@ -2026,7 +2026,7 @@ body:has(.lightbox.active) .navbar {
 }
 
 .testimonials .container {
-    max-width: 100%;
+    max-width: 1200px;
     padding: 0 20px;
 }
 
@@ -2037,13 +2037,13 @@ body:has(.lightbox.active) .navbar {
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
     -ms-overflow-style: none;
-    padding: 1rem 20px;
+    padding: 1rem 0;
     margin-left: 0;
     margin-right: 0;
     position: relative;
     z-index: 1;
-    scroll-padding-left: 20px;
-    scroll-padding-right: 20px;
+    scroll-padding-left: 0;
+    scroll-padding-right: 0;
     scroll-snap-type: x proximity;
 }
 
@@ -2600,7 +2600,7 @@ body:has(.lightbox.active) .navbar {
 }
 
 .services .container {
-    max-width: 100%;
+    max-width: 1200px;
     padding: 0 20px;
 }
 
@@ -2620,10 +2620,10 @@ body:has(.lightbox.active) .navbar {
     -ms-overflow-style: none;
     padding-bottom: 2rem;
     padding-top: 1rem;
-    padding-left: 20px;
-    padding-right: 20px;
-    scroll-padding-left: 20px;
-    scroll-padding-right: 20px;
+    padding-left: 0;
+    padding-right: 0;
+    scroll-padding-left: 0;
+    scroll-padding-right: 0;
     scroll-snap-type: x proximity;
 }
 
