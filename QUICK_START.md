@@ -1,10 +1,10 @@
 # Quick Start Guide - Priesmont Website
 
 **Current Status:**
-- ✅ Website deployed at: [https://priesmont.netlify.app/](https://priesmont.netlify.app/)
+- ✅ Website ready for Vercel (static export with `vercel.json`)
 - ✅ Git repository initialized
-- ⏳ GitHub connection needed
-- ⏳ Netlify Git integration needed
+- ⏳ Connect GitHub to Vercel for auto-deploy
+- ⏳ Set Vercel project + production domain
 
 ---
 
@@ -12,16 +12,14 @@
 
 1. ✅ **Created comparison report** - See `COMPARISON_REPORT.md`
 2. ✅ **Initialized Git repository**
-3. ✅ **Created Netlify configuration** (`netlify.toml`)
+3. ✅ **Created Vercel configuration** (`vercel.json`)
 4. ✅ **Created setup guides**
 
 ---
 
 ## 🚀 Next Steps (In Order)
 
-### 1. Connect Git to GitHub & Netlify
-
-**Follow the guide:** `NETLIFY_SETUP.md`
+### 1. Connect Git to GitHub & Vercel
 
 Quick version:
 ```bash
@@ -30,12 +28,18 @@ Quick version:
 git remote add origin https://github.com/YOUR_USERNAME/priesmont-website.git
 git branch -M main
 git push -u origin main
-
-# 3. In Netlify dashboard:
-#    - Add new site → Import from GitHub
-#    - Select your repository
-#    - Deploy (no build command needed)
 ```
+
+Then in Vercel:
+- Create/import a project from GitHub
+- Framework: “Other” (static)
+- Build command: none
+- Output directory: `.`
+- Production branch: `main`
+
+Optional:
+- Add custom domain (e.g., domainedepriesmont.com) in Vercel
+- Set `index.html` as the entry (handled by `vercel.json` rewrite)
 
 ---
 
@@ -79,7 +83,6 @@ git push -u origin main
 
 - `COMPARISON_REPORT.md` - What's missing from old site
 - `STATUS_REPORT.md` - Overall status of website, bookings, pixel
-- `NETLIFY_SETUP.md` - How to connect Git to Netlify
 - `META_PIXEL_SETUP.md` - Meta Pixel configuration
 - `LODGIFY_SETUP.md` - Lodgify integration guide
 
@@ -87,8 +90,8 @@ git push -u origin main
 
 ## 🎯 Priority Actions
 
-1. **Connect Git to Netlify** (15 min)
-   - Follow `NETLIFY_SETUP.md`
+1. **Connect GitHub to Vercel** (15 min)
+   - Import repo in Vercel, set branch to `main`
    - Enables automatic deployments
 
 2. **Configure Meta Pixel** (5 min)
@@ -110,9 +113,9 @@ git push -u origin main
 
 ## 🔗 Quick Links
 
-- **Live Site:** [https://priesmont.netlify.app/](https://priesmont.netlify.app/)
+- **Live Site:** (add your Vercel or custom domain)
 - **Old Site:** [https://priesmont.com/](https://priesmont.com/)
-- **Netlify Dashboard:** [https://app.netlify.com](https://app.netlify.com)
+- **Vercel Dashboard:** [https://vercel.com/dashboard](https://vercel.com/dashboard)
 - **Facebook Events Manager:** [https://business.facebook.com/events_manager2](https://business.facebook.com/events_manager2)
 
 ---
@@ -138,6 +141,9 @@ git remote -v
 
 ---
 
-**Ready to proceed?** Start with `NETLIFY_SETUP.md` to connect everything!
+**Ready to proceed?** Connect GitHub to Vercel and deploy from `main`.
+
+
+
 
 

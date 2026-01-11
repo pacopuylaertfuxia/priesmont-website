@@ -85,7 +85,7 @@ function activateNavLink() {
 
 window.addEventListener('scroll', activateNavLink);
 
-// Smooth scroll for anchor links
+// Smooth scroll for anchor links (no tracking - handled by tracking/domHooks.js)
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
@@ -158,55 +158,8 @@ document.querySelectorAll('.service-card').forEach((card, index) => {
     fadeInObserver.observe(card);
 });
 
-// Contact form handling
-const contactForm = document.getElementById('contactForm');
-
-contactForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    
-    // Get form values
-    const formData = {
-        name: document.getElementById('name').value,
-        email: document.getElementById('email').value,
-        checkin: document.getElementById('checkin').value,
-        guests: document.getElementById('guests').value,
-        message: document.getElementById('message').value
-    };
-    
-    // Here you would typically send the data to a server
-    // For now, we'll just show a success message
-    const submitButton = contactForm.querySelector('button[type="submit"]');
-    const originalText = submitButton.textContent;
-    
-    submitButton.textContent = 'Sending...';
-    submitButton.disabled = true;
-    
-    // Track Lead event with Meta Pixel
-    if (window.metaPixelTracker) {
-        window.metaPixelTracker.trackLead('Contact Form');
-    }
-    
-    // Simulate form submission
-    setTimeout(() => {
-        submitButton.textContent = 'Booking Request Sent! ✓';
-        submitButton.style.background = '#10b981';
-        
-        // Track CompleteRegistration if they provided check-in date
-        if (formData.checkin && window.metaPixelTracker) {
-            window.metaPixelTracker.trackCompleteRegistration('Website Form');
-        }
-        
-        // Reset form
-        contactForm.reset();
-        
-        // Reset button after 3 seconds
-        setTimeout(() => {
-            submitButton.textContent = originalText;
-            submitButton.disabled = false;
-            submitButton.style.background = '';
-        }, 3000);
-    }, 1500);
-});
+// Note: Contact form handling with Lead tracking has been moved to tracking/domHooks.js
+// This ensures tracking only fires on successful form submission, not on field focus
 
 // Hero Carousel Auto-Scroll
 document.addEventListener('DOMContentLoaded', function() {
@@ -234,49 +187,8 @@ document.addEventListener('DOMContentLoaded', function() {
     slides[0].classList.add('active');
 });
 
-// Track button clicks with pixel events
-document.querySelectorAll('[data-pixel-event]').forEach(button => {
-    button.addEventListener('click', function() {
-        const eventName = this.getAttribute('data-pixel-event');
-        if (window.metaPixelTracker) {
-            if (eventName === 'InitiateCheckout') {
-                window.metaPixelTracker.trackInitiateCheckout();
-            } else if (eventName === 'ViewContent') {
-                window.metaPixelTracker.trackViewContent('Priesmont Manor Features', 'Property');
-            }
-        }
-    });
-});
-
-// Track when user views gallery
-const galleryObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting && window.metaPixelTracker) {
-            window.metaPixelTracker.trackViewContent('Priesmont Manor Gallery', 'Gallery');
-            galleryObserver.unobserve(entry.target);
-        }
-    });
-}, { threshold: 0.3 });
-
-const gallerySection = document.getElementById('gallery');
-if (gallerySection) {
-    galleryObserver.observe(gallerySection);
-}
-
-// Track when user interacts with booking section
-const bookingObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting && window.metaPixelTracker) {
-            window.metaPixelTracker.trackInitiateCheckout();
-            bookingObserver.unobserve(entry.target);
-        }
-    });
-}, { threshold: 0.3 });
-
-const bookingSection = document.getElementById('booking');
-if (bookingSection) {
-    bookingObserver.observe(bookingSection);
-}
+// Note: All Meta Pixel tracking has been moved to tracking/domHooks.js
+// This ensures high-quality, non-noisy tracking without scroll-based "fake intent"
 
 // Gallery Lightbox
 let galleryItems = document.querySelectorAll('.gallery-item');
@@ -366,10 +278,7 @@ function openLightbox(index) {
         navbar.style.pointerEvents = 'none';
     }
     
-    // Track gallery view with Meta Pixel
-    if (window.metaPixelTracker) {
-        window.metaPixelTracker.trackViewContent('Priesmont Manor Gallery - Fullscreen', 'Gallery');
-    }
+    // Gallery lightbox tracking removed - focusing on booking/inquiry funnels only
 }
 
 // Close lightbox
@@ -521,20 +430,10 @@ document.querySelectorAll('section').forEach(section => {
 });
 
 // Simple Lodgify Widget Integration - No modal, just widgets
+// Note: ViewContent tracking is now handled in index.html for user-initiated interactions only
 document.addEventListener('DOMContentLoaded', function() {
-    // Track when widgets load
-    const heroWidget = document.getElementById('lodgify-hero-book-now-box');
-    const bookingWidget = document.getElementById('lodgify-book-now-box');
-    
-    // Track widget views
-    setTimeout(() => {
-        if (heroWidget && heroWidget.children.length > 0 && window.metaPixelTracker) {
-            window.metaPixelTracker.trackViewContent('Lodgify Hero Widget', 'Booking');
-        }
-        if (bookingWidget && bookingWidget.children.length > 0 && window.metaPixelTracker) {
-            window.metaPixelTracker.trackViewContent('Lodgify Booking Widget', 'Booking');
-        }
-    }, 2000);
+    // Widgets are loaded, but ViewContent tracking happens on user interaction
+    // This ensures ViewContent fires only when user shows intent, not on page load
 });
 
 // Show/hide language-specific content for About section
@@ -577,8 +476,8 @@ function setTextTruncatedHeight() {
     }
     
     if (activeLangContent) {
-        // Get the total height of the left column (image + tiles + gap)
-        const leftColumnHeight = imageColumn.offsetHeight;
+        const aboutImage = document.querySelector('.about-castle-image');
+        const referenceHeight = aboutImage ? aboutImage.offsetHeight : imageColumn.offsetHeight;
         
         const h3Element = activeLangContent.querySelector('h3');
         const buttonElement = activeLangContent.querySelector('.about-read-more-btn');
@@ -598,9 +497,9 @@ function setTextTruncatedHeight() {
                     (parseFloat(btnStyles.marginTop) || 0);
             }
             
-            // Set text content max-height to match left column height (with padding for gradient fade)
-            const textMaxHeight = leftColumnHeight - otherElementsHeight - 40; // 40px for gradient fade area
-            textContent.style.maxHeight = `${Math.max(textMaxHeight, 200)}px`; // Minimum 200px
+            // Set text content max-height to stay within the castle image height
+            const textMaxHeight = referenceHeight - otherElementsHeight - 40; // 40px for gradient fade area
+            textContent.style.maxHeight = `${Math.max(Math.min(textMaxHeight, referenceHeight - 40), 180)}px`; // clamp to image height, minimum 180px
         }
     }
 }
@@ -656,15 +555,21 @@ document.addEventListener('DOMContentLoaded', () => {
         btn.addEventListener('click', function() {
             const langContent = this.closest('.lang-content');
             const textContent = langContent.querySelector('.about-text-content');
+            const moreText = this.querySelector('.read-more-text');
+            const lessText = this.querySelector('.read-less-text');
             if (textContent) {
                 if (textContent.classList.contains('about-text-truncated')) {
                     textContent.classList.remove('about-text-truncated');
                     textContent.classList.add('about-text-expanded');
                     textContent.style.maxHeight = 'none';
+                    if (moreText) moreText.style.display = 'none';
+                    if (lessText) lessText.style.display = 'inline';
                 } else {
                     textContent.classList.remove('about-text-expanded');
                     textContent.classList.add('about-text-truncated');
                     setTextTruncatedHeight();
+                    if (moreText) moreText.style.display = 'inline';
+                    if (lessText) lessText.style.display = 'none';
                 }
             }
         });
@@ -711,6 +616,48 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     }
+    
+    // Hide "Your perfect escape..." on smallest mobile (480px and below)
+    function hideSecondSentence() {
+        const heroSubtitle = document.querySelector('.hero-subtitle');
+        if (!heroSubtitle) return;
+        
+        if (window.innerWidth <= 480) {
+            // Store original if not already stored
+            if (!heroSubtitle.hasAttribute('data-original')) {
+                heroSubtitle.setAttribute('data-original', heroSubtitle.innerHTML);
+            }
+            const text = heroSubtitle.getAttribute('data-original') || heroSubtitle.innerHTML;
+            // Split by <br> and keep only first part
+            if (text.includes('<br>')) {
+                const firstPart = text.split('<br>')[0].trim();
+                heroSubtitle.innerHTML = firstPart;
+            }
+        } else {
+            // Restore original text on larger screens
+            if (heroSubtitle.hasAttribute('data-original')) {
+                heroSubtitle.innerHTML = heroSubtitle.getAttribute('data-original');
+            }
+        }
+    }
+    
+    // Check on load and resize
+    hideSecondSentence();
+    window.addEventListener('resize', hideSecondSentence);
+    
+    // Re-hide when language changes (translation updates the content)
+    const allLangButtons = document.querySelectorAll('.lang-btn');
+    allLangButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            setTimeout(() => {
+                const heroSubtitle = document.querySelector('.hero-subtitle');
+                if (heroSubtitle) {
+                    heroSubtitle.removeAttribute('data-original'); // Clear stored original
+                    hideSecondSentence(); // Re-hide with new translation
+                }
+            }, 200);
+        });
+    });
     
     // Initial sync
     syncLanguageButtons();

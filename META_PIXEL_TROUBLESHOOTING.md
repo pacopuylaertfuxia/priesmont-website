@@ -15,12 +15,12 @@ Events Manager has a delay. Use Test Events for real-time viewing:
    - Or go directly to: https://business.facebook.com/events_manager2/list/pixel/2799036220300123/test_events
 
 3. **Enter Your Website URL:**
-   - In the "Test Events" page, enter: `domainedepriesmont.netlify.app`
+   - In the "Test Events" page, enter: `www.domainedepriesmont.com` (or your Vercel domain)
    - Click "Start Testing"
 
 4. **Interact with Your Site:**
    - Keep the Test Events page open
-   - In another tab, visit: https://domainedepriesmont.netlify.app
+   - In another tab, visit: https://www.domainedepriesmont.com (or your Vercel deployment URL)
    - Interact with the site:
      - Scroll to gallery → Should see `ViewContent`
      - Click "Book Now" → Should see `InitiateCheckout`
@@ -44,7 +44,7 @@ Regular events take 20-30 minutes to appear:
 Check if pixel is properly initialized:
 
 1. **Open browser console** (F12 or Right-click → Inspect → Console)
-2. **Visit your site:** https://domainedepriesmont.netlify.app
+2. **Visit your site:** https://www.domainedepriesmont.com (or your Vercel deployment URL)
 3. **Look for errors:**
    - Should see: `fbq('init', '2799036220300123')`
    - Should NOT see any red errors
@@ -82,7 +82,7 @@ Check if pixel is properly initialized:
 ## Quick Test:
 
 1. Open Test Events: https://business.facebook.com/events_manager2/list/pixel/2799036220300123/test_events
-2. Enter: `domainedepriesmont.netlify.app`
+2. Enter: `www.domainedepriesmont.com` (or your Vercel domain)
 3. Click "Start Testing"
 4. Visit your site in another tab
 5. Interact with site
@@ -91,5 +91,8 @@ Check if pixel is properly initialized:
 ---
 
 **Most likely:** Events are there but delayed. Use Test Events for real-time viewing!
+
+
+
 
 

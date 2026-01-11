@@ -3,7 +3,7 @@
 **Date:** Current  
 **Status:** ✅ **DEPLOYED** - Needs Testing & Content
 
-**Live Site:** https://domainedepriesmont.netlify.app  
+**Live Site:** https://www.domainedepriesmont.com (Vercel)  
 **GitHub:** https://github.com/pacopuylaertfuxia/priesmont-website
 
 ---
@@ -13,8 +13,8 @@
 ### Current State: ✅ **DEPLOYED & LIVE**
 
 **What's working:**
-- ✅ Website deployed to Netlify
-- ✅ Live at: https://domainedepriesmont.netlify.app
+- ✅ Website deployable via Vercel
+- ✅ Live at: https://www.domainedepriesmont.com (or your Vercel domain)
 - ✅ Git repository on GitHub
 - ✅ Auto-deployment configured (pushes auto-deploy)
 - ✅ HTTPS enabled automatically
@@ -99,7 +99,7 @@
 **Action Required:**
 1. **Test with Pixel Helper:**
    - Install [Facebook Pixel Helper](https://chrome.google.com/webstore/detail/facebook-pixel-helper/fdgfkebogiimcoedlicjlajpkdmockpc)
-   - Visit: https://domainedepriesmont.netlify.app
+   - Visit: https://www.domainedepriesmont.com (or your Vercel deployment URL)
    - Check Pixel Helper shows:
      - ✅ Pixel ID: `2799036220300123`
      - ✅ PageView event fires
@@ -142,13 +142,13 @@
 
 ## Quick Fix Commands
 
-### To deploy to Netlify (easiest):
+### To deploy on Vercel:
 ```bash
-# Install Netlify CLI
-npm install -g netlify-cli
+# Install Vercel CLI (or use Vercel dashboard import from GitHub)
+npm install -g vercel
 
-# Deploy
-netlify deploy --prod
+# Deploy (static site, served from root)
+vercel --prod
 ```
 
 ### To configure Meta Pixel:

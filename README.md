@@ -81,7 +81,7 @@ This website is fully integrated with Lodgify's booking system and channel manag
 
 ### Contact Form
 The contact form currently shows a success message. To make it functional:
-1. Set up a backend service (e.g., Formspree, Netlify Forms, or your own API)
+1. Set up a backend service (e.g., Formspree or your own API/edge function on Vercel)
 2. Update the form action in `script.js` to point to your endpoint
 3. Alternatively, integrate with Lodgify's API to create booking requests
 

@@ -2,8 +2,8 @@
 
 ## ✅ What We've Completed
 
-1. ✅ **Website deployed** - Live at: https://domainedepriesmont.netlify.app
-2. ✅ **Git connected** - Repository on GitHub, auto-deploys to Netlify
+1. ✅ **Website deployed** - Live via Vercel (use https://www.domainedepriesmont.com or your Vercel domain)
+2. ✅ **Git connected** - Repository on GitHub, auto-deploys via Vercel
 3. ✅ **Meta Pixel configured** - Pixel ID: `2799036220300123`
 4. ✅ **Lodgify widget embedded** - Booking widget is in the code
 
@@ -15,7 +15,7 @@
 
 **Verify tracking is working:**
 1. Install [Facebook Pixel Helper](https://chrome.google.com/webstore/detail/facebook-pixel-helper/fdgfkebogiimcoedlicjlajpkdmockpc)
-2. Visit: https://domainedepriesmont.netlify.app
+2. Visit: https://www.domainedepriesmont.com (or your Vercel deployment URL)
 3. Click Pixel Helper icon → Should show:
    - ✅ Pixel ID: `2799036220300123`
    - ✅ PageView event
@@ -34,7 +34,7 @@
 ### 2. Test Lodgify Bookings (30 minutes)
 
 **Critical - Verify bookings actually work:**
-1. Visit: https://domainedepriesmont.netlify.app
+1. Visit: https://www.domainedepriesmont.com (or your Vercel deployment URL)
 2. Go to "Book Now" section
 3. Check if booking widget loads
 4. Test the booking flow:
@@ -94,9 +94,9 @@ Based on `COMPARISON_REPORT.md`, add these sections:
 ## 🟢 Priority 3: Optimize & Polish
 
 ### 1. Custom Domain (Optional)
-- Connect `priesmont.com` to Netlify
-- Set up SSL certificate
-- Update DNS records
+- Connect `priesmont.com` in Vercel Domains
+- Set up SSL certificate (Vercel handles automatically)
+- Update DNS records per Vercel instructions
 
 ### 2. SEO Optimization
 - Add meta descriptions
@@ -172,5 +172,8 @@ Based on `COMPARISON_REPORT.md`, add these sections:
 ---
 
 **Start with testing!** Make sure everything works before adding new content.
+
+
+
 
 

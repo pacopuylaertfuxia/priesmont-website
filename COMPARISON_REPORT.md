@@ -1,8 +1,8 @@
-# Comparison Report: priesmont.com vs priesmont.netlify.app
+# Comparison Report: priesmont.com vs new Vercel site
 
 **Date:** Current  
 **Live Site:** [https://priesmont.com/](https://priesmont.com/)  
-**New Site:** [https://priesmont.netlify.app/](https://priesmont.netlify.app/)
+**New Site:** [https://www.domainedepriesmont.com](https://www.domainedepriesmont.com)
 
 ---
 
@@ -23,7 +23,7 @@
 12. **Reviews** - Guest reviews
 13. **Contact** - Contact information
 
-### priesmont.netlify.app Navigation:
+### New site navigation:
 1. **Home** ✅
 2. **About** ✅ (similar to "The Manoir")
 3. **Gallery** ✅
@@ -214,11 +214,14 @@
 1. **Review this report** and prioritize which sections to add
 2. **Gather content** for missing sections (text, photos, etc.)
 3. **Implement sections** one by one
-4. **Test on Netlify** after each addition
+4. **Test on Vercel** after each addition
 5. **Update navigation** as sections are added
 
 ---
 
 **Note:** The new site has a more modern design and better UX, but we need to ensure we don't lose important content from the old site. The goal is to combine the best of both: modern design + comprehensive content.
+
+
+
 
 
