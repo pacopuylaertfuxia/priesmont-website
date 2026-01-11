@@ -2038,13 +2038,16 @@ body:has(.lightbox.active) .navbar {
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
     -ms-overflow-style: none;
-    padding: 1rem 0;
-    margin-left: 0;
-    margin-right: 0;
+    margin-left: calc(-50vw + 50%);
+    margin-right: calc(-50vw + 50%);
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    padding-left: calc(50vw - 50% + 20px);
+    padding-right: calc(50vw - 50%);
     position: relative;
     z-index: 1;
-    scroll-padding-left: 0;
-    scroll-padding-right: 0;
+    scroll-padding-left: calc(50vw - 50% + 20px);
+    scroll-padding-right: calc(50vw - 50%);
     scroll-snap-type: x proximity;
 }
 
@@ -2622,10 +2625,12 @@ body:has(.lightbox.active) .navbar {
     -ms-overflow-style: none;
     padding-bottom: 2rem;
     padding-top: 1rem;
-    padding-left: 0;
-    padding-right: 0;
-    scroll-padding-left: 0;
-    scroll-padding-right: 0;
+    margin-left: calc(-50vw + 50%);
+    margin-right: calc(-50vw + 50%);
+    padding-left: calc(50vw - 50% + 20px);
+    padding-right: calc(50vw - 50%);
+    scroll-padding-left: calc(50vw - 50% + 20px);
+    scroll-padding-right: calc(50vw - 50%);
     scroll-snap-type: x proximity;
 }
 
