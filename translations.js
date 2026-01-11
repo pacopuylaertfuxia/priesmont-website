@@ -64,7 +64,15 @@ const translations = {
             ecoFriendlyTitle: "Eco-Friendly",
             ecoFriendlyDescription: "The manor is powered by solar panels, reflecting our commitment to sustainable and eco-friendly practices while maintaining modern comfort.",
             animalsTitle: "Resident Animals",
-            animalsDescription: "The terrain is home to various friendly animals, adding to the estate's charm and providing delightful encounters for guests of all ages."
+            animalsDescription: "The terrain is home to various friendly animals, adding to the estate's charm and providing delightful encounters for guests of all ages.",
+            parkingTitle: "Parking",
+            parkingDescription: "Convenient parking available for 20+ cars on-site, ensuring easy access for all guests and event attendees.",
+            evChargingTitle: "EV Charging",
+            evChargingDescription: "Electric vehicle charging stations available on-site, supporting sustainable travel for eco-conscious guests.",
+            professionalKitchenTitle: "Professional Kitchen",
+            professionalKitchenDescription: "Fully equipped industrial-grade kitchen suitable for professional catering standards, perfect for events of all sizes and culinary requirements.",
+            barbecuePitsTitle: "Barbecue Facilities",
+            barbecuePitsDescription: "Outdoor barbecue pits available on the grounds, ideal for al fresco dining and relaxed outdoor gatherings."
         },
         booking: {
             title: "Reserve Your Exclusive Stay",
@@ -136,6 +144,7 @@ const translations = {
             familyFeature3: "Private grounds for celebrations and activities",
             familyFeature4: "Fully equipped kitchen for family meals",
             familyFeature5: "Peaceful setting away from daily distractions",
+            familyFeature6: "Catering services available through trusted local partners, tailored to your event size and preferences",
             familyTag1: "Family Reunions",
             familyTag2: "Weddings",
             familyTag3: "Birthdays",
@@ -148,6 +157,8 @@ const translations = {
             businessFeature3: "Nature surroundings that inspire fresh thinking",
             businessFeature4: "Private setting for confidential discussions",
             businessFeature5: "Flexible spaces adaptable to your agenda",
+            businessFeature6: "Catering services available through trusted local partners, tailored to your event size and preferences",
+            businessFeature7: "Audiovisual equipment rental coordination—we connect you with trusted external AV providers for projectors, sound systems, and technical support"
             businessTag1: "Team Building",
             businessTag2: "Corporate Retreats",
             businessTag3: "Focus Groups",
@@ -246,7 +257,15 @@ const translations = {
             ecoFriendlyTitle: "Eco-Vriendelijk",
             ecoFriendlyDescription: "Het landhuis wordt aangedreven door zonnepanelen, wat onze inzet voor duurzame en milieuvriendelijke praktijken weerspiegelt, terwijl modern comfort behouden blijft.",
             animalsTitle: "Inwonende Dieren",
-            animalsDescription: "Het terrein is de thuisbasis van diverse vriendelijke dieren, wat bijdraagt aan de charme van het landgoed en leuke ontmoetingen biedt voor gasten van alle leeftijden."
+            animalsDescription: "Het terrein is de thuisbasis van diverse vriendelijke dieren, wat bijdraagt aan de charme van het landgoed en leuke ontmoetingen biedt voor gasten van alle leeftijden.",
+            parkingTitle: "Parking",
+            parkingDescription: "Handige parking beschikbaar voor 20+ auto's op het terrein, wat zorgt voor gemakkelijke toegang voor alle gasten en evenementbezoekers.",
+            evChargingTitle: "EV Oplaadpunten",
+            evChargingDescription: "Elektrische voertuig oplaadpunten beschikbaar op het terrein, ideaal voor duurzaam reizen voor milieubewuste gasten.",
+            professionalKitchenTitle: "Professionele Keuken",
+            professionalKitchenDescription: "Volledig uitgeruste industriële keuken geschikt voor professionele cateringstandaarden, perfect voor evenementen van alle groottes en culinaire vereisten.",
+            barbecuePitsTitle: "Barbecue Voorzieningen",
+            barbecuePitsDescription: "Buitenbarbecue voorzieningen beschikbaar op het terrein, ideaal voor al fresco dineren en ontspannen buitenbijeenkomsten."
         },
         booking: {
             title: "Reserveer Uw Exclusieve Verblijf",
@@ -318,6 +337,7 @@ const translations = {
             familyFeature3: "Privéterreinen voor vieringen en activiteiten",
             familyFeature4: "Volledig uitgeruste keuken voor familiediners",
             familyFeature5: "Rustige omgeving ver weg van dagelijkse afleidingen",
+            familyFeature6: "Cateringsdiensten beschikbaar via vertrouwde lokale partners, afgestemd op uw evenementgrootte en voorkeuren",
             familyTag1: "Familie Reünies",
             familyTag2: "Bruiloften",
             familyTag3: "Verjaardagen",
@@ -330,6 +350,8 @@ const translations = {
             businessFeature3: "Natuuromgeving die fris denken inspireert",
             businessFeature4: "Privéomgeving voor vertrouwelijke discussies",
             businessFeature5: "Flexibele ruimtes aanpasbaar aan uw agenda",
+            businessFeature6: "Cateringsdiensten beschikbaar via vertrouwde lokale partners, afgestemd op uw evenementgrootte en voorkeuren",
+            businessFeature7: "Audiovisuele apparatuur verhuur coördinatie—wij verbinden u met vertrouwde externe AV-leveranciers voor projectoren, geluidssystemen en technische ondersteuning"
             businessTag1: "Teambuilding",
             businessTag2: "Bedrijfsuitjes",
             businessTag3: "Focusgroepen",
@@ -428,7 +450,15 @@ const translations = {
             ecoFriendlyTitle: "Écologique",
             ecoFriendlyDescription: "Le manoir est alimenté par des panneaux solaires, reflétant notre engagement en faveur de pratiques durables et écologiques tout en maintenant un confort moderne.",
             animalsTitle: "Animaux Résidents",
-            animalsDescription: "Le terrain abrite divers animaux amicaux, ajoutant au charme du domaine et offrant des rencontres charmantes pour les invités de tous âges."
+            animalsDescription: "Le terrain abrite divers animaux amicaux, ajoutant au charme du domaine et offrant des rencontres charmantes pour les invités de tous âges.",
+            parkingTitle: "Parking",
+            parkingDescription: "Parking pratique disponible pour 20+ voitures sur place, assurant un accès facile pour tous les invités et participants aux événements.",
+            evChargingTitle: "Recharge pour Véhicules Électriques",
+            evChargingDescription: "Bornes de recharge pour véhicules électriques disponibles sur place, supportant les déplacements durables pour les invités soucieux de l'environnement.",
+            professionalKitchenTitle: "Cuisine Professionnelle",
+            professionalKitchenDescription: "Cuisine entièrement équipée de niveau industriel adaptée aux normes de restauration professionnelle, parfaite pour les événements de toutes tailles et exigences culinaires.",
+            barbecuePitsTitle: "Installations de Barbecue",
+            barbecuePitsDescription: "Barbecues extérieurs disponibles sur le domaine, idéaux pour les repas en plein air et les rassemblements extérieurs décontractés."
         },
         booking: {
             title: "Réservez Votre Séjour Exclusif",
@@ -500,6 +530,7 @@ const translations = {
             familyFeature3: "Terrains privés pour les célébrations et activités",
             familyFeature4: "Cuisine entièrement équipée pour les repas familiaux",
             familyFeature5: "Cadre paisible loin des distractions quotidiennes",
+            familyFeature6: "Services de restauration disponibles via des partenaires locaux de confiance, adaptés à la taille de votre événement et à vos préférences",
             familyTag1: "Retrouvailles Familiales",
             familyTag2: "Mariages",
             familyTag3: "Anniversaires",
@@ -512,6 +543,8 @@ const translations = {
             businessFeature3: "Environnement naturel qui inspire la réflexion fraîche",
             businessFeature4: "Cadre privé pour les discussions confidentielles",
             businessFeature5: "Espaces flexibles adaptables à votre programme",
+            businessFeature6: "Services de restauration disponibles via des partenaires locaux de confiance, adaptés à la taille de votre événement et à vos préférences",
+            businessFeature7: "Coordination de location d'équipements audiovisuels—nous vous mettons en contact avec des fournisseurs AV externes de confiance pour projecteurs, systèmes sonores et support technique"
             businessTag1: "Team Building",
             businessTag2: "Retraites d'Entreprise",
             businessTag3: "Groupes de Discussion",
@@ -637,6 +670,14 @@ function setLanguage(lang) {
     document.querySelectorAll('[data-translate="features.ecoFriendlyDescription"]').forEach(el => el.textContent = t.features.ecoFriendlyDescription);
     document.querySelectorAll('[data-translate="features.animalsTitle"]').forEach(el => el.textContent = t.features.animalsTitle);
     document.querySelectorAll('[data-translate="features.animalsDescription"]').forEach(el => el.textContent = t.features.animalsDescription);
+    document.querySelectorAll('[data-translate="features.parkingTitle"]').forEach(el => el.textContent = t.features.parkingTitle);
+    document.querySelectorAll('[data-translate="features.parkingDescription"]').forEach(el => el.textContent = t.features.parkingDescription);
+    document.querySelectorAll('[data-translate="features.evChargingTitle"]').forEach(el => el.textContent = t.features.evChargingTitle);
+    document.querySelectorAll('[data-translate="features.evChargingDescription"]').forEach(el => el.textContent = t.features.evChargingDescription);
+    document.querySelectorAll('[data-translate="features.professionalKitchenTitle"]').forEach(el => el.textContent = t.features.professionalKitchenTitle);
+    document.querySelectorAll('[data-translate="features.professionalKitchenDescription"]').forEach(el => el.textContent = t.features.professionalKitchenDescription);
+    document.querySelectorAll('[data-translate="features.barbecuePitsTitle"]').forEach(el => el.textContent = t.features.barbecuePitsTitle);
+    document.querySelectorAll('[data-translate="features.barbecuePitsDescription"]').forEach(el => el.textContent = t.features.barbecuePitsDescription);
     
     // Update gallery section
     document.querySelectorAll('[data-translate="gallery.title"]').forEach(el => el.textContent = t.gallery.title);
@@ -681,6 +722,7 @@ function setLanguage(lang) {
     document.querySelectorAll('[data-translate="useCases.familyFeature3"]').forEach(el => el.textContent = t.useCases.familyFeature3);
     document.querySelectorAll('[data-translate="useCases.familyFeature4"]').forEach(el => el.textContent = t.useCases.familyFeature4);
     document.querySelectorAll('[data-translate="useCases.familyFeature5"]').forEach(el => el.textContent = t.useCases.familyFeature5);
+    document.querySelectorAll('[data-translate="useCases.familyFeature6"]').forEach(el => el.textContent = t.useCases.familyFeature6);
     document.querySelectorAll('[data-translate="useCases.familyTag1"]').forEach(el => el.textContent = t.useCases.familyTag1);
     document.querySelectorAll('[data-translate="useCases.familyTag2"]').forEach(el => el.textContent = t.useCases.familyTag2);
     document.querySelectorAll('[data-translate="useCases.familyTag3"]').forEach(el => el.textContent = t.useCases.familyTag3);
@@ -693,6 +735,8 @@ function setLanguage(lang) {
     document.querySelectorAll('[data-translate="useCases.businessFeature3"]').forEach(el => el.textContent = t.useCases.businessFeature3);
     document.querySelectorAll('[data-translate="useCases.businessFeature4"]').forEach(el => el.textContent = t.useCases.businessFeature4);
     document.querySelectorAll('[data-translate="useCases.businessFeature5"]').forEach(el => el.textContent = t.useCases.businessFeature5);
+    document.querySelectorAll('[data-translate="useCases.businessFeature6"]').forEach(el => el.textContent = t.useCases.businessFeature6);
+    document.querySelectorAll('[data-translate="useCases.businessFeature7"]').forEach(el => el.textContent = t.useCases.businessFeature7);
     document.querySelectorAll('[data-translate="useCases.businessTag1"]').forEach(el => el.textContent = t.useCases.businessTag1);
     document.querySelectorAll('[data-translate="useCases.businessTag2"]').forEach(el => el.textContent = t.useCases.businessTag2);
     document.querySelectorAll('[data-translate="useCases.businessTag3"]').forEach(el => el.textContent = t.useCases.businessTag3);
