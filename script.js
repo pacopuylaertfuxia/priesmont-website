@@ -755,8 +755,10 @@ document.addEventListener('DOMContentLoaded', () => {
         
         // Resume when interaction ends
         const resumeOnLeave = () => {
-            setTimeout(() => {
+            clearTimeout(userScrollTimeout);
+            userScrollTimeout = setTimeout(() => {
                 isPaused = false;
+                isUserScrolling = false;
             }, 300);
         };
         
