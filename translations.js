@@ -105,11 +105,53 @@ const translations = {
         },
         surroundings: {
             title: "Surroundings & Attractions",
-            subtitle: "Explore the beauty and activities near Priesmont"
+            subtitle: "Explore the beauty and activities near Priesmont",
+            lacDoyardsTitle: "Lac des Doyards",
+            lacDoyardsDescription: "A beautiful lake perfect for swimming, fishing, and water activities. Just a short drive from Priesmont, it's an ideal spot for a day trip with family or friends.",
+            signalBotrangeTitle: "Signal de Botrange",
+            signalBotrangeDescription: "The highest point in Belgium at 694 meters, offering breathtaking panoramic views of the Ardennes. Perfect for hiking enthusiasts and nature lovers seeking spectacular vistas.",
+            stavelotTitle: "Abbey of Stavelot",
+            stavelotDescription: "A historic Benedictine abbey founded in the 7th century, now home to fascinating museums and cultural exhibitions. Discover the rich history of the region through its art, architecture, and artifacts.",
+            hikingTrailsTitle: "Hiking Trails",
+            hikingTrailsDescription: "The Ardennes is crisscrossed with well-marked hiking trails suitable for all levels. From gentle walks through forests to challenging mountain paths, there's something for every outdoor enthusiast.",
+            localVillagesTitle: "Local Villages",
+            localVillagesDescription: "Explore charming villages like Vielsalm, Malmedy, and Spa, each offering unique shops, restaurants, and local markets. Experience authentic Belgian culture and cuisine.",
+            cyclingRoutesTitle: "Cycling Routes",
+            cyclingRoutesDescription: "The region offers excellent cycling opportunities, from leisurely rides through the countryside to challenging mountain bike trails. Rent bikes locally or bring your own.",
+            aquaMundoTitle: "Aqua Mundo du Center Parcs Les Ardennes",
+            aquaMundoDescription: "Experience a tropical water paradise at this spectacular indoor water park. With slides, lazy rivers, and pools for all ages, it's the perfect family destination for a fun-filled day, especially during cooler months.",
+            avenatureTitle: "Avenature",
+            avenatureDescription: "Challenge yourself at this thrilling high ropes course set in the heart of the Ardennes forest. Navigate suspended obstacles, wooden platforms, and rope bridges high among the trees. Perfect for adventure seekers and families looking for an exciting outdoor activity.",
+            actionCenterTitle: "ActionCenter Gokarting",
+            actionCenterDescription: "Experience the thrill of go-karting at ActionCenter. Race around professional tracks with friends and family. Perfect for adrenaline enthusiasts and competitive spirits looking for an exciting activity near Priesmont."
         },
         useCases: {
             title: "Perfect For Every Occasion",
-            subtitle: "Whether celebrating life's milestones or building stronger teams, Priesmont adapts to your vision"
+            subtitle: "Whether celebrating life's milestones or building stronger teams, Priesmont adapts to your vision",
+            familyTitle: "Family Gatherings & Celebrations",
+            familyDescription: "Create lasting memories in a space designed for togetherness. Priesmont's 18 rooms and expansive grounds provide the perfect backdrop for reunions, milestone birthdays, intimate weddings, and multi-generational celebrations.",
+            familyFeature1: "Ample space for extended family and friends",
+            familyFeature2: "Indoor and outdoor pools for all ages",
+            familyFeature3: "Private grounds for celebrations and activities",
+            familyFeature4: "Fully equipped kitchen for family meals",
+            familyFeature5: "Peaceful setting away from daily distractions",
+            familyTag1: "Family Reunions",
+            familyTag2: "Weddings",
+            familyTag3: "Birthdays",
+            familyTag4: "Anniversaries",
+            familyTag5: "Celebrations",
+            businessTitle: "Business Retreats & Team Events",
+            businessDescription: "Elevate your team's performance in an inspiring environment that fosters creativity and collaboration. Priesmont offers the perfect balance of professional amenities and natural tranquility for productive off-sites, strategic planning sessions, and meaningful team building.",
+            businessFeature1: "Spacious rooms for breakout sessions and workshops",
+            businessFeature2: "Relaxation areas including sauna and pools",
+            businessFeature3: "Nature surroundings that inspire fresh thinking",
+            businessFeature4: "Private setting for confidential discussions",
+            businessFeature5: "Flexible spaces adaptable to your agenda",
+            businessTag1: "Team Building",
+            businessTag2: "Corporate Retreats",
+            businessTag3: "Focus Groups",
+            businessTag4: "Strategic Planning",
+            businessTag5: "Off-Sites"
         },
         testimonials: {
             title: "What Our Guests Say",
@@ -244,11 +286,53 @@ const translations = {
         },
         surroundings: {
             title: "Omgeving & Attracties",
-            subtitle: "Verken de schoonheid en activiteiten nabij Priesmont"
+            subtitle: "Verken de schoonheid en activiteiten nabij Priesmont",
+            lacDoyardsTitle: "Lac des Doyards",
+            lacDoyardsDescription: "Een prachtig meer perfect voor zwemmen, vissen en wateractiviteiten. Op korte afstand van Priesmont, is het een ideale plek voor een dagtrip met familie of vrienden.",
+            signalBotrangeTitle: "Signal de Botrange",
+            signalBotrangeDescription: "Het hoogste punt van België op 694 meter, met adembenemende panoramische uitzichten op de Ardennen. Perfect voor wandelaars en natuurliefhebbers die spectaculaire vergezichten zoeken.",
+            stavelotTitle: "Abdij van Stavelot",
+            stavelotDescription: "Een historische benedictijner abdij uit de 7e eeuw, nu de thuisbasis van fascinerende musea en culturele tentoonstellingen. Ontdek de rijke geschiedenis van de regio door middel van kunst, architectuur en artefacten.",
+            hikingTrailsTitle: "Wandelpaden",
+            hikingTrailsDescription: "De Ardennen worden doorkruist met goed gemarkeerde wandelpaden geschikt voor alle niveaus. Van zachte wandelingen door bossen tot uitdagende bergpaden, er is iets voor elke buitenliefhebber.",
+            localVillagesTitle: "Lokale Dorpen",
+            localVillagesDescription: "Verken charmante dorpen zoals Vielsalm, Malmedy en Spa, elk met unieke winkels, restaurants en lokale markten. Ervaar authentieke Belgische cultuur en keuken.",
+            cyclingRoutesTitle: "Fietsroutes",
+            cyclingRoutesDescription: "De regio biedt uitstekende fietsmogelijkheden, van ontspannende ritten door het platteland tot uitdagende mountainbikeroutes. Huur fietsen lokaal of breng uw eigen fietsen mee.",
+            aquaMundoTitle: "Aqua Mundo du Center Parcs Les Ardennes",
+            aquaMundoDescription: "Ervaar een tropisch waterparadijs in dit spectaculaire overdekte waterpark. Met glijbanen, luie rivieren en zwembaden voor alle leeftijden, is het de perfecte familiedestinatie voor een leuke dag, vooral tijdens koudere maanden.",
+            avenatureTitle: "Avenature",
+            avenatureDescription: "Daag uzelf uit op dit spannende hoogtouwparcours in het hart van het Ardense bos. Navigeer door hangende obstakels, houten platforms en touwbruggen hoog tussen de bomen. Perfect voor avonturiers en gezinnen die op zoek zijn naar een spannende buitensportactiviteit.",
+            actionCenterTitle: "ActionCenter Gokarting",
+            actionCenterDescription: "Ervaar de sensatie van gokarten bij ActionCenter. Race rond professionele banen met vrienden en familie. Perfect voor adrenaline liefhebbers en competitieve geesten die op zoek zijn naar een spannende activiteit nabij Priesmont."
         },
         useCases: {
             title: "Perfect Voor Elke Gelegenheid",
-            subtitle: "Of u nu levensmijlpalen viert of sterkere teams bouwt, Priesmont past zich aan uw visie aan"
+            subtitle: "Of u nu levensmijlpalen viert of sterkere teams bouwt, Priesmont past zich aan uw visie aan",
+            familyTitle: "Familiebijeenkomsten & Vieringen",
+            familyDescription: "Creëer blijvende herinneringen in een ruimte ontworpen voor saamhorigheid. De 18 kamers en uitgestrekte terreinen van Priesmont bieden de perfecte achtergrond voor reünies, verjaardagen, intieme bruiloften en meergeneratie vieringen.",
+            familyFeature1: "Ruime ruimte voor uitgebreide familie en vrienden",
+            familyFeature2: "Binnen- en buitenzwembaden voor alle leeftijden",
+            familyFeature3: "Privéterreinen voor vieringen en activiteiten",
+            familyFeature4: "Volledig uitgeruste keuken voor familiediners",
+            familyFeature5: "Rustige omgeving ver weg van dagelijkse afleidingen",
+            familyTag1: "Familie Reünies",
+            familyTag2: "Bruiloften",
+            familyTag3: "Verjaardagen",
+            familyTag4: "Jubilea",
+            familyTag5: "Vieringen",
+            businessTitle: "Bedrijfsuitjes & Teamevenementen",
+            businessDescription: "Verhoog de prestaties van uw team in een inspirerende omgeving die creativiteit en samenwerking bevordert. Priesmont biedt de perfecte balans tussen professionele voorzieningen en natuurlijke rust voor productieve off-sites, strategische planningssessies en betekenisvolle teambuilding.",
+            businessFeature1: "Ruime kamers voor breakoutsessies en workshops",
+            businessFeature2: "Ontspanningsruimtes inclusief sauna en zwembaden",
+            businessFeature3: "Natuuromgeving die fris denken inspireert",
+            businessFeature4: "Privéomgeving voor vertrouwelijke discussies",
+            businessFeature5: "Flexibele ruimtes aanpasbaar aan uw agenda",
+            businessTag1: "Teambuilding",
+            businessTag2: "Bedrijfsuitjes",
+            businessTag3: "Focusgroepen",
+            businessTag4: "Strategische Planning",
+            businessTag5: "Off-Sites"
         },
         testimonials: {
             title: "Wat Onze Gasten Zeggen",
@@ -383,11 +467,53 @@ const translations = {
         },
         surroundings: {
             title: "Environnement & Attractions",
-            subtitle: "Explorez la beauté et les activités près de Priesmont"
+            subtitle: "Explorez la beauté et les activités près de Priesmont",
+            lacDoyardsTitle: "Lac des Doyards",
+            lacDoyardsDescription: "Un magnifique lac parfait pour la baignade, la pêche et les activités nautiques. À quelques minutes de Priesmont, c'est un endroit idéal pour une excursion d'une journée en famille ou entre amis.",
+            signalBotrangeTitle: "Signal de Botrange",
+            signalBotrangeDescription: "Le point culminant de la Belgique à 694 mètres, offrant des vues panoramiques à couper le souffle sur les Ardennes. Parfait pour les amateurs de randonnée et les amoureux de la nature en quête de vues spectaculaires.",
+            stavelotTitle: "Abbaye de Stavelot",
+            stavelotDescription: "Une abbaye bénédictine historique fondée au 7e siècle, aujourd'hui abritant des musées fascinants et des expositions culturelles. Découvrez la riche histoire de la région à travers son art, son architecture et ses artefacts.",
+            hikingTrailsTitle: "Sentiers de Randonnée",
+            hikingTrailsDescription: "Les Ardennes sont sillonnées de sentiers de randonnée bien balisés adaptés à tous les niveaux. Des promenades tranquilles à travers les forêts aux sentiers de montagne difficiles, il y en a pour tous les amateurs de plein air.",
+            localVillagesTitle: "Villages Locaux",
+            localVillagesDescription: "Explorez des villages charmants comme Vielsalm, Malmedy et Spa, chacun offrant des magasins, des restaurants et des marchés locaux uniques. Découvrez la culture et la cuisine belges authentiques.",
+            cyclingRoutesTitle: "Itinéraires Cyclables",
+            cyclingRoutesDescription: "La région offre d'excellentes opportunités de cyclisme, des promenades tranquilles à travers la campagne aux sentiers de VTT difficiles. Louez des vélos localement ou apportez les vôtres.",
+            aquaMundoTitle: "Aqua Mundo du Center Parcs Les Ardennes",
+            aquaMundoDescription: "Découvrez un paradis aquatique tropical dans ce spectaculaire parc aquatique couvert. Avec des toboggans, des rivières paresseuses et des piscines pour tous les âges, c'est la destination familiale parfaite pour une journée amusante, surtout pendant les mois plus frais.",
+            avenatureTitle: "Avenature",
+            avenatureDescription: "Défiez-vous sur ce parcours d'accrobranche palpitant situé au cœur de la forêt ardennaise. Naviguez parmi des obstacles suspendus, des plateformes en bois et des ponts de corde haut dans les arbres. Parfait pour les amateurs d'aventure et les familles à la recherche d'une activité de plein air excitante.",
+            actionCenterTitle: "ActionCenter Gokarting",
+            actionCenterDescription: "Vivez l'excitation du karting à ActionCenter. Faites la course sur des pistes professionnelles avec vos amis et votre famille. Parfait pour les amateurs d'adrénaline et les esprits compétitifs à la recherche d'une activité excitante près de Priesmont."
         },
         useCases: {
             title: "Parfait Pour Toutes Les Occasions",
-            subtitle: "Que vous célébriez les étapes importantes de la vie ou construisiez des équipes plus fortes, Priesmont s'adapte à votre vision"
+            subtitle: "Que vous célébriez les étapes importantes de la vie ou construisiez des équipes plus fortes, Priesmont s'adapte à votre vision",
+            familyTitle: "Réunions Familiales & Célébrations",
+            familyDescription: "Créez des souvenirs durables dans un espace conçu pour la convivialité. Les 18 chambres et les vastes terrains de Priesmont offrent le cadre parfait pour les retrouvailles, les anniversaires importants, les mariages intimes et les célébrations multi-générationnelles.",
+            familyFeature1: "Espace généreux pour la famille élargie et les amis",
+            familyFeature2: "Piscines intérieure et extérieure pour tous les âges",
+            familyFeature3: "Terrains privés pour les célébrations et activités",
+            familyFeature4: "Cuisine entièrement équipée pour les repas familiaux",
+            familyFeature5: "Cadre paisible loin des distractions quotidiennes",
+            familyTag1: "Retrouvailles Familiales",
+            familyTag2: "Mariages",
+            familyTag3: "Anniversaires",
+            familyTag4: "Anniversaires de Mariage",
+            familyTag5: "Célébrations",
+            businessTitle: "Retraites d'Entreprise & Événements d'Équipe",
+            businessDescription: "Améliorez les performances de votre équipe dans un environnement inspirant qui favorise la créativité et la collaboration. Priesmont offre l'équilibre parfait entre équipements professionnels et tranquillité naturelle pour des séminaires productifs, des sessions de planification stratégique et du team building significatif.",
+            businessFeature1: "Chambres spacieuses pour les sessions de travail et ateliers",
+            businessFeature2: "Espaces de détente incluant sauna et piscines",
+            businessFeature3: "Environnement naturel qui inspire la réflexion fraîche",
+            businessFeature4: "Cadre privé pour les discussions confidentielles",
+            businessFeature5: "Espaces flexibles adaptables à votre programme",
+            businessTag1: "Team Building",
+            businessTag2: "Retraites d'Entreprise",
+            businessTag3: "Groupes de Discussion",
+            businessTag4: "Planification Stratégique",
+            businessTag5: "Séminaires"
         },
         testimonials: {
             title: "Ce Que Disent Nos Invités",
@@ -523,10 +649,52 @@ function setLanguage(lang) {
     // Update surroundings section
     document.querySelectorAll('[data-translate="surroundings.title"]').forEach(el => el.textContent = t.surroundings.title);
     document.querySelectorAll('[data-translate="surroundings.subtitle"]').forEach(el => el.textContent = t.surroundings.subtitle);
+    document.querySelectorAll('[data-translate="surroundings.lacDoyardsTitle"]').forEach(el => el.textContent = t.surroundings.lacDoyardsTitle);
+    document.querySelectorAll('[data-translate="surroundings.lacDoyardsDescription"]').forEach(el => el.textContent = t.surroundings.lacDoyardsDescription);
+    document.querySelectorAll('[data-translate="surroundings.signalBotrangeTitle"]').forEach(el => el.textContent = t.surroundings.signalBotrangeTitle);
+    document.querySelectorAll('[data-translate="surroundings.signalBotrangeDescription"]').forEach(el => el.textContent = t.surroundings.signalBotrangeDescription);
+    document.querySelectorAll('[data-translate="surroundings.stavelotTitle"]').forEach(el => el.textContent = t.surroundings.stavelotTitle);
+    document.querySelectorAll('[data-translate="surroundings.stavelotDescription"]').forEach(el => el.textContent = t.surroundings.stavelotDescription);
+    document.querySelectorAll('[data-translate="surroundings.hikingTrailsTitle"]').forEach(el => el.textContent = t.surroundings.hikingTrailsTitle);
+    document.querySelectorAll('[data-translate="surroundings.hikingTrailsDescription"]').forEach(el => el.textContent = t.surroundings.hikingTrailsDescription);
+    document.querySelectorAll('[data-translate="surroundings.localVillagesTitle"]').forEach(el => el.textContent = t.surroundings.localVillagesTitle);
+    document.querySelectorAll('[data-translate="surroundings.localVillagesDescription"]').forEach(el => el.textContent = t.surroundings.localVillagesDescription);
+    document.querySelectorAll('[data-translate="surroundings.cyclingRoutesTitle"]').forEach(el => el.textContent = t.surroundings.cyclingRoutesTitle);
+    document.querySelectorAll('[data-translate="surroundings.cyclingRoutesDescription"]').forEach(el => el.textContent = t.surroundings.cyclingRoutesDescription);
+    document.querySelectorAll('[data-translate="surroundings.aquaMundoTitle"]').forEach(el => el.textContent = t.surroundings.aquaMundoTitle);
+    document.querySelectorAll('[data-translate="surroundings.aquaMundoDescription"]').forEach(el => el.textContent = t.surroundings.aquaMundoDescription);
+    document.querySelectorAll('[data-translate="surroundings.avenatureTitle"]').forEach(el => el.textContent = t.surroundings.avenatureTitle);
+    document.querySelectorAll('[data-translate="surroundings.avenatureDescription"]').forEach(el => el.textContent = t.surroundings.avenatureDescription);
+    document.querySelectorAll('[data-translate="surroundings.actionCenterTitle"]').forEach(el => el.textContent = t.surroundings.actionCenterTitle);
+    document.querySelectorAll('[data-translate="surroundings.actionCenterDescription"]').forEach(el => el.textContent = t.surroundings.actionCenterDescription);
     
     // Update use cases section
     document.querySelectorAll('[data-translate="useCases.title"]').forEach(el => el.textContent = t.useCases.title);
     document.querySelectorAll('[data-translate="useCases.subtitle"]').forEach(el => el.textContent = t.useCases.subtitle);
+    document.querySelectorAll('[data-translate="useCases.familyTitle"]').forEach(el => el.textContent = t.useCases.familyTitle);
+    document.querySelectorAll('[data-translate="useCases.familyDescription"]').forEach(el => el.textContent = t.useCases.familyDescription);
+    document.querySelectorAll('[data-translate="useCases.familyFeature1"]').forEach(el => el.textContent = t.useCases.familyFeature1);
+    document.querySelectorAll('[data-translate="useCases.familyFeature2"]').forEach(el => el.textContent = t.useCases.familyFeature2);
+    document.querySelectorAll('[data-translate="useCases.familyFeature3"]').forEach(el => el.textContent = t.useCases.familyFeature3);
+    document.querySelectorAll('[data-translate="useCases.familyFeature4"]').forEach(el => el.textContent = t.useCases.familyFeature4);
+    document.querySelectorAll('[data-translate="useCases.familyFeature5"]').forEach(el => el.textContent = t.useCases.familyFeature5);
+    document.querySelectorAll('[data-translate="useCases.familyTag1"]').forEach(el => el.textContent = t.useCases.familyTag1);
+    document.querySelectorAll('[data-translate="useCases.familyTag2"]').forEach(el => el.textContent = t.useCases.familyTag2);
+    document.querySelectorAll('[data-translate="useCases.familyTag3"]').forEach(el => el.textContent = t.useCases.familyTag3);
+    document.querySelectorAll('[data-translate="useCases.familyTag4"]').forEach(el => el.textContent = t.useCases.familyTag4);
+    document.querySelectorAll('[data-translate="useCases.familyTag5"]').forEach(el => el.textContent = t.useCases.familyTag5);
+    document.querySelectorAll('[data-translate="useCases.businessTitle"]').forEach(el => el.textContent = t.useCases.businessTitle);
+    document.querySelectorAll('[data-translate="useCases.businessDescription"]').forEach(el => el.textContent = t.useCases.businessDescription);
+    document.querySelectorAll('[data-translate="useCases.businessFeature1"]').forEach(el => el.textContent = t.useCases.businessFeature1);
+    document.querySelectorAll('[data-translate="useCases.businessFeature2"]').forEach(el => el.textContent = t.useCases.businessFeature2);
+    document.querySelectorAll('[data-translate="useCases.businessFeature3"]').forEach(el => el.textContent = t.useCases.businessFeature3);
+    document.querySelectorAll('[data-translate="useCases.businessFeature4"]').forEach(el => el.textContent = t.useCases.businessFeature4);
+    document.querySelectorAll('[data-translate="useCases.businessFeature5"]').forEach(el => el.textContent = t.useCases.businessFeature5);
+    document.querySelectorAll('[data-translate="useCases.businessTag1"]').forEach(el => el.textContent = t.useCases.businessTag1);
+    document.querySelectorAll('[data-translate="useCases.businessTag2"]').forEach(el => el.textContent = t.useCases.businessTag2);
+    document.querySelectorAll('[data-translate="useCases.businessTag3"]').forEach(el => el.textContent = t.useCases.businessTag3);
+    document.querySelectorAll('[data-translate="useCases.businessTag4"]').forEach(el => el.textContent = t.useCases.businessTag4);
+    document.querySelectorAll('[data-translate="useCases.businessTag5"]').forEach(el => el.textContent = t.useCases.businessTag5);
     
     // Update testimonials section
     document.querySelectorAll('[data-translate="testimonials.title"]').forEach(el => el.textContent = t.testimonials.title);
