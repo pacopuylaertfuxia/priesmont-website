@@ -2111,9 +2111,41 @@ body:has(.lightbox.active) .navbar {
     font-size: 1rem;
     line-height: 1.75;
     color: var(--text-dark);
-    margin-bottom: 2rem;
+    margin-bottom: 0.75rem;
     letter-spacing: -0.01em;
     flex-grow: 1;
+}
+
+.testimonial-text-truncated {
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    max-height: calc(1.75em * 4);
+}
+
+.testimonial-card.expanded .testimonial-text-truncated {
+    display: block;
+    -webkit-line-clamp: none;
+    max-height: none;
+}
+
+.testimonial-read-more-btn {
+    background: none;
+    border: none;
+    color: #dc2626;
+    font-size: 0.8125rem;
+    font-weight: 500;
+    padding: 0.25rem 0;
+    margin-bottom: 1.25rem;
+    cursor: pointer;
+    align-self: flex-start;
+    transition: opacity 0.2s ease;
+    letter-spacing: -0.01em;
+}
+
+.testimonial-read-more-btn:hover {
+    opacity: 0.7;
 }
 
 .testimonial-author {

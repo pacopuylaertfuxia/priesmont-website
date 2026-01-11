@@ -405,6 +405,40 @@ window.addEventListener('load', () => {
     }, 100);
 });
 
+// Testimonials Read More/Less functionality
+document.addEventListener('DOMContentLoaded', () => {
+    const testimonialCards = document.querySelectorAll('.testimonial-card');
+    
+    testimonialCards.forEach(card => {
+        const textElement = card.querySelector('.testimonial-text-truncated');
+        const button = card.querySelector('.testimonial-read-more-btn');
+        
+        if (!textElement || !button) return;
+        
+        // Check if text needs truncation
+        const fullHeight = textElement.scrollHeight;
+        const lineHeight = parseFloat(getComputedStyle(textElement).lineHeight);
+        const maxHeight = lineHeight * 4;
+        
+        if (fullHeight > maxHeight) {
+            button.style.display = 'block';
+            button.textContent = 'Read more';
+            
+            button.addEventListener('click', () => {
+                const isExpanded = card.classList.contains('expanded');
+                
+                if (isExpanded) {
+                    card.classList.remove('expanded');
+                    button.textContent = 'Read more';
+                } else {
+                    card.classList.add('expanded');
+                    button.textContent = 'Read less';
+                }
+            });
+        }
+    });
+});
+
 // Service card hover effect enhancement
 document.querySelectorAll('.service-card').forEach(card => {
     card.addEventListener('mouseenter', function() {
