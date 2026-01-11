@@ -90,7 +90,8 @@ const translations = {
             email: "Email",
             phone: "Phone",
             message: "Message",
-            send: "Request Booking"
+            send: "Request Booking",
+            getInTouch: "Get in touch"
         },
         gallery: {
             title: "Gallery",
@@ -271,7 +272,8 @@ const translations = {
             email: "E-mail",
             phone: "Telefoon",
             message: "Bericht",
-            send: "Boekingsverzoek"
+            send: "Boekingsverzoek",
+            getInTouch: "Neem contact op"
         },
         gallery: {
             title: "Galerij",
@@ -452,7 +454,8 @@ const translations = {
             email: "E-mail",
             phone: "Téléphone",
             message: "Message",
-            send: "Demande de Réservation"
+            send: "Demande de Réservation",
+            getInTouch: "Contactez-nous"
         },
         gallery: {
             title: "Galerie",
@@ -780,6 +783,7 @@ function setLanguage(lang) {
     // Update contact section
     document.querySelectorAll('[data-translate="contact.title"]').forEach(el => el.textContent = t.contact.title);
     document.querySelectorAll('[data-translate="contact.subtitle"]').forEach(el => el.textContent = t.contact.subtitle);
+    document.querySelectorAll('[data-translate="contact.getInTouch"]').forEach(el => el.textContent = t.contact.getInTouch);
     
     // Update form labels
     document.querySelectorAll('[data-translate="contact.name"]').forEach(el => {
