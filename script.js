@@ -707,74 +707,56 @@ document.addEventListener('DOMContentLoaded', () => {
         
         let animationId = null;
         let isPaused = false;
-        let isUserScrolling = false;
         let scrollDirection = index === 0 ? 1 : -1; // Row 1 scrolls left (positive), Row 2 scrolls right (negative)
         let scrollSpeed = 0.5; // Pixels per frame (slow)
-        let userScrollTimeout = null;
+        let halfWidth = 0;
         
-        // Calculate half width for infinite scroll
-        const halfWidth = track.scrollWidth / 2;
-        
-        // Initialize scroll position
-        row.scrollLeft = index === 0 ? 0 : halfWidth;
-        
-        // Auto-scroll animation
-        const animate = () => {
-            if (!isPaused && !isUserScrolling) {
-                row.scrollLeft += scrollDirection * scrollSpeed;
-                
-                // Reset position for infinite scroll
-                if (index === 0) {
-                    // Row 1: scrolls left (increasing scrollLeft)
-                    if (row.scrollLeft >= halfWidth) {
-                        row.scrollLeft = 0;
-                    }
-                } else {
-                    // Row 2: scrolls right (decreasing scrollLeft)
-                    if (row.scrollLeft <= 0) {
-                        row.scrollLeft = halfWidth;
+        // Wait for layout to calculate proper widths
+        setTimeout(() => {
+            // Calculate half width for infinite scroll
+            halfWidth = track.scrollWidth / 2;
+            
+            // Initialize scroll position
+            row.scrollLeft = index === 0 ? 0 : halfWidth;
+            
+            // Auto-scroll animation
+            const animate = () => {
+                if (!isPaused) {
+                    row.scrollLeft += scrollDirection * scrollSpeed;
+                    
+                    // Reset position for infinite scroll
+                    if (index === 0) {
+                        // Row 1: scrolls left (increasing scrollLeft)
+                        if (row.scrollLeft >= halfWidth) {
+                            row.scrollLeft = 0;
+                        }
+                    } else {
+                        // Row 2: scrolls right (decreasing scrollLeft)
+                        if (row.scrollLeft <= 0) {
+                            row.scrollLeft = halfWidth;
+                        }
                     }
                 }
-            }
-            animationId = requestAnimationFrame(animate);
-        };
-        
-        // Start animation
-        animate();
+                animationId = requestAnimationFrame(animate);
+            };
+            
+            // Start animation
+            animate();
+        }, 100);
         
         // Pause on user interaction
         const pauseOnInteraction = () => {
             isPaused = true;
-            isUserScrolling = true;
-            clearTimeout(userScrollTimeout);
-            
-            userScrollTimeout = setTimeout(() => {
-                isUserScrolling = false;
-            }, 150);
         };
         
         // Resume when interaction ends
         const resumeOnLeave = () => {
-            clearTimeout(userScrollTimeout);
-            userScrollTimeout = setTimeout(() => {
-                isPaused = false;
-                isUserScrolling = false;
-            }, 300);
+            isPaused = false;
         };
         
         // Mouse events
         row.addEventListener('mouseenter', pauseOnInteraction);
         row.addEventListener('mouseleave', resumeOnLeave);
-        
-        // Scroll events - detect user scrolling
-        let lastScrollLeft = row.scrollLeft;
-        row.addEventListener('scroll', () => {
-            const currentScrollLeft = row.scrollLeft;
-            if (Math.abs(currentScrollLeft - lastScrollLeft) > 2) {
-                pauseOnInteraction();
-                lastScrollLeft = currentScrollLeft;
-            }
-        }, { passive: true });
         
         // Touch events
         row.addEventListener('touchstart', pauseOnInteraction, { passive: true });
