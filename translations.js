@@ -48,7 +48,23 @@ const translations = {
         },
         features: {
             title: "Features & Amenities",
-            subtitle: "Everything you need for an unforgettable stay"
+            subtitle: "Everything you need for an unforgettable stay",
+            roomsTitle: "18 Elegant Rooms",
+            roomsDescription: "Spacious and beautifully appointed rooms, each with its own private bathroom, comfortably accommodating up to 40 guests. Perfect for large groups, family gatherings, or corporate retreats.",
+            bathroomsTitle: "18 Private Bathrooms",
+            bathroomsDescription: "All 18 rooms feature their own private ensuite bathroom, ensuring complete privacy and comfort for all guests. No shared facilities—each guest enjoys their own personal space.",
+            poolsTitle: "Indoor & Outdoor Pools",
+            poolsDescription: "Enjoy a refreshing swim in our heated indoor pool or bask in the sun by the outdoor pool. Both pools are designed for relaxation and leisure throughout your stay.",
+            saunaTitle: "Private Sauna",
+            saunaDescription: "Unwind and relax in our private dry sauna, offering a serene retreat after a day of hiking or exploring the beautiful Ardennes countryside.",
+            pianoTitle: "Classic Piano",
+            pianoDescription: "For music enthusiasts, a beautiful classic piano awaits in the manor, ready to fill the halls with melody and create memorable musical moments.",
+            groundsTitle: "Expansive Grounds",
+            groundsDescription: "The estate boasts ample space with beautiful grounds, perfect for leisurely strolls, outdoor activities, and enjoying the natural beauty of the Ardennes.",
+            ecoFriendlyTitle: "Eco-Friendly",
+            ecoFriendlyDescription: "The manor is powered by solar panels, reflecting our commitment to sustainable and eco-friendly practices while maintaining modern comfort.",
+            animalsTitle: "Resident Animals",
+            animalsDescription: "The terrain is home to various friendly animals, adding to the estate's charm and providing delightful encounters for guests of all ages."
         },
         booking: {
             title: "Reserve Your Exclusive Stay",
@@ -171,7 +187,23 @@ const translations = {
         },
         features: {
             title: "Voorzieningen",
-            subtitle: "Alles wat u nodig heeft voor een onvergetelijk verblijf"
+            subtitle: "Alles wat u nodig heeft voor een onvergetelijk verblijf",
+            roomsTitle: "18 Elegante Kamers",
+            roomsDescription: "Ruime en prachtig ingerichte kamers, elk met eigen privébadkamer, comfortabel geschikt voor maximaal 40 gasten. Perfect voor grote groepen, familiebijeenkomsten of bedrijfsuitjes.",
+            bathroomsTitle: "18 Privébadkamers",
+            bathroomsDescription: "Alle 18 kamers hebben een eigen privé ensuite badkamer, wat zorgt voor volledige privacy en comfort voor alle gasten. Geen gedeelde faciliteiten—elke gast geniet van zijn eigen persoonlijke ruimte.",
+            poolsTitle: "Binnen- en Buitenzwembaden",
+            poolsDescription: "Geniet van een verfrissende duik in ons verwarmde binnenbad of zonnebad bij het buitenbad. Beide zwembaden zijn ontworpen voor ontspanning en vrije tijd tijdens uw verblijf.",
+            saunaTitle: "Privésauna",
+            saunaDescription: "Ontspan en geniet in onze privé droge sauna, die een rustige retraite biedt na een dag wandelen of het verkennen van het prachtige Ardense platteland.",
+            pianoTitle: "Klassieke Piano",
+            pianoDescription: "Voor muziekliefhebbers wacht er een prachtige klassieke piano in het landhuis, klaar om de zalen te vullen met melodieën en onvergetelijke muzikale momenten te creëren.",
+            groundsTitle: "Uitgestrekte Terreinen",
+            groundsDescription: "Het landgoed beschikt over ruimschoots ruimte met prachtige terreinen, perfect voor ontspannende wandelingen, buitensportactiviteiten en het genieten van de natuurlijke schoonheid van de Ardennen.",
+            ecoFriendlyTitle: "Eco-Vriendelijk",
+            ecoFriendlyDescription: "Het landhuis wordt aangedreven door zonnepanelen, wat onze inzet voor duurzame en milieuvriendelijke praktijken weerspiegelt, terwijl modern comfort behouden blijft.",
+            animalsTitle: "Inwonende Dieren",
+            animalsDescription: "Het terrein is de thuisbasis van diverse vriendelijke dieren, wat bijdraagt aan de charme van het landgoed en leuke ontmoetingen biedt voor gasten van alle leeftijden."
         },
         booking: {
             title: "Reserveer Uw Exclusieve Verblijf",
@@ -294,7 +326,23 @@ const translations = {
         },
         features: {
             title: "Équipements & Services",
-            subtitle: "Tout ce dont vous avez besoin pour un séjour inoubliable"
+            subtitle: "Tout ce dont vous avez besoin pour un séjour inoubliable",
+            roomsTitle: "18 Chambres Élégantes",
+            roomsDescription: "Chambres spacieuses et magnifiquement aménagées, chacune avec sa propre salle de bain privée, pouvant accueillir confortablement jusqu'à 40 invités. Parfait pour les grands groupes, les réunions de famille ou les retraites d'entreprise.",
+            bathroomsTitle: "18 Salles de Bain Privées",
+            bathroomsDescription: "Les 18 chambres disposent toutes de leur propre salle de bain privée attenante, garantissant une intimité totale et un confort absolu pour tous les invités. Aucune installation partagée—chaque invité profite de son propre espace personnel.",
+            poolsTitle: "Piscines Intérieure et Extérieure",
+            poolsDescription: "Profitez d'une baignade rafraîchissante dans notre piscine intérieure chauffée ou détendez-vous au soleil près de la piscine extérieure. Les deux piscines sont conçues pour la détente et les loisirs tout au long de votre séjour.",
+            saunaTitle: "Sauna Privé",
+            saunaDescription: "Détendez-vous et relaxez-vous dans notre sauna sec privé, offrant une retraite sereine après une journée de randonnée ou d'exploration de la magnifique campagne ardennaise.",
+            pianoTitle: "Piano Classique",
+            pianoDescription: "Pour les amateurs de musique, un magnifique piano classique vous attend dans le manoir, prêt à remplir les salles de mélodies et à créer des moments musicaux mémorables.",
+            groundsTitle: "Terrains Vastes",
+            groundsDescription: "Le domaine dispose d'un espace généreux avec de beaux terrains, parfaits pour les promenades tranquilles, les activités de plein air et la découverte de la beauté naturelle des Ardennes.",
+            ecoFriendlyTitle: "Écologique",
+            ecoFriendlyDescription: "Le manoir est alimenté par des panneaux solaires, reflétant notre engagement en faveur de pratiques durables et écologiques tout en maintenant un confort moderne.",
+            animalsTitle: "Animaux Résidents",
+            animalsDescription: "Le terrain abrite divers animaux amicaux, ajoutant au charme du domaine et offrant des rencontres charmantes pour les invités de tous âges."
         },
         booking: {
             title: "Réservez Votre Séjour Exclusif",
@@ -444,6 +492,22 @@ function setLanguage(lang) {
     // Update features section
     document.querySelectorAll('[data-translate="features.title"]').forEach(el => el.textContent = t.features.title);
     document.querySelectorAll('[data-translate="features.subtitle"]').forEach(el => el.textContent = t.features.subtitle);
+    document.querySelectorAll('[data-translate="features.roomsTitle"]').forEach(el => el.textContent = t.features.roomsTitle);
+    document.querySelectorAll('[data-translate="features.roomsDescription"]').forEach(el => el.textContent = t.features.roomsDescription);
+    document.querySelectorAll('[data-translate="features.bathroomsTitle"]').forEach(el => el.textContent = t.features.bathroomsTitle);
+    document.querySelectorAll('[data-translate="features.bathroomsDescription"]').forEach(el => el.textContent = t.features.bathroomsDescription);
+    document.querySelectorAll('[data-translate="features.poolsTitle"]').forEach(el => el.textContent = t.features.poolsTitle);
+    document.querySelectorAll('[data-translate="features.poolsDescription"]').forEach(el => el.textContent = t.features.poolsDescription);
+    document.querySelectorAll('[data-translate="features.saunaTitle"]').forEach(el => el.textContent = t.features.saunaTitle);
+    document.querySelectorAll('[data-translate="features.saunaDescription"]').forEach(el => el.textContent = t.features.saunaDescription);
+    document.querySelectorAll('[data-translate="features.pianoTitle"]').forEach(el => el.textContent = t.features.pianoTitle);
+    document.querySelectorAll('[data-translate="features.pianoDescription"]').forEach(el => el.textContent = t.features.pianoDescription);
+    document.querySelectorAll('[data-translate="features.groundsTitle"]').forEach(el => el.textContent = t.features.groundsTitle);
+    document.querySelectorAll('[data-translate="features.groundsDescription"]').forEach(el => el.textContent = t.features.groundsDescription);
+    document.querySelectorAll('[data-translate="features.ecoFriendlyTitle"]').forEach(el => el.textContent = t.features.ecoFriendlyTitle);
+    document.querySelectorAll('[data-translate="features.ecoFriendlyDescription"]').forEach(el => el.textContent = t.features.ecoFriendlyDescription);
+    document.querySelectorAll('[data-translate="features.animalsTitle"]').forEach(el => el.textContent = t.features.animalsTitle);
+    document.querySelectorAll('[data-translate="features.animalsDescription"]').forEach(el => el.textContent = t.features.animalsDescription);
     
     // Update gallery section
     document.querySelectorAll('[data-translate="gallery.title"]').forEach(el => el.textContent = t.gallery.title);
