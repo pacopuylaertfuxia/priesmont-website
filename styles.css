@@ -2027,7 +2027,7 @@ body:has(.lightbox.active) .navbar {
 
 .testimonials .container {
     max-width: 100%;
-    padding: 0;
+    padding: 0 20px;
 }
 
 .testimonials-carousel {
@@ -2601,7 +2601,7 @@ body:has(.lightbox.active) .navbar {
 
 .services .container {
     max-width: 100%;
-    padding: 0;
+    padding: 0 20px;
 }
 
 .services .section-header {
