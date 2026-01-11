@@ -2663,9 +2663,17 @@ body:has(.lightbox.active) .navbar {
 }
 
 .services-carousel-row {
-    overflow: hidden;
+    overflow-x: auto;
+    overflow-y: hidden;
     position: relative;
     width: 100%;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    -webkit-overflow-scrolling: touch;
+}
+
+.services-carousel-row::-webkit-scrollbar {
+    display: none;
 }
 
 .services-carousel-track {

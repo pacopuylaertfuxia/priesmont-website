@@ -696,3 +696,105 @@ document.addEventListener('DOMContentLoaded', () => {
     // Initial sync
     syncLanguageButtons();
 });
+
+// Pause/resume carousel animations on user interaction and enable scrolling
+document.addEventListener('DOMContentLoaded', () => {
+    const carouselRows = document.querySelectorAll('.services-carousel-row');
+    
+    carouselRows.forEach(row => {
+        const track = row.querySelector('.services-carousel-track');
+        if (!track) return;
+        
+        let isInteracting = false;
+        let interactionTimeout;
+        let scrollTimeout;
+        let lastScrollLeft = 0;
+        
+        // Store initial animation state
+        const computedStyle = window.getComputedStyle(track);
+        const animationName = computedStyle.animationName;
+        
+        // Pause animation on interaction
+        const pauseAnimation = () => {
+            isInteracting = true;
+            clearTimeout(interactionTimeout);
+            clearTimeout(scrollTimeout);
+            track.style.animationPlayState = 'paused';
+        };
+        
+        // Resume animation after interaction ends
+        const resumeAnimation = () => {
+            clearTimeout(interactionTimeout);
+            clearTimeout(scrollTimeout);
+            interactionTimeout = setTimeout(() => {
+                if (!isInteracting) {
+                    track.style.animationPlayState = 'running';
+                }
+            }, 300); // Delay to ensure user has stopped interacting
+        };
+        
+        // Check if user is scrolling
+        const checkScrolling = () => {
+            const currentScrollLeft = row.scrollLeft;
+            if (Math.abs(currentScrollLeft - lastScrollLeft) > 1) {
+                pauseAnimation();
+                lastScrollLeft = currentScrollLeft;
+                clearTimeout(scrollTimeout);
+                scrollTimeout = setTimeout(() => {
+                    isInteracting = false;
+                    resumeAnimation();
+                }, 150);
+            }
+        };
+        
+        // Mouse events - pause on hover, allow scrolling
+        row.addEventListener('mouseenter', () => {
+            pauseAnimation();
+            lastScrollLeft = row.scrollLeft;
+        });
+        
+        row.addEventListener('mouseleave', () => {
+            isInteracting = false;
+            resumeAnimation();
+        });
+        
+        // Scroll events - pause while scrolling
+        row.addEventListener('scroll', () => {
+            checkScrolling();
+        }, { passive: true });
+        
+        // Wheel events for horizontal scrolling
+        row.addEventListener('wheel', (e) => {
+            // Only handle horizontal scroll
+            if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) {
+                pauseAnimation();
+                // Allow native scrolling
+                row.scrollLeft += e.deltaX;
+                e.preventDefault();
+                checkScrolling();
+            }
+        }, { passive: false });
+        
+        // Touch events for mobile
+        row.addEventListener('touchstart', () => {
+            pauseAnimation();
+            lastScrollLeft = row.scrollLeft;
+        }, { passive: true });
+        
+        row.addEventListener('touchmove', () => {
+            checkScrolling();
+        }, { passive: true });
+        
+        row.addEventListener('touchend', () => {
+            setTimeout(() => {
+                isInteracting = false;
+                resumeAnimation();
+            }, 300);
+        }, { passive: true });
+        
+        row.addEventListener('touchcancel', () => {
+            isInteracting = false;
+            resumeAnimation();
+        }, { passive: true });
+    });
+});
