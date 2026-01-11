@@ -2680,36 +2680,6 @@ body:has(.lightbox.active) .navbar {
     display: flex;
     gap: 2rem;
     width: max-content;
-    animation-iteration-count: infinite;
-    animation-timing-function: linear;
-}
-
-.services-track-1 {
-    animation-name: scroll-left;
-    animation-duration: 60s;
-}
-
-.services-track-2 {
-    animation-name: scroll-right;
-    animation-duration: 60s;
-}
-
-@keyframes scroll-left {
-    0% {
-        transform: translateX(0);
-    }
-    100% {
-        transform: translateX(-50%);
-    }
-}
-
-@keyframes scroll-right {
-    0% {
-        transform: translateX(-50%);
-    }
-    100% {
-        transform: translateX(0);
-    }
 }
 
 .services-carousel {

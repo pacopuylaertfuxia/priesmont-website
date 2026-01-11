@@ -697,104 +697,94 @@ document.addEventListener('DOMContentLoaded', () => {
     syncLanguageButtons();
 });
 
-// Pause/resume carousel animations on user interaction and enable scrolling
+// Auto-scrolling carousels with user scroll control
 document.addEventListener('DOMContentLoaded', () => {
     const carouselRows = document.querySelectorAll('.services-carousel-row');
     
-    carouselRows.forEach(row => {
+    carouselRows.forEach((row, index) => {
         const track = row.querySelector('.services-carousel-track');
         if (!track) return;
         
-        let isInteracting = false;
-        let interactionTimeout;
-        let scrollTimeout;
-        let lastScrollLeft = 0;
+        let animationId = null;
+        let isPaused = false;
+        let isUserScrolling = false;
+        let scrollDirection = index === 0 ? 1 : -1; // Row 1 scrolls left (positive), Row 2 scrolls right (negative)
+        let scrollSpeed = 0.5; // Pixels per frame (slow)
+        let userScrollTimeout = null;
         
-        // Store initial animation state
-        const computedStyle = window.getComputedStyle(track);
-        const animationName = computedStyle.animationName;
+        // Calculate half width for infinite scroll
+        const halfWidth = track.scrollWidth / 2;
         
-        // Pause animation on interaction
-        const pauseAnimation = () => {
-            isInteracting = true;
-            clearTimeout(interactionTimeout);
-            clearTimeout(scrollTimeout);
-            track.style.animationPlayState = 'paused';
-        };
+        // Initialize scroll position
+        row.scrollLeft = index === 0 ? 0 : halfWidth;
         
-        // Resume animation after interaction ends
-        const resumeAnimation = () => {
-            clearTimeout(interactionTimeout);
-            clearTimeout(scrollTimeout);
-            interactionTimeout = setTimeout(() => {
-                if (!isInteracting) {
-                    track.style.animationPlayState = 'running';
+        // Auto-scroll animation
+        const animate = () => {
+            if (!isPaused && !isUserScrolling) {
+                row.scrollLeft += scrollDirection * scrollSpeed;
+                
+                // Reset position for infinite scroll
+                if (index === 0) {
+                    // Row 1: scrolls left (increasing scrollLeft)
+                    if (row.scrollLeft >= halfWidth) {
+                        row.scrollLeft = 0;
+                    }
+                } else {
+                    // Row 2: scrolls right (decreasing scrollLeft)
+                    if (row.scrollLeft <= 0) {
+                        row.scrollLeft = halfWidth;
+                    }
                 }
-            }, 300); // Delay to ensure user has stopped interacting
+            }
+            animationId = requestAnimationFrame(animate);
         };
         
-        // Check if user is scrolling
-        const checkScrolling = () => {
-            const currentScrollLeft = row.scrollLeft;
-            if (Math.abs(currentScrollLeft - lastScrollLeft) > 1) {
-                pauseAnimation();
-                lastScrollLeft = currentScrollLeft;
-                clearTimeout(scrollTimeout);
-                scrollTimeout = setTimeout(() => {
-                    isInteracting = false;
-                    resumeAnimation();
-                }, 150);
-            }
+        // Start animation
+        animate();
+        
+        // Pause on user interaction
+        const pauseOnInteraction = () => {
+            isPaused = true;
+            isUserScrolling = true;
+            clearTimeout(userScrollTimeout);
+            
+            userScrollTimeout = setTimeout(() => {
+                isUserScrolling = false;
+            }, 150);
         };
         
-        // Mouse events - pause on hover, allow scrolling
-        row.addEventListener('mouseenter', () => {
-            pauseAnimation();
-            lastScrollLeft = row.scrollLeft;
-        });
-        
-        row.addEventListener('mouseleave', () => {
-            isInteracting = false;
-            resumeAnimation();
-        });
-        
-        // Scroll events - pause while scrolling
-        row.addEventListener('scroll', () => {
-            checkScrolling();
-        }, { passive: true });
-        
-        // Wheel events for horizontal scrolling
-        row.addEventListener('wheel', (e) => {
-            // Only handle horizontal scroll
-            if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) {
-                pauseAnimation();
-                // Allow native scrolling
-                row.scrollLeft += e.deltaX;
-                e.preventDefault();
-                checkScrolling();
-            }
-        }, { passive: false });
-        
-        // Touch events for mobile
-        row.addEventListener('touchstart', () => {
-            pauseAnimation();
-            lastScrollLeft = row.scrollLeft;
-        }, { passive: true });
-        
-        row.addEventListener('touchmove', () => {
-            checkScrolling();
-        }, { passive: true });
-        
-        row.addEventListener('touchend', () => {
+        // Resume when interaction ends
+        const resumeOnLeave = () => {
             setTimeout(() => {
-                isInteracting = false;
-                resumeAnimation();
+                isPaused = false;
             }, 300);
+        };
+        
+        // Mouse events
+        row.addEventListener('mouseenter', pauseOnInteraction);
+        row.addEventListener('mouseleave', resumeOnLeave);
+        
+        // Scroll events - detect user scrolling
+        let lastScrollLeft = row.scrollLeft;
+        row.addEventListener('scroll', () => {
+            const currentScrollLeft = row.scrollLeft;
+            if (Math.abs(currentScrollLeft - lastScrollLeft) > 2) {
+                pauseOnInteraction();
+                lastScrollLeft = currentScrollLeft;
+            }
         }, { passive: true });
         
-        row.addEventListener('touchcancel', () => {
-            isInteracting = false;
-            resumeAnimation();
-        }, { passive: true });
+        // Touch events
+        row.addEventListener('touchstart', pauseOnInteraction, { passive: true });
+        row.addEventListener('touchmove', pauseOnInteraction, { passive: true });
+        row.addEventListener('touchend', resumeOnLeave, { passive: true });
+        row.addEventListener('touchcancel', resumeOnLeave, { passive: true });
+        
+        // Cleanup on page unload
+        window.addEventListener('beforeunload', () => {
+            if (animationId) {
+                cancelAnimationFrame(animationId);
+            }
+        });
     });
 });
