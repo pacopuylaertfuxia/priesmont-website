@@ -2648,6 +2648,62 @@ body:has(.lightbox.active) .navbar {
     padding: 0 20px;
 }
 
+.services-carousel-wrapper {
+    margin-top: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin-left: calc(-50vw + 50%);
+    margin-right: calc(-50vw + 50%);
+    padding-left: calc(50vw - 50% + 20px);
+    padding-right: calc(50vw - 50%);
+    padding-bottom: 2rem;
+    padding-top: 1rem;
+    overflow: hidden;
+}
+
+.services-carousel-row {
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+}
+
+.services-carousel-track {
+    display: flex;
+    gap: 2rem;
+    width: max-content;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+
+.services-track-1 {
+    animation-name: scroll-left;
+    animation-duration: 60s;
+}
+
+.services-track-2 {
+    animation-name: scroll-right;
+    animation-duration: 60s;
+}
+
+@keyframes scroll-left {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+@keyframes scroll-right {
+    0% {
+        transform: translateX(-50%);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+
 .services-carousel {
     margin-top: 2.5rem;
     overflow-x: auto;
@@ -2668,14 +2724,6 @@ body:has(.lightbox.active) .navbar {
 
 .services-carousel::-webkit-scrollbar {
     display: none;
-}
-
-.services-carousel-track {
-    display: flex;
-    gap: 2rem;
-    padding: 0 0;
-    width: max-content;
-    overflow: visible;
 }
 
 .service-card {
@@ -3452,22 +3500,17 @@ body:has(.lightbox.active) .navbar {
         height: 28px;
     }
 
-    .services-carousel {
+    .services-carousel-wrapper {
         margin-left: -20px;
         margin-right: -20px;
         padding-left: 20px;
         padding-right: 20px;
         padding-top: 1rem;
         padding-bottom: 2rem;
-        scroll-padding-left: 20px;
-        scroll-padding-right: 20px;
-        overflow-y: visible;
     }
 
     .services-carousel-track {
-        padding: 0 20px;
-        padding-right: 20px;
-        overflow: visible;
+        gap: 1.5rem;
     }
     
     .service-card {
