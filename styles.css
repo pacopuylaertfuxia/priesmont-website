@@ -2025,6 +2025,11 @@ body:has(.lightbox.active) .navbar {
     position: relative;
 }
 
+.testimonials .container {
+    max-width: 100%;
+    padding: 0;
+}
+
 .testimonials-carousel {
     margin-top: 2.5rem;
     overflow-x: auto;
@@ -2032,15 +2037,13 @@ body:has(.lightbox.active) .navbar {
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
     -ms-overflow-style: none;
-    padding-bottom: 1rem;
-    margin-left: calc(-50vw + 50%);
-    margin-right: calc(-50vw + 50%);
-    padding-left: calc(50vw - 50%);
-    padding-right: calc(50vw - 50%);
+    padding: 1rem 20px;
+    margin-left: 0;
+    margin-right: 0;
     position: relative;
     z-index: 1;
     scroll-padding-left: 20px;
-    scroll-padding-right: calc(50vw - 50%);
+    scroll-padding-right: 20px;
     scroll-snap-type: x proximity;
 }
 
@@ -2051,8 +2054,7 @@ body:has(.lightbox.active) .navbar {
 .testimonials-track {
     display: flex;
     gap: 2rem;
-    padding: 0 20px;
-    padding-right: calc(50vw - 50% + 20px);
+    padding: 0 0;
     width: max-content;
 }
 
@@ -2597,11 +2599,16 @@ body:has(.lightbox.active) .navbar {
     padding: 6rem 0;
 }
 
+.services .container {
+    max-width: 100%;
+    padding: 0;
+}
+
 .services .section-header {
     text-align: center;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 0 auto;
     max-width: 800px;
+    padding: 0 20px;
 }
 
 .services-carousel {
@@ -2613,10 +2620,8 @@ body:has(.lightbox.active) .navbar {
     -ms-overflow-style: none;
     padding-bottom: 2rem;
     padding-top: 1rem;
-    margin-left: 0;
-    margin-right: 0;
-    padding-left: 0;
-    padding-right: 0;
+    padding-left: 20px;
+    padding-right: 20px;
     scroll-padding-left: 20px;
     scroll-padding-right: 20px;
     scroll-snap-type: x proximity;
@@ -2629,8 +2634,7 @@ body:has(.lightbox.active) .navbar {
 .services-carousel-track {
     display: flex;
     gap: 2rem;
-    padding: 0 20px;
-    padding-right: 20px;
+    padding: 0 0;
     width: max-content;
     overflow: visible;
 }
