@@ -207,7 +207,8 @@ const translations = {
             title: "De Regio",
             subtitle: "Ontdek de betoverende Ardennen en haar schatten",
             regionTitle: "De Ardennen",
-            description1: "Genesteld in het hart van de Belgische Ardennen biedt Priesmont de perfecte toegangspoort om een van België's mooiste en ongerepte regio's te verkennen. De Ardennen staan bekend om hun glooiende heuvels, dichte bossen, ongerepte rivieren en charmante dorpen die onaangeroerd lijken door de tijd."
+            description1: "Genesteld in het hart van de Belgische Ardennen biedt Priesmont de perfecte toegangspoort om een van België's mooiste en ongerepte regio's te verkennen. De Ardennen staan bekend om hun glooiende heuvels, dichte bossen, ongerepte rivieren en charmante dorpen die onaangeroerd lijken door de tijd.",
+            description2: "De rijke geschiedenis van de regio, die eeuwen teruggaat, is duidelijk zichtbaar in de architectuur, tradities en de warme gastvrijheid van de mensen. Of u nu geïnteresseerd bent in buitensportavonturen, culturele verkenning of gewoon ontspannen in de natuur, de Ardennen bieden de ideale achtergrond voor uw verblijf bij Priesmont."
         },
         surroundings: {
             title: "Omgeving & Attracties",
@@ -329,7 +330,8 @@ const translations = {
             title: "La Région",
             subtitle: "Découvrez les Ardennes enchanteresses et leurs trésors",
             regionTitle: "Les Ardennes",
-            description1: "Niché au cœur des Ardennes belges, Priesmont offre la porte d'entrée parfaite pour explorer l'une des régions les plus belles et préservées de Belgique. Les Ardennes sont réputées pour leurs collines ondulantes, leurs forêts denses, leurs rivières immaculées et leurs villages charmants qui semblent intacts par le temps."
+            description1: "Niché au cœur des Ardennes belges, Priesmont offre la porte d'entrée parfaite pour explorer l'une des régions les plus belles et préservées de Belgique. Les Ardennes sont réputées pour leurs collines ondulantes, leurs forêts denses, leurs rivières immaculées et leurs villages charmants qui semblent intacts par le temps.",
+            description2: "L'histoire riche de la région, qui remonte à des siècles, est évidente dans son architecture, ses traditions et l'hospitalité chaleureuse de ses habitants. Que vous soyez intéressé par les aventures en plein air, l'exploration culturelle ou simplement vous détendre dans la nature, les Ardennes offrent le cadre idéal pour votre séjour à Priesmont."
         },
         surroundings: {
             title: "Environnement & Attractions",
@@ -452,6 +454,7 @@ function setLanguage(lang) {
     document.querySelectorAll('[data-translate="region.subtitle"]').forEach(el => el.textContent = t.region.subtitle);
     document.querySelectorAll('[data-translate="region.regionTitle"]').forEach(el => el.textContent = t.region.regionTitle);
     document.querySelectorAll('[data-translate="region.description1"]').forEach(el => el.textContent = t.region.description1);
+    document.querySelectorAll('[data-translate="region.description2"]').forEach(el => el.textContent = t.region.description2);
     
     // Update surroundings section
     document.querySelectorAll('[data-translate="surroundings.title"]').forEach(el => el.textContent = t.surroundings.title);
