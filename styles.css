@@ -2078,8 +2078,8 @@ body:has(.lightbox.active) .navbar {
 }
 
 .testimonial-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 12px 48px 0 rgba(0, 0, 0, 0.12);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.12);
 }
 
 .testimonial-rating {
@@ -2133,7 +2133,7 @@ body:has(.lightbox.active) .navbar {
 .testimonial-read-more-btn {
     background: none;
     border: none;
-    color: #dc2626;
+    color: #2563eb;
     font-size: 0.8125rem;
     font-weight: 500;
     padding: 0.25rem 0;
