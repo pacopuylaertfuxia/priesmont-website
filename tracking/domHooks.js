@@ -13,25 +13,15 @@
     // ============================================================================
 
     /**
-     * Wire up "Book Now" / "Book Your Stay" button clicks
+     * Navigation "Book Now" buttons - removed InitiateCheckout tracking
+     * InitiateCheckout should only fire when user actually interacts with booking widget
+     * (selects dates, checks availability), not just navigation clicks
      */
     function initBookingButtonHooks() {
-        // Selectors for booking buttons
-        const bookingButtons = document.querySelectorAll('a[href="#booking"]');
-        
-        bookingButtons.forEach(button => {
-            button.addEventListener('click', function(e) {
-                if (window.MetaTracking) {
-                    window.MetaTracking.trackInitiateCheckout('button_click', {
-                        button_text: button.textContent.trim(),
-                        button_location: button.closest('nav') ? 'navigation' : 'hero'
-                    });
-                }
-            }, { once: true }); // Only track first click per button
-        });
-
-        if (DEBUG && bookingButtons.length > 0) {
-            console.log('[MetaTracking DOM] Initialized booking button hooks:', bookingButtons.length);
+        // Navigation clicks are just navigation - no tracking needed here
+        // InitiateCheckout is tracked in initLodgifyHooks() when user actually interacts with widget
+        if (DEBUG) {
+            console.log('[MetaTracking DOM] Booking button hooks initialized (no tracking on nav clicks)');
         }
     }
 
@@ -41,6 +31,7 @@
      * 1. postMessage events from Lodgify iframe
      * 2. Click detection on widget container
      * 3. URL change detection (if redirects to Lodgify)
+     * 4. Custom Book Now button (tracks event then triggers Lodgify button)
      */
     function initLodgifyHooks() {
         const widgetContainer = document.getElementById('lodgify-book-now-box');
@@ -50,6 +41,7 @@
         }
 
         let lodgifyInteractionTracked = false;
+        let lodgifyBookNowTracked = false;
 
         // Method 1: Listen for postMessage events from Lodgify iframe
         window.addEventListener('message', function(event) {
@@ -89,25 +81,74 @@
                 
                 // Listen for clicks on the widget container (capture phase to catch all)
                 widgetContainer.addEventListener('click', function(e) {
+                    const target = e.target;
+                    const button = target.tagName === 'BUTTON' ? target : target.closest('button');
+                    
+                    if (DEBUG) {
+                        console.log('[MetaTracking DOM] Widget click detected:', {
+                            target: target.tagName,
+                            targetText: target.textContent?.trim().substring(0, 50),
+                            hasButton: !!button,
+                            buttonText: button ? button.textContent?.trim() : null
+                        });
+                    }
+                    
+                    // Check if this is the "Book Now" button
+                    if (button) {
+                        const buttonText = button.textContent.trim().toLowerCase();
+                        const buttonInnerText = button.innerText?.trim().toLowerCase() || buttonText;
+                        const ariaLabel = (button.getAttribute('aria-label') || '').toLowerCase();
+                        
+                        // More flexible detection - check for "book" anywhere in button text
+                        const isBookNowButton = buttonText.includes('book') || 
+                                              buttonInnerText.includes('book') ||
+                                              ariaLabel.includes('book');
+                        
+                        if (DEBUG) {
+                            console.log('[MetaTracking DOM] Button detected:', {
+                                buttonText: buttonText,
+                                buttonInnerText: buttonInnerText,
+                                ariaLabel: ariaLabel,
+                                isBookNowButton: isBookNowButton,
+                                alreadyTracked: lodgifyBookNowTracked
+                            });
+                        }
+                        
+                        if (isBookNowButton && !lodgifyBookNowTracked) {
+                            // Track high-intent conversion event (user clicked Book Now after selecting dates)
+                            if (window.MetaTracking && window.MetaTracking.trackLodgifyBookNowClick) {
+                                window.MetaTracking.trackLodgifyBookNowClick('lodgify_widget_book_now_button', {
+                                    widget_id: 'lodgify-book-now-box',
+                                    button_text: buttonText || buttonInnerText
+                                });
+                                lodgifyBookNowTracked = true;
+                                console.log('[MetaTracking DOM] ✅ Lodgify Book Now button clicked - LodgifyBookNowClick event fired');
+                                return; // Don't also fire InitiateCheckout
+                            } else {
+                                console.warn('[MetaTracking DOM] ❌ MetaTracking.trackLodgifyBookNowClick not available');
+                            }
+                        }
+                    }
+                    
+                    // For other interactions (date selection, etc.), fire InitiateCheckout
                     if (!lodgifyInteractionTracked && window.MetaTracking) {
                         // Only track meaningful clicks (not just the container itself)
-                        const target = e.target;
                         const isInput = target.tagName === 'INPUT' || target.tagName === 'SELECT';
-                        const isButton = target.tagName === 'BUTTON' || target.closest('button');
                         const isClickable = target.closest('[role="button"]') || 
                                           target.closest('[aria-label*="date"]') ||
                                           target.closest('[aria-label*="guest"]');
 
-                        if (isInput || isButton || isClickable) {
+                        if (isInput || isClickable) {
                             window.MetaTracking.trackInitiateCheckout('lodgify_widget_click', {
-                                interaction_type: isInput ? 'input_focus' : (isButton ? 'button_click' : 'widget_interaction'),
+                                interaction_type: isInput ? 'input_focus' : 'widget_interaction',
                                 widget_id: 'lodgify-book-now-box'
                             });
                             lodgifyInteractionTracked = true;
-                            if (DEBUG) console.log('[MetaTracking DOM] Lodgify widget click detected:', target);
+                            if (DEBUG) console.log('[MetaTracking DOM] Lodgify widget interaction detected:', target);
                         }
                     }
-                }, { capture: true, once: true }); // Only track first meaningful interaction
+                }, { capture: true }); // Don't use 'once' - we want to catch Book Now button clicks
+                
 
                 // Also detect focus events on inputs (date/guest selection)
                 widgetContainer.addEventListener('focusin', function(e) {
@@ -142,6 +183,7 @@
                 if (DEBUG) console.log('[MetaTracking DOM] Lodgify checkout URL detected:', currentUrl);
             }
         }
+        
     }
 
     // ============================================================================
