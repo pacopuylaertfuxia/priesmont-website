@@ -93,6 +93,21 @@ class MetaPixelTracker {
         }
     }
 
+    // Track when user clicks Book Now in Lodgify widget (high-intent conversion)
+    // This fires when user has selected dates, checked availability, and clicks Book Now
+    trackAddPaymentInfo(value = null, currency = 'EUR') {
+        if (this.isReady()) {
+            const params = {
+                content_name: 'Priesmont Manor Booking',
+                content_category: 'Booking',
+                currency: currency,
+                source: 'lodgify_widget_book_now'
+            };
+            if (value) params.value = value;
+            fbq('track', 'AddPaymentInfo', params);
+        }
+    }
+
     // Track custom event
     trackCustomEvent(eventName, parameters = {}) {
         if (this.isReady()) {

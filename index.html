@@ -993,6 +993,28 @@
                         </div>
                     </div>
                     
+                    <!-- Lodgify Booking Modal (full-screen overlay to keep user on site) -->
+                    <div id="lodgify-booking-modal" class="lodgify-booking-modal" style="display: none;">
+                        <div class="lodgify-modal-overlay"></div>
+                        <div class="lodgify-modal-container">
+                            <button class="lodgify-modal-close" id="lodgify-modal-close" aria-label="Close booking modal">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                                </svg>
+                            </button>
+                            <div class="lodgify-modal-content">
+                                <iframe 
+                                    id="lodgify-booking-iframe"
+                                    src=""
+                                    frameborder="0"
+                                    allowfullscreen
+                                    title="Complete your booking">
+                                </iframe>
+                            </div>
+                        </div>
+                    </div>
+                    
                 </div>
             </div>
         </div>
@@ -1023,6 +1045,12 @@
                                 <label for="checkin">Preferred Check-in Date</label>
                                 <input type="date" id="checkin" name="checkin">
                             </div>
+                            <div class="form-group">
+                                <label for="checkout">Preferred Check-out Date</label>
+                                <input type="date" id="checkout" name="checkout">
+                            </div>
+                        </div>
+                        <div class="form-row">
                             <div class="form-group">
                                 <label for="guests">Number of Guests</label>
                                 <input type="number" id="guests" name="guests" min="1" max="40">

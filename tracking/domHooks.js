@@ -73,66 +73,35 @@
             }
         });
 
-        // Method 2: Detect clicks on widget container or its children
-        // Since widget loads dynamically, wait for it to be ready
+        // Method 2: Listen for clicks on widget container (for tracking only, don't intercept)
+        // Wait for widget to load, then set up click listeners
         const checkWidgetReady = setInterval(function() {
             if (widgetContainer.children.length > 0) {
                 clearInterval(checkWidgetReady);
                 
-                // Listen for clicks on the widget container (capture phase to catch all)
+                // Listen for clicks on the widget container (just for tracking, don't prevent default)
                 widgetContainer.addEventListener('click', function(e) {
                     const target = e.target;
                     const button = target.tagName === 'BUTTON' ? target : target.closest('button');
                     
-                    if (DEBUG) {
-                        console.log('[MetaTracking DOM] Widget click detected:', {
-                            target: target.tagName,
-                            targetText: target.textContent?.trim().substring(0, 50),
-                            hasButton: !!button,
-                            buttonText: button ? button.textContent?.trim() : null
-                        });
-                    }
-                    
-                    // Check if this is the "Book Now" button
                     if (button) {
-                        const buttonText = button.textContent.trim().toLowerCase();
-                        const buttonInnerText = button.innerText?.trim().toLowerCase() || buttonText;
-                        const ariaLabel = (button.getAttribute('aria-label') || '').toLowerCase();
+                        const buttonText = (button.textContent || button.innerText || '').trim().toLowerCase();
+                        const isBookNow = buttonText.includes('book');
                         
-                        // More flexible detection - check for "book" anywhere in button text
-                        const isBookNowButton = buttonText.includes('book') || 
-                                              buttonInnerText.includes('book') ||
-                                              ariaLabel.includes('book');
-                        
-                        if (DEBUG) {
-                            console.log('[MetaTracking DOM] Button detected:', {
-                                buttonText: buttonText,
-                                buttonInnerText: buttonInnerText,
-                                ariaLabel: ariaLabel,
-                                isBookNowButton: isBookNowButton,
-                                alreadyTracked: lodgifyBookNowTracked
-                            });
-                        }
-                        
-                        if (isBookNowButton && !lodgifyBookNowTracked) {
-                            // Track high-intent conversion event (user clicked Book Now after selecting dates)
+                        if (isBookNow && !lodgifyBookNowTracked) {
+                            // Track the event (but don't prevent default - let Lodgify handle the redirect)
                             if (window.MetaTracking && window.MetaTracking.trackLodgifyBookNowClick) {
                                 window.MetaTracking.trackLodgifyBookNowClick('lodgify_widget_book_now_button', {
-                                    widget_id: 'lodgify-book-now-box',
-                                    button_text: buttonText || buttonInnerText
+                                    widget_id: 'lodgify-book-now-box'
                                 });
                                 lodgifyBookNowTracked = true;
-                                console.log('[MetaTracking DOM] ✅ Lodgify Book Now button clicked - LodgifyBookNowClick event fired');
-                                return; // Don't also fire InitiateCheckout
-                            } else {
-                                console.warn('[MetaTracking DOM] ❌ MetaTracking.trackLodgifyBookNowClick not available');
+                                if (DEBUG) console.log('[MetaTracking DOM] ✅ LodgifyBookNowClick event fired');
                             }
                         }
                     }
                     
                     // For other interactions (date selection, etc.), fire InitiateCheckout
                     if (!lodgifyInteractionTracked && window.MetaTracking) {
-                        // Only track meaningful clicks (not just the container itself)
                         const isInput = target.tagName === 'INPUT' || target.tagName === 'SELECT';
                         const isClickable = target.closest('[role="button"]') || 
                                           target.closest('[aria-label*="date"]') ||
@@ -147,9 +116,8 @@
                             if (DEBUG) console.log('[MetaTracking DOM] Lodgify widget interaction detected:', target);
                         }
                     }
-                }, { capture: true }); // Don't use 'once' - we want to catch Book Now button clicks
+                });
                 
-
                 // Also detect focus events on inputs (date/guest selection)
                 widgetContainer.addEventListener('focusin', function(e) {
                     if (e.target.tagName === 'INPUT' || e.target.tagName === 'SELECT') {
@@ -166,11 +134,6 @@
             }
         }, 500);
 
-        // Stop checking after 10 seconds
-        setTimeout(function() {
-            clearInterval(checkWidgetReady);
-        }, 10000);
-
         // Method 3: Detect navigation to Lodgify checkout URL
         // Check if current URL indicates we're on Lodgify checkout
         const currentUrl = window.location.href;
@@ -185,6 +148,7 @@
         }
         
     }
+
 
     // ============================================================================
     // Inquiry Funnel Hooks
@@ -239,7 +203,7 @@
                 name: document.getElementById('name')?.value || '',
                 email: document.getElementById('email')?.value || '',
                 checkin: document.getElementById('checkin')?.value || '',
-                checkout: null, // Contact form only has checkin
+                checkout: document.getElementById('checkout')?.value || '',
                 guests: document.getElementById('guests')?.value || '',
                 message: document.getElementById('message')?.value || ''
             };
@@ -249,7 +213,10 @@
             
             if (formData.checkin) {
                 leadParams.check_in = formData.checkin;
-                // If we had checkout, we'd include it here
+            }
+            
+            if (formData.checkout) {
+                leadParams.check_out = formData.checkout;
             }
             
             if (formData.guests) {
@@ -263,7 +230,7 @@
                 window.MetaTracking.trackLead('contact_form_submission', leadParams);
             }
 
-            // Simulate form submission (replace with actual API call)
+            // Send form data to API endpoint
             const submitButton = contactForm.querySelector('button[type="submit"]');
             const originalText = submitButton?.textContent || 'Submit';
 
@@ -272,24 +239,49 @@
                 submitButton.disabled = true;
             }
 
-            // TODO: Replace with actual form submission
-            // Example: fetch('/api/contact', { method: 'POST', body: JSON.stringify(formData) })
-            //   .then(response => response.json())
-            //   .then(data => {
-            //       if (data.success) {
-            //           // Lead already tracked above, or track here if you prefer
-            //           showSuccessMessage();
-            //       }
-            //   });
+            // Send to Vercel serverless function
+            fetch('/api/contact', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(formData)
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    // Show success message
+                    if (submitButton) {
+                        submitButton.textContent = 'Message Sent! ✓';
+                        submitButton.style.background = '#10b981';
+                        
+                        // Reset form
+                        contactForm.reset();
+                        
+                        // Reset button after 3 seconds
+                        setTimeout(function() {
+                            if (submitButton) {
+                                submitButton.textContent = originalText;
+                                submitButton.disabled = false;
+                                submitButton.style.background = '';
+                            }
+                        }, 3000);
+                    }
 
-            // Simulate async submission
-            setTimeout(function() {
+                    if (DEBUG) {
+                        console.log('[MetaTracking DOM] Contact form submitted successfully:', formData);
+                    }
+                } else {
+                    throw new Error(data.error || 'Failed to send message');
+                }
+            })
+            .catch(error => {
+                console.error('[MetaTracking DOM] Contact form error:', error);
+                
+                // Show error message
                 if (submitButton) {
-                    submitButton.textContent = 'Message Sent! ✓';
-                    submitButton.style.background = '#10b981';
-                    
-                    // Reset form
-                    contactForm.reset();
+                    submitButton.textContent = 'Error - Try Again';
+                    submitButton.style.background = '#ef4444';
                     
                     // Reset button after 3 seconds
                     setTimeout(function() {
@@ -300,11 +292,10 @@
                         }
                     }, 3000);
                 }
-
-                if (DEBUG) {
-                    console.log('[MetaTracking DOM] Contact form submitted successfully:', formData);
-                }
-            }, 1500);
+                
+                // Optionally show user-friendly error message
+                alert('Sorry, there was an error sending your message. Please try again or contact us directly at carlpuylaert@hotmail.com');
+            });
         });
     }
 

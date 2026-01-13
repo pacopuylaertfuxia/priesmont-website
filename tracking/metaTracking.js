@@ -23,7 +23,8 @@
     const STORAGE_KEYS = {
         INITIATE_CHECKOUT: 'meta_initiate_checkout_fired',
         LEAD: 'meta_lead_fired',
-        VIEW_CONTENT: 'meta_view_content_contact_fired'
+        VIEW_CONTENT: 'meta_view_content_contact_fired',
+        ADD_PAYMENT_INFO: 'meta_add_payment_info_fired'
     };
 
     // ============================================================================
@@ -262,6 +263,60 @@
         }
     }
 
+    /**
+     * Track LodgifyBookNowClick custom event (high-intent conversion)
+     * Fires when user clicks "Book Now" in Lodgify widget after selecting dates/checking availability
+     * This is a custom conversion event - set it up in Meta Events Manager as a conversion
+     * @param {string} source - Source of the event (default: 'lodgify_widget_book_now')
+     * @param {object} extraParams - Additional parameters (value, currency, etc.)
+     */
+    function trackLodgifyBookNowClick(source = 'lodgify_widget_book_now', extraParams = {}) {
+        const storageKey = STORAGE_KEYS.ADD_PAYMENT_INFO; // Reusing storage key for deduplication
+        
+        // Allow multiple fires (user might click multiple times), but we can dedupe per session if desired
+        // For high-intent conversion, we'll allow it to fire multiple times in case user goes back and clicks again
+        
+        if (!isPixelReady()) {
+            if (DEBUG) {
+                console.warn('[MetaTracking] Pixel not ready for LodgifyBookNowClick');
+                console.warn('  - fbq available:', typeof fbq !== 'undefined');
+                console.warn('  - PIXEL_ID:', PIXEL_ID);
+            }
+            // Retry once after a short delay if fbq might still be loading
+            if (typeof fbq === 'undefined') {
+                setTimeout(function() {
+                    if (isPixelReady()) {
+                        trackLodgifyBookNowClick(source, extraParams);
+                    }
+                }, 500);
+            }
+            return false;
+        }
+
+        const eventId = generateEventId();
+        const params = {
+            content_name: 'Priesmont Manor Booking',
+            content_category: 'Booking',
+            event_source_url: getCurrentUrl(),
+            source: source,
+            ...extraParams
+        };
+
+        try {
+            // Using trackCustom for custom event - can be set up as conversion in Meta Events Manager
+            fbq('trackCustom', 'LodgifyBookNowClick', params, { eventID: eventId });
+            debugLog('LodgifyBookNowClick', params, eventId, false);
+
+            // TODO: If CAPI is implemented, send to server with same eventId
+            // sendToCAPI('LodgifyBookNowClick', params, eventId);
+
+            return true;
+        } catch (e) {
+            if (DEBUG) console.error('[MetaTracking] Error tracking LodgifyBookNowClick:', e);
+            return false;
+        }
+    }
+
     // ============================================================================
     // Public API
     // ============================================================================
@@ -290,13 +345,15 @@
         trackInitiateCheckout: trackInitiateCheckout,
         trackLead: trackLead,
         trackViewContent: trackViewContent,
+        trackLodgifyBookNowClick: trackLodgifyBookNowClick,
         
         // Utility for checking if events fired (for testing)
         hasFired: function(eventType) {
             const keyMap = {
                 'InitiateCheckout': STORAGE_KEYS.INITIATE_CHECKOUT,
                 'Lead': STORAGE_KEYS.LEAD,
-                'ViewContent': STORAGE_KEYS.VIEW_CONTENT
+                'ViewContent': STORAGE_KEYS.VIEW_CONTENT,
+                'LodgifyBookNowClick': STORAGE_KEYS.ADD_PAYMENT_INFO
             };
             const key = keyMap[eventType];
             return key ? hasFired(key) : false;
