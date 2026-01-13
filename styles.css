@@ -2058,7 +2058,8 @@ body:has(.lightbox.active) .navbar {
 .testimonials-track {
     display: flex;
     gap: 2rem;
-    padding: 0 0;
+    padding: 0;
+    padding-right: 0;
     width: max-content;
 }
 
@@ -2203,7 +2204,7 @@ body:has(.lightbox.active) .navbar {
 
     .testimonials-track {
         padding: 0 20px;
-        padding-right: 20px;
+        padding-right: 0;
     }
     
     .testimonial-card {
@@ -2224,7 +2225,7 @@ body:has(.lightbox.active) .navbar {
 
     .testimonials-track {
         padding: 0 20px;
-        padding-right: 20px;
+        padding-right: 0;
     }
     
     .testimonial-card {
@@ -3019,6 +3020,8 @@ body:has(.lightbox.active) .navbar {
 .form-group input,
 .form-group textarea {
     width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
     padding: 1rem 1.25rem;
     border: 1px solid var(--border-color);
     border-radius: 12px;
@@ -3694,20 +3697,6 @@ body:has(.lightbox.active) .navbar {
         opacity: 0.85;
         letter-spacing: -0.022em;
         line-height: 1.5;
-    }
-    
-    /* Hide "Your perfect escape..." on smallest mobile - hide everything after <br> */
-    .hero-subtitle br {
-        display: none;
-    }
-    
-    /* Show only first line using line-clamp */
-    .hero-subtitle {
-        display: -webkit-box;
-        -webkit-line-clamp: 1;
-        -webkit-box-orient: vertical;
-        overflow: hidden;
-        max-height: 1.5em;
     }
 
     .hero-buttons {

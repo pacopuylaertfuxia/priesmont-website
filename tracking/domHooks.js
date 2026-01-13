@@ -223,79 +223,65 @@
                 leadParams.guests = parseInt(formData.guests) || 0;
             }
 
-            // Track Lead event BEFORE async submission (to ensure it fires)
-            // In production, you'd track this AFTER server confirms success
-            // For now, we track on client-side validation success
+            // Track Lead event (for analytics)
             if (window.MetaTracking) {
                 window.MetaTracking.trackLead('contact_form_submission', leadParams);
             }
 
-            // Send form data to API endpoint
+            // Prepare email content
+            const TO_EMAIL = 'paco.puy.pp@gmail.com';
+            const emailSubject = `New Contact Form Submission from ${formData.name}`;
+            
+            // Build email body with all form fields
+            let emailBody = `New contact form submission from Priesmont website:\n\n`;
+            emailBody += `Name: ${formData.name}\n`;
+            emailBody += `Email: ${formData.email}\n`;
+            if (formData.checkin) {
+                emailBody += `Preferred Check-in Date: ${formData.checkin}\n`;
+            }
+            if (formData.checkout) {
+                emailBody += `Preferred Check-out Date: ${formData.checkout}\n`;
+            }
+            if (formData.guests) {
+                emailBody += `Number of Guests: ${formData.guests}\n`;
+            }
+            if (formData.message) {
+                emailBody += `\nMessage:\n${formData.message}\n`;
+            }
+
+            // URL encode the subject and body
+            const encodedSubject = encodeURIComponent(emailSubject);
+            const encodedBody = encodeURIComponent(emailBody);
+
+            // Create mailto link
+            const mailtoLink = `mailto:${TO_EMAIL}?subject=${encodedSubject}&body=${encodedBody}`;
+
+            // Open native email client
+            window.location.href = mailtoLink;
+
+            // Show success feedback
             const submitButton = contactForm.querySelector('button[type="submit"]');
             const originalText = submitButton?.textContent || 'Submit';
 
             if (submitButton) {
-                submitButton.textContent = 'Sending...';
+                submitButton.textContent = 'Opening Email...';
                 submitButton.disabled = true;
+                
+                // Reset form
+                contactForm.reset();
+                
+                // Reset button after 2 seconds
+                setTimeout(function() {
+                    if (submitButton) {
+                        submitButton.textContent = originalText;
+                        submitButton.disabled = false;
+                    }
+                }, 2000);
             }
 
-            // Send to Vercel serverless function
-            fetch('/api/contact', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(formData)
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.success) {
-                    // Show success message
-                    if (submitButton) {
-                        submitButton.textContent = 'Message Sent! ✓';
-                        submitButton.style.background = '#10b981';
-                        
-                        // Reset form
-                        contactForm.reset();
-                        
-                        // Reset button after 3 seconds
-                        setTimeout(function() {
-                            if (submitButton) {
-                                submitButton.textContent = originalText;
-                                submitButton.disabled = false;
-                                submitButton.style.background = '';
-                            }
-                        }, 3000);
-                    }
-
-                    if (DEBUG) {
-                        console.log('[MetaTracking DOM] Contact form submitted successfully:', formData);
-                    }
-                } else {
-                    throw new Error(data.error || 'Failed to send message');
-                }
-            })
-            .catch(error => {
-                console.error('[MetaTracking DOM] Contact form error:', error);
-                
-                // Show error message
-                if (submitButton) {
-                    submitButton.textContent = 'Error - Try Again';
-                    submitButton.style.background = '#ef4444';
-                    
-                    // Reset button after 3 seconds
-                    setTimeout(function() {
-                        if (submitButton) {
-                            submitButton.textContent = originalText;
-                            submitButton.disabled = false;
-                            submitButton.style.background = '';
-                        }
-                    }, 3000);
-                }
-                
-                // Optionally show user-friendly error message
-                alert('Sorry, there was an error sending your message. Please try again or contact us directly at carlpuylaert@hotmail.com');
-            });
+            if (DEBUG) {
+                console.log('[MetaTracking DOM] Contact form submitted - opening mailto:', mailtoLink);
+            }
         });
     }
 

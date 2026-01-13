@@ -1,8 +1,17 @@
 /**
  * Contact Form API Endpoint (Vercel Serverless Function)
- * Sends contact form submissions to paco.puy.pp@gmail.com
+ * 
+ * BACKEND APPROACH - COMMENTED OUT
+ * Using mailto: approach instead (see tracking/domHooks.js)
+ * 
+ * This file is kept for reference but not actively used.
+ * If you want to use the backend approach again, uncomment and configure:
+ * 1. Set RESEND_API_KEY in Vercel environment variables
+ * 2. Set RESEND_FROM_EMAIL in Vercel environment variables  
+ * 3. Verify domain in Resend dashboard
  */
 
+/*
 export default async function handler(req, res) {
     // Only allow POST requests
     if (req.method !== 'POST') {
@@ -36,7 +45,7 @@ New contact form submission from Priesmont website:
 Name: ${name}
 Email: ${email}
 ${checkin ? `Preferred Check-in Date: ${checkin}` : ''}
-${req.body.checkout ? `Preferred Check-out Date: ${req.body.checkout}` : ''}
+${checkout ? `Preferred Check-out Date: ${checkout}` : ''}
 ${guests ? `Number of Guests: ${guests}` : ''}
 ${message ? `Message:\n${message}` : ''}
 
@@ -105,4 +114,10 @@ Timestamp: ${new Date().toISOString()}
             message: error.message 
         });
     }
+}
+*/
+
+// Export empty handler to prevent errors (file still exists but doesn't do anything)
+export default async function handler(req, res) {
+    return res.status(501).json({ error: 'Backend approach disabled - using mailto: instead' });
 }
