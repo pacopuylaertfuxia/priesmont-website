@@ -460,16 +460,16 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-// Service card hover effect enhancement
-document.querySelectorAll('.service-card').forEach(card => {
-    card.addEventListener('mouseenter', function() {
-        this.style.transform = 'translateY(-10px) scale(1.02)';
-    });
-    
-    card.addEventListener('mouseleave', function() {
-        this.style.transform = 'translateY(0) scale(1)';
-    });
-});
+// Service card hover effect - REMOVED (cards are not clickable)
+// document.querySelectorAll('.service-card').forEach(card => {
+//     card.addEventListener('mouseenter', function() {
+//         this.style.transform = 'translateY(-10px) scale(1.02)';
+//     });
+//     
+//     card.addEventListener('mouseleave', function() {
+//         this.style.transform = 'translateY(0) scale(1)';
+//     });
+// });
 
 // Add smooth reveal animation to sections
 const sectionObserver = new IntersectionObserver((entries) => {
