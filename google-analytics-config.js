@@ -3,7 +3,7 @@
 // Get your Measurement ID from: https://analytics.google.com/
 // Format: G-XXXXXXXXXX
 
-const GA4_MEASUREMENT_ID = 'G-XXXXXXXXXX'; // Replace with your actual Measurement ID
+const GA4_MEASUREMENT_ID = 'G-4XLK4LYKCP'; // Replace with your actual Measurement ID
 
 // Initialize Google Analytics 4
 (function() {
