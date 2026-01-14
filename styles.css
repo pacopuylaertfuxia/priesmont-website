@@ -527,6 +527,7 @@ body {
     line-height: 1.47059;
 }
 
+/* FOMO: Hero availability banner styles - commented out
 .hero-availability-banner {
     display: inline-flex;
     align-items: center;
@@ -576,6 +577,7 @@ body {
         transform: rotate(360deg);
     }
 }
+*/
 
 .hero-buttons {
     display: flex;
@@ -1765,6 +1767,7 @@ body:has(.lightbox.active) .navbar {
         gap: 0;
     }
 
+    /* FOMO: Mobile responsive styles - commented out
     .hero-availability-banner {
         font-size: 0.8125rem;
         padding: 0.625rem 1.25rem;
@@ -1804,6 +1807,7 @@ body:has(.lightbox.active) .navbar {
     .urgency-text span {
         font-size: 0.8125rem;
     }
+    */
 }
 
 
@@ -2380,6 +2384,7 @@ body:has(.lightbox.active) .navbar {
     margin-bottom: 4rem;
 }
 
+/* FOMO: Booking urgency banner styles - commented out
 .booking-urgency-banner {
     margin-top: 1.5rem;
     margin-bottom: 0;
@@ -2435,6 +2440,7 @@ body:has(.lightbox.active) .navbar {
         opacity: 0.8;
     }
 }
+*/
 
 .booking .section-title {
     font-size: clamp(3rem, 6vw, 4.5rem);
