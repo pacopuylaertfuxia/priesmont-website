@@ -161,10 +161,31 @@ document.querySelectorAll('.service-card').forEach((card, index) => {
 // Note: Contact form handling with Lead tracking has been moved to tracking/domHooks.js
 // This ensures tracking only fires on successful form submission, not on field focus
 
-// Hero Carousel Auto-Scroll
+// Hero Carousel Auto-Scroll with Responsive Images
 document.addEventListener('DOMContentLoaded', function() {
     const slides = document.querySelectorAll('.hero-slide');
     if (slides.length === 0) return;
+    
+    // Load responsive images based on screen size
+    function loadHeroImages() {
+        const isMobile = window.innerWidth <= 768;
+        slides.forEach(slide => {
+            const mobileUrl = slide.getAttribute('data-bg-mobile');
+            const desktopUrl = slide.getAttribute('data-bg-desktop');
+            if (mobileUrl && desktopUrl) {
+                const imageUrl = isMobile ? mobileUrl : desktopUrl;
+                slide.style.backgroundImage = `url('${imageUrl}')`;
+            }
+        });
+    }
+    
+    // Load images on load and resize
+    loadHeroImages();
+    let resizeTimeout;
+    window.addEventListener('resize', () => {
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(loadHeroImages, 250);
+    });
     
     let currentSlide = 0;
     const totalSlides = slides.length;
@@ -697,9 +718,20 @@ document.addEventListener('DOMContentLoaded', () => {
     syncLanguageButtons();
 });
 
-// Auto-scrolling carousels with user scroll control
+// Auto-scrolling carousels with user scroll control (desktop only)
 document.addEventListener('DOMContentLoaded', () => {
     const carouselRows = document.querySelectorAll('.services-carousel-row');
+    
+    // Check if mobile (disable auto-scroll on mobile for better performance)
+    const isMobile = window.innerWidth <= 968;
+    
+    if (isMobile) {
+        // On mobile, just enable smooth scrolling - no auto-animation
+        carouselRows.forEach((row) => {
+            row.style.scrollBehavior = 'smooth';
+        });
+        return;
+    }
     
     carouselRows.forEach((row, index) => {
         const track = row.querySelector('.services-carousel-track');
