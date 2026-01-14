@@ -140,23 +140,23 @@ document.querySelectorAll('.stat-item').forEach(stat => {
     statsObserver.observe(stat);
 });
 
-// Fade in animation on scroll
-const fadeInObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.style.opacity = '1';
-            entry.target.style.transform = 'translateY(0)';
-        }
-    });
-}, { threshold: 0.1 });
+// Fade in animation on scroll - removed for service cards (they show immediately now)
+// const fadeInObserver = new IntersectionObserver((entries) => {
+//     entries.forEach(entry => {
+//         if (entry.isIntersecting) {
+//             entry.target.style.opacity = '1';
+//             entry.target.style.transform = 'translateY(0)';
+//         }
+//     });
+// }, { threshold: 0.1 });
 
-// Apply fade-in to service cards
-document.querySelectorAll('.service-card').forEach((card, index) => {
-    card.style.opacity = '0';
-    card.style.transform = 'translateY(30px)';
-    card.style.transition = `opacity 0.6s ease ${index * 0.1}s, transform 0.6s ease ${index * 0.1}s`;
-    fadeInObserver.observe(card);
-});
+// Service cards now show immediately - no fade-in animation
+// document.querySelectorAll('.service-card').forEach((card, index) => {
+//     card.style.opacity = '0';
+//     card.style.transform = 'translateY(30px)';
+//     card.style.transition = `opacity 0.6s ease ${index * 0.1}s, transform 0.6s ease ${index * 0.1}s`;
+//     fadeInObserver.observe(card);
+// });
 
 // Note: Contact form handling with Lead tracking has been moved to tracking/domHooks.js
 // This ensures tracking only fires on successful form submission, not on field focus

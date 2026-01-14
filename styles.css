@@ -2963,7 +2963,7 @@ body:has(.lightbox.active) .navbar {
     border-radius: 18px;
     box-shadow: 0 4px 16px 0 rgba(0, 0, 0, 0.08);
     border: 0.5px solid rgba(0, 0, 0, 0.1);
-    transition: var(--transition);
+    /* Removed transition - cards are not interactive */
     text-align: center;
     flex: 0 0 350px;
     min-width: 350px;
@@ -2971,13 +2971,16 @@ body:has(.lightbox.active) .navbar {
     overflow: visible;
     position: relative;
     z-index: 1;
+    cursor: default;
 }
 
+/* Removed hover effect - service cards are not clickable
 .service-card:hover {
     transform: translateY(-2px);
     box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.12);
     z-index: 2;
 }
+*/
 
 .service-icon {
     width: 100%;
@@ -2988,7 +2991,7 @@ body:has(.lightbox.active) .navbar {
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: var(--transition);
+    /* Removed transition - cards are not interactive */
     overflow: hidden;
     box-shadow: 0 10px 26px rgba(0,0,0,0.12);
 }
@@ -2998,7 +3001,7 @@ body:has(.lightbox.active) .navbar {
     height: 100%;
     object-fit: cover;
     display: block;
-    transition: transform 0.25s ease;
+    /* Removed transition - cards are not interactive */
 }
 
 .service-icon-thumb[viewBox] {
@@ -3012,9 +3015,11 @@ body:has(.lightbox.active) .navbar {
     background: linear-gradient(135deg, #f0f0f5, #e4e4eb);
 }
 
+/* Removed hover effect - service cards are not clickable
 .service-card:hover .service-icon-thumb {
     transform: scale(1.05);
 }
+*/
 .service-card h3 {
     font-size: 1.5rem;
     margin-bottom: 0.75rem;
