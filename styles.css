@@ -527,11 +527,62 @@ body {
     line-height: 1.47059;
 }
 
+.hero-availability-banner {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 0.75rem 1.5rem;
+    border-radius: 50px;
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+    animation: fadeInUp 1s ease-out 0.5s both, pulse 2s ease-in-out infinite 2s;
+    font-size: 0.9375rem;
+    font-weight: 500;
+    color: white;
+    letter-spacing: -0.01em;
+}
+
+.hero-availability-banner svg {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+    animation: rotate 2s linear infinite;
+}
+
+.availability-text {
+    white-space: nowrap;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.9;
+        transform: scale(1.02);
+    }
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
 .hero-buttons {
     display: flex;
     gap: 1rem;
     justify-content: center;
     flex-wrap: wrap;
+    margin-top: 2rem;
 }
 
 .btn {
@@ -2287,6 +2338,62 @@ body:has(.lightbox.active) .navbar {
 .booking .section-header {
     text-align: center;
     margin-bottom: 4rem;
+}
+
+.booking-urgency-banner {
+    margin-top: 1.5rem;
+    margin-bottom: 0;
+    display: inline-block;
+    background: linear-gradient(135deg, #fff5f5 0%, #ffe5e5 100%);
+    border: 1.5px solid #fecaca;
+    border-radius: 16px;
+    padding: 1rem 1.5rem;
+    animation: fadeInUp 0.6s ease-out 0.3s both;
+}
+
+.urgency-content {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.urgency-content svg {
+    width: 24px;
+    height: 24px;
+    color: #dc2626;
+    flex-shrink: 0;
+    animation: pulse-icon 2s ease-in-out infinite;
+}
+
+.urgency-text {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    text-align: left;
+}
+
+.urgency-text strong {
+    font-size: 0.9375rem;
+    font-weight: 600;
+    color: #991b1b;
+    letter-spacing: -0.01em;
+}
+
+.urgency-text span {
+    font-size: 0.875rem;
+    color: #7f1d1d;
+    letter-spacing: -0.01em;
+}
+
+@keyframes pulse-icon {
+    0%, 100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.1);
+        opacity: 0.8;
+    }
 }
 
 .booking .section-title {
