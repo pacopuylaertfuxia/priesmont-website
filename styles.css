@@ -2845,6 +2845,13 @@ body:has(.lightbox.active) .navbar {
     transition: transform 0.25s ease;
 }
 
+.service-icon-thumb[viewBox] {
+    width: 60%;
+    height: 60%;
+    object-fit: contain;
+    color: #1d1d1f;
+}
+
 .service-icon.placeholder {
     background: linear-gradient(135deg, #f0f0f5, #e4e4eb);
 }

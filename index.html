@@ -43,6 +43,9 @@
     
     <!-- Meta Pixel Configuration (loads early in head for pixel initialization) -->
     <script src="meta-pixel-config.js"></script>
+    
+    <!-- Google Analytics 4 Configuration -->
+    <script src="google-analytics-config.js"></script>
 </head>
 <body>
     <!-- Navigation -->
@@ -285,7 +288,10 @@
                         </div>
                         <div class="service-card">
                             <div class="service-icon">
-                                <img class="service-icon-thumb" src="images/parking.jpg" alt="Parking at Priesmont">
+                                <svg class="service-icon-thumb" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+                                    <rect x="3" y="3" width="18" height="18" rx="2"/>
+                                    <path d="M9 7h4a3 3 0 0 1 0 6h-4M9 7v10"/>
+                                </svg>
                             </div>
                             <h3 data-translate="features.parkingTitle">Parking</h3>
                             <p data-translate="features.parkingDescription">Convenient parking available for 20+ cars on-site, ensuring easy access for all guests and event attendees.</p>
@@ -328,7 +334,10 @@
                         </div>
                         <div class="service-card">
                             <div class="service-icon">
-                                <img class="service-icon-thumb" src="images/parking.jpg" alt="Parking at Priesmont">
+                                <svg class="service-icon-thumb" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+                                    <rect x="3" y="3" width="18" height="18" rx="2"/>
+                                    <path d="M9 7h4a3 3 0 0 1 0 6h-4M9 7v10"/>
+                                </svg>
                             </div>
                             <h3 data-translate="features.parkingTitle">Parking</h3>
                             <p data-translate="features.parkingDescription">Convenient parking available for 20+ cars on-site, ensuring easy access for all guests and event attendees.</p>
@@ -1102,12 +1111,9 @@
                         </div>
                         <div class="info-item">
                             <div class="info-icon">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <path d="M5 17H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-1"/>
-                                    <path d="M12 15v6"/>
-                                    <path d="M7 21h10"/>
-                                    <circle cx="7" cy="17" r="2"/>
-                                    <circle cx="17" cy="17" r="2"/>
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="3" y="3" width="18" height="18" rx="2"/>
+                                    <path d="M9 7h4a3 3 0 0 1 0 6h-4M9 7v10"/>
                                 </svg>
                             </div>
                             <div>
@@ -1187,6 +1193,11 @@
 
     <!-- Clean Meta Pixel Tracking Layer (requires meta-pixel-config.js loaded in head) -->
     <script src="tracking/metaTracking.js"></script>
+    
+    <!-- Google Analytics 4 Tracking Layer (requires google-analytics-config.js loaded in head) -->
+    <script src="tracking/ga4Tracking.js"></script>
+    
+    <!-- DOM Event Hooks (wires up interactions to both Meta Pixel and GA4) -->
     <script src="tracking/domHooks.js"></script>
     
     <!-- Lodgify Integration Scripts -->

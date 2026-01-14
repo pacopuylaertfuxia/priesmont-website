@@ -66,6 +66,12 @@
                             interaction_type: data.type || 'unknown',
                             widget_id: 'lodgify-book-now-box'
                         });
+                        if (window.GA4Tracking) {
+                            window.GA4Tracking.trackInitiateCheckout('lodgify_widget_interaction', {
+                                interaction_type: data.type || 'unknown',
+                                widget_id: 'lodgify-book-now-box'
+                            });
+                        }
                         lodgifyInteractionTracked = true;
                         if (DEBUG) console.log('[MetaTracking DOM] Lodgify interaction detected via postMessage:', data);
                     }
@@ -112,6 +118,12 @@
                                 interaction_type: isInput ? 'input_focus' : 'widget_interaction',
                                 widget_id: 'lodgify-book-now-box'
                             });
+                            if (window.GA4Tracking) {
+                                window.GA4Tracking.trackInitiateCheckout('lodgify_widget_click', {
+                                    interaction_type: isInput ? 'input_focus' : 'widget_interaction',
+                                    widget_id: 'lodgify-book-now-box'
+                                });
+                            }
                             lodgifyInteractionTracked = true;
                             if (DEBUG) console.log('[MetaTracking DOM] Lodgify widget interaction detected:', target);
                         }
@@ -126,6 +138,12 @@
                                 interaction_type: 'input_focus',
                                 widget_id: 'lodgify-book-now-box'
                             });
+                            if (window.GA4Tracking) {
+                                window.GA4Tracking.trackInitiateCheckout('lodgify_widget_input_focus', {
+                                    interaction_type: 'input_focus',
+                                    widget_id: 'lodgify-book-now-box'
+                                });
+                            }
                             lodgifyInteractionTracked = true;
                             if (DEBUG) console.log('[MetaTracking DOM] Lodgify input focus detected:', e.target);
                         }
@@ -142,6 +160,11 @@
                 window.MetaTracking.trackInitiateCheckout('lodgify_checkout_url', {
                     url: currentUrl
                 });
+                if (window.GA4Tracking) {
+                    window.GA4Tracking.trackInitiateCheckout('lodgify_checkout_url', {
+                        url: currentUrl
+                    });
+                }
                 lodgifyInteractionTracked = true;
                 if (DEBUG) console.log('[MetaTracking DOM] Lodgify checkout URL detected:', currentUrl);
             }
@@ -165,6 +188,12 @@
                 if (window.MetaTracking) {
                     // Optional soft signal - ViewContent when user shows interest in contacting
                     window.MetaTracking.trackViewContent('contact_nav', {
+                        content_name: 'Contact Section',
+                        content_category: 'Inquiry'
+                    });
+                }
+                if (window.GA4Tracking) {
+                    window.GA4Tracking.trackViewContent('contact_nav', {
                         content_name: 'Contact Section',
                         content_category: 'Inquiry'
                     });
@@ -223,19 +252,33 @@
                 leadParams.guests = parseInt(formData.guests) || 0;
             }
 
-            // Track Lead event (for analytics)
+            // Track Lead event (for analytics) - both Meta Pixel and GA4
             if (window.MetaTracking) {
                 window.MetaTracking.trackLead('contact_form_submission', leadParams);
             }
+            if (window.GA4Tracking) {
+                window.GA4Tracking.trackLead('contact_form_submission', leadParams);
+            }
 
             // Prepare email content
-            const TO_EMAIL = 'paco.puy.pp@gmail.com';
-            const emailSubject = `New Contact Form Submission from ${formData.name}`;
+            const TO_EMAIL = 'carlpuylaert@hotmail.com';
+            const CC_EMAIL = 'paco.puy.pp@gmail.com';
+            const emailSubject = `Booking Inquiry from ${formData.name} - Priesmont`;
             
             // Build email body with all form fields
-            let emailBody = `New contact form submission from Priesmont website:\n\n`;
+            let emailBody = `New booking inquiry from Priesmont website:\n\n`;
+            emailBody += `━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n`;
+            emailBody += `CONTACT INFORMATION\n`;
+            emailBody += `━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n`;
             emailBody += `Name: ${formData.name}\n`;
-            emailBody += `Email: ${formData.email}\n`;
+            emailBody += `Email: ${formData.email}\n\n`;
+            
+            if (formData.checkin || formData.checkout || formData.guests) {
+                emailBody += `━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n`;
+                emailBody += `BOOKING DETAILS\n`;
+                emailBody += `━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n`;
+            }
+            
             if (formData.checkin) {
                 emailBody += `Preferred Check-in Date: ${formData.checkin}\n`;
             }
@@ -245,16 +288,24 @@
             if (formData.guests) {
                 emailBody += `Number of Guests: ${formData.guests}\n`;
             }
+            
             if (formData.message) {
-                emailBody += `\nMessage:\n${formData.message}\n`;
+                emailBody += `\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n`;
+                emailBody += `MESSAGE\n`;
+                emailBody += `━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n`;
+                emailBody += `${formData.message}\n`;
             }
+            
+            emailBody += `\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n`;
+            emailBody += `This inquiry was submitted from the Priesmont website contact form.\n`;
 
             // URL encode the subject and body
             const encodedSubject = encodeURIComponent(emailSubject);
             const encodedBody = encodeURIComponent(emailBody);
+            const encodedCC = encodeURIComponent(CC_EMAIL);
 
-            // Create mailto link
-            const mailtoLink = `mailto:${TO_EMAIL}?subject=${encodedSubject}&body=${encodedBody}`;
+            // Create mailto link with CC
+            const mailtoLink = `mailto:${TO_EMAIL}?cc=${encodedCC}&subject=${encodedSubject}&body=${encodedBody}`;
 
             // Open native email client
             window.location.href = mailtoLink;
