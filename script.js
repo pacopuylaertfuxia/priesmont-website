@@ -161,31 +161,10 @@ document.querySelectorAll('.stat-item').forEach(stat => {
 // Note: Contact form handling with Lead tracking has been moved to tracking/domHooks.js
 // This ensures tracking only fires on successful form submission, not on field focus
 
-// Hero Carousel Auto-Scroll with Responsive Images
+// Hero Carousel Auto-Scroll
 document.addEventListener('DOMContentLoaded', function() {
     const slides = document.querySelectorAll('.hero-slide');
     if (slides.length === 0) return;
-    
-    // Load responsive images based on screen size
-    function loadHeroImages() {
-        const isMobile = window.innerWidth <= 768;
-        slides.forEach(slide => {
-            const mobileUrl = slide.getAttribute('data-bg-mobile');
-            const desktopUrl = slide.getAttribute('data-bg-desktop');
-            if (mobileUrl && desktopUrl) {
-                const imageUrl = isMobile ? mobileUrl : desktopUrl;
-                slide.style.backgroundImage = `url('${imageUrl}')`;
-            }
-        });
-    }
-    
-    // Load images on load and resize
-    loadHeroImages();
-    let resizeTimeout;
-    window.addEventListener('resize', () => {
-        clearTimeout(resizeTimeout);
-        resizeTimeout = setTimeout(loadHeroImages, 250);
-    });
     
     let currentSlide = 0;
     const totalSlides = slides.length;
@@ -630,12 +609,130 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 });
+// Language Dropdown Functionality
+document.addEventListener('DOMContentLoaded', () => {
+    const langDropdownToggle = document.getElementById('langDropdownToggle');
+    const langDropdownMenu = document.getElementById('langDropdownMenu');
+    const langDropdownItems = document.querySelectorAll('.lang-dropdown-item');
+    const langCurrent = document.querySelector('.lang-current');
+    const languageDropdown = document.querySelector('.language-dropdown');
+    const mobileLangSwitcher = document.querySelector('.nav-menu .mobile-language-switcher');
+    
+    // Language labels mapping
+    const langLabels = {
+        'en': 'EN',
+        'nl': 'NL',
+        'fr': 'FR'
+    };
+    
+    const langFullLabels = {
+        'en': 'English',
+        'nl': 'Nederlands',
+        'fr': 'Français'
+    };
+    
+    // Update dropdown display based on current language
+    function updateDropdownDisplay() {
+        const currentLang = localStorage.getItem('preferredLanguage') || 'en';
+        const currentLabel = langLabels[currentLang] || 'EN';
+        
+        // Update toggle button
+        if (langCurrent) {
+            langCurrent.textContent = currentLabel;
+        }
+        
+        // Update dropdown items
+        langDropdownItems.forEach(item => {
+            item.classList.remove('active');
+            if (item.dataset.lang === currentLang) {
+                item.classList.add('active');
+            }
+        });
+    }
+    
+    // Toggle dropdown
+    if (langDropdownToggle && langDropdownMenu) {
+        langDropdownToggle.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const isExpanded = langDropdownToggle.getAttribute('aria-expanded') === 'true';
+            langDropdownToggle.setAttribute('aria-expanded', !isExpanded);
+            languageDropdown?.classList.toggle('active', !isExpanded);
+        });
+        
+        // Handle dropdown item clicks
+        langDropdownItems.forEach(item => {
+            item.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const lang = item.dataset.lang;
+                if (lang) {
+                    // Trigger language change by clicking corresponding lang-btn (which will be handled by translations.js)
+                    const langBtn = document.querySelector(`.lang-btn[data-lang="${lang}"]`);
+                    if (langBtn) {
+                        langBtn.click();
+                    } else {
+                        // Fallback: directly call setLanguage if available
+                        if (typeof setLanguage === 'function') {
+                            setLanguage(lang);
+                        }
+                    }
+                    // Close dropdown
+                    langDropdownToggle.setAttribute('aria-expanded', 'false');
+                    languageDropdown?.classList.remove('active');
+                    updateDropdownDisplay();
+                }
+            });
+        });
+        
+        // Close dropdown when clicking outside
+        document.addEventListener('click', (e) => {
+            if (languageDropdown && !languageDropdown.contains(e.target)) {
+                langDropdownToggle.setAttribute('aria-expanded', 'false');
+                languageDropdown.classList.remove('active');
+            }
+        });
+        
+        // Update display when language changes
+        const langObserver = new MutationObserver(() => {
+            updateDropdownDisplay();
+        });
+        
+        // Observe changes to active lang-btn elements
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            langObserver.observe(btn, { attributes: true, attributeFilter: ['class'] });
+        });
+        
+        // Initial update
+        updateDropdownDisplay();
+        
+        // Also update when language changes via localStorage
+        window.addEventListener('storage', () => {
+            updateDropdownDisplay();
+        });
+    }
+});
+
 // Sync language switcher between desktop and mobile
 document.addEventListener('DOMContentLoaded', () => {
     const desktopLangSwitcher = document.querySelector('.nav-wrapper .language-switcher');
     const mobileLangSwitcher = document.querySelector('.nav-menu .mobile-language-switcher');
     
     function syncLanguageButtons() {
+        // Sync dropdown items with mobile switcher
+        const langDropdownItems = document.querySelectorAll('.lang-dropdown-item');
+        if (langDropdownItems.length > 0 && mobileLangSwitcher) {
+            const activeDropdownItem = Array.from(langDropdownItems).find(item => item.classList.contains('active'));
+            if (activeDropdownItem) {
+                const lang = activeDropdownItem.dataset.lang;
+                mobileLangSwitcher.querySelectorAll('.lang-btn').forEach(btn => {
+                    btn.classList.remove('active');
+                    if (btn.dataset.lang === lang) {
+                        btn.classList.add('active');
+                    }
+                });
+            }
+        }
+        
+        // Legacy sync for old structure (if it exists)
         if (desktopLangSwitcher && mobileLangSwitcher) {
             const activeDesktopBtn = desktopLangSwitcher.querySelector('.lang-btn.active');
             if (activeDesktopBtn) {

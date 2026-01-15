@@ -854,6 +854,21 @@ function setLanguage(lang) {
         }
     });
     
+    // Update active language dropdown item
+    document.querySelectorAll('.lang-dropdown-item').forEach(item => {
+        item.classList.remove('active');
+        if (item.dataset.lang === lang) {
+            item.classList.add('active');
+        }
+    });
+    
+    // Update dropdown toggle display
+    const langCurrent = document.querySelector('.lang-current');
+    if (langCurrent) {
+        const langLabels = { 'en': 'EN', 'nl': 'NL', 'fr': 'FR' };
+        langCurrent.textContent = langLabels[lang] || 'EN';
+    }
+    
     // Update HTML lang attribute
     document.documentElement.lang = lang;
     
@@ -871,6 +886,17 @@ document.addEventListener('DOMContentLoaded', () => {
         btn.addEventListener('click', (e) => {
             e.preventDefault();
             const lang = btn.dataset.lang;
+            if (lang) {
+                setLanguage(lang);
+            }
+        });
+    });
+    
+    // Also handle dropdown items (they trigger via script.js, but ensure they work)
+    document.querySelectorAll('.lang-dropdown-item').forEach(item => {
+        item.addEventListener('click', (e) => {
+            e.preventDefault();
+            const lang = item.dataset.lang;
             if (lang) {
                 setLanguage(lang);
             }
