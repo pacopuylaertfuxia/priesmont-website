@@ -53,10 +53,8 @@ body {
 .navbar {
     position: fixed;
     top: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: calc(100% - 40px);
-    max-width: 1200px;
+    left: 50px;
+    right: 50px;
     z-index: 1000;
     transition: top 0.25s cubic-bezier(0.4, 0, 0.2, 1);
     padding: 0;
@@ -77,10 +75,12 @@ body {
 .nav-container {
     position: relative;
     width: 100%;
+    max-width: 1200px;
     height: 100%;
+    margin: 0 auto;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: stretch;
     gap: 1rem;
     transition: justify-content 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -103,9 +103,10 @@ body {
     border-radius: 50px;
     box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.12);
     border: 0.5px solid rgba(255, 255, 255, 0.5);
-    padding: 0.5rem;
-    flex: 1;
-    min-width: fit-content;
+    padding: 0.5rem 0.5rem 0.5rem 2rem;
+    flex: 1 1 100%;
+    width: 100%;
+    min-width: 0;
 }
 
 .navbar.scrolled .nav-wrapper {
@@ -116,10 +117,15 @@ body {
 
 /* Collapsed state - nav-wrapper shrinks to only contain logo */
 .navbar.nav-collapsed .nav-wrapper {
-    padding: 0.5rem;
+    padding: 0.5rem 0.5rem 0.5rem 2rem;
     justify-content: center;
     flex: 0 0 auto;
     min-width: fit-content;
+}
+
+/* Hide language selector when nav is collapsed */
+.navbar.nav-collapsed .language-switcher.language-dropdown {
+    display: none;
 }
 
 /* Burger Container - separate from nav-wrapper */
@@ -146,12 +152,11 @@ body {
 }
 
 .navbar:not(.nav-collapsed) .burger-container {
-    opacity: 0;
-    transform: scale(0);
-    pointer-events: none;
+    display: none;
 }
 
 .navbar.nav-collapsed .burger-container {
+    display: flex;
     opacity: 1;
     transform: scale(1);
     pointer-events: all;
@@ -386,6 +391,11 @@ body {
     display: none;
 }
 
+/* Hide mobile Book Now button on desktop */
+.nav-menu .mobile-book-now-wrapper {
+    display: none;
+}
+
 @media (max-width: 968px) {
     /* Hide desktop language dropdown on mobile */
     .nav-wrapper .language-switcher.language-dropdown {
@@ -394,7 +404,7 @@ body {
     
     /* Hide Book Now button in nav on mobile (it's in the menu) */
     .nav-book-now-btn {
-        display: none;
+        display: none !important;
     }
     
     .language-switcher {
@@ -418,6 +428,11 @@ body {
     .nav-wrapper .nav-menu {
         order: 2;
         width: 100%;
+    }
+    
+    /* Show mobile Book Now button in menu when active */
+    .nav-menu.active .mobile-book-now-wrapper {
+        display: block !important;
     }
     
     /* Show mobile language switcher in menu when active */
@@ -3493,9 +3508,9 @@ body:has(.lightbox.active) .navbar {
         top: 10px;
         left: 10px;
         right: 10px;
-        width: auto;
-        transform: none;
-        max-width: none;
+        width: auto !important;
+        transform: none !important;
+        max-width: none !important;
         transition: none;
     }
     
@@ -3551,6 +3566,31 @@ body:has(.lightbox.active) .navbar {
         flex-shrink: 0;
     }
 
+
+    /* Style Book Now button inside mobile menu */
+    .nav-menu li.mobile-book-now-wrapper {
+        width: 100%;
+        padding: 0.75rem 1rem 0;
+        margin-top: 0.5rem;
+        border-top: 0.5px solid rgba(0, 0, 0, 0.08);
+    }
+    
+    .nav-menu .mobile-book-now-btn {
+        width: 100%;
+        display: block;
+        text-align: center;
+        padding: 0.875rem 1.5rem;
+        font-size: 1rem;
+        font-weight: 500;
+        border-radius: 50px;
+        text-decoration: none;
+        transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .nav-menu .mobile-book-now-btn:hover,
+    .nav-menu .mobile-book-now-btn:active {
+        transform: scale(1.02);
+    }
 
     /* Style language switcher inside mobile menu */
     .nav-menu .mobile-language-switcher,

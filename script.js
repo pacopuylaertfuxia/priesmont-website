@@ -42,18 +42,8 @@ window.addEventListener('scroll', () => {
                 }
             }
             
-            // Collapse/expand navbar based on scroll direction (disabled on mobile)
-            if (!isMobile) {
-                if (currentScroll > lastScroll && currentScroll > 150) {
-                    // Scrolling down - collapse to logo + hamburger
-                    navbar.classList.add('nav-collapsed');
-                    navMenu.classList.remove('active'); // Close mobile menu if open
-                    mobileMenuToggle.classList.remove('active');
-                } else if (currentScroll < lastScroll || currentScroll <= 100) {
-                    // Scrolling up or at top - expand navbar
-                    navbar.classList.remove('nav-collapsed');
-                }
-            }
+            // Collapse/expand navbar based on scroll direction - DISABLED (keep nav expanded)
+            // Navbar now stays expanded on scroll, only changes styling via 'scrolled' class
             
             lastScroll = currentScroll;
             ticking = false;
