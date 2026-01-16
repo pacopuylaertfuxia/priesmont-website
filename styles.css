@@ -3111,7 +3111,8 @@ body:has(.lightbox.active) .navbar {
     box-shadow: none;
     overflow: visible;
     position: sticky;
-    top: 120px;
+    top: 100px;
+    align-self: flex-start;
     display: flex;
     justify-content: center;
     align-items: flex-start;
