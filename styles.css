@@ -2863,75 +2863,19 @@ body:has(.lightbox.active) .navbar {
     position: relative;
 }
 
+/* Booking Section - Rebuilt for Robust Layout */
 .booking-layout {
     max-width: 1200px;
     margin: 3rem auto 0;
     padding: 0 20px;
     box-sizing: border-box;
+    width: 100%;
 }
 
 .booking .section-header {
     text-align: center;
     margin-bottom: 4rem;
 }
-
-/* FOMO: Booking urgency banner styles - commented out
-.booking-urgency-banner {
-    margin-top: 1.5rem;
-    margin-bottom: 0;
-    display: inline-block;
-    background: linear-gradient(135deg, #fff5f5 0%, #ffe5e5 100%);
-    border: 1.5px solid #fecaca;
-    border-radius: 16px;
-    padding: 1rem 1.5rem;
-    animation: fadeInUp 0.6s ease-out 0.3s both;
-}
-
-.urgency-content {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-}
-
-.urgency-content svg {
-    width: 24px;
-    height: 24px;
-    color: #dc2626;
-    flex-shrink: 0;
-    animation: pulse-icon 2s ease-in-out infinite;
-}
-
-.urgency-text {
-    display: flex;
-    flex-direction: column;
-    gap: 0.25rem;
-    text-align: left;
-}
-
-.urgency-text strong {
-    font-size: 0.9375rem;
-    font-weight: 600;
-    color: #991b1b;
-    letter-spacing: -0.01em;
-}
-
-.urgency-text span {
-    font-size: 0.875rem;
-    color: #7f1d1d;
-    letter-spacing: -0.01em;
-}
-
-@keyframes pulse-icon {
-    0%, 100% {
-        transform: scale(1);
-        opacity: 1;
-    }
-    50% {
-        transform: scale(1.1);
-        opacity: 0.8;
-    }
-}
-*/
 
 .booking .section-title {
     font-size: clamp(3rem, 6vw, 4.5rem);
@@ -2948,58 +2892,46 @@ body:has(.lightbox.active) .navbar {
     line-height: 1.47059;
 }
 
+/* Main Card Container */
 .booking-info-card {
     background: rgba(255, 255, 255, 0.98);
-    padding: 2.5rem;
     border-radius: 24px;
     border: 0.5px solid rgba(0, 0, 0, 0.08);
     box-shadow: 0 8px 40px 0 rgba(0, 0, 0, 0.06),
                 0 2px 8px 0 rgba(0, 0, 0, 0.04);
-    overflow: visible;
-    display: grid;
-    grid-template-columns: 1fr 1.2fr;
-    gap: 4rem;
-    align-items: start;
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     width: 100%;
     box-sizing: border-box;
+    padding: 2.5rem;
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 3rem;
+    align-items: start;
 }
 
+/* Content Column */
 .booking-info-content {
     display: flex;
     flex-direction: column;
     gap: 2rem;
-    padding-right: 0;
-    padding-left: 0;
+    min-width: 0;
     width: 100%;
-    max-width: 100%;
     box-sizing: border-box;
-    overflow: visible;
 }
 
 .booking-header {
-    margin-bottom: 0.5rem;
-    padding-right: 0;
-    padding-left: 0;
     width: 100%;
-    max-width: 100%;
     box-sizing: border-box;
 }
 
 .booking-header h3 {
-    padding-right: 0;
-    padding-left: 0;
-}
-
-.booking-info-card h3 {
     font-size: 1.875rem;
     font-weight: 600;
     color: var(--text-dark);
-    margin-bottom: 1rem;
+    margin: 0 0 1rem 0;
     letter-spacing: -0.03em;
     line-height: 1.2;
-    padding-right: 0;
 }
 
 .booking-intro {
@@ -3009,10 +2941,14 @@ body:has(.lightbox.active) .navbar {
     letter-spacing: -0.01em;
     margin: 0;
     width: 100%;
-    max-width: 100%;
     box-sizing: border-box;
     word-wrap: break-word;
     overflow-wrap: break-word;
+}
+
+.booking-benefits {
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .benefits-title {
@@ -3021,32 +2957,32 @@ body:has(.lightbox.active) .navbar {
     color: var(--text-dark);
     text-transform: uppercase;
     letter-spacing: 0.1em;
-    margin-bottom: 1.5rem;
+    margin: 0 0 1.25rem 0;
     opacity: 0.7;
 }
 
 .booking-features-list {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
     width: 100%;
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
 .booking-feature-item {
     display: flex;
     align-items: flex-start;
-    gap: 1.25rem;
-    padding: 1.25rem;
+    gap: 1rem;
+    padding: 1rem;
     background: rgba(250, 250, 250, 0.6);
     border-radius: 14px;
     border: 0.5px solid rgba(0, 0, 0, 0.05);
     transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
     width: 100%;
-    max-width: 100%;
     box-sizing: border-box;
-    overflow: hidden;
+    min-width: 0;
 }
 
 .booking-feature-item:hover {
@@ -3058,6 +2994,7 @@ body:has(.lightbox.active) .navbar {
 .feature-icon-wrapper {
     width: 44px;
     height: 44px;
+    min-width: 44px;
     background: rgba(29, 29, 31, 0.05);
     border-radius: 12px;
     display: flex;
@@ -3085,7 +3022,7 @@ body:has(.lightbox.active) .navbar {
     flex-direction: column;
     gap: 0.375rem;
     min-width: 0;
-    overflow: hidden;
+    box-sizing: border-box;
 }
 
 .feature-title {
@@ -3094,9 +3031,9 @@ body:has(.lightbox.active) .navbar {
     color: var(--text-dark);
     letter-spacing: -0.01em;
     line-height: 1.4;
+    margin: 0;
     word-wrap: break-word;
     overflow-wrap: break-word;
-    min-width: 0;
 }
 
 .feature-description {
@@ -3104,9 +3041,9 @@ body:has(.lightbox.active) .navbar {
     color: var(--text-light);
     letter-spacing: -0.01em;
     line-height: 1.5;
+    margin: 0;
     word-wrap: break-word;
     overflow-wrap: break-word;
-    min-width: 0;
 }
 
 .booking-trust {
@@ -3115,6 +3052,9 @@ body:has(.lightbox.active) .navbar {
     padding-top: 1.5rem;
     border-top: 0.5px solid rgba(0, 0, 0, 0.08);
     margin-top: 0.5rem;
+    width: 100%;
+    box-sizing: border-box;
+    flex-wrap: wrap;
 }
 
 .trust-item {
@@ -3135,24 +3075,16 @@ body:has(.lightbox.active) .navbar {
     flex-shrink: 0;
 }
 
+/* Widget Column */
 .booking-widget-wrapper {
-    background: transparent;
-    padding: 0;
-    padding-bottom: 0;
-    margin-bottom: 0;
-    border-radius: 0;
-    border: none;
-    box-shadow: none;
-    overflow: visible;
     position: sticky;
     top: 100px;
-    align-self: flex-start;
+    width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
     display: flex;
     justify-content: center;
     align-items: flex-start;
-    width: 100%;
-    max-width: 100%;
-    box-sizing: border-box;
 }
 
 .lodgify-widget-container {
@@ -3208,49 +3140,29 @@ body:has(.lightbox.active) .navbar {
 
 @media (max-width: 968px) {
     .booking-layout {
-        max-width: 100%;
-        margin: 3rem auto 0;
         padding: 0 20px;
-        box-sizing: border-box;
     }
     
     .booking-info-card {
-        padding: 2rem 1.75rem;
+        padding: 2rem 1.5rem;
         grid-template-columns: 1fr;
-        gap: 1.75rem;
-        margin: 0 auto;
-        width: 100%;
-        max-width: 100%;
-        box-sizing: border-box;
-        overflow: visible;
+        gap: 2rem;
     }
     
     .booking-info-content {
         gap: 1.75rem;
-        padding-right: 0;
-        padding-left: 0;
-        width: 100%;
-        max-width: 100%;
-        box-sizing: border-box;
-        overflow: visible;
     }
 
     .booking-header {
-        padding-right: 0;
-        padding-left: 0;
         text-align: center;
     }
 
     .booking-header h3 {
-        padding-right: 0;
-        padding-left: 0;
         text-align: center;
     }
     
     .booking-intro {
         text-align: left;
-        max-width: 100%;
-        margin: 0;
     }
     
     .booking-benefits {
@@ -3261,35 +3173,26 @@ body:has(.lightbox.active) .navbar {
         text-align: center;
     }
     
+    .booking-features-list {
+        gap: 0.875rem;
+    }
+    
     .booking-feature-item {
-        text-align: left;
-        width: 100%;
-        max-width: 100%;
-        margin: 0;
-        box-sizing: border-box;
-        overflow: visible;
+        padding: 1rem;
     }
     
     .booking-trust {
         justify-content: center;
-        align-items: center;
     }
     
     .booking-widget-wrapper {
         position: static;
-        margin-top: 0;
-        display: flex;
-        justify-content: center;
-        align-items: flex-start;
-        width: 100%;
+        top: auto;
     }
     
     .lodgify-widget-container {
         width: 100%;
         max-width: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: flex-start;
     }
     
 /* Lodgify Booking Modal - Full-screen overlay to keep users on site */
