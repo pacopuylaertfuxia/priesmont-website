@@ -689,29 +689,29 @@
     <!-- Gallery Lightbox Modal -->
     <div id="gallery-lightbox" class="lightbox">
         <div class="lightbox-overlay"></div>
+        <button class="lightbox-close" aria-label="Close lightbox">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+        </button>
+        <button class="lightbox-prev" aria-label="Previous image">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="15 18 9 12 15 6"></polyline>
+            </svg>
+        </button>
+        <button class="lightbox-next" aria-label="Next image">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+        </button>
         <div class="lightbox-content">
-            <button class="lightbox-close" aria-label="Close lightbox">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <line x1="18" y1="6" x2="6" y2="18"></line>
-                    <line x1="6" y1="6" x2="18" y2="18"></line>
-                        </svg>
-            </button>
-            <button class="lightbox-prev" aria-label="Previous image">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <polyline points="15 18 9 12 15 6"></polyline>
-                        </svg>
-            </button>
-            <button class="lightbox-next" aria-label="Next image">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <polyline points="9 18 15 12 9 6"></polyline>
-                </svg>
-            </button>
             <img id="lightbox-image" src="" alt="Gallery Image">
             <div class="lightbox-counter">
                 <span id="lightbox-current">1</span> / <span id="lightbox-total">50</span>
-                    </div>
-                </div>
-                    </div>
+            </div>
+        </div>
+    </div>
                     </div>
     </section>
 

@@ -1786,12 +1786,6 @@ body:has(.lightbox.active) .navbar {
     touch-action: manipulation;
 }
 
-.lightbox-content button {
-    pointer-events: all !important;
-    touch-action: manipulation;
-    -webkit-tap-highlight-color: rgba(255, 255, 255, 0.3);
-}
-
 #lightbox-image {
     width: auto;
     height: 100vh;
@@ -1807,7 +1801,7 @@ body:has(.lightbox.active) .navbar {
 .lightbox-close,
 .lightbox-prev,
 .lightbox-next {
-    position: absolute;
+    position: fixed;
     background: rgba(255, 255, 255, 0.1);
     backdrop-filter: saturate(180%) blur(20px);
     -webkit-backdrop-filter: saturate(180%) blur(20px);
@@ -1821,18 +1815,22 @@ body:has(.lightbox.active) .navbar {
     justify-content: center;
     cursor: pointer;
     transition: var(--transition-fast);
-    z-index: 10001;
+    z-index: 10002;
     pointer-events: all;
     touch-action: manipulation;
     -webkit-tap-highlight-color: rgba(255, 255, 255, 0.3);
     user-select: none;
     -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    margin: 0;
+    padding: 0;
+    outline: none;
 }
 
 .lightbox-close {
     top: 20px;
     right: 20px;
-    z-index: 10002;
 }
 
 .lightbox-close:hover {
@@ -1885,44 +1883,39 @@ body:has(.lightbox.active) .navbar {
 @media (max-width: 768px) {
     .lightbox-prev,
     .lightbox-next {
-        width: 44px;
-        height: 44px;
-        min-width: 44px;
-        min-height: 44px;
+        width: 48px;
+        height: 48px;
+        min-width: 48px;
+        min-height: 48px;
     }
     
     .lightbox-prev {
-        left: 10px;
+        left: 15px;
     }
     
     .lightbox-next {
-        right: 10px;
+        right: 15px;
     }
     
     .lightbox-close {
-        top: 10px;
-        right: 10px;
-        width: 44px;
-        height: 44px;
-        min-width: 44px;
-        min-height: 44px;
+        top: 15px;
+        right: 15px;
+        width: 48px;
+        height: 48px;
+        min-width: 48px;
+        min-height: 48px;
         z-index: 10002;
-        background: rgba(255, 255, 255, 0.15);
+        background: rgba(255, 255, 255, 0.2);
     }
     
-    .lightbox-close:active {
-        background: rgba(255, 255, 255, 0.25);
+    .lightbox-close:active,
+    .lightbox-close:hover {
+        background: rgba(255, 255, 255, 0.3);
         transform: scale(0.95);
     }
     
     .lightbox-counter {
-        bottom: 10px;
-    }
-    
-    .lightbox-content button {
-        pointer-events: all !important;
-        touch-action: manipulation;
-        -webkit-tap-highlight-color: rgba(255, 255, 255, 0.3);
+        bottom: 15px;
     }
 }
 

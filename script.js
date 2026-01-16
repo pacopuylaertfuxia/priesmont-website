@@ -337,18 +337,20 @@ initializeGalleryHandlers();
 
 // Lightbox controls
 if (lightboxClose) {
-    lightboxClose.addEventListener('click', (e) => {
+    // Use both click and touch events for maximum compatibility
+    const handleClose = (e) => {
         e.preventDefault();
         e.stopPropagation();
+        e.stopImmediatePropagation();
         closeLightbox();
-    });
+        return false;
+    };
     
-    // Also add touch event for mobile
-    lightboxClose.addEventListener('touchend', (e) => {
-        e.preventDefault();
+    lightboxClose.addEventListener('click', handleClose, { passive: false });
+    lightboxClose.addEventListener('touchend', handleClose, { passive: false });
+    lightboxClose.addEventListener('touchstart', (e) => {
         e.stopPropagation();
-        closeLightbox();
-    });
+    }, { passive: true });
 }
 
 if (lightboxPrev) {
