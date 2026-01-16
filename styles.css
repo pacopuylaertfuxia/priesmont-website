@@ -2969,15 +2969,18 @@ body:has(.lightbox.active) .navbar {
     flex-direction: column;
     gap: 2.5rem;
     padding-right: 0;
+    padding-left: 0;
 }
 
 .booking-header {
     margin-bottom: 0.5rem;
     padding-right: 0;
+    padding-left: 0;
 }
 
 .booking-header h3 {
     padding-right: 0;
+    padding-left: 0;
 }
 
 .booking-info-card h3 {
@@ -3012,6 +3015,9 @@ body:has(.lightbox.active) .navbar {
     display: grid;
     grid-template-columns: 1fr;
     gap: 1.5rem;
+    width: 100%;
+    margin: 0;
+    padding: 0;
 }
 
 .booking-feature-item {
@@ -3189,25 +3195,25 @@ body:has(.lightbox.active) .navbar {
     .booking-info-content {
         gap: 2rem;
         padding-right: 0;
-        text-align: center;
+        padding-left: 0;
     }
 
     .booking-header {
         padding-right: 0;
+        padding-left: 0;
         text-align: center;
     }
 
     .booking-header h3 {
         padding-right: 0;
+        padding-left: 0;
         text-align: center;
-        margin-left: auto;
-        margin-right: auto;
     }
     
     .booking-intro {
-        text-align: center;
-        margin-left: auto;
-        margin-right: auto;
+        text-align: left;
+        max-width: 100%;
+        margin: 0;
     }
     
     .booking-benefits {
@@ -3220,6 +3226,8 @@ body:has(.lightbox.active) .navbar {
     
     .booking-feature-item {
         text-align: left;
+        width: 100%;
+        margin: 0;
     }
     
     .booking-trust {
@@ -3350,6 +3358,9 @@ body:has(.lightbox.active) .navbar {
     .booking-features-list {
         grid-template-columns: 1fr;
         gap: 1.25rem;
+        width: 100%;
+        margin: 0;
+        padding: 0;
     }
     
     
@@ -4485,21 +4496,25 @@ body:has(.lightbox.active) .navbar {
 
     .booking-info-content {
         padding-right: 0;
-        text-align: center;
+        padding-left: 0;
     }
 
     .booking-header {
         padding-right: 0;
+        padding-left: 0;
         text-align: center;
     }
 
     .booking-header h3 {
         padding-right: 0;
+        padding-left: 0;
         text-align: center;
     }
     
     .booking-intro {
-        text-align: center;
+        text-align: left;
+        max-width: 100%;
+        margin: 0;
     }
     
     .booking-benefits {
@@ -4513,6 +4528,8 @@ body:has(.lightbox.active) .navbar {
     .booking-feature-item {
         padding: 1rem;
         text-align: left;
+        width: 100%;
+        margin: 0;
     }
     
     .booking-trust {
