@@ -2236,44 +2236,48 @@ body:has(.lightbox.active) .navbar {
 }
 
 .testimonials .container {
-    max-width: 1200px;
-    padding-left: 20px;
+    max-width: 100%;
+    padding-left: 0;
     padding-right: 0;
+    overflow: visible;
 }
 
-.testimonials-carousel {
+.testimonials-carousel-wrapper {
     margin-top: 2.5rem;
-    overflow-x: auto;
-    overflow-y: hidden;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
     margin-left: calc(-50vw + 50%);
     margin-right: calc(-50vw + 50%);
+    padding-left: 0;
+    padding-right: 0;
+    padding-bottom: 2rem;
     padding-top: 1rem;
-    padding-bottom: 1rem;
-    padding-left: calc(50vw - 50% + 20px);
-    padding-right: calc(50vw - 50% + 20px);
-    position: relative;
-    z-index: 1;
-    scroll-padding-left: calc(50vw - 50% + 20px);
-    scroll-padding-right: calc(50vw - 50% + 20px);
-    scroll-snap-type: x proximity;
+    overflow: hidden;
     width: 100vw;
-    max-width: 100%;
     box-sizing: border-box;
 }
 
-.testimonials-carousel::-webkit-scrollbar {
+.testimonials-carousel-row {
+    overflow-x: auto;
+    overflow-y: hidden;
+    position: relative;
+    width: 100%;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    -webkit-overflow-scrolling: touch;
+    display: block;
+    scroll-snap-type: x proximity;
+}
+
+.testimonials-carousel-row::-webkit-scrollbar {
     display: none;
 }
 
-.testimonials-track {
+.testimonials-carousel-track {
     display: flex;
+    flex-wrap: nowrap;
     gap: 2rem;
-    padding: 0;
-    padding-right: 20px;
     width: max-content;
+    padding-left: 20px;
+    padding-right: 0;
 }
 
 .testimonial-card {
@@ -2406,18 +2410,14 @@ body:has(.lightbox.active) .navbar {
 }
 
 @media (max-width: 968px) {
-    .testimonials-carousel {
-        margin-left: -20px;
-        margin-right: -20px;
-        padding-left: 20px;
-        padding-right: 20px;
-        scroll-padding-left: 20px;
-        scroll-padding-right: 20px;
+    .testimonials-carousel-wrapper {
+        margin-left: calc(-50vw + 50%);
+        margin-right: calc(-50vw + 50%);
     }
-
-    .testimonials-track {
-        padding: 0 20px;
-        padding-right: 20px;
+    
+    .testimonials-carousel-track {
+        padding-left: 20px;
+        padding-right: 0;
     }
     
     .testimonial-card {
@@ -2427,18 +2427,14 @@ body:has(.lightbox.active) .navbar {
 }
 
 @media (max-width: 640px) {
-    .testimonials-carousel {
-        margin-left: -20px;
-        margin-right: -20px;
-        padding-left: 20px;
-        padding-right: 20px;
-        scroll-padding-left: 20px;
-        scroll-padding-right: 20px;
+    .testimonials-carousel-wrapper {
+        margin-left: calc(-50vw + 50%);
+        margin-right: calc(-50vw + 50%);
     }
-
-    .testimonials-track {
-        padding: 0 20px;
-        padding-right: 20px;
+    
+    .testimonials-carousel-track {
+        padding-left: 20px;
+        padding-right: 0;
     }
     
     .testimonial-card {

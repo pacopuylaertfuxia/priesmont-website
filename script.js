@@ -891,3 +891,80 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 });
+
+// Testimonials Carousel Auto-Scroll (same as Features & Amenities)
+document.addEventListener('DOMContentLoaded', function() {
+    const testimonialsCarouselRow = document.querySelector('.testimonials-carousel-row');
+    
+    if (!testimonialsCarouselRow) return;
+    
+    // Check if mobile (disable auto-scroll on mobile for better performance)
+    const isMobile = window.innerWidth <= 968;
+    
+    if (isMobile) {
+        // On mobile, just enable smooth scrolling - no auto-animation
+        testimonialsCarouselRow.style.scrollBehavior = 'smooth';
+        return;
+    }
+    
+    const track = testimonialsCarouselRow.querySelector('.testimonials-carousel-track');
+    if (!track) return;
+    
+    let animationId = null;
+    let isPaused = false;
+    let scrollDirection = 1; // Scrolls left (positive direction)
+    let scrollSpeed = 0.5; // Pixels per frame (slow)
+    let halfWidth = 0;
+    
+    // Wait for layout to calculate proper widths
+    setTimeout(() => {
+        // Calculate half width for infinite scroll
+        halfWidth = track.scrollWidth / 2;
+        
+        // Initialize scroll position
+        testimonialsCarouselRow.scrollLeft = 0;
+        
+        // Auto-scroll animation
+        const animate = () => {
+            if (!isPaused) {
+                testimonialsCarouselRow.scrollLeft += scrollDirection * scrollSpeed;
+                
+                // Reset position for infinite scroll
+                if (testimonialsCarouselRow.scrollLeft >= halfWidth) {
+                    testimonialsCarouselRow.scrollLeft = 0;
+                }
+            }
+            animationId = requestAnimationFrame(animate);
+        };
+        
+        // Start animation
+        animate();
+    }, 100);
+    
+    // Pause on user interaction
+    const pauseOnInteraction = () => {
+        isPaused = true;
+    };
+    
+    // Resume when interaction ends
+    const resumeOnLeave = () => {
+        isPaused = false;
+    };
+    
+    // Mouse events
+    testimonialsCarouselRow.addEventListener('mouseenter', pauseOnInteraction);
+    testimonialsCarouselRow.addEventListener('mouseleave', resumeOnLeave);
+    
+    // Touch events
+    testimonialsCarouselRow.addEventListener('touchstart', pauseOnInteraction, { passive: true });
+    testimonialsCarouselRow.addEventListener('touchmove', pauseOnInteraction, { passive: true });
+    testimonialsCarouselRow.addEventListener('touchend', resumeOnLeave, { passive: true });
+    testimonialsCarouselRow.addEventListener('touchcancel', resumeOnLeave, { passive: true });
+    
+    // Cleanup on page unload
+    window.addEventListener('beforeunload', () => {
+        if (animationId) {
+            cancelAnimationFrame(animationId);
+        }
+    });
+});

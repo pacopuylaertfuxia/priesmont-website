@@ -8,26 +8,26 @@
 
     // Hero availability messages (subtle, elegant)
     const heroMessages = [
-        "Limited availability this season — Book now to secure your dates",
-        "Popular weekends filling fast — Reserve your stay today",
+        "Limited availability this season, book now to secure your dates",
+        "Popular weekends filling fast, reserve your stay today",
         "Only a few dates remaining this season",
-        "High demand period — Secure your preferred dates now",
+        "High demand period, secure your preferred dates now",
         "Last chance to book for upcoming holidays"
     ];
 
     // Booking section urgency messages (more direct)
     const bookingMessages = [
         "Only a few weekends still available this season",
-        "Popular dates booking quickly — Reserve now",
+        "Popular dates booking quickly, reserve now",
         "Limited availability for upcoming months",
-        "High demand — Book today to avoid disappointment",
+        "High demand, book today to avoid disappointment",
         "Last remaining dates for peak season",
-        "Weekend availability is limited — Secure your stay"
+        "Weekend availability is limited, secure your stay"
     ];
 
     // Contact form urgency (when user is about to submit)
     const contactMessages = [
-        "Don't miss out — Limited availability this season",
+        "Don't miss out, limited availability this season",
         "Popular dates are filling fast",
         "Only a few weekends remaining"
     ];
