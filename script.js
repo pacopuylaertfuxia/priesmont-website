@@ -337,7 +337,18 @@ initializeGalleryHandlers();
 
 // Lightbox controls
 if (lightboxClose) {
-    lightboxClose.addEventListener('click', closeLightbox);
+    lightboxClose.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        closeLightbox();
+    });
+    
+    // Also add touch event for mobile
+    lightboxClose.addEventListener('touchend', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        closeLightbox();
+    });
 }
 
 if (lightboxPrev) {

@@ -1781,9 +1781,15 @@ body:has(.lightbox.active) .navbar {
     pointer-events: none;
 }
 
-.lightbox-content img,
-.lightbox-content button {
+.lightbox-content img {
     pointer-events: all;
+    touch-action: manipulation;
+}
+
+.lightbox-content button {
+    pointer-events: all !important;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: rgba(255, 255, 255, 0.3);
 }
 
 #lightbox-image {
@@ -1815,12 +1821,18 @@ body:has(.lightbox.active) .navbar {
     justify-content: center;
     cursor: pointer;
     transition: var(--transition-fast);
-    z-index: 2;
+    z-index: 10001;
+    pointer-events: all;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: rgba(255, 255, 255, 0.3);
+    user-select: none;
+    -webkit-user-select: none;
 }
 
 .lightbox-close {
     top: 20px;
     right: 20px;
+    z-index: 10002;
 }
 
 .lightbox-close:hover {
@@ -1873,8 +1885,10 @@ body:has(.lightbox.active) .navbar {
 @media (max-width: 768px) {
     .lightbox-prev,
     .lightbox-next {
-        width: 40px;
-        height: 40px;
+        width: 44px;
+        height: 44px;
+        min-width: 44px;
+        min-height: 44px;
     }
     
     .lightbox-prev {
@@ -1888,12 +1902,27 @@ body:has(.lightbox.active) .navbar {
     .lightbox-close {
         top: 10px;
         right: 10px;
-        width: 40px;
-        height: 40px;
+        width: 44px;
+        height: 44px;
+        min-width: 44px;
+        min-height: 44px;
+        z-index: 10002;
+        background: rgba(255, 255, 255, 0.15);
+    }
+    
+    .lightbox-close:active {
+        background: rgba(255, 255, 255, 0.25);
+        transform: scale(0.95);
     }
     
     .lightbox-counter {
         bottom: 10px;
+    }
+    
+    .lightbox-content button {
+        pointer-events: all !important;
+        touch-action: manipulation;
+        -webkit-tap-highlight-color: rgba(255, 255, 255, 0.3);
     }
 }
 
