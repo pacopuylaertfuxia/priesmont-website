@@ -2866,6 +2866,8 @@ body:has(.lightbox.active) .navbar {
 .booking-layout {
     max-width: 1400px;
     margin: 3rem auto 0;
+    padding: 0 2rem;
+    box-sizing: border-box;
 }
 
 .booking .section-header {
@@ -3173,25 +3175,56 @@ body:has(.lightbox.active) .navbar {
     .booking-layout {
         max-width: 100%;
         margin: 3rem auto 0;
+        padding: 0 1.5rem;
+        box-sizing: border-box;
     }
     
     .booking-info-card {
         padding: 2rem 1.5rem;
         grid-template-columns: 1fr;
         gap: 2rem;
+        margin: 0 auto;
     }
     
     .booking-info-content {
         gap: 2rem;
         padding-right: 0;
+        text-align: center;
     }
 
     .booking-header {
         padding-right: 0;
+        text-align: center;
     }
 
     .booking-header h3 {
         padding-right: 0;
+        text-align: center;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    .booking-intro {
+        text-align: center;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    .booking-benefits {
+        text-align: center;
+    }
+    
+    .benefits-title {
+        text-align: center;
+    }
+    
+    .booking-feature-item {
+        text-align: left;
+    }
+    
+    .booking-trust {
+        justify-content: center;
+        align-items: center;
     }
     
     .booking-widget-wrapper {
@@ -4447,23 +4480,44 @@ body:has(.lightbox.active) .navbar {
     }
 
     .booking-info-card {
-        padding: 2rem 1.5rem;
+        padding: 1.5rem 1rem;
     }
 
     .booking-info-content {
         padding-right: 0;
+        text-align: center;
     }
 
     .booking-header {
         padding-right: 0;
+        text-align: center;
     }
 
     .booking-header h3 {
         padding-right: 0;
+        text-align: center;
+    }
+    
+    .booking-intro {
+        text-align: center;
+    }
+    
+    .booking-benefits {
+        text-align: center;
+    }
+    
+    .benefits-title {
+        text-align: center;
     }
 
     .booking-feature-item {
         padding: 1rem;
+        text-align: left;
+    }
+    
+    .booking-trust {
+        justify-content: center;
+        align-items: center;
     }
 
     section {
