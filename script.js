@@ -968,3 +968,72 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 });
+
+// Mobile Services Accordion
+document.addEventListener('DOMContentLoaded', () => {
+    const accordionItems = document.querySelectorAll('.services-accordion-item');
+    
+    accordionItems.forEach(item => {
+        const header = item.querySelector('.services-accordion-header');
+        
+        header.addEventListener('click', () => {
+            const isActive = item.classList.contains('active');
+            
+            // Close all other items
+            accordionItems.forEach(otherItem => {
+                if (otherItem !== item) {
+                    otherItem.classList.remove('active');
+                }
+            });
+            
+            // Toggle current item
+            if (isActive) {
+                item.classList.remove('active');
+            } else {
+                item.classList.add('active');
+            }
+        });
+        
+        // Prevent event bubbling
+        const content = item.querySelector('.services-accordion-content');
+        if (content) {
+            content.addEventListener('click', (e) => {
+                e.stopPropagation();
+            });
+        }
+    });
+});
+
+// Use Case Cards Read More/Less functionality
+document.addEventListener('DOMContentLoaded', () => {
+    const useCaseCards = document.querySelectorAll('.use-case-card');
+    
+    useCaseCards.forEach(card => {
+        const descriptionElement = card.querySelector('.use-case-description-truncated');
+        const button = card.querySelector('.use-case-read-more-btn');
+        
+        if (!descriptionElement || !button) return;
+        
+        // Check if description needs truncation
+        const fullHeight = descriptionElement.scrollHeight;
+        const lineHeight = parseFloat(getComputedStyle(descriptionElement).lineHeight);
+        const maxHeight = lineHeight * 2; // 2 lines
+        
+        if (fullHeight > maxHeight) {
+            button.style.display = 'block';
+            button.textContent = 'Read more';
+            
+            button.addEventListener('click', () => {
+                const isExpanded = card.classList.contains('expanded');
+                
+                if (isExpanded) {
+                    card.classList.remove('expanded');
+                    button.textContent = 'Read more';
+                } else {
+                    card.classList.add('expanded');
+                    button.textContent = 'Read less';
+                }
+            });
+        }
+    });
+});
