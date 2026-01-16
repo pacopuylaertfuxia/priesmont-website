@@ -2864,9 +2864,9 @@ body:has(.lightbox.active) .navbar {
 }
 
 .booking-layout {
-    max-width: 1400px;
+    max-width: 1200px;
     margin: 3rem auto 0;
-    padding: 0 2rem;
+    padding: 0 20px;
     box-sizing: border-box;
 }
 
@@ -2950,12 +2950,12 @@ body:has(.lightbox.active) .navbar {
 
 .booking-info-card {
     background: rgba(255, 255, 255, 0.98);
-    padding: 3.5rem;
+    padding: 2.5rem;
     border-radius: 24px;
     border: 0.5px solid rgba(0, 0, 0, 0.08);
     box-shadow: 0 8px 40px 0 rgba(0, 0, 0, 0.06),
                 0 2px 8px 0 rgba(0, 0, 0, 0.04);
-    overflow: hidden;
+    overflow: visible;
     display: grid;
     grid-template-columns: 1fr 1.2fr;
     gap: 4rem;
@@ -2969,13 +2969,13 @@ body:has(.lightbox.active) .navbar {
 .booking-info-content {
     display: flex;
     flex-direction: column;
-    gap: 2.5rem;
+    gap: 2rem;
     padding-right: 0;
     padding-left: 0;
     width: 100%;
     max-width: 100%;
     box-sizing: border-box;
-    overflow: hidden;
+    overflow: visible;
 }
 
 .booking-header {
@@ -3028,7 +3028,7 @@ body:has(.lightbox.active) .navbar {
 .booking-features-list {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 1.5rem;
+    gap: 1.25rem;
     width: 100%;
     margin: 0;
     padding: 0;
@@ -3150,6 +3150,9 @@ body:has(.lightbox.active) .navbar {
     display: flex;
     justify-content: center;
     align-items: flex-start;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
 }
 
 .lodgify-widget-container {
@@ -3207,29 +3210,29 @@ body:has(.lightbox.active) .navbar {
     .booking-layout {
         max-width: 100%;
         margin: 3rem auto 0;
-        padding: 0 1.5rem;
+        padding: 0 20px;
         box-sizing: border-box;
     }
     
     .booking-info-card {
-        padding: 2rem 1.5rem;
+        padding: 2rem 1.75rem;
         grid-template-columns: 1fr;
-        gap: 2rem;
+        gap: 1.75rem;
         margin: 0 auto;
         width: 100%;
         max-width: 100%;
         box-sizing: border-box;
-        overflow: hidden;
+        overflow: visible;
     }
     
     .booking-info-content {
-        gap: 2rem;
+        gap: 1.75rem;
         padding-right: 0;
         padding-left: 0;
         width: 100%;
         max-width: 100%;
         box-sizing: border-box;
-        overflow: hidden;
+        overflow: visible;
     }
 
     .booking-header {
@@ -3264,7 +3267,7 @@ body:has(.lightbox.active) .navbar {
         max-width: 100%;
         margin: 0;
         box-sizing: border-box;
-        overflow: hidden;
+        overflow: visible;
     }
     
     .booking-trust {
@@ -3394,7 +3397,7 @@ body:has(.lightbox.active) .navbar {
     
     .booking-features-list {
         grid-template-columns: 1fr;
-        gap: 1.25rem;
+        gap: 1rem;
         width: 100%;
         margin: 0;
         padding: 0;
@@ -4528,20 +4531,21 @@ body:has(.lightbox.active) .navbar {
     }
 
     .booking-info-card {
-        padding: 1.5rem 1rem;
+        padding: 1.75rem 1.25rem;
         width: 100%;
         max-width: 100%;
         box-sizing: border-box;
-        overflow: hidden;
+        overflow: visible;
     }
 
     .booking-info-content {
+        gap: 1.5rem;
         padding-right: 0;
         padding-left: 0;
         width: 100%;
         max-width: 100%;
         box-sizing: border-box;
-        overflow: hidden;
+        overflow: visible;
     }
 
     .booking-header {
@@ -4595,7 +4599,7 @@ body:has(.lightbox.active) .navbar {
         max-width: 100%;
         margin: 0;
         box-sizing: border-box;
-        overflow: hidden;
+        overflow: visible;
     }
     
     .booking-trust {
