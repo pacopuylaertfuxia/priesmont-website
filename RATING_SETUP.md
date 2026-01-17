@@ -1,33 +1,37 @@
-# Rating Auto-Update Setup Guide
+# Rating System Setup Guide
 
-This guide explains how to set up automatic rating fetching from all booking platforms.
+This guide explains how to set up the rating system using environment variables.
 
 ## Overview
 
-The system automatically fetches ratings from:
-- Google Reviews
-- TripAdvisor
-- Booking.com
-- Airbnb
-- Hotels.com
-- Expedia
+The system reads ratings from environment variables and calculates the average automatically.
+**No scraping - just simple lookup and calculation.**
 
-And updates the average rating displayed in the hero section weekly via cron job.
+Supported platforms:
+- Google Reviews (environment variable or Google Places API)
+- TripAdvisor (environment variable)
+- Booking.com (environment variable)
+- Airbnb (environment variable)
+- Hotels.com (environment variable)
+- Expedia (environment variable)
 
 ## How It Works
 
-1. **Weekly Cron Job**: Runs every Monday at 2 AM (via Vercel Cron)
-2. **Rating Scraper**: `/api/fetch-ratings.js` fetches ratings from all platforms
-3. **Rating Cache**: `/api/ratings.js` serves cached ratings to the frontend
-4. **Frontend Update**: `script.js` fetches and displays the rating on page load
+1. **Rating Storage**: All ratings stored in Vercel environment variables
+2. **Rating Calculation**: `/api/fetch-ratings.js` reads values and calculates average
+3. **Rating Cache**: `/api/ratings.js` serves ratings to the frontend
+4. **Frontend Display**: `script.js` fetches and displays the rating on page load
+5. **Weekly Update**: Optional cron job - but you'll still need to update env vars manually
+
+**Note:** The cron job doesn't automatically fetch ratings - you need to update the environment variables yourself. The cron job just triggers recalculation.
 
 ## Setup Instructions
 
 ### 1. Deploy to Vercel
 
-Make sure your site is deployed on Vercel (the cron jobs only work on Vercel).
+Make sure your site is deployed on Vercel.
 
-### 2. Set Up Environment Variables (Optional)
+### 2. Set Up Environment Variables (REQUIRED)
 
 For platforms that are difficult to scrape, you can set manual fallback ratings in Vercel environment variables:
 
@@ -39,113 +43,101 @@ For platforms that are difficult to scrape, you can set manual fallback ratings 
 - `EXPEDIA_RATING` - Expedia rating (e.g., `4.6`)
 
 **To set in Vercel:**
-1. Go to your project dashboard
-2. Settings → Environment Variables
-3. Add each variable with its value
+1. Go to your project dashboard: https://vercel.com/dashboard
+2. Select your project (priesmont)
+3. Go to **Settings** → **Environment Variables**
+4. Add each variable with its value (click "Add New" for each one)
+5. Make sure to select **Production**, **Preview**, and **Development** environments
+6. Click "Save" after adding each variable
 
-### 3. Set Up Authentication (Recommended)
+**Example values:**
+- `GOOGLE_RATING` = `4.8`
+- `TRIPADVISOR_RATING` = `4.9`
+- `BOOKING_RATING` = `5.0`
+- `AIRBNB_RATING` = `4.7`
+- `HOTELS_RATING` = `4.8`
+- `EXPEDIA_RATING` = `4.6`
 
-For security, set a token to protect the fetch endpoint:
+**After adding variables:**
+- Redeploy your site for changes to take effect
+- Go to **Deployments** → Click the three dots on latest deployment → **Redeploy**
 
-- `RATING_FETCH_TOKEN` - Secret token for API authentication
+### 3. (Optional) Google Places API Setup
 
-### 4. Set Up Vercel KV (Optional but Recommended)
+If you want to automatically fetch Google Reviews rating:
 
-For caching ratings, set up Vercel KV:
+1. Go to Google Cloud Console: https://console.cloud.google.com
+2. Create a project or select existing one
+3. Enable "Places API"
+4. Create an API key
+5. Find your Place ID: https://developers.google.com/maps/documentation/places/web-service/place-id
+6. Add to Vercel environment variables:
+   - `GOOGLE_PLACES_API_KEY` = your API key
+   - `GOOGLE_PLACE_ID` = your Place ID
 
-1. Install Vercel KV: `vercel kv create`
-2. Link to your project: `vercel kv link`
-3. Environment variables will be automatically set:
-   - `KV_REST_API_URL`
-   - `KV_REST_API_TOKEN`
+**Note:** Google Places API has usage costs. Check pricing before enabling.
 
-### 5. Configure Cron Job
-
-The cron job is configured in `vercel.json`:
-
-```json
-{
-  "crons": [
-    {
-      "path": "/api/fetch-ratings",
-      "schedule": "0 2 * * 1"
-    }
-  ]
-}
-```
-
-This runs every Monday at 2 AM UTC.
-
-**To change schedule:**
-- Edit the `schedule` field in `vercel.json`
-- Use cron syntax: `minute hour day month weekday`
-- Example: `0 2 * * 1` = Monday 2 AM
-- Example: `0 0 * * 0` = Sunday midnight
-
-### 6. Test the Setup
+### 4. Test the Setup
 
 1. **Test API endpoint:**
-   ```bash
-   curl https://your-domain.com/api/ratings
    ```
-
-2. **Manually trigger update:**
-   ```bash
-   curl -X POST https://your-domain.com/api/fetch-ratings
+   https://your-domain.com/api/ratings
    ```
+   You should see JSON with your ratings and average.
 
-3. **Check Vercel logs:**
+2. **Check Vercel logs:**
    - Go to Vercel dashboard → Your project → Logs
-   - Check for any errors in rating fetching
+   - Visit the `/api/ratings` endpoint to trigger logs
 
-## How Scraping Works
+### 5. (Optional) Configure Cron Job
 
-The scraper tries multiple methods:
+The cron job is already configured in `vercel.json` to run weekly:
+- Runs every Monday at 2 AM UTC
+- Just recalculates the average (doesn't fetch new ratings)
 
-1. **Web Scraping**: Extracts ratings from HTML using regex patterns
-2. **Structured Data**: Looks for JSON-LD or data attributes
-3. **Environment Variables**: Falls back to manual values if scraping fails
+**To disable cron job:**
+- Remove the `crons` section from `vercel.json`
+- Or leave it - it's harmless and just recalculates
 
-### Platform-Specific Notes
+## How It Works
 
-- **Google Reviews**: Requires Google Places API or manual entry (scraping often blocked)
-- **TripAdvisor**: Extracts from HTML or structured data
-- **Booking.com**: Looks for rating badges or structured data
-- **Airbnb**: Extracts from embedded JSON data
-- **Hotels.com**: Standard HTML scraping
-- **Expedia**: Standard HTML scraping
+The system:
+1. ✅ Reads ratings from environment variables
+2. ✅ Calculates average automatically
+3. ✅ Serves to frontend via `/api/ratings`
+4. ✅ Updates weekly via cron (just recalculation)
+
+**No scraping - completely legal and reliable!**
+
+## Updating Ratings
+
+To update ratings:
+1. Log into Vercel dashboard
+2. Go to your project → Settings → Environment Variables
+3. Update the rating values (e.g., change `TRIPADVISOR_RATING` from `4.9` to `5.0`)
+4. Redeploy your site for changes to take effect
+5. The average will automatically recalculate
 
 ## Troubleshooting
 
-### Ratings Not Updating
+### Ratings Not Showing
 
-1. Check Vercel logs for errors
-2. Verify cron job is enabled in Vercel dashboard
-3. Test the `/api/fetch-ratings` endpoint manually
-4. Check environment variables are set correctly
+1. Check environment variables are set correctly in Vercel
+2. Visit `/api/ratings` endpoint to see what's being calculated
+3. Check browser console for errors
+4. Make sure you redeployed after adding environment variables
 
-### Scraping Fails
+### Wrong Average Calculation
 
-Many platforms block automated scraping. If scraping fails:
-
-1. Use environment variables as fallback
-2. Update ratings manually in Vercel environment variables
-3. Set up official API access where available (e.g., Google Places API)
+1. Check all rating values in environment variables
+2. Make sure they're numeric (e.g., `4.8` not `"4.8"` or `4.8 stars`)
+3. Visit `/api/ratings` to see the calculation breakdown
 
 ### Rating Not Displaying on Frontend
 
 1. Check browser console for errors
 2. Verify `/api/ratings` endpoint is accessible
-3. Check CORS settings if accessing from different domain
-4. Verify rating element exists in HTML
-
-## Manual Rating Entry
-
-If scraping doesn't work for a platform, you can:
-
-1. Set the rating in Vercel environment variables
-2. The system will use these values automatically
-3. Update them manually when ratings change
+3. Check network tab to see if API call is succeeding
 
 ## API Endpoints
 

@@ -1,16 +1,18 @@
 /**
  * Rating Fetcher API Endpoint (Vercel Serverless Function)
  * 
- * This endpoint scrapes ratings from all booking platforms and calculates the average.
- * It's designed to be called weekly via Vercel Cron Jobs.
+ * ⚠️ IMPORTANT: This endpoint primarily uses environment variables for ratings.
+ * Scraping is only attempted as a last resort and may violate platform Terms of Service.
+ * 
+ * RECOMMENDED: Set environment variables for all ratings instead of relying on scraping.
  * 
  * Platforms:
- * - Google Reviews
- * - TripAdvisor
- * - Booking.com
- * - Airbnb
- * - Hotels.com
- * - Expedia
+ * - Google Reviews (use GOOGLE_RATING env var or Google Places API)
+ * - TripAdvisor (use TRIPADVISOR_RATING env var - scraping blocked)
+ * - Booking.com (use BOOKING_RATING env var)
+ * - Airbnb (use AIRBNB_RATING env var)
+ * - Hotels.com (use HOTELS_RATING env var)
+ * - Expedia (use EXPEDIA_RATING env var)
  */
 
 export default async function handler(req, res) {
@@ -27,8 +29,9 @@ export default async function handler(req, res) {
 
     try {
         const platformRatings = {};
+        const scrapingEnabled = process.env.ENABLE_SCRAPING === 'true'; // Disabled by default
 
-        // 1. Google Reviews
+        // 1. Google Reviews (prefer env var or Google Places API)
         try {
             const googleRating = await fetchGoogleRating();
             if (googleRating) platformRatings.google = googleRating;
@@ -36,7 +39,7 @@ export default async function handler(req, res) {
             console.error('Error fetching Google rating:', error);
         }
 
-        // 2. TripAdvisor
+        // 2. TripAdvisor (prefer env var - scraping blocked/not recommended)
         try {
             const tripAdvisorRating = await fetchTripAdvisorRating();
             if (tripAdvisorRating) platformRatings.tripadvisor = tripAdvisorRating;
@@ -44,7 +47,7 @@ export default async function handler(req, res) {
             console.error('Error fetching TripAdvisor rating:', error);
         }
 
-        // 3. Booking.com
+        // 3. Booking.com (prefer env var)
         try {
             const bookingRating = await fetchBookingRating();
             if (bookingRating) platformRatings.booking = bookingRating;
@@ -52,7 +55,7 @@ export default async function handler(req, res) {
             console.error('Error fetching Booking.com rating:', error);
         }
 
-        // 4. Airbnb
+        // 4. Airbnb (prefer env var)
         try {
             const airbnbRating = await fetchAirbnbRating();
             if (airbnbRating) platformRatings.airbnb = airbnbRating;
@@ -60,7 +63,7 @@ export default async function handler(req, res) {
             console.error('Error fetching Airbnb rating:', error);
         }
 
-        // 5. Hotels.com
+        // 5. Hotels.com (prefer env var)
         try {
             const hotelsRating = await fetchHotelsRating();
             if (hotelsRating) platformRatings.hotels = hotelsRating;
@@ -68,7 +71,7 @@ export default async function handler(req, res) {
             console.error('Error fetching Hotels.com rating:', error);
         }
 
-        // 6. Expedia
+        // 6. Expedia (prefer env var)
         try {
             const expediaRating = await fetchExpediaRating();
             if (expediaRating) platformRatings.expedia = expediaRating;
@@ -76,11 +79,14 @@ export default async function handler(req, res) {
             console.error('Error fetching Expedia rating:', error);
         }
 
-        // Calculate average rating
-        const ratings = Object.values(platformRatings);
+        // Calculate average rating (only count platforms that returned valid ratings)
+        const ratings = Object.values(platformRatings).filter(r => r !== null && !isNaN(r));
         const averageRating = ratings.length > 0
             ? (ratings.reduce((sum, rating) => sum + rating, 0) / ratings.length).toFixed(1)
             : null;
+        
+        // Log which platforms succeeded/failed for debugging
+        console.log(`Rating fetch complete: ${ratings.length} platforms succeeded, average: ${averageRating || 'N/A'}`);
 
         const result = {
             success: true,
@@ -107,108 +113,97 @@ export default async function handler(req, res) {
 
 /**
  * Fetch rating from Google Reviews
- * Note: Google doesn't provide a public API, so we'd need to scrape or use Places API
+ * Note: Google doesn't provide a public API for reviews without Places API
+ * Recommendation: Use GOOGLE_RATING environment variable
  */
 async function fetchGoogleRating() {
-    // Option 1: Use Google Places API (requires API key and billing)
-    // Option 2: Scrape the Google Reviews page (may violate ToS)
-    // Option 3: Manual entry via environment variable
-    
-    // For now, use environment variable as fallback
+    // Google actively blocks automated scraping
+    // Use environment variable as primary source
     if (process.env.GOOGLE_RATING) {
         return parseFloat(process.env.GOOGLE_RATING);
     }
 
-    // TODO: Implement actual scraping or API integration
-    // Google Places API requires setup in Google Cloud Console
+    // Google Places API option (requires API key and billing)
+    // To use: Set GOOGLE_PLACES_API_KEY and GOOGLE_PLACE_ID in environment variables
+    if (process.env.GOOGLE_PLACES_API_KEY && process.env.GOOGLE_PLACE_ID) {
+        try {
+            const apiUrl = `https://maps.googleapis.com/maps/api/place/details/json?place_id=${process.env.GOOGLE_PLACE_ID}&fields=rating&key=${process.env.GOOGLE_PLACES_API_KEY}`;
+            const response = await fetch(apiUrl);
+            
+            if (response.ok) {
+                const data = await response.json();
+                if (data.result && data.result.rating) {
+                    return parseFloat(data.result.rating);
+                }
+            }
+        } catch (error) {
+            console.warn('Google Places API error:', error.message);
+        }
+    }
+
     return null;
 }
 
 /**
  * Fetch rating from TripAdvisor
+ * ⚠️ IMPORTANT: TripAdvisor prohibits scraping in their Terms of Service.
+ * Always use TRIPADVISOR_RATING environment variable instead.
  */
 async function fetchTripAdvisorRating() {
-    const url = 'https://www.tripadvisor.com/Hotel_Review-g666674-d20091508-Reviews-Domaine_De_Priesmont-Vielsalm_Luxembourg_Province_The_Ardennes_Wallonia.html';
-    
-    try {
-        const response = await fetch(url, {
-            headers: {
-                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
-            }
-        });
-        
-        if (!response.ok) {
-            throw new Error(`HTTP ${response.status}`);
-        }
-
-        const html = await response.text();
-        
-        // Extract rating from HTML (TripAdvisor typically shows rating in data attributes or structured data)
-        // Look for patterns like: "ratingValue": "4.5" or data-rating="4.5"
-        const ratingMatch = html.match(/"ratingValue":\s*"([0-9.]+)"/i) ||
-                           html.match(/data-rating="([0-9.]+)"/i) ||
-                           html.match(/class="[^"]*rating[^"]*">([0-9.]+)/i);
-        
-        if (ratingMatch && ratingMatch[1]) {
-            return parseFloat(ratingMatch[1]);
-        }
-        
-        // Fallback: Check environment variable
-        if (process.env.TRIPADVISOR_RATING) {
-            return parseFloat(process.env.TRIPADVISOR_RATING);
-        }
-        
-        return null;
-    } catch (error) {
-        console.error('TripAdvisor fetch error:', error);
-        // Fallback to environment variable
-        if (process.env.TRIPADVISOR_RATING) {
-            return parseFloat(process.env.TRIPADVISOR_RATING);
-        }
-        return null;
+    // ALWAYS use environment variable - scraping violates ToS
+    if (process.env.TRIPADVISOR_RATING) {
+        return parseFloat(process.env.TRIPADVISOR_RATING);
     }
+    
+    // DO NOT attempt scraping - it violates TripAdvisor's Terms of Service
+    // Scraping disabled - only use environment variables
+    console.warn('TRIPADVISOR_RATING environment variable not set. Set it in Vercel to use TripAdvisor rating.');
+    return null;
 }
 
 /**
  * Fetch rating from Booking.com
  */
 async function fetchBookingRating() {
+    // Use environment variable as primary source (more reliable)
+    if (process.env.BOOKING_RATING) {
+        return parseFloat(process.env.BOOKING_RATING);
+    }
+    
     const url = 'https://www.booking.com/hotel/be/priesmont-vielsalm.html';
     
     try {
         const response = await fetch(url, {
             headers: {
-                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36',
-                'Accept-Language': 'en-US,en;q=0.9'
+                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+                'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+                'Accept-Language': 'en-US,en;q=0.9',
+                'Accept-Encoding': 'gzip, deflate, br',
+                'Connection': 'keep-alive',
+                'Upgrade-Insecure-Requests': '1'
             }
         });
         
         if (!response.ok) {
-            throw new Error(`HTTP ${response.status}`);
+            console.warn(`Booking.com returned ${response.status} - use BOOKING_RATING environment variable`);
+            return null;
         }
 
         const html = await response.text();
         
         // Booking.com typically uses structured data or specific classes
-        // Look for: data-testid="rating-score" or "ratingValue" in JSON-LD
         const ratingMatch = html.match(/"ratingValue":\s*([0-9.]+)/i) ||
                            html.match(/data-testid="rating-score"[^>]*>([0-9.]+)/i) ||
-                           html.match(/class="bui-review-score__badge"[^>]*>([0-9.]+)/i);
+                           html.match(/class="bui-review-score__badge"[^>]*>([0-9.]+)/i) ||
+                           html.match(/review-score-badge[^>]*>([0-9.]+)/i);
         
         if (ratingMatch && ratingMatch[1]) {
             return parseFloat(ratingMatch[1]);
         }
         
-        if (process.env.BOOKING_RATING) {
-            return parseFloat(process.env.BOOKING_RATING);
-        }
-        
         return null;
     } catch (error) {
-        console.error('Booking.com fetch error:', error);
-        if (process.env.BOOKING_RATING) {
-            return parseFloat(process.env.BOOKING_RATING);
-        }
+        console.warn('Booking.com scraping failed:', error.message);
         return null;
     }
 }
@@ -217,30 +212,36 @@ async function fetchBookingRating() {
  * Fetch rating from Airbnb
  */
 async function fetchAirbnbRating() {
+    // Use environment variable as primary source
+    if (process.env.AIRBNB_RATING) {
+        return parseFloat(process.env.AIRBNB_RATING);
+    }
+    
     const url = 'https://www.airbnb.com/rooms/51616420';
     
     try {
         const response = await fetch(url, {
             headers: {
-                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
+                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+                'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+                'Accept-Language': 'en-US,en;q=0.9',
+                'Accept-Encoding': 'gzip, deflate, br'
             }
         });
         
         if (!response.ok) {
-            throw new Error(`HTTP ${response.status}`);
+            console.warn(`Airbnb returned ${response.status} - use AIRBNB_RATING environment variable`);
+            return null;
         }
 
         const html = await response.text();
         
         // Airbnb uses React/JSON data embedded in the page
-        // Look for JSON-LD or script tags with rating data
         const jsonMatch = html.match(/<script[^>]*id="data-state"[^>]*>(.*?)<\/script>/s);
         
         if (jsonMatch) {
             try {
                 const data = JSON.parse(jsonMatch[1]);
-                // Navigate through Airbnb's data structure (varies by page structure)
-                // This is a simplified version - may need adjustment based on actual structure
                 const rating = data?.bootstrapData?.presentation?.pdpSections?.rating;
                 if (rating) return parseFloat(rating);
             } catch (e) {
@@ -250,22 +251,16 @@ async function fetchAirbnbRating() {
         
         // Try regex fallback
         const ratingMatch = html.match(/"rating":\s*([0-9.]+)/i) ||
-                           html.match(/_rating["\s]*:\s*([0-9.]+)/i);
+                           html.match(/_rating["\s]*:\s*([0-9.]+)/i) ||
+                           html.match(/rating.*?([0-9]\.[0-9])/i);
         
         if (ratingMatch && ratingMatch[1]) {
             return parseFloat(ratingMatch[1]);
         }
         
-        if (process.env.AIRBNB_RATING) {
-            return parseFloat(process.env.AIRBNB_RATING);
-        }
-        
         return null;
     } catch (error) {
-        console.error('Airbnb fetch error:', error);
-        if (process.env.AIRBNB_RATING) {
-            return parseFloat(process.env.AIRBNB_RATING);
-        }
+        console.warn('Airbnb scraping failed:', error.message);
         return null;
     }
 }
@@ -274,17 +269,25 @@ async function fetchAirbnbRating() {
  * Fetch rating from Hotels.com
  */
 async function fetchHotelsRating() {
+    // Use environment variable as primary source
+    if (process.env.HOTELS_RATING) {
+        return parseFloat(process.env.HOTELS_RATING);
+    }
+    
     const url = 'https://be.hotels.com/ho2987315648/domaine-de-priesmont-vielsalm-belgie/';
     
     try {
         const response = await fetch(url, {
             headers: {
-                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
+                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+                'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+                'Accept-Language': 'en-US,en;q=0.9'
             }
         });
         
         if (!response.ok) {
-            throw new Error(`HTTP ${response.status}`);
+            console.warn(`Hotels.com returned ${response.status} - use HOTELS_RATING environment variable`);
+            return null;
         }
 
         const html = await response.text();
@@ -298,16 +301,9 @@ async function fetchHotelsRating() {
             return parseFloat(ratingMatch[1]);
         }
         
-        if (process.env.HOTELS_RATING) {
-            return parseFloat(process.env.HOTELS_RATING);
-        }
-        
         return null;
     } catch (error) {
-        console.error('Hotels.com fetch error:', error);
-        if (process.env.HOTELS_RATING) {
-            return parseFloat(process.env.HOTELS_RATING);
-        }
+        console.warn('Hotels.com scraping failed:', error.message);
         return null;
     }
 }
@@ -316,18 +312,25 @@ async function fetchHotelsRating() {
  * Fetch rating from Expedia
  */
 async function fetchExpediaRating() {
+    // Use environment variable as primary source
+    if (process.env.EXPEDIA_RATING) {
+        return parseFloat(process.env.EXPEDIA_RATING);
+    }
+    
     const url = 'https://www.expedia.be/fr/Vielsalm-Hotel-Domaine-De-Priesmont.h93322364.Description-Hotel';
     
     try {
         const response = await fetch(url, {
             headers: {
-                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36',
+                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+                'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
                 'Accept-Language': 'fr-FR,fr;q=0.9,en;q=0.8'
             }
         });
         
         if (!response.ok) {
-            throw new Error(`HTTP ${response.status}`);
+            console.warn(`Expedia returned ${response.status} - use EXPEDIA_RATING environment variable`);
+            return null;
         }
 
         const html = await response.text();
@@ -341,16 +344,9 @@ async function fetchExpediaRating() {
             return parseFloat(ratingMatch[1]);
         }
         
-        if (process.env.EXPEDIA_RATING) {
-            return parseFloat(process.env.EXPEDIA_RATING);
-        }
-        
         return null;
     } catch (error) {
-        console.error('Expedia fetch error:', error);
-        if (process.env.EXPEDIA_RATING) {
-            return parseFloat(process.env.EXPEDIA_RATING);
-        }
+        console.warn('Expedia scraping failed:', error.message);
         return null;
     }
 }
