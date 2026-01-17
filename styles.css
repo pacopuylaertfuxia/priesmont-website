@@ -803,8 +803,15 @@ body {
     border-radius: 12px;
     border: 0.5px solid rgba(255, 255, 255, 0.3);
     opacity: 0.9;
-    cursor: default;
-    pointer-events: none;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.hero-partner-logo:hover {
+    opacity: 1;
+    transform: scale(1.05);
+    background: rgba(255, 255, 255, 1);
 }
 
 .hero-partner-logo img {
