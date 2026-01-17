@@ -75,6 +75,7 @@ export default async function handler(req, res) {
             if (process.env.AIRBNB_RATING) platformRatings.airbnb = parseFloat(process.env.AIRBNB_RATING);
             if (process.env.HOTELS_RATING) platformRatings.hotels = parseFloat(process.env.HOTELS_RATING);
             if (process.env.EXPEDIA_RATING) platformRatings.expedia = parseFloat(process.env.EXPEDIA_RATING);
+            if (process.env.VRBO_RATING) platformRatings.vrbo = parseFloat(process.env.VRBO_RATING);
             
             const ratings = Object.values(platformRatings);
             const averageRating = ratings.length > 0
