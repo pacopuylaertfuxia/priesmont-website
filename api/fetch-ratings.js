@@ -11,6 +11,7 @@
  * - AIRBNB_RATING (e.g., "4.7")
  * - HOTELS_RATING (e.g., "4.8")
  * - EXPEDIA_RATING (e.g., "4.6")
+ * - VRBO_RATING (e.g., "5.0")
  * 
  * Optional: Google Places API
  * - GOOGLE_PLACES_API_KEY (Google Cloud API key)
@@ -55,6 +56,11 @@ export default async function handler(req, res) {
         // 6. Expedia - Environment variable only
         if (process.env.EXPEDIA_RATING) {
             platformRatings.expedia = parseFloat(process.env.EXPEDIA_RATING);
+        }
+
+        // 7. VRBO - Environment variable only
+        if (process.env.VRBO_RATING) {
+            platformRatings.vrbo = parseFloat(process.env.VRBO_RATING);
         }
 
         // Calculate average rating
