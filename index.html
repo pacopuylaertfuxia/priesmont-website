@@ -129,8 +129,24 @@
                     <a href="#about" class="btn btn-secondary" data-translate="hero.discover">Discover the Manor</a>
                     <a href="#booking" class="btn btn-primary" data-translate="hero.cta">Book Your Stay</a>
                 </div>
+                <div class="hero-rating">
+                    <div class="hero-rating-stars">
+                        <span class="star filled">★</span>
+                        <span class="star filled">★</span>
+                        <span class="star filled">★</span>
+                        <span class="star filled">★</span>
+                        <span class="star filled">★</span>
+                    </div>
+                    <div class="hero-rating-text">
+                        <!-- Update data-rating and text content with your actual average rating across all platforms -->
+                        <!-- To calculate: Add up ratings from Google, TripAdvisor, Booking.com, Airbnb, Hotels.com, Expedia, etc. and divide by number of platforms -->
+                        <span class="hero-rating-value" data-rating="4.9">4.9</span>
+                        <span class="hero-rating-label" data-translate="hero.averageRating">Average Rating</span>
+                        <span class="hero-rating-count" data-translate="hero.acrossPlatforms">across all platforms</span>
+                    </div>
+                </div>
                 <div class="hero-partners">
-                    <p class="hero-partners-label">Also available on</p>
+                    <p class="hero-partners-label" data-translate="hero.alsoAvailableOn">Also available on</p>
                     <div class="hero-partners-logos">
                         <div class="hero-partner-logo" aria-label="TripAdvisor">
                             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSGqxAkY8tQg2CPEu5iWL_GN2mYf0kvu4prdA&s" alt="TripAdvisor" style="width: 20px; height: 20px; object-fit: contain;">
@@ -1036,7 +1052,7 @@
                         <span class="star">★</span>
                     </div>
                     <span class="translated-badge" data-translate="testimonials.translated" style="display: none;">Translated</span>
-                    <p class="testimonial-text testimonial-text-truncated" data-translate="testimonials.review6Text">"Company Get-Away. Amazing time at Priesmond for a company get-away with 23 people. Large kitchen, grounds and views. Unlucky with the weather, but would suggest adding activity equipment on site (we brought our own volleyball and badminton set). Overall still 5/5 stars, though!"</p>
+                    <p class="testimonial-text testimonial-text-truncated" data-translate="testimonials.review6Text">"Company Get-Away. Amazing time at Priesmont for a company get-away with 23 people. Large kitchen, grounds and views. Unlucky with the weather, but would suggest adding activity equipment on site (we brought our own volleyball and badminton set). Overall still 5/5 stars, though!"</p>
                     <button class="testimonial-read-more-btn" style="display: none;">Read more</button>
                     <div class="testimonial-author">
                         <div class="author-info">
@@ -1046,6 +1062,45 @@
                     </div>
                 </div>
                     </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Availability Calendar Section -->
+    <section id="availability" class="availability">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title" data-translate="availability.title">Check Availability</h2>
+                <p class="section-subtitle" data-translate="availability.subtitle">View our calendar to see available dates for your stay</p>
+            </div>
+            <div class="availability-wrapper">
+                <div class="availability-calendar-container">
+                    <div id="availability-calendar" class="availability-calendar">
+                        <!-- Lodgify calendar will be embedded here -->
+                        <div class="availability-calendar-placeholder">
+                            <p data-translate="availability.loading">Loading calendar...</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="availability-info">
+                    <h3 data-translate="availability.infoTitle">Real-Time Availability</h3>
+                    <p data-translate="availability.infoDescription">Our calendar updates in real-time across all booking platforms. Green dates are available, and red dates are already booked.</p>
+                    <div class="availability-legend">
+                        <div class="availability-legend-item">
+                            <span class="legend-color available"></span>
+                            <span data-translate="availability.legendAvailable">Available</span>
+                        </div>
+                        <div class="availability-legend-item">
+                            <span class="legend-color booked"></span>
+                            <span data-translate="availability.legendBooked">Booked</span>
+                        </div>
+                        <div class="availability-legend-item">
+                            <span class="legend-color today"></span>
+                            <span data-translate="availability.legendToday">Today</span>
+                        </div>
+                    </div>
+                    <a href="#booking" class="btn btn-primary" data-translate="availability.cta">Book Now</a>
                 </div>
             </div>
         </div>

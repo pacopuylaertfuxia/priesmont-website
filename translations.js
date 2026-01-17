@@ -18,7 +18,10 @@ const translations = {
             subtitle: "A historic manor in the heart of the Ardennes<br>Your perfect escape into nature and luxury",
             description: "Experience luxury, nature, and tranquility in our 18-room estate",
             discover: "Discover the Manor",
-            cta: "Book Your Stay"
+            cta: "Book Your Stay",
+            alsoAvailableOn: "Also available on",
+            averageRating: "Average Rating",
+            acrossPlatforms: "across all platforms"
         },
         about: {
             title: "The Manor",
@@ -73,6 +76,17 @@ const translations = {
             professionalKitchenDescription: "Fully equipped industrial-grade kitchen suitable for professional catering standards, perfect for events of all sizes and culinary requirements.",
             barbecuePitsTitle: "Barbecue Facilities",
             barbecuePitsDescription: "Outdoor barbecue pits available on the grounds, ideal for al fresco dining and relaxed outdoor gatherings."
+        },
+        availability: {
+            title: "Check Availability",
+            subtitle: "View our calendar to see available dates for your stay",
+            loading: "Loading calendar...",
+            infoTitle: "Real-Time Availability",
+            infoDescription: "Our calendar updates in real-time across all booking platforms. Green dates are available, and red dates are already booked.",
+            legendAvailable: "Available",
+            legendBooked: "Booked",
+            legendToday: "Today",
+            cta: "Book Now"
         },
         booking: {
             title: "Reserve Your Exclusive Stay",
@@ -178,13 +192,13 @@ const translations = {
             review3Text: "Great location! Beautiful location, well-equipped kitchen, dining room and living room with a massive fireplace which is awesome. Spacious and great beds. Stayed with 21 people using only the main house. There is a sauna, a pool and a cafe, but these are relatively small. Highly recommend this place.",
             review3Author: "Ruben Spruijt",
             review3Location: "Family • October 2023",
-            review4Text: "Dit weekend met kantoor 2 nachten op deze mooie plek doorgebracht. Fijn ruim huis in een prachtige omgeving. Mooi uitzicht, ruime kamers en schoon. Mocht je met een grote groep (of kleine groep) gaan is Bram Boutsen Catering een extra aanrader. Aardige mensen en fantastisch eten en uitgebreid ontbijt. Ook in het dorp is Au Gre de Saisons by Manuel Fievet een echte aanrader. Domaine de Priesmont is een hele goede plek voor een bedrijfsuitje.",
+            review4Text: "Spent 2 nights this weekend with the office at this beautiful place. Nice spacious house in a beautiful environment. Beautiful view, spacious rooms and clean. If you're going with a large group (or small group), Bram Boutsen Catering is an extra recommendation. Nice people and fantastic food and extensive breakfast. Also in the village, Au Gre de Saisons by Manuel Fievet is a real recommendation. Domaine de Priesmont is a very good place for a corporate outing.",
             review4Author: "Anoniem (Nederland)",
             review4Location: "Group • June 2023",
-            review5Text: "Sportsocieteit. Luxueus verblijf met ruim 20 personen. Fijn weer gehad, groot terras, 4-gangenmenu, schone kamers. Kleine minpunten: geen parasols en gedateerd tuinmeubilair, maar dat doet niets af aan de ervaring. Zeer aan te raden voor grotere groepen!",
+            review5Text: "Sports society. Luxurious stay with more than 20 people. Nice weather, large terrace, 4-course menu, clean rooms. Small drawbacks: no parasols and dated garden furniture, but that doesn't detract from the experience. Highly recommended for larger groups!",
             review5Author: "Mathieu W.M. Fluit",
             review5Location: "Group • June 2025",
-            review6Text: "Company Get-Away. Amazing time at Priesmond for a company get-away with 23 people. Large kitchen, grounds and views. Unlucky with the weather, but would suggest adding activity equipment on site (we brought our own volleyball and badminton set). Overall still 5/5 stars, though!",
+            review6Text: "Company Get-Away. Amazing time at Priesmont for a company get-away with 23 people. Large kitchen, grounds and views. Unlucky with the weather, but would suggest adding activity equipment on site (we brought our own volleyball and badminton set). Overall still 5/5 stars, though!",
             review6Author: "T. Harms",
             review6Location: "Other • August 2024"
         },
@@ -211,7 +225,10 @@ const translations = {
             subtitle: "Een historisch landhuis in het hart van de Ardennen<br>Uw perfecte ontsnapping naar natuur en luxe",
             description: "Ervaar luxe, natuur en rust in ons landgoed met 18 kamers",
             discover: "Ontdek het Landhuis",
-            cta: "Boek Uw Verblijf"
+            cta: "Boek Uw Verblijf",
+            alsoAvailableOn: "Ook beschikbaar op",
+            averageRating: "Gemiddelde Beoordeling",
+            acrossPlatforms: "op alle platforms"
         },
         about: {
             title: "Het Landhuis",
@@ -266,6 +283,17 @@ const translations = {
             professionalKitchenDescription: "Volledig uitgeruste industriële keuken geschikt voor professionele cateringstandaarden, perfect voor evenementen van alle groottes en culinaire vereisten.",
             barbecuePitsTitle: "Barbecue Voorzieningen",
             barbecuePitsDescription: "Buitenbarbecue voorzieningen beschikbaar op het terrein, ideaal voor al fresco dineren en ontspannen buitenbijeenkomsten."
+        },
+        availability: {
+            title: "Beschikbaarheid Controleren",
+            subtitle: "Bekijk onze kalender om beschikbare datums voor uw verblijf te zien",
+            loading: "Kalender laden...",
+            infoTitle: "Real-Time Beschikbaarheid",
+            infoDescription: "Onze kalender werkt real-time bij op alle boekingsplatforms. Groene datums zijn beschikbaar en rode datums zijn al geboekt.",
+            legendAvailable: "Beschikbaar",
+            legendBooked: "Geboekt",
+            legendToday: "Vandaag",
+            cta: "Boek Nu"
         },
         booking: {
             title: "Reserveer Uw Exclusieve Verblijf",
@@ -377,7 +405,7 @@ const translations = {
             review5Text: "Sportsocieteit. Luxueus verblijf met ruim 20 personen. Fijn weer gehad, groot terras, 4-gangenmenu, schone kamers. Kleine minpunten: geen parasols en gedateerd tuinmeubilair, maar dat doet niets af aan de ervaring. Zeer aan te raden voor grotere groepen!",
             review5Author: "Mathieu W.M. Fluit",
             review5Location: "Groep • Juni 2025",
-            review6Text: "Bedrijfsuitje. Geweldige tijd bij Priesmond voor een bedrijfsuitje met 23 personen. Grote keuken, terreinen en uitzichten. Pech met het weer, maar zou voorstellen om activiteitenmateriaal op locatie toe te voegen (wij brachten onze eigen volleybal- en badmintonset mee). Al met al nog steeds 5/5 sterren!",
+            review6Text: "Bedrijfsuitje. Geweldige tijd bij Priesmont voor een bedrijfsuitje met 23 personen. Grote keuken, terreinen en uitzichten. Pech met het weer, maar zou voorstellen om activiteitenmateriaal op locatie toe te voegen (wij brachten onze eigen volleybal- en badmintonset mee). Al met al nog steeds 5/5 sterren!",
             review6Author: "T. Harms",
             review6Location: "Anders • Augustus 2024"
         },
@@ -404,7 +432,10 @@ const translations = {
             subtitle: "Un manoir historique au cœur des Ardennes<br>Votre évasion parfaite vers la nature et le luxe",
             description: "Découvrez le luxe, la nature et la tranquillité dans notre domaine de 18 chambres",
             discover: "Découvrir le Manoir",
-            cta: "Réservez Votre Séjour"
+            cta: "Réservez Votre Séjour",
+            alsoAvailableOn: "Également disponible sur",
+            averageRating: "Note Moyenne",
+            acrossPlatforms: "sur toutes les plateformes"
         },
         about: {
             title: "Le Manoir",
@@ -459,6 +490,17 @@ const translations = {
             professionalKitchenDescription: "Cuisine entièrement équipée de niveau industriel adaptée aux normes de restauration professionnelle, parfaite pour les événements de toutes tailles et exigences culinaires.",
             barbecuePitsTitle: "Installations de Barbecue",
             barbecuePitsDescription: "Barbecues extérieurs disponibles sur le domaine, idéaux pour les repas en plein air et les rassemblements extérieurs décontractés."
+        },
+        availability: {
+            title: "Vérifier la Disponibilité",
+            subtitle: "Consultez notre calendrier pour voir les dates disponibles pour votre séjour",
+            loading: "Chargement du calendrier...",
+            infoTitle: "Disponibilité en Temps Réel",
+            infoDescription: "Notre calendrier se met à jour en temps réel sur toutes les plateformes de réservation. Les dates vertes sont disponibles et les dates rouges sont déjà réservées.",
+            legendAvailable: "Disponible",
+            legendBooked: "Réservé",
+            legendToday: "Aujourd'hui",
+            cta: "Réserver Maintenant"
         },
         booking: {
             title: "Réservez Votre Séjour Exclusif",
@@ -570,7 +612,7 @@ const translations = {
             review5Text: "Société sportive. Séjour de luxe avec plus de 20 personnes. Beau temps, grande terrasse, menu 4 services, chambres propres. Petits points négatifs: pas de parasols et mobilier de jardin daté, mais cela n'enlève rien à l'expérience. Très recommandé pour les grands groupes!",
             review5Author: "Mathieu W.M. Fluit",
             review5Location: "Groupe • Juin 2025",
-            review6Text: "Événement d'entreprise. Moment incroyable à Priesmond pour un événement d'entreprise avec 23 personnes. Grande cuisine, terrains et vues. Malchance avec la météo, mais suggérerait d'ajouter du matériel d'activités sur place (nous avons apporté notre propre set de volley-ball et de badminton). Dans l'ensemble, toujours 5/5 étoiles!",
+            review6Text: "Événement d'entreprise. Moment incroyable à Priesmont pour un événement d'entreprise avec 23 personnes. Grande cuisine, terrains et vues. Malchance avec la météo, mais suggérerait d'ajouter du matériel d'activités sur place (nous avons apporté notre propre set de volley-ball et de badminton). Dans l'ensemble, toujours 5/5 étoiles!",
             review6Author: "T. Harms",
             review6Location: "Autre • Août 2024"
         },
@@ -609,6 +651,9 @@ function setLanguage(lang) {
     });
     document.querySelectorAll('[data-translate="hero.discover"]').forEach(el => el.textContent = t.hero.discover);
     document.querySelectorAll('[data-translate="hero.cta"]').forEach(el => el.textContent = t.hero.cta);
+    document.querySelectorAll('[data-translate="hero.alsoAvailableOn"]').forEach(el => el.textContent = t.hero.alsoAvailableOn);
+    document.querySelectorAll('[data-translate="hero.averageRating"]').forEach(el => el.textContent = t.hero.averageRating);
+    document.querySelectorAll('[data-translate="hero.acrossPlatforms"]').forEach(el => el.textContent = t.hero.acrossPlatforms);
     
     // Update about section
     document.querySelectorAll('[data-translate="about.sectionTitle"]').forEach(el => el.textContent = t.about.sectionTitle);
@@ -682,6 +727,17 @@ function setLanguage(lang) {
     // Update gallery section
     document.querySelectorAll('[data-translate="gallery.title"]').forEach(el => el.textContent = t.gallery.title);
     document.querySelectorAll('[data-translate="gallery.subtitle"]').forEach(el => el.textContent = t.gallery.subtitle);
+    
+    // Update availability section
+    document.querySelectorAll('[data-translate="availability.title"]').forEach(el => el.textContent = t.availability.title);
+    document.querySelectorAll('[data-translate="availability.subtitle"]').forEach(el => el.textContent = t.availability.subtitle);
+    document.querySelectorAll('[data-translate="availability.loading"]').forEach(el => el.textContent = t.availability.loading);
+    document.querySelectorAll('[data-translate="availability.infoTitle"]').forEach(el => el.textContent = t.availability.infoTitle);
+    document.querySelectorAll('[data-translate="availability.infoDescription"]').forEach(el => el.textContent = t.availability.infoDescription);
+    document.querySelectorAll('[data-translate="availability.legendAvailable"]').forEach(el => el.textContent = t.availability.legendAvailable);
+    document.querySelectorAll('[data-translate="availability.legendBooked"]').forEach(el => el.textContent = t.availability.legendBooked);
+    document.querySelectorAll('[data-translate="availability.legendToday"]').forEach(el => el.textContent = t.availability.legendToday);
+    document.querySelectorAll('[data-translate="availability.cta"]').forEach(el => el.textContent = t.availability.cta);
     
     // Update region section
     document.querySelectorAll('[data-translate="region.title"]').forEach(el => el.textContent = t.region.title);

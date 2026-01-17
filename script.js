@@ -471,7 +471,101 @@ document.querySelectorAll('section').forEach(section => {
 document.addEventListener('DOMContentLoaded', function() {
     // Widgets are loaded, but ViewContent tracking happens on user interaction
     // This ensures ViewContent fires only when user shows intent, not on page load
+    
+    // Initialize availability calendar if Lodgify integration is available
+    if (window.lodgifyIntegration && LODGIFY_CONFIG && LODGIFY_CONFIG.widgetSettings) {
+        const availabilityCalendarContainer = document.getElementById('availability-calendar');
+        if (availabilityCalendarContainer) {
+            // Use the same widget configuration for the availability calendar
+            const placeholder = availabilityCalendarContainer.querySelector('.availability-calendar-placeholder');
+            if (placeholder) {
+                placeholder.style.display = 'none';
+            }
+            // Load calendar widget in availability section
+            // Note: The Lodgify widget may need to be configured to show only calendar view
+            window.lodgifyIntegration.loadBookingWidget('availability-calendar');
+        }
+    }
+    
+    // Fetch and update hero rating from API
+    fetchAndUpdateRating();
 });
+
+/**
+ * Fetch and update hero rating from API
+ * 
+ * This function fetches the current average rating from the API endpoint
+ * which is automatically updated weekly via cron job.
+ */
+async function fetchAndUpdateRating() {
+    try {
+        // Determine API URL based on environment
+        const apiUrl = window.location.hostname === 'localhost' 
+            ? 'http://localhost:3000/api/ratings'
+            : '/api/ratings';
+        
+        const response = await fetch(apiUrl, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            // Cache for 1 hour on client side
+            cache: 'default'
+        });
+        
+        if (!response.ok) {
+            throw new Error(`HTTP ${response.status}`);
+        }
+        
+        const data = await response.json();
+        
+        if (data.averageRating) {
+            updateHeroRatingDisplay(data.averageRating);
+            
+            // Optional: Log platform breakdown for debugging
+            if (data.platformRatings) {
+                console.log('Platform ratings:', data.platformRatings);
+            }
+        } else {
+            console.warn('No average rating in API response, using fallback');
+            // Keep default 4.9 if API doesn't return rating
+        }
+        
+    } catch (error) {
+        console.error('Error fetching rating from API:', error);
+        // On error, keep the default 4.9 rating
+        // The display will show the placeholder value
+    }
+}
+
+/**
+ * Update hero rating display with fetched rating
+ */
+function updateHeroRatingDisplay(rating) {
+    const ratingElement = document.querySelector('.hero-rating-value');
+    if (!ratingElement) return;
+    
+    const roundedRating = parseFloat(rating).toFixed(1);
+    
+    // Update rating value
+    ratingElement.textContent = roundedRating;
+    ratingElement.setAttribute('data-rating', roundedRating);
+    
+    // Update star display
+    const stars = document.querySelectorAll('.hero-rating-stars .star');
+    const fullStars = Math.floor(rating);
+    const hasHalfStar = rating % 1 >= 0.5;
+    
+    stars.forEach((star, index) => {
+        if (index < fullStars) {
+            star.classList.add('filled');
+        } else if (index === fullStars && hasHalfStar) {
+            star.classList.add('filled');
+        } else {
+            star.classList.remove('filled');
+        }
+    });
+}
 
 // Show/hide language-specific content for About section
 function updateAboutSectionLanguage(lang) {

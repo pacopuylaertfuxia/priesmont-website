@@ -5,6 +5,12 @@
   "devCommand": null,
   "installCommand": null,
   "framework": null,
+  "crons": [
+    {
+      "path": "/api/fetch-ratings",
+      "schedule": "0 2 * * 1"
+    }
+  ],
   "rewrites": [
     {
       "source": "/(.*)",
