@@ -2936,6 +2936,37 @@ body:has(.lightbox.active) .navbar {
 }
 
 @media (max-width: 968px) {
+    .testimonials-rating-section {
+        padding: 0 20px;
+    }
+
+    .testimonials-rating-content {
+        padding: 2rem 1.5rem;
+        gap: 1.5rem;
+    }
+
+    .testimonials-platform-icons {
+        gap: 1rem;
+    }
+
+    .testimonials-platform-icon {
+        width: 36px;
+        height: 36px;
+    }
+
+    .testimonials-platform-icon img {
+        width: 20px;
+        height: 20px;
+    }
+
+    .testimonials-rating-value {
+        font-size: 2rem;
+    }
+
+    .testimonials-rating-label {
+        font-size: 0.9375rem;
+    }
+
     .testimonials-carousel-wrapper {
         margin-left: 0;
         margin-right: 0;
