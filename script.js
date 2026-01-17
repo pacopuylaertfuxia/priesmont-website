@@ -521,6 +521,7 @@ async function fetchAndUpdateRating() {
         
         if (data.averageRating) {
             updateHeroRatingDisplay(data.averageRating);
+            updateTestimonialsRatingDisplay(data.averageRating);
             
             // Optional: Log platform breakdown for debugging
             if (data.platformRatings) {
@@ -553,6 +554,35 @@ function updateHeroRatingDisplay(rating) {
     
     // Update star display
     const stars = document.querySelectorAll('.hero-rating-stars .star');
+    const fullStars = Math.floor(rating);
+    const hasHalfStar = rating % 1 >= 0.5;
+    
+    stars.forEach((star, index) => {
+        if (index < fullStars) {
+            star.classList.add('filled');
+        } else if (index === fullStars && hasHalfStar) {
+            star.classList.add('filled');
+        } else {
+            star.classList.remove('filled');
+        }
+    });
+}
+
+/**
+ * Update testimonials rating display with fetched rating
+ */
+function updateTestimonialsRatingDisplay(rating) {
+    const ratingElement = document.querySelector('.testimonials-rating-value');
+    if (!ratingElement) return;
+    
+    const roundedRating = parseFloat(rating).toFixed(1);
+    
+    // Update rating value
+    ratingElement.textContent = roundedRating;
+    ratingElement.setAttribute('data-rating', roundedRating);
+    
+    // Update star display
+    const stars = document.querySelectorAll('.testimonials-rating-stars .star');
     const fullStars = Math.floor(rating);
     const hasHalfStar = rating % 1 >= 0.5;
     

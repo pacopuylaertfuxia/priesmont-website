@@ -2651,6 +2651,107 @@ body:has(.lightbox.active) .navbar {
     overflow: visible;
 }
 
+/* Testimonials Rating Section */
+.testimonials-rating-section {
+    margin-top: 3rem;
+    margin-bottom: 2rem;
+    padding: 0 40px;
+}
+
+.testimonials-rating-content {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 20px;
+    padding: 2.5rem 3rem;
+    border: 0.5px solid rgba(0, 0, 0, 0.08);
+    box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.06);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.testimonials-platform-icons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.testimonials-platform-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.8);
+    border: 0.5px solid rgba(0, 0, 0, 0.08);
+    transition: var(--transition);
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.testimonials-platform-icon:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.1);
+    border-color: rgba(0, 0, 0, 0.12);
+}
+
+.testimonials-platform-icon img {
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+}
+
+.testimonials-rating-display {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.testimonials-rating-stars {
+    display: flex;
+    gap: 0.3rem;
+    justify-content: center;
+}
+
+.testimonials-rating-stars .star {
+    font-size: 1.75rem;
+    color: #d2d2d7;
+    line-height: 1;
+    transition: color 0.3s ease;
+}
+
+.testimonials-rating-stars .star.filled {
+    color: #fbbf24;
+}
+
+.testimonials-rating-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.testimonials-rating-value {
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: var(--text-dark);
+    letter-spacing: -0.03em;
+    line-height: 1;
+}
+
+.testimonials-rating-label {
+    font-size: 1rem;
+    color: var(--text-light);
+    letter-spacing: -0.01em;
+    text-align: center;
+}
+
 .testimonials-carousel-wrapper {
     margin-top: 2.5rem;
     margin-left: calc(-50vw + 50%);

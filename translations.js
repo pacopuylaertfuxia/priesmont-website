@@ -182,6 +182,7 @@ const translations = {
         testimonials: {
             title: "What Our Guests Say",
             subtitle: "Real experiences from those who've stayed at Priesmont",
+            averageRatingAcrossPlatforms: "Average rating across all platforms",
             translated: "Translated",
             review1Text: "Lovely holiday home! We spent a wonderful long weekend with the staff at Domaine du Priesmont. It's a fantastic house with all conveniences. Large, spacious, clean, unique and in a beautiful, quiet environment. We enjoyed it and thank you!",
             review1Author: "4Building",
@@ -389,6 +390,7 @@ const translations = {
         testimonials: {
             title: "Wat Onze Gasten Zeggen",
             subtitle: "Echte ervaringen van degenen die bij Priesmont hebben verbleven",
+            averageRatingAcrossPlatforms: "Gemiddelde beoordeling op alle platforms",
             translated: "Vertaald",
             review1Text: "Heerlijk vakantiehuis! Wij hebben een heerlijk lang weekend doorgebracht met het personeel bij Domaine du Priesmont. Het is een fantastisch huis met alle gemakken. Groot, ruim, schoon, uniek en in een prachtige, rustige omgeving. Wij hebben genoten en bedankt!",
             review1Author: "4Building",
@@ -596,6 +598,7 @@ const translations = {
         testimonials: {
             title: "Ce Que Disent Nos Invités",
             subtitle: "Expériences réelles de ceux qui ont séjourné à Priesmont",
+            averageRatingAcrossPlatforms: "Note moyenne sur toutes les plateformes",
             translated: "Traduit",
             review1Text: "Maison de vacances délicieuse! Nous avons passé un merveilleux long week-end avec le personnel au Domaine du Priesmont. C'est une maison fantastique avec tous les équipements. Grande, spacieuse, propre, unique et dans un environnement magnifique et calme. Nous avons apprécié et merci!",
             review1Author: "4Building",
@@ -802,6 +805,7 @@ function setLanguage(lang) {
     // Update testimonials section
     document.querySelectorAll('[data-translate="testimonials.title"]').forEach(el => el.textContent = t.testimonials.title);
     document.querySelectorAll('[data-translate="testimonials.subtitle"]').forEach(el => el.textContent = t.testimonials.subtitle);
+    document.querySelectorAll('[data-translate="testimonials.averageRatingAcrossPlatforms"]').forEach(el => el.textContent = t.testimonials.averageRatingAcrossPlatforms);
     
     // Update testimonial reviews
     document.querySelectorAll('[data-translate="testimonials.review1Text"]').forEach(el => el.textContent = '"' + t.testimonials.review1Text + '"');
