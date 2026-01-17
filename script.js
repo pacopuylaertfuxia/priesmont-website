@@ -472,20 +472,6 @@ document.addEventListener('DOMContentLoaded', function() {
     // Widgets are loaded, but ViewContent tracking happens on user interaction
     // This ensures ViewContent fires only when user shows intent, not on page load
     
-    // Initialize availability calendar if Lodgify integration is available
-    if (window.lodgifyIntegration && LODGIFY_CONFIG && LODGIFY_CONFIG.widgetSettings) {
-        const availabilityCalendarContainer = document.getElementById('availability-calendar');
-        if (availabilityCalendarContainer) {
-            // Use the same widget configuration for the availability calendar
-            const placeholder = availabilityCalendarContainer.querySelector('.availability-calendar-placeholder');
-            if (placeholder) {
-                placeholder.style.display = 'none';
-            }
-            // Load calendar widget in availability section
-            // Note: The Lodgify widget may need to be configured to show only calendar view
-            window.lodgifyIntegration.loadBookingWidget('availability-calendar');
-        }
-    }
     
     // Fetch and update hero rating from API
     fetchAndUpdateRating();
@@ -555,15 +541,20 @@ function updateHeroRatingDisplay(rating) {
     // Update star display
     const stars = document.querySelectorAll('.hero-rating-stars .star');
     const fullStars = Math.floor(rating);
-    const hasHalfStar = rating % 1 >= 0.5;
+    const decimal = rating % 1;
     
     stars.forEach((star, index) => {
+        // Remove all classes and inline styles first
+        star.classList.remove('filled', 'half-filled');
+        star.style.background = '';
+        
         if (index < fullStars) {
             star.classList.add('filled');
-        } else if (index === fullStars && hasHalfStar) {
-            star.classList.add('filled');
-        } else {
-            star.classList.remove('filled');
+        } else if (index === fullStars && decimal > 0) {
+            // Create gradient based on exact decimal value
+            const fillPercent = decimal * 100;
+            star.classList.add('half-filled');
+            star.style.setProperty('--fill-percent', `${fillPercent}%`);
         }
     });
 }
@@ -584,18 +575,133 @@ function updateTestimonialsRatingDisplay(rating) {
     // Update star display
     const stars = document.querySelectorAll('.testimonials-rating-stars .star');
     const fullStars = Math.floor(rating);
-    const hasHalfStar = rating % 1 >= 0.5;
+    const decimal = rating % 1;
     
     stars.forEach((star, index) => {
+        // Remove all classes and inline styles first
+        star.classList.remove('filled', 'half-filled');
+        star.style.background = '';
+        
         if (index < fullStars) {
             star.classList.add('filled');
-        } else if (index === fullStars && hasHalfStar) {
-            star.classList.add('filled');
-        } else {
-            star.classList.remove('filled');
+        } else if (index === fullStars && decimal > 0) {
+            // Create gradient based on exact decimal value
+            const fillPercent = decimal * 100;
+            star.classList.add('half-filled');
+            star.style.setProperty('--fill-percent', `${fillPercent}%`);
         }
     });
 }
+
+// Block unavailable dates in contact form date pickers
+document.addEventListener('DOMContentLoaded', async function() {
+    const checkinInput = document.getElementById('checkin');
+    const checkoutInput = document.getElementById('checkout');
+    
+    if (!checkinInput || !checkoutInput) return;
+
+    let bookedDates = [];
+
+    // Fetch availability to get booked dates
+    try {
+        const apiUrl = window.location.hostname === 'localhost' 
+            ? 'http://localhost:3000/api/availability'
+            : '/api/availability';
+        
+        const response = await fetch(apiUrl);
+        if (response.ok) {
+            const data = await response.json();
+            if (data.success && data.bookedDates) {
+                bookedDates = data.bookedDates.map(date => new Date(date).toISOString().split('T')[0]);
+            }
+        }
+    } catch (error) {
+        console.error('Error fetching availability for date pickers:', error);
+    }
+
+    // Set minimum date to today
+    const today = new Date().toISOString().split('T')[0];
+    checkinInput.setAttribute('min', today);
+    checkoutInput.setAttribute('min', today);
+
+    // Function to check if a date is booked
+    function isDateBooked(dateString) {
+        return bookedDates.includes(dateString);
+    }
+
+    // Function to get next available date
+    function getNextAvailableDate(startDate) {
+        let currentDate = new Date(startDate);
+        currentDate.setDate(currentDate.getDate() + 1);
+        
+        // Check up to 1 year ahead
+        for (let i = 0; i < 365; i++) {
+            const dateString = currentDate.toISOString().split('T')[0];
+            if (!isDateBooked(dateString)) {
+                return dateString;
+            }
+            currentDate.setDate(currentDate.getDate() + 1);
+        }
+        return null;
+    }
+
+    // Block dates in date pickers using invalid attribute
+    checkinInput.addEventListener('change', function() {
+        const selectedDate = this.value;
+        
+        if (selectedDate && isDateBooked(selectedDate)) {
+            alert('This date is not available. Please select another date.');
+            this.value = '';
+            return;
+        }
+
+        // Set minimum checkout date to day after check-in
+        if (selectedDate) {
+            const checkinDate = new Date(selectedDate);
+            checkinDate.setDate(checkinDate.getDate() + 1);
+            checkoutInput.setAttribute('min', checkinDate.toISOString().split('T')[0]);
+            
+            // If checkout is before checkin, clear it
+            if (checkoutInput.value && checkoutInput.value <= selectedDate) {
+                checkoutInput.value = '';
+            }
+        }
+    });
+
+    checkoutInput.addEventListener('change', function() {
+        const selectedDate = this.value;
+        
+        if (selectedDate && isDateBooked(selectedDate)) {
+            alert('This date is not available. Please select another date.');
+            this.value = '';
+            return;
+        }
+
+        // Validate checkout is after checkin
+        if (checkinInput.value && selectedDate <= checkinInput.value) {
+            alert('Check-out date must be after check-in date.');
+            this.value = '';
+            return;
+        }
+    });
+
+    // Custom validation on input
+    checkinInput.addEventListener('input', function() {
+        if (this.value && isDateBooked(this.value)) {
+            this.setCustomValidity('This date is not available');
+        } else {
+            this.setCustomValidity('');
+        }
+    });
+
+    checkoutInput.addEventListener('input', function() {
+        if (this.value && isDateBooked(this.value)) {
+            this.setCustomValidity('This date is not available');
+        } else {
+            this.setCustomValidity('');
+        }
+    });
+});
 
 // Show/hide language-specific content for About section
 function updateAboutSectionLanguage(lang) {
