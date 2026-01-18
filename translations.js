@@ -17,6 +17,8 @@ const translations = {
             title: "Priesmont",
             subtitle: "A historic manor in the heart of the Ardennes<br>Your perfect escape into nature and luxury.<br>Sleeps 40 guests",
             description: "Experience luxury, nature, and tranquility in our 18-room estate",
+            location: "VIELSALM, BELGIUM",
+            combinedDescription: "A historic manor in the heart of the Ardennes. Your perfect escape into nature and luxury. Sleeps 40 guests. Welcome to Priesmont, a historic 'manoir de chasse' (hunting manor) built in 1919 by the Verhaeghe-De Naeyer family. Perched on a picturesque hill near the charming town of Vielsalm in the Belgian Ardennes, this architectural gem has stood as a testament to Belgian heritage for over a century. Locals affectionately refer to it as 'le château', perhaps due to its romantic little tower that greets visitors upon arrival. This exquisite country house offers 18 elegantly appointed rooms, each with its own private bathroom, ensuring complete privacy and comfort for all guests. Comfortably accommodating up to 40 guests, all 18 rooms feature their own ensuite bathroom. Surrounded by nature, powered by solar panels, and home to various animals on the grounds, Priesmont is the perfect blend of historic elegance and modern comfort. Whether you're seeking a peaceful retreat, a family gathering, or a corporate event, our manor provides the ideal setting for unforgettable moments in the heart of the Ardennes. The undisturbed charm of the region, combined with the manor's rich history, creates an atmosphere of timeless elegance and tranquility.",
             discover: "Discover the Manor",
             cta: "Book Your Stay",
             checkAvailabilities: "Check Availabilities",
@@ -52,8 +54,8 @@ const translations = {
             authenticExperience: "Authentic experience"
         },
         features: {
-            title: "Features & Amenities",
-            subtitle: "Everything you need for an unforgettable stay",
+            title: "Amenities",
+            subtitle: "",
             roomsTitle: "18 Elegant Rooms",
             roomsDescription: "Spacious and beautifully appointed rooms, each with its own private bathroom, comfortably accommodating up to 40 guests. Perfect for large groups, family gatherings, or corporate retreats.",
             bathroomsTitle: "18 Private Bathrooms",
@@ -264,7 +266,7 @@ const translations = {
         },
         features: {
             title: "Voorzieningen",
-            subtitle: "Alles wat u nodig heeft voor een onvergetelijk verblijf",
+            subtitle: "",
             roomsTitle: "18 Elegante Kamers",
             roomsDescription: "Ruime en prachtig ingerichte kamers, elk met eigen privébadkamer, comfortabel geschikt voor maximaal 40 gasten. Perfect voor grote groepen, familiebijeenkomsten of bedrijfsuitjes.",
             bathroomsTitle: "18 Privébadkamers",
@@ -474,8 +476,8 @@ const translations = {
             authenticExperience: "Expérience authentique"
         },
         features: {
-            title: "Équipements & Services",
-            subtitle: "Tout ce dont vous avez besoin pour un séjour inoubliable",
+            title: "Équipements",
+            subtitle: "",
             roomsTitle: "18 Chambres Élégantes",
             roomsDescription: "Chambres spacieuses et magnifiquement aménagées, chacune avec sa propre salle de bain privée, pouvant accueillir confortablement jusqu'à 40 invités. Parfait pour les grands groupes, les réunions de famille ou les retraites d'entreprise.",
             bathroomsTitle: "18 Salles de Bain Privées",

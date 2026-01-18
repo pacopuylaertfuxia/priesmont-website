@@ -191,7 +191,7 @@ class LodgifyIntegration {
                     <div class="booking-direct-link" style="text-align: center; padding: 3rem;">
                         <h3 style="margin-bottom: 1.5rem;">Book Your Stay</h3>
                         <p style="margin-bottom: 2rem; color: var(--text-light);">Click below to check availability and make a reservation:</p>
-                        <a href="${websiteUrl}" target="_blank" class="btn btn-primary" style="display: inline-block; padding: 1rem 2.5rem; background: var(--primary-color); color: white; text-decoration: none; border-radius: 50px; font-weight: 500; transition: all 0.3s ease;">
+                        <a href="${websiteUrl}" target="_blank" class="btn btn-primary" style="display: inline-block; padding: 1rem 2.5rem; background: var(--primary-color); color: white; text-decoration: none; border-radius: 0; font-weight: 500; transition: all 0.3s ease;">
                             Book Now on Lodgify
                         </a>
                     </div>
@@ -204,7 +204,7 @@ class LodgifyIntegration {
                 <div class="booking-direct-link" style="text-align: center; padding: 3rem;">
                     <h3 style="margin-bottom: 1.5rem;">Book Your Stay</h3>
                     <p style="margin-bottom: 2rem; color: var(--text-light);">Click below to check availability and make a reservation:</p>
-                    <a href="${websiteUrl}" target="_blank" class="btn btn-primary" style="display: inline-block; padding: 1rem 2.5rem; background: var(--primary-color); color: white; text-decoration: none; border-radius: 50px; font-weight: 500; transition: all 0.3s ease;">
+                    <a href="${websiteUrl}" target="_blank" class="btn btn-primary" style="display: inline-block; padding: 1rem 2.5rem; background: var(--primary-color); color: white; text-decoration: none; border-radius: 0; font-weight: 500; transition: all 0.3s ease;">
                         Book Now on Lodgify
                     </a>
                 </div>

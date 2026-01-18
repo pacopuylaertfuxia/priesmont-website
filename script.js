@@ -2,8 +2,26 @@
 const mobileMenuToggle = document.getElementById('mobileMenuToggle');
 const navMenu = document.getElementById('navMenu');
 const navbar = document.getElementById('navbar');
+const heroSection = document.getElementById('home');
 let lastScroll = 0;
 let ticking = false;
+
+// Set hero margin-top dynamically based on navbar height + 15px spacing
+if (navbar && heroSection) {
+    const updateHeroMargin = () => {
+        const navbarHeight = navbar.offsetHeight;
+        heroSection.style.marginTop = `${navbarHeight + 15}px`;
+    };
+    
+    // Update on load
+    window.addEventListener('load', updateHeroMargin);
+    
+    // Update on resize
+    window.addEventListener('resize', updateHeroMargin);
+    
+    // Initial calculation
+    setTimeout(updateHeroMargin, 100);
+}
 
 mobileMenuToggle.addEventListener('click', () => {
     // If navbar is collapsed, expand it first
@@ -151,31 +169,7 @@ document.querySelectorAll('.stat-item').forEach(stat => {
 // Note: Contact form handling with Lead tracking has been moved to tracking/domHooks.js
 // This ensures tracking only fires on successful form submission, not on field focus
 
-// Hero Carousel Auto-Scroll
-document.addEventListener('DOMContentLoaded', function() {
-    const slides = document.querySelectorAll('.hero-slide');
-    if (slides.length === 0) return;
-    
-    let currentSlide = 0;
-    const totalSlides = slides.length;
-    
-    function nextSlide() {
-        // Remove active class from current slide
-        slides[currentSlide].classList.remove('active');
-        
-        // Move to next slide
-        currentSlide = (currentSlide + 1) % totalSlides;
-        
-        // Add active class to new slide
-        slides[currentSlide].classList.add('active');
-    }
-    
-    // Auto-scroll every 5 seconds
-    setInterval(nextSlide, 5000);
-    
-    // Initialize - make sure first slide is active
-    slides[0].classList.add('active');
-});
+// Hero Carousel Auto-Scroll - REMOVED (replaced with static image)
 
 // Note: All Meta Pixel tracking has been moved to tracking/domHooks.js
 // This ensures high-quality, non-noisy tracking without scroll-based "fake intent"
@@ -1048,90 +1042,192 @@ document.addEventListener('DOMContentLoaded', () => {
     syncLanguageButtons();
 });
 
-// Auto-scrolling carousels with user scroll control (desktop only)
+// Static carousel with swipe functionality for Features & Amenities
 document.addEventListener('DOMContentLoaded', () => {
-    const carouselRows = document.querySelectorAll('.services-carousel-row');
+    const carouselTrack = document.getElementById('featuresCarousel');
+    const carouselDots = document.getElementById('featuresCarouselDots');
+    const prevArrow = document.getElementById('featuresCarouselPrev');
+    const nextArrow = document.getElementById('featuresCarouselNext');
     
-    // Check if mobile (disable auto-scroll on mobile for better performance)
-    const isMobile = window.innerWidth <= 968;
+    if (!carouselTrack || !carouselDots) return;
     
-    if (isMobile) {
-        // On mobile, just enable smooth scrolling - no auto-animation
-        carouselRows.forEach((row) => {
-            row.style.scrollBehavior = 'smooth';
+    const cards = carouselTrack.querySelectorAll('.service-card');
+    const totalCards = cards.length;
+    // Responsive: 3 cards on desktop, 1 card on mobile
+    const getCardsPerView = () => window.innerWidth <= 768 ? 1 : 3;
+    let cardsPerView = getCardsPerView();
+    let totalSlides = Math.ceil(totalCards / cardsPerView);
+    let currentSlide = 0;
+    
+    // Calculate card width including gap
+    const getCardWidth = () => {
+        if (cards.length === 0) return 0;
+        const card = cards[0];
+        const cardWidth = 413; // Fixed card width
+        const gap = 32; // 2rem gap
+        return cardWidth + gap;
+    };
+    
+    // Create navigation dots
+    const createDots = () => {
+        carouselDots.innerHTML = '';
+        for (let i = 0; i < totalSlides; i++) {
+            const dot = document.createElement('button');
+            dot.className = 'carousel-dot';
+            if (i === 0) dot.classList.add('active');
+            dot.setAttribute('aria-label', `Go to slide ${i + 1}`);
+            dot.addEventListener('click', () => goToSlide(i));
+            carouselDots.appendChild(dot);
+        }
+    };
+    
+    // Update dots and arrows
+    const updateDots = () => {
+        const dots = carouselDots.querySelectorAll('.carousel-dot');
+        dots.forEach((dot, index) => {
+            dot.classList.toggle('active', index === currentSlide);
         });
-        return;
+    };
+    
+    // Update arrow states
+    const updateArrows = () => {
+        if (prevArrow) {
+            prevArrow.disabled = currentSlide === 0;
+        }
+        if (nextArrow) {
+            nextArrow.disabled = currentSlide === totalSlides - 1;
+        }
+    };
+    
+    // Go to specific slide
+    const goToSlide = (slideIndex) => {
+        currentSlide = Math.max(0, Math.min(slideIndex, totalSlides - 1));
+        const cardWidth = getCardWidth();
+        const translateX = -currentSlide * cardWidth * cardsPerView;
+        carouselTrack.style.transform = `translateX(${translateX}px)`;
+        updateDots();
+        updateArrows();
+    };
+    
+    // Navigate to previous slide
+    const goToPrev = () => {
+        if (currentSlide > 0) {
+            goToSlide(currentSlide - 1);
+        }
+    };
+    
+    // Navigate to next slide
+    const goToNext = () => {
+        if (currentSlide < totalSlides - 1) {
+            goToSlide(currentSlide + 1);
+        }
+    };
+    
+    // Add arrow event listeners
+    if (prevArrow) {
+        prevArrow.addEventListener('click', goToPrev);
+    }
+    if (nextArrow) {
+        nextArrow.addEventListener('click', goToNext);
     }
     
-    carouselRows.forEach((row, index) => {
-        const track = row.querySelector('.services-carousel-track');
-        if (!track) return;
+    // Swipe functionality
+    let startX = 0;
+    let currentX = 0;
+    let isDragging = false;
+    let startTranslate = 0;
+    let currentTranslate = 0;
+    
+    const getPositionX = (event) => {
+        return event.type.includes('mouse') ? event.clientX : event.touches[0].clientX;
+    };
+    
+    const touchStart = (event) => {
+        startX = getPositionX(event);
+        isDragging = true;
+        startTranslate = currentTranslate;
+        carouselTrack.style.transition = 'none';
+    };
+    
+    const touchMove = (event) => {
+        if (!isDragging) return;
+        currentX = getPositionX(event);
+        currentTranslate = startTranslate + currentX - startX;
+        carouselTrack.style.transform = `translateX(${currentTranslate}px)`;
+    };
+    
+    const touchEnd = () => {
+        if (!isDragging) return;
+        isDragging = false;
+        carouselTrack.style.transition = 'transform 0.4s cubic-bezier(0.4, 0, 0.2, 1)';
         
-        let animationId = null;
-        let isPaused = false;
-        let scrollDirection = index === 0 ? 1 : -1; // Row 1 scrolls left (positive), Row 2 scrolls right (negative)
-        let scrollSpeed = 0.5; // Pixels per frame (slow)
-        let halfWidth = 0;
+        const cardWidth = getCardWidth();
+        const movedBy = currentTranslate - startTranslate;
+        const threshold = cardWidth * 0.3; // 30% of card width to trigger slide change
         
-        // Wait for layout to calculate proper widths
-        setTimeout(() => {
-            // Calculate half width for infinite scroll
-            halfWidth = track.scrollWidth / 2;
-            
-            // Initialize scroll position
-            row.scrollLeft = index === 0 ? 0 : halfWidth;
-            
-            // Auto-scroll animation
-            const animate = () => {
-                if (!isPaused) {
-                    row.scrollLeft += scrollDirection * scrollSpeed;
-                    
-                    // Reset position for infinite scroll
-                    if (index === 0) {
-                        // Row 1: scrolls left (increasing scrollLeft)
-                        if (row.scrollLeft >= halfWidth) {
-                            row.scrollLeft = 0;
-                        }
-                    } else {
-                        // Row 2: scrolls right (decreasing scrollLeft)
-                        if (row.scrollLeft <= 0) {
-                            row.scrollLeft = halfWidth;
-                        }
-                    }
-                }
-                animationId = requestAnimationFrame(animate);
-            };
-            
-            // Start animation
-            animate();
-        }, 100);
-        
-        // Pause on user interaction
-        const pauseOnInteraction = () => {
-            isPaused = true;
-        };
-        
-        // Resume when interaction ends
-        const resumeOnLeave = () => {
-            isPaused = false;
-        };
-        
-        // Mouse events
-        row.addEventListener('mouseenter', pauseOnInteraction);
-        row.addEventListener('mouseleave', resumeOnLeave);
-        
-        // Touch events
-        row.addEventListener('touchstart', pauseOnInteraction, { passive: true });
-        row.addEventListener('touchmove', pauseOnInteraction, { passive: true });
-        row.addEventListener('touchend', resumeOnLeave, { passive: true });
-        row.addEventListener('touchcancel', resumeOnLeave, { passive: true });
-        
-        // Cleanup on page unload
-        window.addEventListener('beforeunload', () => {
-            if (animationId) {
-                cancelAnimationFrame(animationId);
+        if (Math.abs(movedBy) > threshold) {
+            if (movedBy > 0 && currentSlide > 0) {
+                goToSlide(currentSlide - 1);
+            } else if (movedBy < 0 && currentSlide < totalSlides - 1) {
+                goToSlide(currentSlide + 1);
+            } else {
+                goToSlide(currentSlide); // Snap back
             }
-        });
+        } else {
+            goToSlide(currentSlide); // Snap back
+        }
+        
+        currentTranslate = -currentSlide * cardWidth * cardsPerView;
+    };
+    
+    // Event listeners for touch
+    carouselTrack.addEventListener('touchstart', touchStart, { passive: true });
+    carouselTrack.addEventListener('touchmove', touchMove, { passive: true });
+    carouselTrack.addEventListener('touchend', touchEnd);
+    
+    // Event listeners for mouse (for desktop drag)
+    let mouseDown = false;
+    carouselTrack.addEventListener('mousedown', (e) => {
+        mouseDown = true;
+        touchStart(e);
+    });
+    
+    carouselTrack.addEventListener('mousemove', (e) => {
+        if (mouseDown) touchMove(e);
+    });
+    
+    carouselTrack.addEventListener('mouseup', () => {
+        mouseDown = false;
+        touchEnd();
+    });
+    
+    carouselTrack.addEventListener('mouseleave', () => {
+        if (mouseDown) {
+            mouseDown = false;
+            touchEnd();
+        }
+    });
+    
+    // Initialize
+    createDots();
+    goToSlide(0);
+    updateArrows();
+    
+    // Handle window resize
+    let resizeTimeout;
+    window.addEventListener('resize', () => {
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(() => {
+            const newCardsPerView = getCardsPerView();
+            if (newCardsPerView !== cardsPerView) {
+                cardsPerView = newCardsPerView;
+                totalSlides = Math.ceil(totalCards / cardsPerView);
+                createDots();
+                currentSlide = Math.min(currentSlide, totalSlides - 1);
+                updateArrows();
+            }
+            goToSlide(currentSlide);
+        }, 250);
     });
 });
 

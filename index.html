@@ -52,41 +52,48 @@
     <nav class="navbar" id="navbar">
         <div class="nav-container">
             <div class="nav-wrapper">
-                <div class="logo">
+                <div class="logo" style="display: none;">
                     <a href="#home">Priesmont</a>
                 </div>
-                <ul class="nav-menu" id="navMenu">
-                    <li><a href="#about" class="nav-link" data-translate="nav.about">About</a></li>
-                    <li><a href="#features" class="nav-link" data-translate="nav.features">Features</a></li>
-                    <li><a href="#gallery" class="nav-link" data-translate="nav.gallery">Gallery</a></li>
-                    <li><a href="#surroundings" class="nav-link" data-translate="nav.surroundings">Surroundings</a></li>
-                    <li><a href="#booking" class="nav-link" data-translate="nav.bookNow">Book Now</a></li>
-                    <li><a href="#contact" class="nav-link" data-translate="nav.contact">Contact</a></li>
-                    <li class="mobile-book-now-wrapper">
-                        <a href="#booking" class="mobile-book-now-btn btn btn-primary" data-translate="nav.bookNow">Book Now</a>
-                    </li>
-                    <li class="mobile-lang-switcher-wrapper">
-                        <div class="language-switcher mobile-language-switcher">
-                            <button class="lang-btn active" data-lang="en" aria-label="English">EN</button>
-                            <button class="lang-btn" data-lang="nl" aria-label="Nederlands">NL</button>
-                            <button class="lang-btn" data-lang="fr" aria-label="Français">FR</button>
-                        </div>
-                    </li>
-                </ul>
-                <div class="language-switcher language-dropdown">
-                    <button class="lang-dropdown-toggle" id="langDropdownToggle" aria-label="Select language" aria-expanded="false">
-                        <span class="lang-current">EN</span>
-                        <svg class="lang-dropdown-icon" width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <polyline points="3 4.5 6 7.5 9 4.5"></polyline>
-                        </svg>
-                    </button>
-                    <div class="lang-dropdown-menu" id="langDropdownMenu">
-                        <button class="lang-dropdown-item active" data-lang="en" aria-label="English">English</button>
-                        <button class="lang-dropdown-item" data-lang="nl" aria-label="Nederlands">Nederlands</button>
-                        <button class="lang-dropdown-item" data-lang="fr" aria-label="Français">Français</button>
-                    </div>
+                <div class="nav-secondary-menu-wrapper">
+                    <div class="nav-title-centered">Domaine de Priesmont</div>
+                    <div class="nav-menu-line nav-menu-line-top"></div>
+                    <ul class="nav-menu nav-menu-centered" id="navMenu">
+                        <li><a href="#about" class="nav-link" data-translate="nav.about">About</a></li>
+                        <li><a href="#features" class="nav-link" data-translate="nav.features">Features</a></li>
+                        <li><a href="#gallery" class="nav-link" data-translate="nav.gallery">Gallery</a></li>
+                        <li><a href="#surroundings" class="nav-link" data-translate="nav.surroundings">Surroundings</a></li>
+                        <li><a href="#booking" class="nav-link" data-translate="nav.bookNow">Book Now</a></li>
+                        <li><a href="#contact" class="nav-link" data-translate="nav.contact">Contact</a></li>
+                        <li class="mobile-book-now-wrapper">
+                            <a href="#booking" class="mobile-book-now-btn btn btn-primary" data-translate="nav.bookNow">Book Now</a>
+                        </li>
+                        <li class="mobile-lang-switcher-wrapper">
+                            <div class="language-switcher mobile-language-switcher">
+                                <button class="lang-btn active" data-lang="en" aria-label="English">EN</button>
+                                <button class="lang-btn" data-lang="nl" aria-label="Nederlands">NL</button>
+                                <button class="lang-btn" data-lang="fr" aria-label="Français">FR</button>
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="nav-menu-line nav-menu-line-bottom"></div>
                 </div>
-                <a href="#booking" class="nav-book-now-btn btn btn-primary" data-translate="nav.bookNow">Book Now</a>
+                <div class="nav-right-side">
+                    <div class="language-switcher language-dropdown">
+                        <button class="lang-dropdown-toggle" id="langDropdownToggle" aria-label="Select language" aria-expanded="false">
+                            <span class="lang-current">EN</span>
+                            <svg class="lang-dropdown-icon" width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="3 4.5 6 7.5 9 4.5"></polyline>
+                            </svg>
+                        </button>
+                        <div class="lang-dropdown-menu" id="langDropdownMenu">
+                            <button class="lang-dropdown-item active" data-lang="en" aria-label="English">English</button>
+                            <button class="lang-dropdown-item" data-lang="nl" aria-label="Nederlands">Nederlands</button>
+                            <button class="lang-dropdown-item" data-lang="fr" aria-label="Français">Français</button>
+                        </div>
+                    </div>
+                    <a href="#booking" class="nav-book-now-btn btn btn-primary" data-translate="nav.bookNow">Book Now</a>
+                </div>
             </div>
             <div class="burger-container">
                 <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle menu">
@@ -100,106 +107,18 @@
 
     <!-- Hero Section -->
     <section id="home" class="hero">
-        <div class="hero-carousel">
-            <div class="hero-slide active" style="background-image: url('https://l.icdbcdn.com/oh/81af3118-e189-4e18-9816-ee10219e9d59.jpg?w=1920');"></div>
-            <div class="hero-slide" style="background-image: url('https://l.icdbcdn.com/oh/8fef89eb-5beb-4ce3-99eb-868aaf25874d.jpg?w=1920');"></div>
-            <div class="hero-slide" style="background-image: url('https://l.icdbcdn.com/oh/613f1034-5199-4b86-bc77-f88e25e935bc.jpg?w=1920');"></div>
-            <div class="hero-slide" style="background-image: url('https://l.icdbcdn.com/oh/2238bc93-cd13-409e-96a3-30cdbf3cb3a2.jpg?w=1920');"></div>
-            <div class="hero-slide" style="background-image: url('https://l.icdbcdn.com/oh/1c682eab-abad-4963-af74-e31f0073c0cb.jpg?w=1920');"></div>
-            <div class="hero-slide" style="background-image: url('https://l.icdbcdn.com/oh/14afe095-0d97-42c2-bbe6-d26ae49fc2bd.jpg?w=1920');"></div>
-            <div class="hero-overlay"></div>
-        </div>
-        <div class="container">
-            <div class="hero-content">
-                <h1 class="hero-title">
-                    <span class="title-line" data-translate="hero.welcome">Welcome to</span>
-                    <span class="title-main">Priesmont</span>
-                </h1>
-                <p class="hero-subtitle" data-translate="hero.subtitle">A historic manor in the heart of the Ardennes<br>Your perfect escape into nature and luxury.<br>Sleeps 40 guests</p>
-                <!-- FOMO: Hero availability banner - commented out
-                <div class="hero-availability-banner" id="heroAvailabilityBanner">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <circle cx="12" cy="12" r="10"></circle>
-                        <polyline points="12 6 12 12 16 14"></polyline>
-                    </svg>
-                    <span class="availability-text" id="availabilityText">Limited availability this season, book now to secure your dates</span>
-                </div>
-                -->
-                <div class="hero-buttons">
-                    <a href="#booking" class="btn btn-secondary" data-translate="hero.checkAvailabilities">Check Availabilities</a>
-                </div>
-                <div class="hero-rating">
-                    <div class="hero-rating-content">
-                        <div class="hero-rating-stars">
-                            <span class="star filled">★</span>
-                            <span class="star filled">★</span>
-                            <span class="star filled">★</span>
-                            <span class="star filled">★</span>
-                            <span class="star half-filled" style="--fill-percent: 60%;">★</span>
-                        </div>
-                        <div class="hero-rating-text">
-                            <span class="hero-rating-value" data-rating="4.6">4.6</span>
-                            <span class="hero-rating-label" data-translate="hero.averageRatingCompact">Average Rating across platforms</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="scroll-indicator">
-            <div class="mouse"></div>
-        </div>
+        <div class="hero-background" style="background-image: url('https://ibb.co/KJNzWtT');"></div>
     </section>
 
     <!-- About Section -->
-    <section id="about">
+    <section id="about" class="about-section">
         <div class="container">
-            <div class="about-two-column">
-                <!-- Left Column: Castle Image -->
-                <div class="about-image-column" style="width: 100%;">
-                    <img src="https://l.icdbcdn.com/oh/81af3118-e189-4e18-9816-ee10219e9d59.jpg?w=1920" alt="Priesmont Manor exterior view" class="about-castle-image" style="width: 100%; height: auto; border-radius: 18px; box-shadow: 0 4px 16px 0 rgba(0, 0, 0, 0.08);">
+            <div class="about-content">
+                <div class="about-location">VIELSALM, BELGIUM</div>
+                <h2 class="about-title">The Manor</h2>
+                <div class="about-description-wrapper">
+                    <p class="about-description">Welcome to Priesmont, a historic hunting manor built in 1919 and perched on a hill near Vielsalm in the Belgian Ardennes. Often called "le château" by locals, this elegant country house blends Belgian heritage with refined comfort. The manor offers 18 ensuite rooms and comfortably sleeps up to 40 guests. Surrounded by nature, Priesmont is an ideal setting for retreats, celebrations, or corporate gatherings.</p>
                 </div>
-                <!-- Right Column: Text Content -->
-                <div class="about-text-column">
-                    <!-- English -->
-                    <div class="lang-content lang-en">
-                        <h3 style="font-size: 2.4rem; margin-bottom: 1.5rem; color: #1D1D1F; font-weight: 600;">The Manor</h3>
-                        <div class="about-text-content about-text-truncated">
-                            <p style="color: #86868B; margin-bottom: 1.25rem; font-size: 1.0625rem; line-height: 1.75;">Welcome to Priesmont, a historic 'manoir de chasse' (hunting manor) built in 1919 by the Verhaeghe-De Naeyer family. Perched on a picturesque hill near the charming town of Vielsalm in the Belgian Ardennes, this architectural gem has stood as a testament to Belgian heritage for over a century. Locals affectionately refer to it as 'le château', perhaps due to its romantic little tower that greets visitors upon arrival.</p>
-                            <p style="color: #86868B; margin-bottom: 1.25rem; font-size: 1.0625rem; line-height: 1.75;">This exquisite country house offers 18 elegantly appointed rooms, each with its own private bathroom, ensuring complete privacy and comfort for all guests. Comfortably accommodating up to 40 guests, all 18 rooms feature their own ensuite bathroom. Surrounded by nature, powered by solar panels, and home to various animals on the grounds, Priesmont is the perfect blend of historic elegance and modern comfort.</p>
-                            <p style="color: #86868B; margin-bottom: 0; font-size: 1.0625rem; line-height: 1.75;">Whether you're seeking a peaceful retreat, a family gathering, or a corporate event, our manor provides the ideal setting for unforgettable moments in the heart of the Ardennes. The undisturbed charm of the region, combined with the manor's rich history, creates an atmosphere of timeless elegance and tranquility.</p>
-            </div>
-                        <button class="about-read-more-btn" data-lang="en">
-                            <span class="read-more-text">Read more</span>
-                            <span class="read-less-text" style="display: none;">Read less</span>
-                        </button>
-                        </div>
-                    <!-- Dutch -->
-                    <div class="lang-content lang-nl" style="display: none;">
-                        <h3 style="font-size: 2.4rem; margin-bottom: 1.5rem; color: #1D1D1F; font-weight: 600;">Het Landhuis</h3>
-                        <div class="about-text-content about-text-truncated">
-                            <p style="color: #86868B; margin-bottom: 1.25rem; font-size: 1.0625rem; line-height: 1.75;">Welkom bij Priesmont, een historisch 'manoir de chasse' (jachthuis) gebouwd in 1919 door de familie Verhaeghe-De Naeyer. Gelegen op een schilderachtige heuvel nabij het charmante stadje Vielsalm in de Belgische Ardennen, heeft dit architecturale juweel meer dan een eeuw lang als een getuigenis van het Belgische erfgoed gestaan. De plaatselijke bevolking noemt het liefdevol 'le château', misschien vanwege de romantische kleine toren die bezoekers bij aankomst begroet.</p>
-                            <p style="color: #86868B; margin-bottom: 1.25rem; font-size: 1.0625rem; line-height: 1.75;">Dit prachtige landhuis biedt 18 elegant ingerichte kamers, elk met eigen privébadkamer, wat zorgt voor volledige privacy en comfort voor alle gasten. Comfortabel geschikt voor maximaal 40 gasten, alle 18 kamers beschikken over een eigen ensuite badkamer. Omringd door de natuur, aangedreven door zonnepanelen en thuisbasis van verschillende dieren op het terrein, is Priesmont de perfecte combinatie van historische elegantie en modern comfort.</p>
-                            <p style="color: #86868B; margin-bottom: 0; font-size: 1.0625rem; line-height: 1.75;">Of u nu op zoek bent naar een rustige retraite, een familiereünie of een bedrijfsevenement, ons landhuis biedt de ideale setting voor onvergetelijke momenten in het hart van de Ardennen. De ongerepte charme van de regio, gecombineerd met de rijke geschiedenis van het landhuis, creëert een sfeer van tijdloze elegantie en rust.</p>
-                        </div>
-                        <button class="about-read-more-btn" data-lang="nl">
-                            <span class="read-more-text">Lees meer</span>
-                            <span class="read-less-text" style="display: none;">Lees minder</span>
-                        </button>
-                        </div>
-                    <!-- French -->
-                    <div class="lang-content lang-fr" style="display: none;">
-                        <h3 style="font-size: 2.4rem; margin-bottom: 1.5rem; color: #1D1D1F; font-weight: 600;">Le Manoir</h3>
-                        <div class="about-text-content about-text-truncated">
-                            <p style="color: #86868B; margin-bottom: 1.25rem; font-size: 1.0625rem; line-height: 1.75;">Bienvenue à Priesmont, un 'manoir de chasse' historique construit en 1919 par la famille Verhaeghe-De Naeyer. Perché sur une colline pittoresque près de la charmante ville de Vielsalm dans les Ardennes belges, ce joyau architectural se dresse depuis plus d'un siècle comme un témoignage du patrimoine belge. Les habitants l'appellent affectueusement 'le château', peut-être à cause de sa petite tour romantique qui accueille les visiteurs à leur arrivée.</p>
-                            <p style="color: #86868B; margin-bottom: 1.25rem; font-size: 1.0625rem; line-height: 1.75;">Cette magnifique maison de campagne offre 18 chambres élégamment meublées, chacune avec sa propre salle de bain privée, garantissant une intimité totale et un confort absolu pour tous les invités. Pouvant accueillir confortablement jusqu'à 40 invités, les 18 chambres disposent toutes de leur propre salle de bain attenante. Entouré par la nature, alimenté par des panneaux solaires et abritant divers animaux sur le domaine, Priesmont est le mélange parfait entre élégance historique et confort moderne.</p>
-                            <p style="color: #86868B; margin-bottom: 0; font-size: 1.0625rem; line-height: 1.75;">Que vous cherchiez une retraite paisible, une réunion de famille ou un événement d'entreprise, notre manoir offre le cadre idéal pour des moments inoubliables au cœur des Ardennes. Le charme préservé de la région, combiné à la riche histoire du manoir, crée une atmosphère d'élégance intemporelle et de tranquillité.</p>
-                            </div>
-                        <button class="about-read-more-btn" data-lang="fr">
-                            <span class="read-more-text">Lire plus</span>
-                            <span class="read-less-text" style="display: none;">Lire moins</span>
-                        </button>
-                        </div>
-                            </div>
             </div>
         </div>
     </section>
@@ -208,8 +127,7 @@
     <section id="features" class="services">
                 <div class="container">
             <div class="section-header">
-                <h2 class="section-title" data-translate="features.title">Features & Amenities</h2>
-                <p class="section-subtitle" data-translate="features.subtitle">Everything you need for an unforgettable stay</p>
+                <h2 class="section-title" data-translate="features.title">Amenities</h2>
                         </div>
             
             <!-- Mobile Accordion List -->
@@ -420,188 +338,145 @@
             </div>
             
             <div class="services-carousel-wrapper">
-                <!-- Row 1: Scrolls left (moves right) -->
-                <div class="services-carousel-row services-carousel-row-1">
-                    <div class="services-carousel-track services-track-1">
-                        <!-- First 6 cards (Row 1) -->
+                <div class="services-carousel-container">
+                    <button class="carousel-arrow carousel-arrow-prev" id="featuresCarouselPrev" aria-label="Previous slide">
+                        <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M7.5 1.5L3 6L7.5 10.5" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                    <div class="services-carousel-viewport">
+                        <div class="services-carousel-track" id="featuresCarousel">
+                        <!-- All 12 service cards -->
                         <div class="service-card">
                             <div class="service-icon">
                                 <img class="service-icon-thumb" src="https://l.icdbcdn.com/oh/3543c882-116c-438c-89df-b3ceab317fbe.jpg?w=1920" alt="Guest capacity">
                             </div>
-                            <h3 data-translate="features.roomsTitle">18 Elegant Rooms</h3>
-                            <p data-translate="features.roomsDescription">Spacious and beautifully appointed rooms, each with its own private bathroom, comfortably accommodating up to 40 guests. Perfect for large groups, family gatherings, or corporate retreats.</p>
+                            <div class="service-card-content">
+                                <div class="service-card-category">ACCOMMODATION</div>
+                                <h3 data-translate="features.roomsTitle">18 Elegant Rooms</h3>
+                                <p data-translate="features.roomsDescription">Spacious and beautifully appointed rooms, each with its own private bathroom, comfortably accommodating up to 40 guests. Perfect for large groups, family gatherings, or corporate retreats.</p>
+                            </div>
                         </div>
                         <div class="service-card">
                             <div class="service-icon">
                                 <img class="service-icon-thumb" src="https://l.icdbcdn.com/oh/28871b92-3602-4b0a-9b7c-e64580a35b3e.jpg?w=1920" alt="Ensuite bathroom detail">
                             </div>
-                            <h3 data-translate="features.bathroomsTitle">18 Private Bathrooms</h3>
-                            <p data-translate="features.bathroomsDescription">All 18 rooms feature their own private ensuite bathroom, ensuring complete privacy and comfort for all guests. No shared facilities, so each guest enjoys their own personal space.</p>
+                            <div class="service-card-content">
+                                <div class="service-card-category">ACCOMMODATION</div>
+                                <h3 data-translate="features.bathroomsTitle">18 Private Bathrooms</h3>
+                                <p data-translate="features.bathroomsDescription">All 18 rooms feature their own private ensuite bathroom, ensuring complete privacy and comfort for all guests. No shared facilities, so each guest enjoys their own personal space.</p>
+                            </div>
                         </div>
                         <div class="service-card">
                             <div class="service-icon">
                                 <img class="service-icon-thumb" src="https://l.icdbcdn.com/oh/613f1034-5199-4b86-bc77-f88e25e935bc.jpg?w=1920" alt="Pools and sauna">
                             </div>
-                            <h3 data-translate="features.poolsTitle">Indoor & Outdoor Pools</h3>
-                            <p data-translate="features.poolsDescription">Enjoy a refreshing swim in our heated indoor pool or bask in the sun by the outdoor pool. Both pools are designed for relaxation and leisure throughout your stay.</p>
+                            <div class="service-card-content">
+                                <div class="service-card-category">WELLNESS</div>
+                                <h3 data-translate="features.poolsTitle">Indoor & Outdoor Pools</h3>
+                                <p data-translate="features.poolsDescription">Enjoy a refreshing swim in our heated indoor pool or bask in the sun by the outdoor pool. Both pools are designed for relaxation and leisure throughout your stay.</p>
+                            </div>
                         </div>
                         <div class="service-card">
                             <div class="service-icon">
                                 <img class="service-icon-thumb" src="images/sauna.png" alt="Private sauna with forest view">
                             </div>
-                            <h3 data-translate="features.saunaTitle">Private Sauna</h3>
-                            <p data-translate="features.saunaDescription">Unwind and relax in our private dry sauna, offering a serene retreat after a day of hiking or exploring the beautiful Ardennes countryside.</p>
+                            <div class="service-card-content">
+                                <div class="service-card-category">WELLNESS</div>
+                                <h3 data-translate="features.saunaTitle">Private Sauna</h3>
+                                <p data-translate="features.saunaDescription">Unwind and relax in our private dry sauna, offering a serene retreat after a day of hiking or exploring the beautiful Ardennes countryside.</p>
+                            </div>
                         </div>
                         <div class="service-card">
                             <div class="service-icon">
                                 <img class="service-icon-thumb" src="images/classic-piano.jpg" alt="Classic piano at Priesmont">
                             </div>
-                            <h3 data-translate="features.pianoTitle">Classic Piano</h3>
-                            <p data-translate="features.pianoDescription">For music enthusiasts, a beautiful classic piano awaits in the manor, ready to fill the halls with melody and create memorable musical moments.</p>
+                            <div class="service-card-content">
+                                <div class="service-card-category">AMENITIES</div>
+                                <h3 data-translate="features.pianoTitle">Classic Piano</h3>
+                                <p data-translate="features.pianoDescription">For music enthusiasts, a beautiful classic piano awaits in the manor, ready to fill the halls with melody and create memorable musical moments.</p>
+                            </div>
                         </div>
                         <div class="service-card">
                             <div class="service-icon">
                                 <img class="service-icon-thumb" src="images/expansive-grounds.jpg" alt="Expansive estate grounds">
                             </div>
-                            <h3 data-translate="features.groundsTitle">Expansive Grounds</h3>
-                            <p data-translate="features.groundsDescription">The estate boasts ample space with beautiful grounds, perfect for leisurely strolls, outdoor activities, and enjoying the natural beauty of the Ardennes.</p>
-                        </div>
-                        <!-- Duplicate for seamless loop -->
-                        <div class="service-card">
-                            <div class="service-icon">
-                                <img class="service-icon-thumb" src="https://l.icdbcdn.com/oh/3543c882-116c-438c-89df-b3ceab317fbe.jpg?w=1920" alt="Guest capacity">
+                            <div class="service-card-content">
+                                <div class="service-card-category">GROUNDS</div>
+                                <h3 data-translate="features.groundsTitle">Expansive Grounds</h3>
+                                <p data-translate="features.groundsDescription">The estate boasts ample space with beautiful grounds, perfect for leisurely strolls, outdoor activities, and enjoying the natural beauty of the Ardennes.</p>
                             </div>
-                            <h3 data-translate="features.roomsTitle">18 Elegant Rooms</h3>
-                            <p data-translate="features.roomsDescription">Spacious and beautifully appointed rooms, each with its own private bathroom, comfortably accommodating up to 40 guests. Perfect for large groups, family gatherings, or corporate retreats.</p>
                         </div>
-                        <div class="service-card">
-                            <div class="service-icon">
-                                <img class="service-icon-thumb" src="https://l.icdbcdn.com/oh/28871b92-3602-4b0a-9b7c-e64580a35b3e.jpg?w=1920" alt="Ensuite bathroom detail">
-                            </div>
-                            <h3 data-translate="features.bathroomsTitle">18 Private Bathrooms</h3>
-                            <p data-translate="features.bathroomsDescription">All 18 rooms feature their own private ensuite bathroom, ensuring complete privacy and comfort for all guests. No shared facilities, so each guest enjoys their own personal space.</p>
-                        </div>
-                        <div class="service-card">
-                            <div class="service-icon">
-                                <img class="service-icon-thumb" src="https://l.icdbcdn.com/oh/613f1034-5199-4b86-bc77-f88e25e935bc.jpg?w=1920" alt="Pools and sauna">
-                            </div>
-                            <h3 data-translate="features.poolsTitle">Indoor & Outdoor Pools</h3>
-                            <p data-translate="features.poolsDescription">Enjoy a refreshing swim in our heated indoor pool or bask in the sun by the outdoor pool. Both pools are designed for relaxation and leisure throughout your stay.</p>
-                        </div>
-                        <div class="service-card">
-                            <div class="service-icon">
-                                <img class="service-icon-thumb" src="images/sauna.png" alt="Private sauna with forest view">
-                            </div>
-                            <h3 data-translate="features.saunaTitle">Private Sauna</h3>
-                            <p data-translate="features.saunaDescription">Unwind and relax in our private dry sauna, offering a serene retreat after a day of hiking or exploring the beautiful Ardennes countryside.</p>
-                        </div>
-                        <div class="service-card">
-                            <div class="service-icon">
-                                <img class="service-icon-thumb" src="images/classic-piano.jpg" alt="Classic piano at Priesmont">
-                            </div>
-                            <h3 data-translate="features.pianoTitle">Classic Piano</h3>
-                            <p data-translate="features.pianoDescription">For music enthusiasts, a beautiful classic piano awaits in the manor, ready to fill the halls with melody and create memorable musical moments.</p>
-                        </div>
-                        <div class="service-card">
-                            <div class="service-icon">
-                                <img class="service-icon-thumb" src="images/expansive-grounds.jpg" alt="Expansive estate grounds">
-                            </div>
-                            <h3 data-translate="features.groundsTitle">Expansive Grounds</h3>
-                            <p data-translate="features.groundsDescription">The estate boasts ample space with beautiful grounds, perfect for leisurely strolls, outdoor activities, and enjoying the natural beauty of the Ardennes.</p>
-                        </div>
-                    </div>
-                </div>
-                <!-- Row 2: Scrolls right (moves left) -->
-                <div class="services-carousel-row services-carousel-row-2">
-                    <div class="services-carousel-track services-track-2">
-                        <!-- Last 6 cards (Row 2) -->
                         <div class="service-card">
                             <div class="service-icon">
                                 <img class="service-icon-thumb" src="images/eco-friendly.png" alt="Eco-friendly solar panels at Priesmont">
                             </div>
-                            <h3 data-translate="features.ecoFriendlyTitle">Eco-Friendly</h3>
-                            <p data-translate="features.ecoFriendlyDescription">The manor is powered by solar panels, reflecting our commitment to sustainable and eco-friendly practices while maintaining modern comfort.</p>
+                            <div class="service-card-content">
+                                <div class="service-card-category">SUSTAINABILITY</div>
+                                <h3 data-translate="features.ecoFriendlyTitle">Eco-Friendly</h3>
+                                <p data-translate="features.ecoFriendlyDescription">The manor is powered by solar panels, reflecting our commitment to sustainable and eco-friendly practices while maintaining modern comfort.</p>
+                            </div>
                         </div>
                         <div class="service-card">
                             <div class="service-icon">
                                 <img class="service-icon-thumb" src="images/resident-animals.png" alt="Resident animals on the grounds">
                             </div>
-                            <h3 data-translate="features.animalsTitle">Resident Animals</h3>
-                            <p data-translate="features.animalsDescription">The terrain is home to various friendly animals, adding to the estate's charm and providing delightful encounters for guests of all ages.</p>
+                            <div class="service-card-content">
+                                <div class="service-card-category">GROUNDS</div>
+                                <h3 data-translate="features.animalsTitle">Resident Animals</h3>
+                                <p data-translate="features.animalsDescription">The terrain is home to various friendly animals, adding to the estate's charm and providing delightful encounters for guests of all ages.</p>
+                            </div>
                         </div>
                         <div class="service-card">
                             <div class="service-icon">
                                 <img class="service-icon-thumb" src="images/parking.jpg" alt="Parking at Priesmont">
                             </div>
-                            <h3 data-translate="features.parkingTitle">Parking</h3>
-                            <p data-translate="features.parkingDescription">Convenient parking available for 20+ cars on-site, ensuring easy access for all guests and event attendees.</p>
+                            <div class="service-card-content">
+                                <div class="service-card-category">FACILITIES</div>
+                                <h3 data-translate="features.parkingTitle">Parking</h3>
+                                <p data-translate="features.parkingDescription">Convenient parking available for 20+ cars on-site, ensuring easy access for all guests and event attendees.</p>
+                            </div>
                         </div>
                         <div class="service-card">
                             <div class="service-icon">
                                 <img class="service-icon-thumb" src="images/ev-charging.jpg" alt="EV charging at Priesmont">
                             </div>
-                            <h3 data-translate="features.evChargingTitle">EV Charging</h3>
-                            <p data-translate="features.evChargingDescription">Electric vehicle charging stations available on-site, supporting sustainable travel for eco-conscious guests.</p>
+                            <div class="service-card-content">
+                                <div class="service-card-category">FACILITIES</div>
+                                <h3 data-translate="features.evChargingTitle">EV Charging</h3>
+                                <p data-translate="features.evChargingDescription">Electric vehicle charging stations available on-site, supporting sustainable travel for eco-conscious guests.</p>
+                            </div>
                         </div>
                         <div class="service-card">
                             <div class="service-icon">
                                 <img class="service-icon-thumb" src="images/professional-kitchen.jpg" alt="Professional kitchen at Priesmont">
                             </div>
-                            <h3 data-translate="features.professionalKitchenTitle">Professional Kitchen</h3>
-                            <p data-translate="features.professionalKitchenDescription">Fully equipped industrial-grade kitchen suitable for professional catering standards, perfect for events of all sizes and culinary requirements.</p>
+                            <div class="service-card-content">
+                                <div class="service-card-category">FACILITIES</div>
+                                <h3 data-translate="features.professionalKitchenTitle">Professional Kitchen</h3>
+                                <p data-translate="features.professionalKitchenDescription">Fully equipped industrial-grade kitchen suitable for professional catering standards, perfect for events of all sizes and culinary requirements.</p>
+                            </div>
                         </div>
                         <div class="service-card">
                             <div class="service-icon">
                                 <img class="service-icon-thumb" src="images/barbecue.jpg" alt="Barbecue facilities at Priesmont">
                             </div>
-                            <h3 data-translate="features.barbecuePitsTitle">Barbecue Facilities</h3>
-                            <p data-translate="features.barbecuePitsDescription">Outdoor barbecue pits available on the grounds, ideal for al fresco dining and relaxed outdoor gatherings.</p>
-                        </div>
-                        <!-- Duplicate for seamless loop -->
-                        <div class="service-card">
-                            <div class="service-icon">
-                                <img class="service-icon-thumb" src="images/eco-friendly.png" alt="Eco-friendly solar panels at Priesmont">
+                            <div class="service-card-content">
+                                <div class="service-card-category">FACILITIES</div>
+                                <h3 data-translate="features.barbecuePitsTitle">Barbecue Facilities</h3>
+                                <p data-translate="features.barbecuePitsDescription">Outdoor barbecue pits available on the grounds, ideal for al fresco dining and relaxed outdoor gatherings.</p>
                             </div>
-                            <h3 data-translate="features.ecoFriendlyTitle">Eco-Friendly</h3>
-                            <p data-translate="features.ecoFriendlyDescription">The manor is powered by solar panels, reflecting our commitment to sustainable and eco-friendly practices while maintaining modern comfort.</p>
                         </div>
-                        <div class="service-card">
-                            <div class="service-icon">
-                                <img class="service-icon-thumb" src="images/resident-animals.png" alt="Resident animals on the grounds">
-                            </div>
-                            <h3 data-translate="features.animalsTitle">Resident Animals</h3>
-                            <p data-translate="features.animalsDescription">The terrain is home to various friendly animals, adding to the estate's charm and providing delightful encounters for guests of all ages.</p>
-                        </div>
-                        <div class="service-card">
-                            <div class="service-icon">
-                                <img class="service-icon-thumb" src="images/parking.jpg" alt="Parking at Priesmont">
-                            </div>
-                            <h3 data-translate="features.parkingTitle">Parking</h3>
-                            <p data-translate="features.parkingDescription">Convenient parking available for 20+ cars on-site, ensuring easy access for all guests and event attendees.</p>
-                        </div>
-                        <div class="service-card">
-                            <div class="service-icon">
-                                <img class="service-icon-thumb" src="images/ev-charging.jpg" alt="EV charging at Priesmont">
-                            </div>
-                            <h3 data-translate="features.evChargingTitle">EV Charging</h3>
-                            <p data-translate="features.evChargingDescription">Electric vehicle charging stations available on-site, supporting sustainable travel for eco-conscious guests.</p>
-                        </div>
-                        <div class="service-card">
-                            <div class="service-icon">
-                                <img class="service-icon-thumb" src="images/professional-kitchen.jpg" alt="Professional kitchen at Priesmont">
-                            </div>
-                            <h3 data-translate="features.professionalKitchenTitle">Professional Kitchen</h3>
-                            <p data-translate="features.professionalKitchenDescription">Fully equipped industrial-grade kitchen suitable for professional catering standards, perfect for events of all sizes and culinary requirements.</p>
-                        </div>
-                        <div class="service-card">
-                            <div class="service-icon">
-                                <img class="service-icon-thumb" src="images/barbecue.jpg" alt="Barbecue facilities at Priesmont">
-                            </div>
-                            <h3 data-translate="features.barbecuePitsTitle">Barbecue Facilities</h3>
-                            <p data-translate="features.barbecuePitsDescription">Outdoor barbecue pits available on the grounds, ideal for al fresco dining and relaxed outdoor gatherings.</p>
                         </div>
                     </div>
+                    <button class="carousel-arrow carousel-arrow-next" id="featuresCarouselNext" aria-label="Next slide">
+                        <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M4.5 1.5L9 6L4.5 10.5" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
                 </div>
+                <!-- Carousel Navigation Dots -->
+                <div class="carousel-dots" id="featuresCarouselDots"></div>
             </div>
     </section>
 
@@ -1187,11 +1062,11 @@
                               /* Lodgify Widget Customization - Apple Inspired Design */
                               :root {
                                 --ldg-bnb-background: #ffffff;
-                                --ldg-bnb-border-radius: 18px;
+                                --ldg-bnb-border-radius: 0;
                                 --ldg-bnb-box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.08);
                                 --ldg-bnb-padding: 24px;
                                 --ldg-bnb-input-background: #fbfbfd;
-                                --ldg-bnb-button-border-radius: 50px;
+                                --ldg-bnb-button-border-radius: 0;
                                 --ldg-bnb-color-primary: #1d1d1f;
                                 --ldg-bnb-color-primary-lighter: #86868b;
                                 --ldg-bnb-color-primary-darker: #000000;
@@ -1208,7 +1083,7 @@
                                 --ldg-bnb-line-height: 1.47059;
                                 --ldg-bnb-letter-spacing: -0.022em;
                                 --ldg-bnb-input-border-color: #e5e5e5;
-                                --ldg-bnb-input-border-radius: 12px;
+                                --ldg-bnb-input-border-radius: 0;
                                 --ldg-bnb-input-padding: 12px 16px;
                                 --ldg-bnb-input-font-size: 1rem;
                                 --ldg-bnb-button-padding: 14px 28px;
@@ -1280,7 +1155,7 @@
                                 color: #c62828 !important;
                                 cursor: not-allowed !important;
                                 border: 2px solid #ef5350 !important;
-                                border-radius: 8px !important;
+                                border-radius: 0 !important;
                               }
                             </style>
                             <div
