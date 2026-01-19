@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+        http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+    
+    <!-- Main Pages -->
+    <url>
+        <loc>https://www.domainedepriesmont.com/</loc>
+        <lastmod>2025-01-27</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>1.0</priority>
+    </url>
+    
+    <url>
+        <loc>https://www.domainedepriesmont.com/#about</loc>
+        <lastmod>2025-01-27</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    
+    <url>
+        <loc>https://www.domainedepriesmont.com/#features</loc>
+        <lastmod>2025-01-27</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    
+    <url>
+        <loc>https://www.domainedepriesmont.com/#gallery</loc>
+        <lastmod>2025-01-27</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    
+    <url>
+        <loc>https://www.domainedepriesmont.com/#surroundings</loc>
+        <lastmod>2025-01-27</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    
+    <url>
+        <loc>https://www.domainedepriesmont.com/#booking</loc>
+        <lastmod>2025-01-27</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>1.0</priority>
+    </url>
+    
+    <url>
+        <loc>https://www.domainedepriesmont.com/#contact</loc>
+        <lastmod>2025-01-27</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    
+    <!-- Blog -->
+    <url>
+        <loc>https://www.domainedepriesmont.com/blog/</loc>
+        <lastmod>2025-01-27</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    
+    <!-- Blog Posts -->
+    <url>
+        <loc>https://www.domainedepriesmont.com/blog/posts/large-group-accommodation-guide-40-guests-belgian-ardennes.html</loc>
+        <lastmod>2025-01-27</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    
+    <url>
+        <loc>https://www.domainedepriesmont.com/blog/posts/private-bathrooms-guide-large-group-accommodation-belgium.html</loc>
+        <lastmod>2025-01-27</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    
+    <url>
+        <loc>https://www.domainedepriesmont.com/blog/posts/family-reunion-planning-guide-belgian-ardennes.html</loc>
+        <lastmod>2025-01-27</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    
+    <url>
+        <loc>https://www.domainedepriesmont.com/blog/posts/planning-perfect-corporate-retreat-belgian-ardennes.html</loc>
+        <lastmod>2025-01-27</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    
+    <url>
+        <loc>https://www.domainedepriesmont.com/blog/posts/how-much-cost-rent-manor-40-people-belgium.html</loc>
+        <lastmod>2025-01-27</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    
+    <!-- Dutch Blog Posts -->
+    <url>
+        <loc>https://www.domainedepriesmont.com/blog/posts/hoeveel-kost-landhuis-huren-40-mensen-belgie.html</loc>
+        <lastmod>2025-01-27</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    
+    <url>
+        <loc>https://www.domainedepriesmont.com/blog/posts/grote-groep-accommodatie-40-gasten-belgische-ardennen.html</loc>
+        <lastmod>2025-01-27</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    
+    <url>
+        <loc>https://www.domainedepriesmont.com/blog/posts/team-building-venue-belgium-remote-work-retreats.html</loc>
+        <lastmod>2025-01-27</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    
+    <url>
+        <loc>https://www.domainedepriesmont.com/blog/posts/manor-vs-hotel-vs-airbnb-large-groups-belgium.html</loc>
+        <lastmod>2025-01-27</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    
+    <url>
+        <loc>https://www.domainedepriesmont.com/blog/posts/strategic-planning-retreats-companies-belgian-ardennes.html</loc>
+        <lastmod>2025-01-27</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    
+    <url>
+        <loc>https://www.domainedepriesmont.com/blog/posts/best-things-do-belgian-ardennes-complete-guide.html</loc>
+        <lastmod>2025-01-27</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    
+    <url>
+        <loc>https://www.domainedepriesmont.com/blog/posts/why-belgian-ardennes-corporate-retreats-companies.html</loc>
+        <lastmod>2025-01-27</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    
+    <url>
+        <loc>https://www.domainedepriesmont.com/blog/posts/wedding-venue-belgian-ardennes-40-guests.html</loc>
+        <lastmod>2025-01-27</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    
+    <url>
+        <loc>https://www.domainedepriesmont.com/blog/posts/vielsalm-area-guide-attractions-restaurants-activities.html</loc>
+        <lastmod>2025-01-27</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    
+    <url>
+        <loc>https://www.domainedepriesmont.com/blog/posts/corporate-offsite-venue-belgium-focused-work-retreats.html</loc>
+        <lastmod>2025-01-27</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    
+    <url>
+        <loc>https://www.domainedepriesmont.com/blog/posts/indoor-outdoor-pool-accommodation-belgium-large-groups.html</loc>
+        <lastmod>2025-01-27</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    
+    <url>
+        <loc>https://www.domainedepriesmont.com/blog/posts/best-time-visit-belgian-ardennes-seasonal-guide.html</loc>
+        <lastmod>2025-01-27</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    
+    <!-- Additional Dutch Blog Posts -->
+    <url>
+        <loc>https://www.domainedepriesmont.com/blog/posts/eigen-badkamers-grote-groep-accommodatie-belgie.html</loc>
+        <lastmod>2025-01-27</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    
+    <url>
+        <loc>https://www.domainedepriesmont.com/blog/posts/bedrijfsuitje-planning-belgische-ardennen.html</loc>
+        <lastmod>2025-01-27</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    
+    <url>
+        <loc>https://www.domainedepriesmont.com/blog/posts/landhuis-vs-hotel-vs-airbnb-grote-groepen-belgie.html</loc>
+        <lastmod>2025-01-27</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    
+    <!-- French Blog Posts -->
+    <url>
+        <loc>https://www.domainedepriesmont.com/blog/posts/planning-retraite-entreprise-ardennes-belges.html</loc>
+        <lastmod>2025-01-27</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    
+    <url>
+        <loc>https://www.domainedepriesmont.com/blog/posts/guide-hebergement-grand-groupe-40-invites-ardennes-belges.html</loc>
+        <lastmod>2025-01-27</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    
+    <url>
+        <loc>https://www.domainedepriesmont.com/blog/posts/combien-coute-louer-manoir-40-personnes-belgique.html</loc>
+        <lastmod>2025-01-27</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    
+    <url>
+        <loc>https://www.domainedepriesmont.com/blog/posts/salles-bain-privees-guide-hebergement-grand-groupe-belgique.html</loc>
+        <lastmod>2025-01-27</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    
+    <url>
+        <loc>https://www.domainedepriesmont.com/blog/posts/manoir-vs-hotel-vs-airbnb-grands-groupes-belgique.html</loc>
+        <lastmod>2025-01-27</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    
+</urlset>
