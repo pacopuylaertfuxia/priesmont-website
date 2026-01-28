@@ -10,7 +10,8 @@ const translations = {
             useCases: "Use Cases",
             testimonials: "Testimonials",
             bookNow: "Book Now",
-            contact: "Contact"
+            contact: "Contact",
+            blog: "Blog"
         },
         hero: {
             welcome: "Welcome to",
@@ -143,7 +144,7 @@ const translations = {
             localVillagesDescription: "Explore charming villages like Vielsalm, Malmedy, and Spa, each offering unique shops, restaurants, and local markets. Experience authentic Belgian culture and cuisine.",
             cyclingRoutesTitle: "Cycling Routes",
             cyclingRoutesDescription: "The region offers excellent cycling opportunities, from leisurely rides through the countryside to challenging mountain bike trails. Rent bikes locally or bring your own.",
-            aquaMundoTitle: "Aqua Mundo du Center Parcs Les Ardennes",
+            aquaMundoTitle: "Water park",
             aquaMundoDescription: "Experience a tropical water paradise at this spectacular indoor water park. With slides, lazy rivers, and pools for all ages, it's the perfect family destination for a fun-filled day, especially during cooler months.",
             avenatureTitle: "Avenature",
             avenatureDescription: "Challenge yourself at this thrilling high ropes course set in the heart of the Ardennes forest. Navigate suspended obstacles, wooden platforms, and rope bridges high among the trees. Perfect for adventure seekers and families looking for an exciting outdoor activity.",
@@ -221,7 +222,8 @@ const translations = {
             useCases: "Gebruik",
             testimonials: "Getuigenissen",
             bookNow: "Boek Nu",
-            contact: "Contact"
+            contact: "Contact",
+            blog: "Blog"
         },
         hero: {
             welcome: "Welkom bij",
@@ -354,7 +356,7 @@ const translations = {
             localVillagesDescription: "Verken charmante dorpen zoals Vielsalm, Malmedy en Spa, elk met unieke winkels, restaurants en lokale markten. Ervaar authentieke Belgische cultuur en keuken.",
             cyclingRoutesTitle: "Fietsroutes",
             cyclingRoutesDescription: "De regio biedt uitstekende fietsmogelijkheden, van ontspannende ritten door het platteland tot uitdagende mountainbikeroutes. Huur fietsen lokaal of breng uw eigen fietsen mee.",
-            aquaMundoTitle: "Aqua Mundo du Center Parcs Les Ardennes",
+            aquaMundoTitle: "Water park",
             aquaMundoDescription: "Ervaar een tropisch waterparadijs in dit spectaculaire overdekte waterpark. Met glijbanen, luie rivieren en zwembaden voor alle leeftijden, is het de perfecte familiedestinatie voor een leuke dag, vooral tijdens koudere maanden.",
             avenatureTitle: "Avenature",
             avenatureDescription: "Daag uzelf uit op dit spannende hoogtouwparcours in het hart van het Ardense bos. Navigeer door hangende obstakels, houten platforms en touwbruggen hoog tussen de bomen. Perfect voor avonturiers en gezinnen die op zoek zijn naar een spannende buitensportactiviteit.",
@@ -432,7 +434,8 @@ const translations = {
             useCases: "Utilisations",
             testimonials: "Témoignages",
             bookNow: "Réserver",
-            contact: "Contact"
+            contact: "Contact",
+            blog: "Blog"
         },
         hero: {
             welcome: "Bienvenue à",
@@ -565,7 +568,7 @@ const translations = {
             localVillagesDescription: "Explorez des villages charmants comme Vielsalm, Malmedy et Spa, chacun offrant des magasins, des restaurants et des marchés locaux uniques. Découvrez la culture et la cuisine belges authentiques.",
             cyclingRoutesTitle: "Itinéraires Cyclables",
             cyclingRoutesDescription: "La région offre d'excellentes opportunités de cyclisme, des promenades tranquilles à travers la campagne aux sentiers de VTT difficiles. Louez des vélos localement ou apportez les vôtres.",
-            aquaMundoTitle: "Aqua Mundo du Center Parcs Les Ardennes",
+            aquaMundoTitle: "Water park",
             aquaMundoDescription: "Découvrez un paradis aquatique tropical dans ce spectaculaire parc aquatique couvert. Avec des toboggans, des rivières paresseuses et des piscines pour tous les âges, c'est la destination familiale parfaite pour une journée amusante, surtout pendant les mois plus frais.",
             avenatureTitle: "Avenature",
             avenatureDescription: "Défiez-vous sur ce parcours d'accrobranche palpitant situé au cœur de la forêt ardennaise. Naviguez parmi des obstacles suspendus, des plateformes en bois et des ponts de corde haut dans les arbres. Parfait pour les amateurs d'aventure et les familles à la recherche d'une activité de plein air excitante.",
