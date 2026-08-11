@@ -254,28 +254,37 @@ if (gallerySeeLessBtn && galleryRemaining && galleryPreview) {
     });
 }
 
+// Track scroll position for lightbox body lock
+let savedScrollY = 0;
+
 // Open lightbox
 function openLightbox(index) {
     currentImageIndex = index;
     updateLightboxImage();
     lightbox.classList.add('active');
-    document.body.style.overflow = 'hidden';
-    
+
+    // Lock body scroll (works on iOS too)
+    savedScrollY = window.scrollY;
+    document.body.classList.add('lightbox-open');
+    document.body.style.top = `-${savedScrollY}px`;
+
     // Hide navbar when lightbox is open
     const navbar = document.getElementById('navbar');
     if (navbar) {
         navbar.style.opacity = '0';
         navbar.style.pointerEvents = 'none';
     }
-    
-    // Gallery lightbox tracking removed - focusing on booking/inquiry funnels only
 }
 
 // Close lightbox
 function closeLightbox() {
     lightbox.classList.remove('active');
-    document.body.style.overflow = '';
-    
+
+    // Restore body scroll position
+    document.body.classList.remove('lightbox-open');
+    document.body.style.top = '';
+    window.scrollTo(0, savedScrollY);
+
     // Show navbar again when lightbox is closed
     const navbar = document.getElementById('navbar');
     if (navbar) {

@@ -94,6 +94,7 @@ const translations = {
         booking: {
             title: "Reserve Your Exclusive Stay",
             subtitle: "Secure your preferred dates with our seamless booking experience",
+            callToBook: "Prefer to book by phone? Call us",
             reservationDetails: "Your Reservation",
             description: "Select your arrival and departure dates to view real-time availability and pricing. Our calendar displays all confirmed bookings to ensure accurate availability.",
             benefitsTitle: "Included in Your Stay",
@@ -306,6 +307,7 @@ const translations = {
         booking: {
             title: "Reserveer Uw Exclusieve Verblijf",
             subtitle: "Beveilig uw voorkeursdata met onze naadloze boekingservaring",
+            callToBook: "Liever telefonisch boeken? Bel ons",
             reservationDetails: "Uw Reservering",
             description: "Selecteer uw aankomst- en vertrekdata om real-time beschikbaarheid en prijzen te bekijken. Onze kalender toont alle bevestigde boekingen voor nauwkeurige beschikbaarheid.",
             benefitsTitle: "Inbegrepen in Uw Verblijf",
@@ -518,6 +520,7 @@ const translations = {
         booking: {
             title: "Réservez Votre Séjour Exclusif",
             subtitle: "Sécurisez vos dates préférées avec notre expérience de réservation fluide",
+            callToBook: "Vous préférez réserver par téléphone ? Appelez-nous",
             reservationDetails: "Votre Réservation",
             description: "Sélectionnez vos dates d'arrivée et de départ pour consulter la disponibilité et les tarifs en temps réel. Notre calendrier affiche toutes les réservations confirmées pour garantir une disponibilité précise.",
             benefitsTitle: "Inclus dans Votre Séjour",
@@ -866,6 +869,7 @@ function setLanguage(lang) {
     // Update booking section
     document.querySelectorAll('[data-translate="booking.title"]').forEach(el => el.textContent = t.booking.title);
     document.querySelectorAll('[data-translate="booking.subtitle"]').forEach(el => el.textContent = t.booking.subtitle);
+    document.querySelectorAll('[data-translate="booking.callToBook"]').forEach(el => el.textContent = t.booking.callToBook);
     
     const bookingDetailsEl = document.querySelector('[data-translate="booking.reservationDetails"]');
     if (bookingDetailsEl) bookingDetailsEl.textContent = t.booking.reservationDetails;

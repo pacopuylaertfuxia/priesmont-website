@@ -267,11 +267,33 @@ body {
 /* Language Switcher */
 /* Book Now Button in Nav */
 .nav-book-now-btn {
-    margin-left: 1rem;
+    margin-left: 0.5rem;
     padding: 0.625rem 0.625rem;
     font-size: 0.9375rem;
     font-weight: 500;
     white-space: nowrap;
+}
+
+/* Call Button in Nav */
+.nav-call-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    margin-left: 1rem;
+    border-radius: 50%;
+    color: var(--text-dark);
+    background: rgba(0, 0, 0, 0.02);
+    border: 0.5px solid rgba(0, 0, 0, 0.08);
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    flex-shrink: 0;
+}
+
+.nav-call-btn:hover {
+    color: var(--primary-color);
+    background: rgba(0, 0, 0, 0.05);
+    transform: translateY(-1px);
 }
 
 /* Language Dropdown */
@@ -411,7 +433,8 @@ body {
     }
     
     /* Hide Book Now button in nav on mobile (it's in the menu) */
-    .nav-book-now-btn {
+    .nav-book-now-btn,
+    .nav-call-btn {
         display: none !important;
     }
     
@@ -1890,6 +1913,16 @@ section {
     pointer-events: all;
     width: 100vw;
     height: 100vh;
+}
+
+/* Lock body scroll when lightbox is active */
+body.lightbox-open {
+    overflow: hidden;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    touch-action: none;
+    -webkit-overflow-scrolling: none;
 }
 
 /* Hide navbar when lightbox is active */
@@ -3518,6 +3551,33 @@ body:has(.lightbox.active) .navbar {
     color: var(--text-light);
     letter-spacing: -0.022em;
     line-height: 1.47059;
+}
+
+/* Call-to-book button under booking subtitle */
+.booking-call-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 1.25rem;
+    padding: 0.75rem 1.5rem;
+    border-radius: 50px;
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--primary-color);
+    background: rgba(0, 0, 0, 0.03);
+    border: 0.5px solid rgba(0, 0, 0, 0.1);
+    letter-spacing: -0.022em;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.booking-call-btn:hover {
+    background: rgba(0, 0, 0, 0.06);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.1);
+}
+
+.booking-call-btn svg {
+    flex-shrink: 0;
 }
 
 /* Main Card Container */
