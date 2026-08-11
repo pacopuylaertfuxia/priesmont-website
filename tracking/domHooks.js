@@ -234,6 +234,7 @@
                 checkin: document.getElementById('checkin')?.value || '',
                 checkout: document.getElementById('checkout')?.value || '',
                 guests: document.getElementById('guests')?.value || '',
+                hearAbout: document.getElementById('hearAbout')?.value || '',
                 message: document.getElementById('message')?.value || ''
             };
 
@@ -250,6 +251,10 @@
             
             if (formData.guests) {
                 leadParams.guests = parseInt(formData.guests) || 0;
+            }
+
+            if (formData.hearAbout) {
+                leadParams.referral_source = formData.hearAbout;
             }
 
             // Track Lead event (for analytics) - both Meta Pixel and GA4
@@ -273,12 +278,12 @@
             emailBody += `Name: ${formData.name}\n`;
             emailBody += `Email: ${formData.email}\n\n`;
             
-            if (formData.checkin || formData.checkout || formData.guests) {
+            if (formData.checkin || formData.checkout || formData.guests || formData.hearAbout) {
                 emailBody += `━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n`;
                 emailBody += `BOOKING DETAILS\n`;
                 emailBody += `━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n`;
             }
-            
+
             if (formData.checkin) {
                 emailBody += `Preferred Check-in Date: ${formData.checkin}\n`;
             }
@@ -288,7 +293,10 @@
             if (formData.guests) {
                 emailBody += `Number of Guests: ${formData.guests}\n`;
             }
-            
+            if (formData.hearAbout) {
+                emailBody += `How did you hear about us: ${formData.hearAbout}\n`;
+            }
+
             if (formData.message) {
                 emailBody += `\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n`;
                 emailBody += `MESSAGE\n`;

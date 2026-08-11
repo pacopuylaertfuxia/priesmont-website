@@ -117,7 +117,9 @@ const translations = {
             phone: "Phone",
             message: "Message",
             send: "Request Booking",
-            getInTouch: "Get in touch"
+            getInTouch: "Get in touch",
+            hearAbout: "How did you hear about us?",
+            hearAboutPlaceholder: "Please select…"
         },
         gallery: {
             title: "Gallery",
@@ -330,7 +332,9 @@ const translations = {
             phone: "Telefoon",
             message: "Bericht",
             send: "Boekingsverzoek",
-            getInTouch: "Neem contact op"
+            getInTouch: "Neem contact op",
+            hearAbout: "Hoe heeft u ons gevonden?",
+            hearAboutPlaceholder: "Maak een keuze…"
         },
         gallery: {
             title: "Galerij",
@@ -543,7 +547,9 @@ const translations = {
             phone: "Téléphone",
             message: "Message",
             send: "Demande de Réservation",
-            getInTouch: "Contactez-nous"
+            getInTouch: "Contactez-nous",
+            hearAbout: "Comment avez-vous entendu parler de nous?",
+            hearAboutPlaceholder: "Veuillez choisir…"
         },
         gallery: {
             title: "Galerie",
@@ -918,7 +924,11 @@ function setLanguage(lang) {
     document.querySelectorAll('[data-translate="contact.message"]').forEach(el => {
         if (el.tagName === 'LABEL') el.textContent = t.contact.message;
     });
-    
+    document.querySelectorAll('[data-translate="contact.hearAbout"]').forEach(el => {
+        if (el.tagName === 'LABEL') el.textContent = t.contact.hearAbout;
+    });
+    document.querySelectorAll('[data-translate="contact.hearAboutPlaceholder"]').forEach(el => el.textContent = t.contact.hearAboutPlaceholder);
+
     // Update form placeholders
     document.querySelectorAll('[data-translate-placeholder="contact.name"]').forEach(el => el.placeholder = t.contact.name);
     document.querySelectorAll('[data-translate-placeholder="contact.email"]').forEach(el => el.placeholder = t.contact.email);
