@@ -1,5 +1,5 @@
 # Robots.txt for Priesmont Manor Website
-# https://www.domainedepriesmont.com/robots.txt
+# https://www.priesmont.com/robots.txt
 
 User-agent: *
 Allow: /
@@ -9,7 +9,7 @@ Disallow: /api/
 Disallow: /backups/
 
 # Sitemap location
-Sitemap: https://www.domainedepriesmont.com/sitemap.xml
+Sitemap: https://www.priesmont.com/sitemap.xml
 
 # Crawl-delay (optional - remove if not needed)
 # Crawl-delay: 1
