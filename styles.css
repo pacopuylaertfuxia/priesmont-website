@@ -624,13 +624,13 @@ body {
     align-items: center;
     justify-content: center;
     width: 100%;
-    margin-top: 3rem;
+    margin-top: 0.5rem;
     padding: 0;
 }
 
 .hero-widget {
     width: 100%;
-    max-width: 100%;
+    max-width: 420px;
     animation: fadeInUp 1s ease-out 0.3s both;
     padding: 0;
     margin: 0;
@@ -666,7 +666,7 @@ body {
 
 .hero-subtitle {
     font-size: clamp(1.3125rem, 3.5vw, 1.75rem);
-    margin-bottom: 1.75rem;
+    margin-bottom: 1.15rem;
     opacity: 0.85;
     font-weight: 400;
     letter-spacing: -0.022em;
@@ -2094,11 +2094,7 @@ body:has(.lightbox.active) .navbar {
 
 @media (max-width: 968px) {
     .hero-booking-widget {
-        margin-top: 2rem;
-    }
-    
-    .hero-widget {
-        max-width: 100%;
+        margin-top: 0.35rem;
     }
 
     .hero {
@@ -2122,7 +2118,7 @@ body:has(.lightbox.active) .navbar {
 
     .hero-subtitle {
         font-size: clamp(1.3125rem, 3.5vw, 1.75rem);
-        margin-bottom: 1.75rem;
+        margin-bottom: 1.15rem;
         line-height: 1.5;
     }
     
@@ -4885,7 +4881,7 @@ body:has(.lightbox.active) .navbar {
 
     .hero-subtitle {
         font-size: clamp(1.25rem, 3.5vw, 1.625rem);
-        margin-bottom: 1.5rem;
+        margin-bottom: 1rem;
         line-height: 1.5;
         padding: 0 15px;
         opacity: 0.95;
@@ -5239,6 +5235,14 @@ body:has(.lightbox.active) .navbar {
     }
 }
 
+/* Above the mobile breakpoint the hero booking widget replaces the CTA button.
+   Placed here so it wins over the earlier .hero-buttons display rules. */
+@media (min-width: 481px) {
+    .hero-buttons {
+        display: none;
+    }
+}
+
 @media (max-width: 480px) {
     .container {
         padding: 0 15px;
@@ -5289,6 +5293,11 @@ body:has(.lightbox.active) .navbar {
         line-height: 1.5;
     }
 
+    /* Below 480px there is no room for the widget in a 90vh hero - show the CTA instead */
+    .hero-booking-widget {
+        display: none;
+    }
+
     .hero-buttons {
         flex-direction: column;
         gap: 0.75rem;
@@ -5296,7 +5305,7 @@ body:has(.lightbox.active) .navbar {
         max-width: 320px;
         margin: 0 auto;
     }
-    
+
     .hero-partners {
         margin-top: 2.5rem;
     }

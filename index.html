@@ -322,6 +322,48 @@
                     <span class="availability-text" id="availabilityText">Limited availability this season, book now to secure your dates</span>
                 </div>
                 -->
+                <!-- Hero booking widget.
+                     NOTE: the id below is INTENTIONALLY identical to the one in the booking
+                     section. Lodgify's renderBookNowBox.js mounts via
+                     querySelectorAll('#lodgify-book-now-box').forEach(...), so both instances
+                     render independently. Changing this id will stop the widget mounting. -->
+                <div class="hero-booking-widget">
+                    <div class="hero-widget" data-widget-location="hero">
+                        <div
+                          id="lodgify-book-now-box"
+                          data-rental-id="279598"
+                          data-website-id="280045"
+                          data-slug="carl-puylaert"
+                          data-language-code="en"
+                          data-new-tab="true"
+                          data-version="stable"
+                          data-has-guests-breakdown
+                          data-check-in-label="Check-in"
+                          data-check-out-label="Check-out"
+                          data-guests-label="Guests"
+                          data-guests-singular-label="{{NumberOfGuests}} guest"
+                          data-guests-plural-label="{{NumberOfGuests}} guests"
+                          data-location-input-label="Location"
+                          data-total-price-label="Total price:"
+                          data-select-dates-to-see-price-label="Select dates to see total price"
+                          data-minimum-price-per-night-first-label="From"
+                          data-minimum-price-per-night-second-label="per night"
+                          data-book-button-label="Book Now"
+                          data-guests-breakdown-label="Guests"
+                          data-adults-label='{"one":"adult","other":"adults"}'
+                          data-adults-description="Ages {minAge} or above"
+                          data-children-label='{"one":"child","other":"children"}'
+                          data-children-description="Ages {minAge}-{maxAge}"
+                          data-children-not-allowed-label="Not suitable for children"
+                          data-infants-label='{"one":"infant","other":"infants"}'
+                          data-infants-description="Under {maxAge}"
+                          data-infants-not-allowed-label="Not suitable for infants"
+                          data-pets-label='{"one":"pet","other":"pets"}'
+                          data-pets-not-allowed-label="Not allowed"
+                          data-done-label="Done"
+                        ></div>
+                    </div>
+                </div>
                 <div class="hero-buttons">
                     <a href="#booking" class="btn btn-secondary" data-translate="hero.checkAvailabilities">Check Availabilities</a>
                 </div>

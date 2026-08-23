@@ -34,16 +34,20 @@
      * 4. Custom Book Now button (tracks event then triggers Lodgify button)
      */
     function initLodgifyHooks() {
-        const widgetContainer = document.getElementById('lodgify-book-now-box');
-        if (!widgetContainer) {
+        // There are multiple widget instances (hero + booking section), each mounted
+        // independently by Lodgify via querySelectorAll on the shared id.
+        const widgetContainers = document.querySelectorAll('#lodgify-book-now-box');
+        if (widgetContainers.length === 0) {
             if (DEBUG) console.log('[MetaTracking DOM] Lodgify widget container not found');
             return;
         }
 
+        // Shared across all widgets: one InitiateCheckout per session regardless of
+        // which widget the visitor touched.
         let lodgifyInteractionTracked = false;
         let lodgifyBookNowTracked = false;
 
-        // Method 1: Listen for postMessage events from Lodgify iframe
+        // Method 1: Listen for postMessage events from Lodgify iframe (global - register once)
         window.addEventListener('message', function(event) {
             // Only accept messages from Lodgify domains
             if (!event.origin.includes('lodgify.com') && !event.origin.includes('app.lodgify.com')) {
@@ -64,12 +68,14 @@
                     if (!lodgifyInteractionTracked && window.MetaTracking) {
                         window.MetaTracking.trackInitiateCheckout('lodgify_widget_interaction', {
                             interaction_type: data.type || 'unknown',
-                            widget_id: 'lodgify-book-now-box'
+                            widget_id: 'lodgify-book-now-box',
+                            widget_location: 'unknown'
                         });
                         if (window.GA4Tracking) {
                             window.GA4Tracking.trackInitiateCheckout('lodgify_widget_interaction', {
                                 interaction_type: data.type || 'unknown',
-                                widget_id: 'lodgify-book-now-box'
+                                widget_id: 'lodgify-book-now-box',
+                                widget_location: 'unknown'
                             });
                         }
                         lodgifyInteractionTracked = true;
@@ -79,78 +85,87 @@
             }
         });
 
-        // Method 2: Listen for clicks on widget container (for tracking only, don't intercept)
-        // Wait for widget to load, then set up click listeners
-        const checkWidgetReady = setInterval(function() {
-            if (widgetContainer.children.length > 0) {
-                clearInterval(checkWidgetReady);
-                
-                // Listen for clicks on the widget container (just for tracking, don't prevent default)
-                widgetContainer.addEventListener('click', function(e) {
-                    const target = e.target;
-                    const button = target.tagName === 'BUTTON' ? target : target.closest('button');
-                    
-                    if (button) {
-                        const buttonText = (button.textContent || button.innerText || '').trim().toLowerCase();
-                        const isBookNow = buttonText.includes('book');
-                        
-                        if (isBookNow && !lodgifyBookNowTracked) {
-                            // Track the event (but don't prevent default - let Lodgify handle the redirect)
-                            if (window.MetaTracking && window.MetaTracking.trackLodgifyBookNowClick) {
-                                window.MetaTracking.trackLodgifyBookNowClick('lodgify_widget_book_now_button', {
-                                    widget_id: 'lodgify-book-now-box'
-                                });
-                                lodgifyBookNowTracked = true;
-                                if (DEBUG) console.log('[MetaTracking DOM] ✅ LodgifyBookNowClick event fired');
-                            }
-                        }
-                    }
-                    
-                    // For other interactions (date selection, etc.), fire InitiateCheckout
-                    if (!lodgifyInteractionTracked && window.MetaTracking) {
-                        const isInput = target.tagName === 'INPUT' || target.tagName === 'SELECT';
-                        const isClickable = target.closest('[role="button"]') || 
-                                          target.closest('[aria-label*="date"]') ||
-                                          target.closest('[aria-label*="guest"]');
+        // Method 2: Listen for clicks on each widget container (tracking only, don't intercept)
+        // Each widget mounts independently, so each needs its own readiness poll + listeners.
+        widgetContainers.forEach(function(widgetContainer) {
+            const widgetLocation = widgetContainer.closest('[data-widget-location]')?.dataset.widgetLocation || 'booking-section';
 
-                        if (isInput || isClickable) {
-                            window.MetaTracking.trackInitiateCheckout('lodgify_widget_click', {
-                                interaction_type: isInput ? 'input_focus' : 'widget_interaction',
-                                widget_id: 'lodgify-book-now-box'
-                            });
-                            if (window.GA4Tracking) {
-                                window.GA4Tracking.trackInitiateCheckout('lodgify_widget_click', {
-                                    interaction_type: isInput ? 'input_focus' : 'widget_interaction',
-                                    widget_id: 'lodgify-book-now-box'
-                                });
+            const checkWidgetReady = setInterval(function() {
+                if (widgetContainer.children.length > 0) {
+                    clearInterval(checkWidgetReady);
+
+                    // Listen for clicks on the widget container (just for tracking, don't prevent default)
+                    widgetContainer.addEventListener('click', function(e) {
+                        const target = e.target;
+                        const button = target.tagName === 'BUTTON' ? target : target.closest('button');
+
+                        if (button) {
+                            const buttonText = (button.textContent || button.innerText || '').trim().toLowerCase();
+                            const isBookNow = buttonText.includes('book');
+
+                            if (isBookNow && !lodgifyBookNowTracked) {
+                                // Track the event (but don't prevent default - let Lodgify handle the redirect)
+                                if (window.MetaTracking && window.MetaTracking.trackLodgifyBookNowClick) {
+                                    window.MetaTracking.trackLodgifyBookNowClick('lodgify_widget_book_now_button', {
+                                        widget_id: 'lodgify-book-now-box',
+                                        widget_location: widgetLocation
+                                    });
+                                    lodgifyBookNowTracked = true;
+                                    if (DEBUG) console.log('[MetaTracking DOM] ✅ LodgifyBookNowClick event fired', widgetLocation);
+                                }
                             }
-                            lodgifyInteractionTracked = true;
-                            if (DEBUG) console.log('[MetaTracking DOM] Lodgify widget interaction detected:', target);
                         }
-                    }
-                });
-                
-                // Also detect focus events on inputs (date/guest selection)
-                widgetContainer.addEventListener('focusin', function(e) {
-                    if (e.target.tagName === 'INPUT' || e.target.tagName === 'SELECT') {
+
+                        // For other interactions (date selection, etc.), fire InitiateCheckout
                         if (!lodgifyInteractionTracked && window.MetaTracking) {
-                            window.MetaTracking.trackInitiateCheckout('lodgify_widget_input_focus', {
-                                interaction_type: 'input_focus',
-                                widget_id: 'lodgify-book-now-box'
-                            });
-                            if (window.GA4Tracking) {
-                                window.GA4Tracking.trackInitiateCheckout('lodgify_widget_input_focus', {
-                                    interaction_type: 'input_focus',
-                                    widget_id: 'lodgify-book-now-box'
+                            const isInput = target.tagName === 'INPUT' || target.tagName === 'SELECT';
+                            const isClickable = target.closest('[role="button"]') ||
+                                              target.closest('[aria-label*="date"]') ||
+                                              target.closest('[aria-label*="guest"]');
+
+                            if (isInput || isClickable) {
+                                window.MetaTracking.trackInitiateCheckout('lodgify_widget_click', {
+                                    interaction_type: isInput ? 'input_focus' : 'widget_interaction',
+                                    widget_id: 'lodgify-book-now-box',
+                                    widget_location: widgetLocation
                                 });
+                                if (window.GA4Tracking) {
+                                    window.GA4Tracking.trackInitiateCheckout('lodgify_widget_click', {
+                                        interaction_type: isInput ? 'input_focus' : 'widget_interaction',
+                                        widget_id: 'lodgify-book-now-box',
+                                        widget_location: widgetLocation
+                                    });
+                                }
+                                lodgifyInteractionTracked = true;
+                                if (DEBUG) console.log('[MetaTracking DOM] Lodgify widget interaction detected:', widgetLocation, target);
                             }
-                            lodgifyInteractionTracked = true;
-                            if (DEBUG) console.log('[MetaTracking DOM] Lodgify input focus detected:', e.target);
                         }
-                    }
-                }, { once: true });
-            }
-        }, 500);
+                    });
+
+                    // Also detect focus events on inputs (date/guest selection)
+                    widgetContainer.addEventListener('focusin', function(e) {
+                        if (e.target.tagName === 'INPUT' || e.target.tagName === 'SELECT') {
+                            if (!lodgifyInteractionTracked && window.MetaTracking) {
+                                window.MetaTracking.trackInitiateCheckout('lodgify_widget_input_focus', {
+                                    interaction_type: 'input_focus',
+                                    widget_id: 'lodgify-book-now-box',
+                                    widget_location: widgetLocation
+                                });
+                                if (window.GA4Tracking) {
+                                    window.GA4Tracking.trackInitiateCheckout('lodgify_widget_input_focus', {
+                                        interaction_type: 'input_focus',
+                                        widget_id: 'lodgify-book-now-box',
+                                        widget_location: widgetLocation
+                                    });
+                                }
+                                lodgifyInteractionTracked = true;
+                                if (DEBUG) console.log('[MetaTracking DOM] Lodgify input focus detected:', widgetLocation, e.target);
+                            }
+                        }
+                    }, { once: true });
+                }
+            }, 500);
+        });
 
         // Method 3: Detect navigation to Lodgify checkout URL
         // Check if current URL indicates we're on Lodgify checkout

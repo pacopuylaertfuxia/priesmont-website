@@ -961,12 +961,11 @@ function setLanguage(lang) {
     // Update HTML lang attribute
     document.documentElement.lang = lang;
     
-    // Update Lodgify widget language if it exists
-    const lodgifyWidget = document.getElementById('lodgify-book-now-box');
-    if (lodgifyWidget) {
-        const langMap = { en: 'en', nl: 'nl', fr: 'fr' };
-        lodgifyWidget.setAttribute('data-language-code', langMap[lang] || 'en');
-    }
+    // Update Lodgify widget language on every instance (hero + booking section)
+    const langMap = { en: 'en', nl: 'nl', fr: 'fr' };
+    document.querySelectorAll('#lodgify-book-now-box').forEach(widget => {
+        widget.setAttribute('data-language-code', langMap[lang] || 'en');
+    });
 }
 
 // Add event listeners for language buttons
