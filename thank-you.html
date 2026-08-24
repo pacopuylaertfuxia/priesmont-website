@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thank You — Domaine de Priesmont</title>
+    <meta name="robots" content="noindex, nofollow">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="images/priesmont-logo.png">
+    <link rel="apple-touch-icon" href="images/priesmont-logo.png">
+
+    <!-- Fonts + site styles -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- Tracking config (fires PageView + GA4 page_view automatically) -->
+    <script src="meta-pixel-config.js"></script>
+    <script src="google-analytics-config.js"></script>
+
+    <style>
+        .ty-wrap {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem 1.25rem;
+            background: var(--bg-light, #faf8f5);
+        }
+        .ty-card {
+            width: 100%;
+            max-width: 560px;
+            background: var(--bg-white, #fff);
+            border: 1px solid var(--border-color, #eee);
+            border-radius: 20px;
+            padding: 2.75rem 2.25rem;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.06);
+            text-align: center;
+        }
+        .ty-logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            letter-spacing: 0.04em;
+            margin-bottom: 1.75rem;
+            color: var(--text-dark, #1a1a1a);
+        }
+        .ty-check {
+            width: 64px;
+            height: 64px;
+            margin: 0 auto 1.25rem;
+            border-radius: 50%;
+            background: rgba(46, 125, 50, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .ty-check svg { width: 32px; height: 32px; stroke: #2e7d32; }
+        .ty-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            line-height: 1.2;
+            color: var(--text-dark, #1a1a1a);
+            margin: 0 0 0.75rem;
+        }
+        .ty-subtitle {
+            color: var(--text-light, #666);
+            font-size: 1rem;
+            line-height: 1.6;
+            margin: 0 0 2rem;
+        }
+        .ty-question {
+            border-top: 1px solid var(--border-color, #eee);
+            padding-top: 1.75rem;
+            text-align: left;
+        }
+        .ty-question .form-group { margin-bottom: 1rem; }
+        .ty-actions { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+        .ty-actions .btn { flex: 1; min-width: 140px; }
+        .ty-success {
+            display: none;
+            color: #2e7d32;
+            font-weight: 600;
+            padding: 0.75rem 0;
+        }
+        .ty-langs {
+            margin-top: 1.75rem;
+            display: flex;
+            gap: 0.5rem;
+            justify-content: center;
+        }
+        .ty-lang-btn {
+            background: none;
+            border: 1px solid var(--border-color, #ddd);
+            border-radius: 8px;
+            padding: 0.35rem 0.7rem;
+            font-family: inherit;
+            font-size: 0.8rem;
+            cursor: pointer;
+            color: var(--text-light, #666);
+            transition: all 0.2s;
+        }
+        .ty-lang-btn.active {
+            background: var(--text-dark, #1a1a1a);
+            color: #fff;
+            border-color: var(--text-dark, #1a1a1a);
+        }
+        .ty-home { display: inline-block; margin-top: 1.5rem; color: var(--text-light, #666); font-size: 0.9rem; }
+    </style>
+</head>
+<body>
+    <div class="ty-wrap">
+        <div class="ty-card">
+            <div class="ty-logo">DOMAINE DE PRIESMONT</div>
+
+            <div class="ty-check">
+                <svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M20 6L9 17l-5-5"/>
+                </svg>
+            </div>
+
+            <h1 class="ty-title" id="tyTitle">Thank you for your booking!</h1>
+            <p class="ty-subtitle" id="tySubtitle">Your reservation at Domaine de Priesmont is confirmed. We can't wait to welcome you.</p>
+
+            <div class="ty-question">
+                <form id="hearAboutForm">
+                    <div class="form-group">
+                        <label for="hearAbout" id="tyQuestion">One quick question — how did you hear about us?</label>
+                        <select id="hearAbout" name="hearAbout" required></select>
+                    </div>
+                    <div class="ty-actions">
+                        <button type="submit" class="btn btn-primary" id="tySubmit">Submit</button>
+                    </div>
+                </form>
+                <p class="ty-success" id="tySuccess">Thank you — that helps us a lot!</p>
+            </div>
+
+            <div class="ty-langs">
+                <button type="button" class="ty-lang-btn" data-lang="en">EN</button>
+                <button type="button" class="ty-lang-btn" data-lang="nl">NL</button>
+                <button type="button" class="ty-lang-btn" data-lang="fr">FR</button>
+            </div>
+
+            <a class="ty-home" id="tyHome" href="index.html">← Back to homepage</a>
+        </div>
+    </div>
+
+    <!-- Tracking layers -->
+    <script src="tracking/metaTracking.js"></script>
+    <script src="tracking/ga4Tracking.js"></script>
+
+    <script>
+    (function () {
+        'use strict';
+        var DEBUG = new URLSearchParams(window.location.search).has('debug_tracking');
+
+        // Referral-source options: stable English value (for analytics) + per-language label
+        var OPTIONS = [
+            { value: '', labels: { en: 'Please select…', nl: 'Maak een keuze…', fr: 'Veuillez choisir…' } },
+            { value: 'Google', labels: { en: 'Google', nl: 'Google', fr: 'Google' } },
+            { value: 'Booking.com', labels: { en: 'Booking.com', nl: 'Booking.com', fr: 'Booking.com' } },
+            { value: 'Airbnb', labels: { en: 'Airbnb', nl: 'Airbnb', fr: 'Airbnb' } },
+            { value: 'VRBO', labels: { en: 'VRBO / Abritel', nl: 'VRBO / Abritel', fr: 'VRBO / Abritel' } },
+            { value: 'Facebook or Instagram', labels: { en: 'Facebook / Instagram', nl: 'Facebook / Instagram', fr: 'Facebook / Instagram' } },
+            { value: 'Word of mouth', labels: { en: 'Friend / word of mouth', nl: 'Vriend / mond-tot-mond', fr: 'Ami / bouche-à-oreille' } },
+            { value: 'Stayed before', labels: { en: 'Stayed before', nl: 'Eerder verbleven', fr: 'Déjà séjourné' } },
+            { value: 'Other', labels: { en: 'Other', nl: 'Anders', fr: 'Autre' } }
+        ];
+
+        var T = {
+            en: {
+                title: 'Thank you for your booking!',
+                subtitle: "Your reservation at Domaine de Priesmont is confirmed. We can't wait to welcome you.",
+                question: 'One quick question — how did you hear about us?',
+                submit: 'Submit',
+                success: 'Thank you — that helps us a lot!',
+                home: '← Back to homepage'
+            },
+            nl: {
+                title: 'Bedankt voor uw boeking!',
+                subtitle: 'Uw reservering bij Domaine de Priesmont is bevestigd. We verwelkomen u graag.',
+                question: 'Nog één vraag — hoe heeft u ons gevonden?',
+                submit: 'Verzenden',
+                success: 'Bedankt — dat helpt ons enorm!',
+                home: '← Terug naar de homepage'
+            },
+            fr: {
+                title: 'Merci pour votre réservation !',
+                subtitle: 'Votre réservation au Domaine de Priesmont est confirmée. Nous avons hâte de vous accueillir.',
+                question: 'Une petite question — comment avez-vous entendu parler de nous ?',
+                submit: 'Envoyer',
+                success: 'Merci — cela nous aide beaucoup !',
+                home: "← Retour à l'accueil"
+            }
+        };
+
+        function getLang() {
+            var p = new URLSearchParams(window.location.search).get('lang');
+            if (p && T[p]) return p;
+            try { var s = localStorage.getItem('priesmontLang'); if (s && T[s]) return s; } catch (e) {}
+            return 'en';
+        }
+
+        function applyLang(lang) {
+            var t = T[lang];
+            document.documentElement.lang = lang;
+            document.getElementById('tyTitle').textContent = t.title;
+            document.getElementById('tySubtitle').textContent = t.subtitle;
+            document.getElementById('tyQuestion').textContent = t.question;
+            document.getElementById('tySubmit').textContent = t.submit;
+            document.getElementById('tySuccess').textContent = t.success;
+            document.getElementById('tyHome').textContent = t.home;
+
+            var sel = document.getElementById('hearAbout');
+            var current = sel.value;
+            sel.innerHTML = '';
+            OPTIONS.forEach(function (o) {
+                var opt = document.createElement('option');
+                opt.value = o.value;
+                opt.textContent = o.labels[lang];
+                if (o.value === '') opt.disabled = true;
+                sel.appendChild(opt);
+            });
+            sel.value = current;
+
+            document.querySelectorAll('.ty-lang-btn').forEach(function (b) {
+                b.classList.toggle('active', b.getAttribute('data-lang') === lang);
+            });
+            try { localStorage.setItem('priesmontLang', lang); } catch (e) {}
+        }
+
+        // ---- Fire booking-confirmed conversion on arrival (once per session) ----
+        function fireBookingConfirmed() {
+            var KEY = 'booking_confirmed_fired';
+            try { if (sessionStorage.getItem(KEY) === 'true') return; } catch (e) {}
+
+            if (window.GA4Tracking && window.GA4Tracking.trackCustom) {
+                window.GA4Tracking.trackCustom('booking_confirmed', { source: 'lodgify_thank_you' });
+            } else if (typeof window.gtag === 'function') {
+                window.gtag('event', 'booking_confirmed', { source: 'lodgify_thank_you' });
+            }
+            if (typeof fbq === 'function') {
+                try { fbq('trackCustom', 'BookingConfirmed', { source: 'lodgify_thank_you' }); } catch (e) {}
+            }
+            try { sessionStorage.setItem(KEY, 'true'); } catch (e) {}
+            if (DEBUG) console.log('[ThankYou] booking_confirmed fired');
+        }
+
+        // ---- Capture referral source into analytics (no backend needed) ----
+        function initForm() {
+            var form = document.getElementById('hearAboutForm');
+            form.addEventListener('submit', function (e) {
+                e.preventDefault();
+                var val = document.getElementById('hearAbout').value;
+                if (!val) { form.reportValidity(); return; }
+
+                if (window.GA4Tracking && window.GA4Tracking.trackCustom) {
+                    window.GA4Tracking.trackCustom('hear_about_us', { referral_source: val });
+                } else if (typeof window.gtag === 'function') {
+                    window.gtag('event', 'hear_about_us', { referral_source: val });
+                }
+                if (typeof fbq === 'function') {
+                    try { fbq('trackCustom', 'HearAboutUs', { referral_source: val }); } catch (e) {}
+                }
+                if (DEBUG) console.log('[ThankYou] hear_about_us:', val);
+
+                form.style.display = 'none';
+                document.getElementById('tySuccess').style.display = 'block';
+            });
+
+            document.querySelectorAll('.ty-lang-btn').forEach(function (b) {
+                b.addEventListener('click', function () { applyLang(b.getAttribute('data-lang')); });
+            });
+        }
+
+        applyLang(getLang());
+        initForm();
+        fireBookingConfirmed();
+    })();
+    </script>
+</body>
+</html>
