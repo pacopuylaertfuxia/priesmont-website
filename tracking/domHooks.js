@@ -110,9 +110,18 @@
                                         widget_id: 'lodgify-book-now-box',
                                         widget_location: widgetLocation
                                     });
-                                    lodgifyBookNowTracked = true;
                                     if (DEBUG) console.log('[MetaTracking DOM] ✅ LodgifyBookNowClick event fired', widgetLocation);
                                 }
+                                // Fired independently of Meta: ad blockers block the Meta Pixel far more
+                                // often than the Google tag, and this is the strongest intent signal we have.
+                                if (window.GA4Tracking) {
+                                    window.GA4Tracking.trackCustom('book_now_click', {
+                                        widget_id: 'lodgify-book-now-box',
+                                        widget_location: widgetLocation
+                                    });
+                                    if (DEBUG) console.log('[GA4 DOM] ✅ book_now_click event fired', widgetLocation);
+                                }
+                                lodgifyBookNowTracked = true;
                             }
                         }
 
