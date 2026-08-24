@@ -100,8 +100,17 @@
                         const button = target.tagName === 'BUTTON' ? target : target.closest('button');
 
                         if (button) {
-                            const buttonText = (button.textContent || button.innerText || '').trim().toLowerCase();
-                            const isBookNow = buttonText.includes('book');
+                            // Strip accents so "Réserver" matches "reserver". The site ships en/nl/fr
+                            // (translations.js: "Book Now" / "Boek Nu" / "Réserver"), so matching only
+                            // "book" silently missed every non-English visitor.
+                            const buttonText = (button.textContent || button.innerText || '')
+                                .trim()
+                                .toLowerCase()
+                                .normalize('NFD')
+                                .replace(/[\u0300-\u036f]/g, '');
+                            const isBookNow = ['book', 'boek', 'reserver'].some(function (label) {
+                                return buttonText.includes(label);
+                            });
 
                             if (isBookNow && !lodgifyBookNowTracked) {
                                 // Track the event (but don't prevent default - let Lodgify handle the redirect)
