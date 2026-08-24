@@ -97,7 +97,10 @@
                     // Listen for clicks on the widget container (just for tracking, don't prevent default)
                     widgetContainer.addEventListener('click', function(e) {
                         const target = e.target;
-                        const button = target.tagName === 'BUTTON' ? target : target.closest('button');
+                        // Lodgify renders its Book Now CTA as an <a>, not a <button>, so
+                        // matching only BUTTON meant book_now_click never fired for anyone.
+                        const CTA_SELECTOR = 'button, a, [role="button"]';
+                        const button = target.closest(CTA_SELECTOR);
 
                         if (button) {
                             // Strip accents so "Réserver" matches "reserver". The site ships en/nl/fr
