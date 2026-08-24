@@ -268,7 +268,8 @@
                 checkout: document.getElementById('checkout')?.value || '',
                 guests: document.getElementById('guests')?.value || '',
                 hearAbout: document.getElementById('hearAbout')?.value || '',
-                message: document.getElementById('message')?.value || ''
+                message: document.getElementById('message')?.value || '',
+                website: document.getElementById('website')?.value || ''
             };
 
             // Prepare Lead event parameters
@@ -290,90 +291,82 @@
                 leadParams.referral_source = formData.hearAbout;
             }
 
-            // Track Lead event (for analytics) - both Meta Pixel and GA4
-            if (window.MetaTracking) {
-                window.MetaTracking.trackLead('contact_form_submission', leadParams);
-            }
-            if (window.GA4Tracking) {
-                window.GA4Tracking.trackLead('contact_form_submission', leadParams);
-            }
-
-            // Prepare email content
-            const TO_EMAIL = 'carlpuylaert@hotmail.com';
-            const CC_EMAIL = 'paco.puy.pp@gmail.com';
-            const emailSubject = `Booking Inquiry from ${formData.name} - Priesmont`;
-            
-            // Build email body with all form fields
-            let emailBody = `New booking inquiry from Priesmont website:\n\n`;
-            emailBody += `━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n`;
-            emailBody += `CONTACT INFORMATION\n`;
-            emailBody += `━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n`;
-            emailBody += `Name: ${formData.name}\n`;
-            emailBody += `Email: ${formData.email}\n\n`;
-            
-            if (formData.checkin || formData.checkout || formData.guests || formData.hearAbout) {
-                emailBody += `━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n`;
-                emailBody += `BOOKING DETAILS\n`;
-                emailBody += `━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n`;
-            }
-
-            if (formData.checkin) {
-                emailBody += `Preferred Check-in Date: ${formData.checkin}\n`;
-            }
-            if (formData.checkout) {
-                emailBody += `Preferred Check-out Date: ${formData.checkout}\n`;
-            }
-            if (formData.guests) {
-                emailBody += `Number of Guests: ${formData.guests}\n`;
-            }
-            if (formData.hearAbout) {
-                emailBody += `How did you hear about us: ${formData.hearAbout}\n`;
-            }
-
-            if (formData.message) {
-                emailBody += `\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n`;
-                emailBody += `MESSAGE\n`;
-                emailBody += `━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n`;
-                emailBody += `${formData.message}\n`;
-            }
-            
-            emailBody += `\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n`;
-            emailBody += `This inquiry was submitted from the Priesmont website contact form.\n`;
-
-            // URL encode the subject and body
-            const encodedSubject = encodeURIComponent(emailSubject);
-            const encodedBody = encodeURIComponent(emailBody);
-            const encodedCC = encodeURIComponent(CC_EMAIL);
-
-            // Create mailto link with CC
-            const mailtoLink = `mailto:${TO_EMAIL}?cc=${encodedCC}&subject=${encodedSubject}&body=${encodedBody}`;
-
-            // Open native email client
-            window.location.href = mailtoLink;
-
-            // Show success feedback
             const submitButton = contactForm.querySelector('button[type="submit"]');
             const originalText = submitButton?.textContent || 'Submit';
 
-            if (submitButton) {
-                submitButton.textContent = 'Opening Email...';
-                submitButton.disabled = true;
-                
-                // Reset form
-                contactForm.reset();
-                
-                // Reset button after 2 seconds
-                setTimeout(function() {
-                    if (submitButton) {
-                        submitButton.textContent = originalText;
-                        submitButton.disabled = false;
-                    }
-                }, 2000);
+            function setStatus(message, isError) {
+                let status = contactForm.querySelector('.contact-form-status');
+                if (!status) {
+                    status = document.createElement('p');
+                    status.className = 'contact-form-status';
+                    status.setAttribute('role', 'status');
+                    status.setAttribute('aria-live', 'polite');
+                    contactForm.appendChild(status);
+                }
+                status.textContent = message;
+                status.style.color = isError ? '#b3261e' : '#1b5e20';
+                status.style.marginTop = '1rem';
             }
 
-            if (DEBUG) {
-                console.log('[MetaTracking DOM] Contact form submitted - opening mailto:', mailtoLink);
+            function trackLead(deliveryMethod) {
+                const params = Object.assign({ delivery: deliveryMethod }, leadParams);
+                if (window.MetaTracking) {
+                    window.MetaTracking.trackLead('contact_form_submission', params);
+                }
+                if (window.GA4Tracking) {
+                    window.GA4Tracking.trackLead('contact_form_submission', params);
+                }
+                if (DEBUG) console.log('[GA4 DOM] ✅ generate_lead fired, delivery:', deliveryMethod);
             }
+
+            // Fallback for when the mail service is unreachable: hand off to the
+            // visitor's email client rather than losing the enquiry entirely.
+            function mailtoFallback() {
+                const lines = [
+                    'Name: ' + formData.name,
+                    'Email: ' + formData.email,
+                    formData.checkin ? 'Check-in: ' + formData.checkin : '',
+                    formData.checkout ? 'Check-out: ' + formData.checkout : '',
+                    formData.guests ? 'Guests: ' + formData.guests : '',
+                    formData.hearAbout ? 'Heard about us via: ' + formData.hearAbout : '',
+                    formData.message ? '\n' + formData.message : ''
+                ].filter(Boolean).join('\n');
+
+                const mailtoLink = 'mailto:carlpuylaert@hotmail.com' +
+                    '?cc=' + encodeURIComponent('paco.puy.pp@gmail.com') +
+                    '&subject=' + encodeURIComponent('Booking Inquiry from ' + formData.name + ' - Priesmont') +
+                    '&body=' + encodeURIComponent(lines);
+
+                trackLead('mailto_fallback');
+                setStatus('We could not reach our server. Your email app will open so you can send the enquiry directly.', true);
+                window.location.href = mailtoLink;
+            }
+
+            if (submitButton) {
+                submitButton.disabled = true;
+                submitButton.textContent = 'Sending...';
+            }
+
+            fetch('/api/contact', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(formData)
+            }).then(function (response) {
+                if (!response.ok) {
+                    throw new Error('Request failed with status ' + response.status);
+                }
+                trackLead('api');
+                setStatus('Thank you — your enquiry has been sent. We usually reply within a few hours.', false);
+                contactForm.reset();
+            }).catch(function (error) {
+                if (DEBUG) console.warn('[Contact] API submit failed, falling back to mailto:', error);
+                mailtoFallback();
+            }).finally(function () {
+                if (submitButton) {
+                    submitButton.disabled = false;
+                    submitButton.textContent = originalText;
+                }
+            });
         });
     }
 
