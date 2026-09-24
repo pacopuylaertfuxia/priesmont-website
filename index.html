@@ -57,7 +57,7 @@
     <link rel="stylesheet" href="styles.css">
     
     <!-- Translations -->
-    <script src="translations.js?v=20260924c"></script>
+    <script src="translations.js?v=20260924e"></script>
     
     <!-- Meta Pixel Configuration (loads early in head for pixel initialization) -->
     <script src="meta-pixel-config.js"></script>
@@ -331,9 +331,9 @@
                     <div class="hero-widget" data-widget-location="hero">
                         <!-- Optional "how did you find us?" — sent with the Book Now click (tracking/bookClick.js) -->
                         <label class="found-us" data-found-us-location="hero">
-                          <span data-translate="foundUs.label">How did you find us? (optional)</span>
+                          <span data-translate="foundUs.label">How did you find us?</span>
                           <select class="found-us-select">
-                            <option value="" data-translate="foundUs.placeholder">Please select…</option>
+                            <option value="" data-translate="foundUs.placeholder">Optional</option>
                             <option value="google" data-found-us-option="google">Google</option>
                             <option value="ota" data-found-us-option="ota">Saw you on Booking.com / Airbnb</option>
                             <option value="friends" data-found-us-option="friends">Friends, family or colleagues</option>
@@ -1416,9 +1416,9 @@
                     <div class="booking-widget-wrapper">
                         <!-- Optional "how did you find us?" — sent with the Book Now click (tracking/bookClick.js) -->
                         <label class="found-us" data-found-us-location="booking-section">
-                          <span data-translate="foundUs.label">How did you find us? (optional)</span>
+                          <span data-translate="foundUs.label">How did you find us?</span>
                           <select class="found-us-select">
-                            <option value="" data-translate="foundUs.placeholder">Please select…</option>
+                            <option value="" data-translate="foundUs.placeholder">Optional</option>
                             <option value="google" data-found-us-option="google">Google</option>
                             <option value="ota" data-found-us-option="ota">Saw you on Booking.com / Airbnb</option>
                             <option value="friends" data-found-us-option="friends">Friends, family or colleagues</option>
@@ -1637,7 +1637,7 @@
                             <div class="form-group">
                                 <label for="hearAbout" data-translate="contact.hearAbout">How did you hear about us?</label>
                                 <select id="hearAbout" name="hearAbout">
-                                    <option value="" data-translate="foundUs.placeholder">Please select…</option>
+                                    <option value="" data-translate="foundUs.placeholder">Optional</option>
                                     <option value="google" data-found-us-option="google">Google</option>
                                     <option value="ota" data-found-us-option="ota">Saw you on Booking.com / Airbnb</option>
                                     <option value="friends" data-found-us-option="friends">Friends, family or colleagues</option>
@@ -1807,11 +1807,29 @@
     
     <!-- DOM Event Hooks (wires up interactions to both Meta Pixel and GA4) -->
     <style>
-      .found-us { display: flex; flex-direction: column; gap: 6px; margin: 0 auto 12px; max-width: 360px; font-size: 0.85rem; color: #6e6e73; }
-      .found-us select { padding: 10px 14px; border: 1px solid #d2d2d7; border-radius: 12px; background: #fbfbfd; font: inherit; color: #1d1d1f; }
+      /* "How did you find us?" — styled like Lodgify's own "Guests" pill directly below it */
+      .found-us {
+        position: relative; box-sizing: border-box; display: flex; flex-direction: column; justify-content: center;
+        width: min(330px, 84%); min-height: 56px; margin: 0 auto; padding: 8px 48px 8px 24px;
+        background: #fff; border: 1px solid #ddd; border-radius: 50px; text-align: left;
+        box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.08); cursor: pointer; transition: border-color .15s;
+      }
+      .found-us:hover { border-color: #b9b9be; }
+      .found-us:focus-within { border-color: #1d1d1f; }
+      .found-us::after {
+        content: ""; position: absolute; right: 22px; top: 50%; width: 12px; height: 12px; margin-top: -6px; pointer-events: none;
+        background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M2.5 4.5 6 8l3.5-3.5' fill='none' stroke='%231d1d1f' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") no-repeat center / contain;
+      }
+      .found-us > span { font-size: 12px; line-height: 1.3; color: #6e6e73; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+      .found-us select {
+        appearance: none; -webkit-appearance: none; width: 100%; margin: 2px 0 0; padding: 0; border: 0; outline: none;
+        background: transparent; font: inherit; font-size: 15px; line-height: 1.3; color: #1d1d1f; cursor: pointer;
+        text-overflow: ellipsis;
+      }
+      .found-us select:has(option[value=""]:checked) { color: #999; }
+      /* Sit right on top of the card: Lodgify pads its box ~29px above the card */
       .booking-widget-wrapper { flex-direction: column; align-items: center; }
-      .booking-widget-wrapper .found-us { width: 100%; max-width: min(330px, 84%); }
-      .hero-widget .found-us { color: rgba(255, 255, 255, 0.9); max-width: 330px; text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4); }
+      .hero-widget #lodgify-book-now-box, .booking-widget-wrapper #lodgify-book-now-box { padding-top: 12px !important; }
     </style>
     <!-- Visitor attribution (first/last touch) — read by the contact form in domHooks.js -->
     <script src="tracking/attribution.js?v=20260924c"></script>

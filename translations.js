@@ -124,8 +124,8 @@ const translations = {
             hearAboutPlaceholder: "Please select…"
         },
         foundUs: {
-            label: "How did you find us? (optional)",
-            placeholder: "Please select…",
+            label: "How did you find us?",
+            placeholder: "Optional",
             options: {
                 google: "Google",
                 ota: "Saw you on Booking.com / Airbnb",
@@ -355,8 +355,8 @@ const translations = {
             hearAboutPlaceholder: "Maak een keuze…"
         },
         foundUs: {
-            label: "Hoe heeft u ons gevonden? (optioneel)",
-            placeholder: "Maak een keuze…",
+            label: "Hoe heeft u ons gevonden?",
+            placeholder: "Optioneel",
             options: {
                 google: "Google",
                 ota: "Via Booking.com / Airbnb gezien",
@@ -586,8 +586,8 @@ const translations = {
             hearAboutPlaceholder: "Veuillez choisir…"
         },
         foundUs: {
-            label: "Comment nous avez-vous trouvés ? (facultatif)",
-            placeholder: "Veuillez choisir…",
+            label: "Où nous avez-vous trouvés ?",
+            placeholder: "Facultatif",
             options: {
                 google: "Google",
                 ota: "Vu sur Booking.com / Airbnb",
