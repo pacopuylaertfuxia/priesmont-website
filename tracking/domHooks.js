@@ -253,6 +253,8 @@
             return;
         }
 
+        initEmailTypoHint(document.getElementById('email'));
+
         contactForm.addEventListener('submit', function(e) {
             e.preventDefault();
 
@@ -267,6 +269,8 @@
             const formData = {
                 name: document.getElementById('name')?.value || '',
                 email: document.getElementById('email')?.value || '',
+                phone: document.getElementById('phone')?.value || '',
+                lang: localStorage.getItem('preferredLanguage') || 'en',
                 checkin: document.getElementById('checkin')?.value || '',
                 checkout: document.getElementById('checkout')?.value || '',
                 guests: document.getElementById('guests')?.value || '',
@@ -337,6 +341,7 @@
                 const lines = [
                     'Name: ' + formData.name,
                     'Email: ' + formData.email,
+                    formData.phone ? 'Phone / WhatsApp: ' + formData.phone : '',
                     formData.checkin ? 'Check-in: ' + formData.checkin : '',
                     formData.checkout ? 'Check-out: ' + formData.checkout : '',
                     formData.guests ? 'Guests: ' + formData.guests : '',
@@ -381,6 +386,49 @@
                     submitButton.textContent = originalText;
                 }
             });
+        });
+    }
+
+    /**
+     * "Did you mean …@gmail.com?" under the email field for common domain typos,
+     * so enquiries do not arrive with an address nobody can reply to.
+     */
+    const EMAIL_TYPOS = {
+        'gmial.com': 'gmail.com', 'gmai.com': 'gmail.com', 'gamil.com': 'gmail.com', 'gnail.com': 'gmail.com',
+        'gmail.co': 'gmail.com', 'gmail.con': 'gmail.com', 'gmail.be': 'gmail.com', 'gmal.com': 'gmail.com',
+        'hotmial.com': 'hotmail.com', 'hotmai.com': 'hotmail.com', 'hotmil.com': 'hotmail.com', 'hotmail.con': 'hotmail.com',
+        'hotmial.be': 'hotmail.be', 'hotmai.be': 'hotmail.be', 'outlok.com': 'outlook.com', 'outlook.con': 'outlook.com',
+        'yahooo.com': 'yahoo.com', 'yaho.com': 'yahoo.com', 'telenet.b': 'telenet.be', 'telent.be': 'telenet.be',
+        'skynet.b': 'skynet.be', 'icloud.co': 'icloud.com', 'iclod.com': 'icloud.com'
+    };
+
+    function initEmailTypoHint(input) {
+        if (!input) return;
+        const hint = document.createElement('button');
+        hint.type = 'button';
+        hint.className = 'email-typo-hint';
+        hint.style.cssText = 'display:none;margin-top:.35rem;padding:0;border:0;background:none;color:#1a56db;font-size:.85rem;text-decoration:underline;cursor:pointer;text-align:left;';
+        input.insertAdjacentElement('afterend', hint);
+
+        function check() {
+            const value = input.value.trim();
+            const at = value.lastIndexOf('@');
+            const fixed = at > 0 ? EMAIL_TYPOS[value.slice(at + 1).toLowerCase()] : null;
+            if (!fixed) { hint.style.display = 'none'; return; }
+            const suggestion = value.slice(0, at + 1) + fixed;
+            // translations.js declares a top-level const, which is not on window
+            const all = typeof translations !== 'undefined' ? translations : null;
+            const prefix = all?.[localStorage.getItem('preferredLanguage') || 'en']?.contact?.emailTypo || 'Did you mean';
+            hint.textContent = prefix + ' ' + suggestion + '?';
+            hint.dataset.suggestion = suggestion;
+            hint.style.display = 'block';
+        }
+        input.addEventListener('blur', check);
+        input.addEventListener('input', function () { if (hint.style.display === 'block') check(); });
+        hint.addEventListener('click', function () {
+            input.value = hint.dataset.suggestion;
+            hint.style.display = 'none';
+            input.focus();
         });
     }
 

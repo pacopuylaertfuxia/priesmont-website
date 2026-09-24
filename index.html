@@ -1585,6 +1585,10 @@
                                 <input type="email" id="email" name="email" data-translate-placeholder="contact.email" required>
                             </div>
                         </div>
+                        <div class="form-group">
+                            <label for="phone" data-translate="contact.phone">Phone / WhatsApp (optional)</label>
+                            <input type="tel" id="phone" name="phone" autocomplete="tel" placeholder="+32 …">
+                        </div>
                         <div class="form-row">
                             <div class="form-group">
                                 <label for="checkin">Preferred Check-in Date</label>
@@ -1774,7 +1778,7 @@
     <!-- DOM Event Hooks (wires up interactions to both Meta Pixel and GA4) -->
     <!-- Visitor attribution (first/last touch) — read by the contact form in domHooks.js -->
     <script src="tracking/attribution.js?v=20260924"></script>
-    <script src="tracking/domHooks.js?v=20260924"></script>
+    <script src="tracking/domHooks.js?v=20260924b"></script>
     
     <!-- FOMO Messaging System - commented out
     <script src="fomo-messaging.js"></script>

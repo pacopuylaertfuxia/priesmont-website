@@ -118,6 +118,8 @@ const translations = {
             message: "Message",
             send: "Request Booking",
             getInTouch: "Get in touch",
+            phone: "Phone / WhatsApp (optional)",
+            emailTypo: "Did you mean",
             hearAbout: "How did you hear about us?",
             hearAboutPlaceholder: "Please select…"
         },
@@ -333,6 +335,8 @@ const translations = {
             message: "Bericht",
             send: "Boekingsverzoek",
             getInTouch: "Neem contact op",
+            phone: "Telefoon / WhatsApp (optioneel)",
+            emailTypo: "Bedoelt u",
             hearAbout: "Hoe heeft u ons gevonden?",
             hearAboutPlaceholder: "Maak een keuze…"
         },
@@ -548,6 +552,8 @@ const translations = {
             message: "Message",
             send: "Demande de Réservation",
             getInTouch: "Contactez-nous",
+            phone: "Téléphone / WhatsApp (facultatif)",
+            emailTypo: "Vouliez-vous dire",
             hearAbout: "Comment avez-vous entendu parler de nous?",
             hearAboutPlaceholder: "Veuillez choisir…"
         },
@@ -923,6 +929,9 @@ function setLanguage(lang) {
     });
     document.querySelectorAll('[data-translate="contact.message"]').forEach(el => {
         if (el.tagName === 'LABEL') el.textContent = t.contact.message;
+    });
+    document.querySelectorAll('[data-translate="contact.phone"]').forEach(el => {
+        if (el.tagName === 'LABEL') el.textContent = t.contact.phone;
     });
     document.querySelectorAll('[data-translate="contact.hearAbout"]').forEach(el => {
         if (el.tagName === 'LABEL') el.textContent = t.contact.hearAbout;
