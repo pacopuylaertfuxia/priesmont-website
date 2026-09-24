@@ -57,7 +57,7 @@
     <link rel="stylesheet" href="styles.css">
     
     <!-- Translations -->
-    <script src="translations.js"></script>
+    <script src="translations.js?v=20260924c"></script>
     
     <!-- Meta Pixel Configuration (loads early in head for pixel initialization) -->
     <script src="meta-pixel-config.js"></script>
@@ -329,6 +329,21 @@
                      render independently. Changing this id will stop the widget mounting. -->
                 <div class="hero-booking-widget">
                     <div class="hero-widget" data-widget-location="hero">
+                        <!-- Optional "how did you find us?" — sent with the Book Now click (tracking/bookClick.js) -->
+                        <label class="found-us" data-found-us-location="hero">
+                          <span data-translate="foundUs.label">How did you find us? (optional)</span>
+                          <select class="found-us-select">
+                            <option value="" data-translate="foundUs.placeholder">Please select…</option>
+                            <option value="google" data-found-us-option="google">Google</option>
+                            <option value="ota" data-found-us-option="ota">Saw you on Booking.com / Airbnb</option>
+                            <option value="friends" data-found-us-option="friends">Friends, family or colleagues</option>
+                            <option value="returning" data-found-us-option="returning">Stayed here before</option>
+                            <option value="company" data-found-us-option="company">Company event / team outing</option>
+                            <option value="social" data-found-us-option="social">Instagram / Facebook</option>
+                            <option value="ai" data-found-us-option="ai">ChatGPT or another AI assistant</option>
+                            <option value="other" data-found-us-option="other">Other</option>
+                          </select>
+                        </label>
                         <div
                           id="lodgify-book-now-box"
                           data-rental-id="279598"
@@ -1399,6 +1414,21 @@
                     </div>
                     
                     <div class="booking-widget-wrapper">
+                        <!-- Optional "how did you find us?" — sent with the Book Now click (tracking/bookClick.js) -->
+                        <label class="found-us" data-found-us-location="booking-section">
+                          <span data-translate="foundUs.label">How did you find us? (optional)</span>
+                          <select class="found-us-select">
+                            <option value="" data-translate="foundUs.placeholder">Please select…</option>
+                            <option value="google" data-found-us-option="google">Google</option>
+                            <option value="ota" data-found-us-option="ota">Saw you on Booking.com / Airbnb</option>
+                            <option value="friends" data-found-us-option="friends">Friends, family or colleagues</option>
+                            <option value="returning" data-found-us-option="returning">Stayed here before</option>
+                            <option value="company" data-found-us-option="company">Company event / team outing</option>
+                            <option value="social" data-found-us-option="social">Instagram / Facebook</option>
+                            <option value="ai" data-found-us-option="ai">ChatGPT or another AI assistant</option>
+                            <option value="other" data-found-us-option="other">Other</option>
+                          </select>
+                        </label>
                         <div id="lodgify-booking-widget" class="lodgify-widget-container">
                             <!-- Lodgify Book Now Box Widget (Date/Guest Selection) -->
                             <style>
@@ -1586,7 +1616,7 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="phone" data-translate="contact.phone">Phone / WhatsApp (optional)</label>
+                            <label for="phone" data-translate="contact.phoneOptional">Phone / WhatsApp (optional)</label>
                             <input type="tel" id="phone" name="phone" autocomplete="tel" placeholder="+32 …">
                         </div>
                         <div class="form-row">
@@ -1607,15 +1637,15 @@
                             <div class="form-group">
                                 <label for="hearAbout" data-translate="contact.hearAbout">How did you hear about us?</label>
                                 <select id="hearAbout" name="hearAbout">
-                                    <option value="" data-translate="contact.hearAboutPlaceholder">Please select…</option>
-                                    <option value="Google">Google</option>
-                                    <option value="Booking.com">Booking.com</option>
-                                    <option value="Airbnb">Airbnb</option>
-                                    <option value="VRBO">VRBO / Abritel</option>
-                                    <option value="Facebook or Instagram">Facebook / Instagram</option>
-                                    <option value="Word of mouth">Friend / word of mouth</option>
-                                    <option value="Stayed before">Stayed before</option>
-                                    <option value="Other">Other</option>
+                                    <option value="" data-translate="foundUs.placeholder">Please select…</option>
+                                    <option value="google" data-found-us-option="google">Google</option>
+                                    <option value="ota" data-found-us-option="ota">Saw you on Booking.com / Airbnb</option>
+                                    <option value="friends" data-found-us-option="friends">Friends, family or colleagues</option>
+                                    <option value="returning" data-found-us-option="returning">Stayed here before</option>
+                                    <option value="company" data-found-us-option="company">Company event / team outing</option>
+                                    <option value="social" data-found-us-option="social">Instagram / Facebook</option>
+                                    <option value="ai" data-found-us-option="ai">ChatGPT or another AI assistant</option>
+                                    <option value="other" data-found-us-option="other">Other</option>
                                 </select>
                             </div>
                         </div>
@@ -1776,9 +1806,18 @@
     <script src="tracking/ga4Tracking.js"></script>
     
     <!-- DOM Event Hooks (wires up interactions to both Meta Pixel and GA4) -->
+    <style>
+      .found-us { display: flex; flex-direction: column; gap: 6px; margin: 0 auto 12px; max-width: 360px; font-size: 0.85rem; color: #6e6e73; }
+      .found-us select { padding: 10px 14px; border: 1px solid #d2d2d7; border-radius: 12px; background: #fbfbfd; font: inherit; color: #1d1d1f; }
+      .booking-widget-wrapper { flex-direction: column; align-items: center; }
+      .booking-widget-wrapper .found-us { width: 100%; max-width: min(330px, 84%); }
+      .hero-widget .found-us { color: rgba(255, 255, 255, 0.9); max-width: 330px; text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4); }
+    </style>
     <!-- Visitor attribution (first/last touch) — read by the contact form in domHooks.js -->
-    <script src="tracking/attribution.js?v=20260924"></script>
-    <script src="tracking/domHooks.js?v=20260924b"></script>
+    <script src="tracking/attribution.js?v=20260924c"></script>
+    <script src="tracking/domHooks.js?v=20260924c"></script>
+    <!-- Book Now click: answer + tracked source + chosen dates, matched to Lodgify bookings by date -->
+    <script src="tracking/bookClick.js?v=20260924"></script>
     
     <!-- FOMO Messaging System - commented out
     <script src="fomo-messaging.js"></script>

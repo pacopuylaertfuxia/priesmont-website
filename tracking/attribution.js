@@ -74,8 +74,17 @@
         return t.source + (t.campaign ? ' — ' + t.campaign : '') + ' · ' + t.date;
     }
 
+    // Canonical English labels for the "How did you find us?" keys (index.html option values),
+    // so emails, GA4 and the dashboard read the same words whatever the site language.
+    var FOUND_US = {
+        google: 'Google', ota: 'Saw you on Booking.com / Airbnb', friends: 'Friends, family or colleagues',
+        returning: 'Stayed here before', company: 'Company event / team outing', social: 'Instagram / Facebook',
+        ai: 'ChatGPT or another AI assistant', other: 'Other'
+    };
+
     window.PriesmontAttribution = {
         get: function () { return current; },
+        foundUsLabel: function (key) { return FOUND_US[key] || ''; },
         firstLabel: function () { return label(current && current.first); },
         lastLabel: function () { return label(current && current.last); }
     };

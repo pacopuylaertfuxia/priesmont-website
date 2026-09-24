@@ -13,6 +13,8 @@
  * to mailto: rather than silently reporting success.
  */
 
+import { forwardClick } from './_dashboard.js';
+
 const ALLOWED_ORIGINS = [
     'https://www.priesmont.com',
     'https://priesmont.com'
@@ -44,7 +46,7 @@ export default async function handler(req, res) {
 
     try {
         const body = typeof req.body === 'string' ? JSON.parse(req.body) : (req.body || {});
-        const { name, email, phone, checkin, checkout, guests, hearAbout, cameFromFirst, cameFromLast, message, lang, website } = body;
+        const { name, email, phone, checkin, checkout, guests, hearAbout, cameFromFirst, cameFromLast, firstSource, lastSource, message, lang, website } = body;
 
         // Honeypot: real users never fill a hidden field. Report success so bots
         // do not learn they were rejected.
@@ -119,6 +121,10 @@ export default async function handler(req, res) {
             console.error('Enquiry mailer error:', response.status, JSON.stringify(result));
             return res.status(502).json({ error: 'Failed to send enquiry' });
         }
+
+        // Dates let the dashboard match this enquiry to the Lodgify booking Carl creates later.
+        await forwardClick({ kind: 'enquiry', arrival: checkin, departure: checkout, adults: guests,
+            answer: hearAbout, firstSource: firstSource, lastSource: lastSource, lang: lang });
 
         return res.status(200).json({ success: true });
 

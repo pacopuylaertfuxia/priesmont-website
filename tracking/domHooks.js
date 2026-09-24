@@ -127,9 +127,13 @@
                                 // Fired independently of Meta: ad blockers block the Meta Pixel far more
                                 // often than the Google tag, and this is the strongest intent signal we have.
                                 if (window.GA4Tracking) {
+                                    const touch = window.PriesmontAttribution?.get();
                                     window.GA4Tracking.trackCustom('book_now_click', {
                                         widget_id: 'lodgify-book-now-box',
-                                        widget_location: widgetLocation
+                                        widget_location: widgetLocation,
+                                        referral_source: window.PriesmontBookClick?.answer() || undefined,
+                                        first_touch_source: touch?.first?.source,
+                                        last_touch_source: touch?.last?.source
                                     });
                                     if (DEBUG) console.log('[GA4 DOM] ✅ book_now_click event fired', widgetLocation);
                                 }
@@ -274,12 +278,14 @@
                 checkin: document.getElementById('checkin')?.value || '',
                 checkout: document.getElementById('checkout')?.value || '',
                 guests: document.getElementById('guests')?.value || '',
-                hearAbout: document.getElementById('hearAbout')?.value || '',
+                hearAbout: window.PriesmontAttribution?.foundUsLabel(document.getElementById('hearAbout')?.value) || '',
                 message: document.getElementById('message')?.value || '',
                 website: document.getElementById('website')?.value || '',
                 // Automatic source (tracking/attribution.js), shown in the enquiry email
                 cameFromFirst: window.PriesmontAttribution?.firstLabel() || '',
-                cameFromLast: window.PriesmontAttribution?.lastLabel() || ''
+                cameFromLast: window.PriesmontAttribution?.lastLabel() || '',
+                firstSource: window.PriesmontAttribution?.get()?.first?.source || '',
+                lastSource: window.PriesmontAttribution?.get()?.last?.source || ''
             };
 
             // Prepare Lead event parameters

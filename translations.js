@@ -118,10 +118,24 @@ const translations = {
             message: "Message",
             send: "Request Booking",
             getInTouch: "Get in touch",
-            phone: "Phone / WhatsApp (optional)",
+            phoneOptional: "Phone / WhatsApp (optional)",
             emailTypo: "Did you mean",
             hearAbout: "How did you hear about us?",
             hearAboutPlaceholder: "Please select…"
+        },
+        foundUs: {
+            label: "How did you find us? (optional)",
+            placeholder: "Please select…",
+            options: {
+                google: "Google",
+                ota: "Saw you on Booking.com / Airbnb",
+                friends: "Friends, family or colleagues",
+                returning: "Stayed here before",
+                company: "Company event / team outing",
+                social: "Instagram / Facebook",
+                ai: "ChatGPT or another AI assistant",
+                other: "Other"
+            }
         },
         gallery: {
             title: "Gallery",
@@ -335,10 +349,24 @@ const translations = {
             message: "Bericht",
             send: "Boekingsverzoek",
             getInTouch: "Neem contact op",
-            phone: "Telefoon / WhatsApp (optioneel)",
+            phoneOptional: "Telefoon / WhatsApp (optioneel)",
             emailTypo: "Bedoelt u",
             hearAbout: "Hoe heeft u ons gevonden?",
             hearAboutPlaceholder: "Maak een keuze…"
+        },
+        foundUs: {
+            label: "Hoe heeft u ons gevonden? (optioneel)",
+            placeholder: "Maak een keuze…",
+            options: {
+                google: "Google",
+                ota: "Via Booking.com / Airbnb gezien",
+                friends: "Vrienden, familie of collega’s",
+                returning: "Hier al eerder verbleven",
+                company: "Bedrijfsevent / teamuitje",
+                social: "Instagram / Facebook",
+                ai: "ChatGPT of een andere AI-assistent",
+                other: "Anders"
+            }
         },
         gallery: {
             title: "Galerij",
@@ -552,10 +580,24 @@ const translations = {
             message: "Message",
             send: "Demande de Réservation",
             getInTouch: "Contactez-nous",
-            phone: "Téléphone / WhatsApp (facultatif)",
+            phoneOptional: "Téléphone / WhatsApp (facultatif)",
             emailTypo: "Vouliez-vous dire",
             hearAbout: "Comment avez-vous entendu parler de nous?",
             hearAboutPlaceholder: "Veuillez choisir…"
+        },
+        foundUs: {
+            label: "Comment nous avez-vous trouvés ? (facultatif)",
+            placeholder: "Veuillez choisir…",
+            options: {
+                google: "Google",
+                ota: "Vu sur Booking.com / Airbnb",
+                friends: "Amis, famille ou collègues",
+                returning: "Déjà séjourné ici",
+                company: "Événement d’entreprise / sortie d’équipe",
+                social: "Instagram / Facebook",
+                ai: "ChatGPT ou un autre assistant IA",
+                other: "Autre"
+            }
         },
         gallery: {
             title: "Galerie",
@@ -930,13 +972,23 @@ function setLanguage(lang) {
     document.querySelectorAll('[data-translate="contact.message"]').forEach(el => {
         if (el.tagName === 'LABEL') el.textContent = t.contact.message;
     });
-    document.querySelectorAll('[data-translate="contact.phone"]').forEach(el => {
-        if (el.tagName === 'LABEL') el.textContent = t.contact.phone;
+    document.querySelectorAll('[data-translate="contact.phoneOptional"]').forEach(el => {
+        if (el.tagName === 'LABEL') el.textContent = t.contact.phoneOptional;
     });
     document.querySelectorAll('[data-translate="contact.hearAbout"]').forEach(el => {
         if (el.tagName === 'LABEL') el.textContent = t.contact.hearAbout;
     });
     document.querySelectorAll('[data-translate="contact.hearAboutPlaceholder"]').forEach(el => el.textContent = t.contact.hearAboutPlaceholder);
+
+    // "How did you find us?" — Book Now widgets and the contact form share one option list
+    if (t.foundUs) {
+        document.querySelectorAll('[data-translate="foundUs.label"]').forEach(el => el.textContent = t.foundUs.label);
+        document.querySelectorAll('[data-translate="foundUs.placeholder"]').forEach(el => el.textContent = t.foundUs.placeholder);
+        document.querySelectorAll('[data-found-us-option]').forEach(el => {
+            const text = t.foundUs.options[el.dataset.foundUsOption];
+            if (text) el.textContent = text;
+        });
+    }
 
     // Update form placeholders
     document.querySelectorAll('[data-translate-placeholder="contact.name"]').forEach(el => el.placeholder = t.contact.name);
