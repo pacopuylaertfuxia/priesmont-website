@@ -44,7 +44,7 @@ export default async function handler(req, res) {
 
     try {
         const body = typeof req.body === 'string' ? JSON.parse(req.body) : (req.body || {});
-        const { name, email, checkin, checkout, guests, hearAbout, message, website } = body;
+        const { name, email, checkin, checkout, guests, hearAbout, cameFromFirst, cameFromLast, message, website } = body;
 
         // Honeypot: real users never fill a hidden field. Report success so bots
         // do not learn they were rejected.
@@ -75,6 +75,8 @@ export default async function handler(req, res) {
             ['Check-out', checkout],
             ['Guests', guests],
             ['Heard about us via', hearAbout],
+            ['Came from (first visit)', cameFromFirst],
+            ['Came from (this visit)', cameFromLast],
             ['Message', message]
         ].filter(function (row) { return row[1]; });
 

@@ -272,7 +272,10 @@
                 guests: document.getElementById('guests')?.value || '',
                 hearAbout: document.getElementById('hearAbout')?.value || '',
                 message: document.getElementById('message')?.value || '',
-                website: document.getElementById('website')?.value || ''
+                website: document.getElementById('website')?.value || '',
+                // Automatic source (tracking/attribution.js), shown in the enquiry email
+                cameFromFirst: window.PriesmontAttribution?.firstLabel() || '',
+                cameFromLast: window.PriesmontAttribution?.lastLabel() || ''
             };
 
             // Prepare Lead event parameters
@@ -292,6 +295,12 @@
 
             if (formData.hearAbout) {
                 leadParams.referral_source = formData.hearAbout;
+            }
+
+            const touch = window.PriesmontAttribution?.get();
+            if (touch) {
+                leadParams.first_touch_source = touch.first.source;
+                leadParams.last_touch_source = touch.last.source;
             }
 
             const submitButton = contactForm.querySelector('button[type="submit"]');
@@ -332,6 +341,8 @@
                     formData.checkout ? 'Check-out: ' + formData.checkout : '',
                     formData.guests ? 'Guests: ' + formData.guests : '',
                     formData.hearAbout ? 'Heard about us via: ' + formData.hearAbout : '',
+                    formData.cameFromFirst ? 'Came from (first visit): ' + formData.cameFromFirst : '',
+                    formData.cameFromLast ? 'Came from (this visit): ' + formData.cameFromLast : '',
                     formData.message ? '\n' + formData.message : ''
                 ].filter(Boolean).join('\n');
 

@@ -1772,7 +1772,9 @@
     <script src="tracking/ga4Tracking.js"></script>
     
     <!-- DOM Event Hooks (wires up interactions to both Meta Pixel and GA4) -->
-    <script src="tracking/domHooks.js"></script>
+    <!-- Visitor attribution (first/last touch) — read by the contact form in domHooks.js -->
+    <script src="tracking/attribution.js?v=20260924"></script>
+    <script src="tracking/domHooks.js?v=20260924"></script>
     
     <!-- FOMO Messaging System - commented out
     <script src="fomo-messaging.js"></script>
