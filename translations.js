@@ -716,18 +716,21 @@ function setLanguage(lang) {
     document.querySelectorAll('[data-translate="nav.bookNow"]').forEach(el => el.textContent = t.nav.bookNow);
     document.querySelectorAll('[data-translate="nav.contact"]').forEach(el => el.textContent = t.nav.contact);
     
-    // Update hero section
-    document.querySelectorAll('[data-translate="hero.welcome"]').forEach(el => el.textContent = t.hero.welcome);
+    // Update hero section (only when the text differs, see hero.subtitle below)
+    document.querySelectorAll('[data-translate="hero.welcome"]').forEach(el => { if (el.textContent !== t.hero.welcome) el.textContent = t.hero.welcome; });
     document.querySelectorAll('[data-translate="hero.subtitle"]').forEach(el => {
-        el.innerHTML = t.hero.subtitle; // Use innerHTML to preserve <br> tags
+        // innerHTML keeps the <br> tags. Only replace when the language actually changes it:
+        // swapping identical content on load discards Chrome's measurement of the page's main
+        // element (this subtitle), which made Google's speed test fail half the time (NO_LCP).
+        if (el.innerHTML !== t.hero.subtitle) el.innerHTML = t.hero.subtitle;
     });
-    document.querySelectorAll('[data-translate="hero.discover"]').forEach(el => el.textContent = t.hero.discover);
-    document.querySelectorAll('[data-translate="hero.cta"]').forEach(el => el.textContent = t.hero.cta);
-    document.querySelectorAll('[data-translate="hero.checkAvailabilities"]').forEach(el => el.textContent = t.hero.checkAvailabilities);
-    document.querySelectorAll('[data-translate="hero.alsoAvailableOn"]').forEach(el => el.textContent = t.hero.alsoAvailableOn);
-    document.querySelectorAll('[data-translate="hero.averageRating"]').forEach(el => el.textContent = t.hero.averageRating);
-    document.querySelectorAll('[data-translate="hero.acrossPlatforms"]').forEach(el => el.textContent = t.hero.acrossPlatforms);
-    document.querySelectorAll('[data-translate="hero.averageRatingCompact"]').forEach(el => el.textContent = t.hero.averageRatingCompact);
+    document.querySelectorAll('[data-translate="hero.discover"]').forEach(el => { if (el.textContent !== t.hero.discover) el.textContent = t.hero.discover; });
+    document.querySelectorAll('[data-translate="hero.cta"]').forEach(el => { if (el.textContent !== t.hero.cta) el.textContent = t.hero.cta; });
+    document.querySelectorAll('[data-translate="hero.checkAvailabilities"]').forEach(el => { if (el.textContent !== t.hero.checkAvailabilities) el.textContent = t.hero.checkAvailabilities; });
+    document.querySelectorAll('[data-translate="hero.alsoAvailableOn"]').forEach(el => { if (el.textContent !== t.hero.alsoAvailableOn) el.textContent = t.hero.alsoAvailableOn; });
+    document.querySelectorAll('[data-translate="hero.averageRating"]').forEach(el => { if (el.textContent !== t.hero.averageRating) el.textContent = t.hero.averageRating; });
+    document.querySelectorAll('[data-translate="hero.acrossPlatforms"]').forEach(el => { if (el.textContent !== t.hero.acrossPlatforms) el.textContent = t.hero.acrossPlatforms; });
+    document.querySelectorAll('[data-translate="hero.averageRatingCompact"]').forEach(el => { if (el.textContent !== t.hero.averageRatingCompact) el.textContent = t.hero.averageRatingCompact; });
     
     // Update about section
     document.querySelectorAll('[data-translate="about.sectionTitle"]').forEach(el => el.textContent = t.about.sectionTitle);
