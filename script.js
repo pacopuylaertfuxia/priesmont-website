@@ -325,21 +325,17 @@ function initializeGalleryHandlers() {
         lightboxTotal.textContent = images.length;
     }
     
-    // Add click handlers to all gallery items
-    galleryItems.forEach((item, index) => {
-        // Remove any existing listeners by cloning (clean slate)
-        const newItem = item.cloneNode(true);
-        item.parentNode.replaceChild(newItem, item);
-        
-        // Add click handler
-        newItem.addEventListener('click', () => {
-            openLightbox(index);
-        });
-    });
-    
-    // Update galleryItems reference after cloning
-    galleryItems = document.querySelectorAll('.gallery-item');
 }
+
+// One delegated click listener instead of per-item listeners. The old version cloned every
+// gallery item to reset its listeners, and cloned <img>s download immediately, which defeated
+// loading="lazy" (25 photos fetched on every page load).
+document.addEventListener('click', (e) => {
+    const item = e.target.closest && e.target.closest('.gallery-item');
+    if (!item) return;
+    const index = Array.prototype.indexOf.call(galleryItems, item);
+    if (index > -1) openLightbox(index);
+});
 
 // Initialize gallery handlers on page load
 initializeGalleryHandlers();

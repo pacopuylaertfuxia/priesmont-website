@@ -4480,7 +4480,9 @@ body:has(.lightbox.active) .navbar {
 /* Animations */
 @keyframes fadeInUp {
     from {
-        opacity: 0;
+        /* 0.01, not 0: fully transparent text is ignored as a page's main content, so Google's
+           speed test could not measure the homepage at all (NO_LCP). Looks identical. */
+        opacity: 0.01;
         transform: translateY(30px);
     }
     to {
